@@ -1,7 +1,5 @@
-import { ReactNode } from "react";
-
 interface ContainerProps {
-  children: ReactNode;
+  children: React.ReactNode;
 }
 
 export default function Container({ children }: ContainerProps) {
