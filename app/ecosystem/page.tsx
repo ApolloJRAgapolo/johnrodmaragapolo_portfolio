@@ -2,114 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Network, Database } from "lucide-react";
+import { Database } from "lucide-react";
 import RevealOnScroll from "@/components/RevealOnScroll";
-
-// --- DOSSIER DATA WITH HIERARCHY & INTERNAL LINKS ---
-const ecosystemData = [
-  {
-    id: "isatu",
-    stars: "★★★★★",
-    name: "Iloilo Science and Technology University (ISAT U)",
-    role: "BS Information Systems",
-    contribution: "Built my foundation in systems analysis, software development, documentation, business processes, and leadership.",
-    outcomes: ["Magna Cum Laude", "Best Capstone Project", "Foundational Systems Thinking"],
-    connections: ["leadership", "kwadra", "wadhwani"],
-    links: [
-      { label: "Professional Journey (2022–2026)", href: "/journey" }
-    ]
-  },
-  {
-    id: "leadership",
-    stars: "★★★★★",
-    name: "Academic Leadership",
-    role: "Class Mayor • Vice Mayor • ANALYTICA Auditor",
-    contribution: "Developed foundational soft skills in team coordination, conflict resolution, and stakeholder communication.",
-    outcomes: ["Class Mayor", "Class Vice Mayor", "ANALYTICA Auditor", "Peer Coordination"],
-    connections: ["isatu", "kwadra"],
-    links: [
-      { label: "Professional Journey", href: "/journey" }
-    ]
-  },
-  {
-    id: "kwadra",
-    stars: "★★★★★",
-    name: "KWADRA Technology Business Incubator",
-    role: "600-Hour Organizational Intern",
-    contribution: "Transitioned from academic theory to applied innovation, directly facilitating tech commercialization and startup support.",
-    outcomes: [
-      "Startup Mentoring", 
-      "Innovation Programs", 
-      "600-hour Internship", 
-      "TumaNow Incubation", 
-      "Technology Commercialization"
-    ],
-    connections: ["isatu", "tumanow", "leadership", "wadhwani"],
-    links: [
-      { label: "Case File #02: TumaNow", href: "/case-files/tumanow" }
-    ]
-  },
-  {
-    id: "wadhwani",
-    stars: "★★★★",
-    name: "Wadhwani Foundation Philippines",
-    role: "Program Support Intern",
-    contribution: "Coordinated program participation and monitored progress through the Wadhwani platform across different universities.",
-    outcomes: ["Stakeholder Communication", "Progress Monitoring", "Program Coordination"],
-    connections: ["isatu", "kwadra"],
-    links: [
-      { label: "Professional Journey (2026)", href: "/journey" }
-    ]
-  },
-  {
-    id: "tumanow",
-    stars: "★★★★★",
-    name: "TumaNow",
-    role: "Co-Founder • Business Analyst • CFO",
-    contribution: "Built a startup focused on improving local government project monitoring through digital transformation and precise business analysis.",
-    outcomes: ["Champion - Startup Hackathon", "Client Validation", "Incubation Track"],
-    connections: ["kwadra", "ppdo", "san-miguel"],
-    links: [
-      { label: "Case File #02: TumaNow", href: "/case-files/tumanow" }
-    ]
-  },
-  {
-    id: "ppdo",
-    stars: "★★★★",
-    name: "Provincial Planning & Development Office",
-    role: "Startup Client",
-    contribution: "Engaged with the office during the development of TumaNow to understand deeply rooted project monitoring challenges and propose a targeted digital solution.",
-    outcomes: ["Digital Governance Validation", "Client Interviews", "Requirements Analysis"],
-    connections: ["tumanow"],
-    links: [
-      { label: "Case File #02: TumaNow", href: "/case-files/tumanow" }
-    ]
-  },
-  {
-    id: "san-miguel",
-    stars: "★★★★",
-    name: "Municipality of San Miguel",
-    role: "Capstone Client (Department of Agriculture)",
-    contribution: "Collaborated directly with the agricultural office to develop a digital system improving livestock monitoring and reporting.",
-    outcomes: ["BLMS Deployment", "Requirements Gathering", "System Design"],
-    connections: ["tumanow", "blms"],
-    links: [
-      { label: "Case File #01: BLMS", href: "/case-files/blms" }
-    ]
-  },
-  {
-    id: "blms",
-    stars: "★★★★★",
-    name: "Backyard Livestock Monitoring System (BLMS)",
-    role: "Systems Architect • Capstone Project",
-    contribution: "Engineered a master system blueprint with core AI triage features and comprehensive architecture for the agricultural sector.",
-    outcomes: ["Best Capstone Project", "Successful Final Defense (April 2026)", "System Deployment"],
-    connections: ["san-miguel", "graduate"],
-    links: [
-      { label: "Case File #01: BLMS", href: "/case-files/blms" }
-    ]
-  }
-];
+import { ecosystemData } from "@/lib/data/ecosystem";
 
 // --- INTERACTIVE MAP NODE COMPONENT ---
 const Node = ({ 
@@ -134,7 +29,7 @@ const Node = ({
       onMouseEnter={() => setActiveNode(id)}
       onMouseLeave={() => setActiveNode(null)}
       onClick={() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })}
-      className={`cursor-pointer transition-all duration-300 font-semibold rounded-sm inline-block
+      className={`inline-block max-w-full cursor-pointer whitespace-normal rounded-sm text-center font-semibold transition-all duration-300
         ${!isHighlighted ? 'opacity-30 grayscale' : 'opacity-100'}
         ${activeNode === id ? 'bg-foreground text-background' : 'hover:text-muted-foreground text-foreground'}
       `}
@@ -149,7 +44,7 @@ export default function CareerArchitecture() {
 
   return (
     <main className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background pb-32">
-      <div className="max-w-4xl mx-auto px-8 py-16 lg:px-16 lg:py-24 w-full">
+      <div className="max-w-4xl mx-auto w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-16 lg:py-24">
         
         {/* HEADER */}
         <RevealOnScroll>
@@ -179,68 +74,37 @@ export default function CareerArchitecture() {
         </div>
         </RevealOnScroll>
 
-        {/* ASCII CHRONOLOGICAL KNOWLEDGE GRAPH */}
+        {/* CAREER ARCHITECTURE MAP */}
         <RevealOnScroll delay={200}>
-        <section className="mb-32">
-          <div className="font-mono text-[12px] sm:text-[13px] leading-[2.5] bg-card/5 border border-border/20 py-12 px-4 flex justify-center w-full rounded-xl overflow-x-auto no-scrollbar">
-            
-            <pre className="text-left w-fit mx-auto">
-              <span className="block">
-{`                                      `}<Node id="isatu" activeNode={activeNode} setActiveNode={setActiveNode}>○ ISAT U</Node>{`\n`}
-                <span className="text-muted-foreground/30">{`                                         │`}</span>
-              </span>
-              
-              <span className="block">
-                <span className="text-muted-foreground/30">{`                           ┌─────────────┼─────────────┐\n`}</span>
-                <span className="text-muted-foreground/30">{`                           │             │             │`}</span>
-              </span>
-              
-              <span className="block">
-{`\n                      `}<Node id="leadership" activeNode={activeNode} setActiveNode={setActiveNode}>○ Leadership</Node>{`  `}<Node id="kwadra" activeNode={activeNode} setActiveNode={setActiveNode}>□ Internship</Node>{`  `}<Node id="wadhwani" activeNode={activeNode} setActiveNode={setActiveNode}>○ Program Support</Node>
-{`\n                     `}<Node id="leadership" activeNode={activeNode} setActiveNode={setActiveNode}>(Class Mayor)</Node>{`    `}<Node id="kwadra" activeNode={activeNode} setActiveNode={setActiveNode}>(KWADRA)</Node>{`      `}<Node id="wadhwani" activeNode={activeNode} setActiveNode={setActiveNode}>(Wadhwani)</Node>{`\n`}
-                <span className="text-muted-foreground/30">{`                                         │\n`}</span>
-                <span className="text-muted-foreground/30">{`                                         ▼`}</span>
-              </span>
-              
-              <span className="block">
-{`\n                                 `}<Node id="tumanow" activeNode={activeNode} setActiveNode={setActiveNode}>□ Startup Journey</Node>
-{`\n                                     `}<Node id="tumanow" activeNode={activeNode} setActiveNode={setActiveNode}>(TumaNow)</Node>{`\n`}
-                <span className="text-muted-foreground/30">{`                                         │\n`}</span>
-                <span className="text-muted-foreground/30">{`                              ┌──────────┴──────────┐\n`}</span>
-                <span className="text-muted-foreground/30">{`                              ▼                     ▼`}</span>
-              </span>
-              
-              <span className="block">
-{`\n                     `}<Node id="tumanow" activeNode={activeNode} setActiveNode={setActiveNode}>□ Startup Champion</Node>{`       `}<Node id="ppdo" activeNode={activeNode} setActiveNode={setActiveNode}>◇ Provincial Planning &</Node>
-{`\n                                                  `}<Node id="ppdo" activeNode={activeNode} setActiveNode={setActiveNode}>Development Office</Node>
-{`\n                                                       `}<Node id="ppdo" activeNode={activeNode} setActiveNode={setActiveNode}>(Client)</Node>{`\n`}
-                <span className="text-muted-foreground/30">{`                                                          │\n`}</span>
-                <span className="text-muted-foreground/30">{`                                                          ▼`}</span>
-              </span>
-              
-              <span className="block">
-{`\n                                             `}<Node id="san-miguel" activeNode={activeNode} setActiveNode={setActiveNode}>◇ Municipality of San Miguel</Node>
-{`\n                                                       `}<Node id="san-miguel" activeNode={activeNode} setActiveNode={setActiveNode}>(Client)</Node>{`\n`}
-                <span className="text-muted-foreground/30">{`                                                          │\n`}</span>
-                <span className="text-muted-foreground/30">{`                                                          ▼`}</span>
-              </span>
-
-              <span className="block">
-{`\n                                                   `}<Node id="blms" activeNode={activeNode} setActiveNode={setActiveNode}>○ BLMS Capstone</Node>{`\n`}
-                <span className="text-muted-foreground/30">{`                                                          │\n`}</span>
-                <span className="text-muted-foreground/30">{`                                                          ▼`}</span>
-              </span>
-
-              <span className="block">
-{`\n                                           `}<Node id="isatu" activeNode={activeNode} setActiveNode={setActiveNode}>○ Information Systems Graduate</Node>
-              </span>
-            </pre>
-            
-          </div>
-          <div className="text-[10px] text-muted-foreground mt-6 text-center uppercase tracking-widest font-mono">
-            Professional Evolution // Hover to trace operational paths // Click to view dossier
-          </div>
-        </section>
+          <section className="mb-32">
+            <div className="relative overflow-hidden rounded-xl border border-border/20 bg-card/5 px-4 py-10 sm:px-6 sm:py-12">
+              <div className="relative mx-auto flex w-full min-w-0 max-w-3xl flex-col items-center gap-8">
+                <Node id="isatu" activeNode={activeNode} setActiveNode={setActiveNode}>ISAT U</Node>
+                <span aria-hidden className="h-8 w-px bg-border/60" />
+                <div className="grid w-full grid-cols-3 gap-2 text-center sm:gap-6">
+                  <Node id="leadership" activeNode={activeNode} setActiveNode={setActiveNode}>Leadership</Node>
+                  <Node id="kwadra" activeNode={activeNode} setActiveNode={setActiveNode}>Internship</Node>
+                  <Node id="wadhwani" activeNode={activeNode} setActiveNode={setActiveNode}>Program Support</Node>
+                </div>
+                <span aria-hidden className="h-8 w-px bg-border/60" />
+                <Node id="tumanow" activeNode={activeNode} setActiveNode={setActiveNode}>Startup Journey</Node>
+                <span aria-hidden className="h-8 w-px bg-border/60" />
+                <div className="grid w-full grid-cols-2 gap-2 text-center sm:w-2/3 sm:gap-6">
+                  <Node id="tumanow" activeNode={activeNode} setActiveNode={setActiveNode}>Startup Champion</Node>
+                  <Node id="ppdo" activeNode={activeNode} setActiveNode={setActiveNode}>Provincial Planning and Development Office</Node>
+                </div>
+                <span aria-hidden className="h-8 w-px bg-border/60" />
+                <Node id="san-miguel" activeNode={activeNode} setActiveNode={setActiveNode}>Municipality of San Miguel</Node>
+                <span aria-hidden className="h-8 w-px bg-border/60" />
+                <Node id="blms" activeNode={activeNode} setActiveNode={setActiveNode}>BLMS Capstone</Node>
+                <span aria-hidden className="h-8 w-px bg-border/60" />
+                <Node id="isatu" activeNode={activeNode} setActiveNode={setActiveNode}>Information Systems Graduate</Node>
+              </div>
+            </div>
+            <div className="mt-6 text-center font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+              Professional Evolution / Hover to trace operational paths / Click to view dossier
+            </div>
+          </section>
         </RevealOnScroll>
 
         {/* DOSSIER DOCUMENTATION */}
@@ -346,3 +210,5 @@ export default function CareerArchitecture() {
     </main>
   );
 }
+
+

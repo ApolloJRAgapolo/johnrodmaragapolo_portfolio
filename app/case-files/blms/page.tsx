@@ -20,7 +20,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 export default function BLMScaseFile() {
   return (
     <main className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background pb-32">
-      <div className="max-w-4xl mx-auto px-8 py-16 lg:px-16 w-full">
+      <div className="max-w-4xl mx-auto w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-16">
         
         {/* NAVIGATION */}
         <Link 
@@ -34,7 +34,7 @@ export default function BLMScaseFile() {
         {/* HEADER */}
         <RevealOnScroll>
         <header className="mb-16">
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex flex-wrap items-center gap-3 mb-6">
             <span className="text-[10px] font-mono uppercase tracking-widest text-foreground border border-border/40 px-3 py-1 bg-secondary/5">
               IS CAPSTONE PROJECT
             </span>
@@ -42,7 +42,7 @@ export default function BLMScaseFile() {
               Status: Completed (2026)
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-8">
             Backyard Livestock Monitoring System (BLMS)
           </h1>
           
@@ -160,7 +160,7 @@ export default function BLMScaseFile() {
               "Municipality Dashboard Updated"
             ].map((step, i, arr) => (
               <div key={i} className="flex flex-col items-center">
-                <div className="border border-border/60 bg-background px-6 py-3 text-[12px] font-mono uppercase tracking-wider text-foreground text-center min-w-[280px]">
+                <div className="w-full max-w-[280px] border border-border/60 bg-background px-4 py-3 text-[12px] font-mono uppercase tracking-wider text-foreground text-center sm:px-6">
                   {step}
                 </div>
                 {i !== arr.length - 1 && (

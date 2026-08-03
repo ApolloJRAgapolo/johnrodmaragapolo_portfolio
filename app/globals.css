@@ -59,4 +59,51 @@
     scroll-behavior: smooth;
     font-family: var(--font-geist-sans), sans-serif;
   }
+
+  html[data-theme-transition],
+  html[data-theme-transition] body,
+  html[data-theme-transition] body *,
+  html[data-theme-transition] body *::before,
+  html[data-theme-transition] body *::after {
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+    transition-duration: 400ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 400ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  ::view-transition-old(root) {
+    animation-name: theme-fade-out;
+  }
+
+  ::view-transition-new(root) {
+    animation-name: theme-fade-in;
+  }
+
+  @keyframes theme-fade-out {
+    to { opacity: 0; }
+  }
+
+  @keyframes theme-fade-in {
+    from { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html[data-theme-transition],
+    html[data-theme-transition] body,
+    html[data-theme-transition] body *,
+    html[data-theme-transition] body *::before,
+    html[data-theme-transition] body *::after {
+      transition-duration: 0ms;
+    }
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation-duration: 0ms;
+    }
+  }
 }

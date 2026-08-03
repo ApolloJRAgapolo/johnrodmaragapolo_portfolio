@@ -1,7 +1,6 @@
 "use client";
 
 import { 
-  Network, 
   GraduationCap, 
   Lightbulb, 
   Users, 
@@ -16,11 +15,12 @@ import {
   Target
 } from "lucide-react";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import { journeyProgressNodes, foundationSkills, classMayorSkills, tumanowResponsibilities, auditorSkills, kwadraResponsibilities, wadhwaniResponsibilities, blmsResponsibilities, learningExperiences } from "@/lib/data/journey";
 
 export default function ProfessionalJourney() {
   return (
     <main className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background pb-32">
-      <div className="max-w-4xl mx-auto px-8 py-16 lg:px-16 lg:py-24 w-full">
+      <div className="max-w-4xl mx-auto w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-16 lg:py-24">
         
         {/* HEADER */}
         <RevealOnScroll delay={0}>
@@ -42,21 +42,14 @@ export default function ProfessionalJourney() {
 
         {/* PROGRESS INDICATOR */}
         <RevealOnScroll delay={100}>
-          <div className="mb-24">
+          <div className="mb-24 hidden sm:block">
             <div className="relative pt-4 pb-4">
               {/* FIXED: The Horizontal Line shifted to exactly 49px to strike through the dots */}
               <div className="absolute left-0 right-0 h-px bg-border/60 top-[49px] z-0"></div>
               
               {/* The Nodes */}
               <div className="relative z-10 flex items-center justify-between">
-                {[
-                  { top: "Foundation", bottom: "2022" },
-                  { top: "", bottom: "2023" },
-                  { top: "", bottom: "2024" },
-                  { top: "", bottom: "2025" },
-                  { top: "", bottom: "2026" },
-                  { top: "Journey", bottom: "Today" }
-                ].map((node, i) => (
+                {journeyProgressNodes.map((node, i) => (
                   <div key={i} className="flex flex-col items-center bg-background px-2 md:px-4">
                     <span className="text-[10px] font-mono text-muted-foreground uppercase h-4 mb-3 block">{node.top}</span>
                     <div className="w-2.5 h-2.5 rounded-full bg-foreground ring-4 ring-background mb-4"></div>
@@ -118,7 +111,7 @@ export default function ProfessionalJourney() {
                 </p>
                 
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {["Systems Thinking", "Business Process Analysis", "Requirements Gathering", "Technical Documentation", "Database Design", "Team Collaboration"].map((skill, i) => (
+                  {foundationSkills.map((skill, i) => (
                     <span key={i} className="text-[11px] font-mono text-foreground border border-border/40 px-2.5 py-1 bg-background">
                       {skill}
                     </span>
@@ -158,7 +151,7 @@ export default function ProfessionalJourney() {
                 <div className="pt-6 border-t border-border/40">
                   <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-3">Skills Developed</h4>
                   <div className="flex flex-wrap gap-x-4 gap-y-2">
-                    {["Leadership", "Communication", "Organization", "Team Coordination", "Responsibility"].map((skill, i) => (
+                    {classMayorSkills.map((skill, i) => (
                       <span key={i} className="text-[12px] text-muted-foreground flex items-center gap-1.5">
                         <span className="text-foreground/30 font-mono">↳</span> {skill}
                       </span>
@@ -197,15 +190,7 @@ export default function ProfessionalJourney() {
                   <div>
                     <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-4">My Responsibilities</h4>
                     <ul className="space-y-2">
-                      {[
-                        "Conducted stakeholder interviews",
-                        "Gathered and analyzed business requirements",
-                        "Documented business processes",
-                        "Helped design system workflows",
-                        "Prepared financial planning and budgeting",
-                        "Supported project presentations and pitching",
-                        "Coordinated with mentors and client representatives"
-                      ].map((resp, i) => (
+                      {tumanowResponsibilities.map((resp, i) => (
                         <li key={i} className="text-[13px] text-muted-foreground flex items-start gap-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-foreground/40 shrink-0 mt-[3px]" />
                           <span className="leading-snug">{resp}</span>
@@ -283,7 +268,7 @@ export default function ProfessionalJourney() {
                   </p>
                   <div className="flex flex-wrap gap-x-4 gap-y-2">
                     <span className="text-[10px] font-mono uppercase tracking-widest text-foreground mr-2 mt-[2px]">Skills:</span>
-                    {["Organization", "Accountability", "Documentation", "Teamwork", "Leadership"].map((skill, i) => (
+                    {auditorSkills.map((skill, i) => (
                       <span key={i} className="text-[12px] text-muted-foreground">{skill}</span>
                     ))}
                   </div>
@@ -320,13 +305,7 @@ export default function ProfessionalJourney() {
                   <div className="mb-6">
                     <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-3">Responsibilities</h4>
                     <ul className="space-y-2">
-                      {[
-                        "Prepared official letters, reports, and documentation",
-                        "Assisted in organizing innovation programs and startup activities",
-                        "Coordinated events and participants",
-                        "Supported administrative and project documentation",
-                        "Worked with faculty members, startup founders, mentors, and external partners"
-                      ].map((resp, i) => (
+                      {kwadraResponsibilities.map((resp, i) => (
                         <li key={i} className="text-[13px] text-muted-foreground flex items-start gap-2">
                           <span className="text-foreground/30 font-mono mt-[-1px]">↳</span> {resp}
                         </li>
@@ -361,13 +340,7 @@ export default function ProfessionalJourney() {
                   <div className="mb-6">
                     <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-3">Responsibilities</h4>
                     <ul className="space-y-2">
-                      {[
-                        "Coordinated with faculty members from partner universities",
-                        "Sent updates and follow-up reminders through Gmail and Messenger",
-                        "Monitored participant progress on the Wadhwani platform",
-                        "Assisted in maintaining communication records and documentation",
-                        "Supported program coordination and participant engagement"
-                      ].map((resp, i) => (
+                      {wadhwaniResponsibilities.map((resp, i) => (
                         <li key={i} className="text-[13px] text-muted-foreground flex items-start gap-2">
                           <span className="text-foreground/30 font-mono mt-[-1px]">↳</span> {resp}
                         </li>
@@ -410,15 +383,7 @@ export default function ProfessionalJourney() {
                     <div>
                       <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-4">Responsibilities</h4>
                       <ul className="space-y-2">
-                        {[
-                          "Led project planning and coordination",
-                          "Conducted systems analysis",
-                          "Gathered user requirements",
-                          "Analyzed existing workflows",
-                          "Designed the overall system architecture",
-                          "Coordinated the development team",
-                          "Prepared technical documentation"
-                        ].map((resp, i) => (
+                        {blmsResponsibilities.map((resp, i) => (
                           <li key={i} className="text-[13px] text-muted-foreground flex items-start gap-2">
                             <CheckCircle2 className="w-3.5 h-3.5 text-foreground/40 shrink-0 mt-[3px]" />
                             <span className="leading-snug">{resp}</span>
@@ -479,23 +444,7 @@ export default function ProfessionalJourney() {
 
                 <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-4">Selected Learning Experiences</h4>
                 <ul className="space-y-4 mb-8">
-                  {[
-                    "Western Visayas Student Startup Summit (2024)",
-                    "2025 Iloilo Province Startup Hackathon",
-                    "Leadership Training for Student Leaders",
-                    "Internet of Things (IoT) and Smart Systems Training",
-                    "Artificial Intelligence (Machine Learning) Training",
-                    "AI Ready ASEAN",
-                    { 
-                      title: "CHED RAISE 2026", 
-                      desc: "Explored how Artificial Intelligence can be used not only to improve efficiency but also to promote equity, innovation, and positive societal impact through responsible and human-centered AI."
-                    },
-                    "International Students Conference on Business, Accounting, Computer & Design 2026",
-                    {
-                      title: "Global Consumer Intelligence (GCI) World Program",
-                      desc: "An international program led by the Matsuo-Iwasawa Laboratory at the University of Tokyo, focusing on consumer intelligence, data analytics, and evidence-based decision-making."
-                    }
-                  ].map((item, i) => (
+                  {learningExperiences.map((item, i) => (
                     <li key={i} className="text-[13px] text-foreground flex items-start gap-3">
                       <span className="text-muted-foreground/50 font-mono mt-[-2px]">—</span>
                       {typeof item === "string" ? (
@@ -532,7 +481,7 @@ export default function ProfessionalJourney() {
               
               <div className="py-4">
                 <h3 className="text-2xl md:text-[28px] leading-[1.4] text-foreground font-medium tracking-tight">
-                  "I believe technology creates the greatest impact when it solves real problems for people. I look forward to contributing through analysis, collaboration, and continuous learning."
+                  &quot;I believe technology creates the greatest impact when it solves real problems for people. I look forward to contributing through analysis, collaboration, and continuous learning.&quot;
                 </h3>
               </div>
             </div>
@@ -543,3 +492,5 @@ export default function ProfessionalJourney() {
     </main>
   );
 }
+
+

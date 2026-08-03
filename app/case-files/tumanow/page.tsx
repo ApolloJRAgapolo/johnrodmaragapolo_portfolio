@@ -2,7 +2,6 @@ import Link from "next/link";
 import { 
   ArrowLeft, 
   ArrowRight,
-  CheckCircle2, 
   Lightbulb, 
   Target,
   Briefcase,
@@ -23,7 +22,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 export default function TumaNowCaseFile() {
   return (
     <main className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background pb-32">
-      <div className="max-w-4xl mx-auto px-8 py-16 lg:px-16 w-full">
+      <div className="max-w-4xl mx-auto w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-16">
         
         {/* NAVIGATION */}
         <Link 
@@ -45,7 +44,7 @@ export default function TumaNowCaseFile() {
               Status: Champion & Client Validation (2025–Present)
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
             TumaNow: Digital Transformation for Local Government
           </h1>
           <h2 className="text-xl font-light text-muted-foreground mb-8">
