@@ -1,41 +1,11 @@
 import Link from "next/link";
-import { ArrowUpRight, FolderGit2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import RevealOnScroll from "@/components/RevealOnScroll";
-
-// --- DATA CONFIGURATION ---
-const caseFiles = [
-  {
-    id: "blms",
-    type: "IS CAPSTONE PROJECT",
-    title: "Backyard Livestock Monitoring System",
-    summary: "A digital system designed to improve backyard livestock monitoring and reporting. My role focused on system planning, process analysis, user requirements, and overall system design.",
-    isAvailable: true,
-    metadata: {
-      role: "Project Manager & Systems Analyst",
-      client: "Municipality of San Miguel — Department of Agriculture",
-      focus: ["Systems Analysis", "Requirements Gathering", "System Design"],
-      status: "Completed",
-      year: "2026"
-    }
-  },
-  {
-    id: "tumanow",
-    type: "GOVTECH STARTUP",
-    title: "TumaNow: Digital Transformation for Local Government",
-    summary: "A digital project monitoring platform developed to help government offices monitor community development projects in one centralized system, replacing scattered files and manual reports.",
-    isAvailable: true,
-    metadata: {
-      role: "Co-Founder, Business Analyst, CFO",
-      client: "Provincial Planning and Development Office (PPDO)",
-      focus: ["Business Analysis", "Financial Planning", "GovTech"],
-      status: "Champion & Client Validation",
-      year: "2025–Present"
-    }
-  }
-];
+import { caseFiles } from "@/lib/data/case-files";
+import type { CaseFile } from "@/lib/types";
 
 // --- REUSABLE DOSSIER CARD ---
-function DossierCard({ file }: { file: typeof caseFiles[0] }) {
+function DossierCard({ file }: { file: CaseFile }) {
   const { role, client, focus, status, year } = file.metadata;
 
   return (
@@ -142,7 +112,7 @@ function DossierCard({ file }: { file: typeof caseFiles[0] }) {
 export default function CaseFiles() {
   return (
     <main className="flex-1 min-h-screen overflow-y-auto bg-background">
-      <div className="max-w-6xl mx-auto px-8 py-16 lg:px-16 lg:py-24 w-full">
+      <div className="max-w-6xl mx-auto w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-16 lg:py-24">
         
         {/* RESTORED HEADER */}
         <RevealOnScroll>
@@ -177,3 +147,4 @@ to system design and proposed digital solutions.
     </main>
   );
 }
+

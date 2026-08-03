@@ -3,74 +3,91 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  LayoutDashboard,
-  FolderGit2,
-  Briefcase,
-  GraduationCap,
-  Network,
-  Wrench,
-  FileText,
-  Mail,
-  MapPin,
-  Medal,
-  Trophy,
-  Award,
-  Star,
-  Rocket,
-} from "lucide-react";
-import { SiGithub } from "react-icons/si";
-import { FaLinkedinIn } from "react-icons/fa6";
+import { Menu, MapPin, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import ThemeToggle from "@/components/layout/ThemeToggle";
-
-const workspaceLinks = [
-  { name: "Overview", href: "/", icon: LayoutDashboard },
-  { name: "Case Files", href: "/case-files", icon: FolderGit2 },
-  { name: "Professional Journey", href: "/journey", icon: Briefcase },
-  { name: "Verified Credentials", href: "/credentials", icon: GraduationCap },
-  { name: "Professional Ecosystem", href: "/ecosystem", icon: Network },
-  { name: "Capabilities", href: "/capabilities", icon: Wrench },
-  { name: "Documents", href: "/documents", icon: FileText },
-  { name: "Let's Connect", href: "/contact", icon: Mail },
-];
-
-const currentFocus = [
-  "Entry-Level Opportunities",
-  "Business Process Analysis",
-  "Data Analytics",
-  "Systems Thinking",
-  "Continuous Learning",
-];
-
-const highlights = [
-  { label: "Magna Cum Laude", icon: Medal },
-  { label: "Startup Hackathon Champion", icon: Trophy },
-  { label: "Best Capstone Project", icon: Award },
-  { label: "Outstanding Intern", icon: Star },
-  { label: "Startup Co-Founder", icon: Rocket },
-];
-
-const ecosystem = [
-  { category: "Academic", name: "ISAT U" },
-  { category: "Innovation", name: "KWADRA TBI" },
-  { category: "Industry", name: "Wadhwani Foundation" },
-  { category: "Learning", name: "Cisco Networking Academy" },
-  { category: "Learning", name: "DataCamp" },
-  { category: "Startup", name: "TumaNow" },
-];
-
-const networkLinks = [
-  { name: "GitHub", href: "https://github.com", icon: SiGithub },
-  { name: "LinkedIn", href: "https://linkedin.com", icon: FaLinkedinIn },
-  { name: "Email", href: "mailto:your.email@example.com", icon: Mail },
-  { name: "Resume", href: "/documents", icon: FileText },
-];
+import { currentFocus, ecosystem, highlights, networkLinks, workspaceLinks } from "@/lib/data/sidebar";
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMobileMenuOpen(false);
+    };
+
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [isMobileMenuOpen]);
 
   return (
-    <aside className="w-80 sticky top-0 h-screen border-r border-border/40 bg-background/95 backdrop-blur-md p-6 flex-col hidden md:flex overflow-y-auto [&::-webkit-scrollbar]:hidden">
+    <>
+      <button
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded={isMobileMenuOpen}
+        aria-controls="mobile-navigation"
+        onClick={() => setIsMobileMenuOpen(true)}
+        className="fixed right-4 top-4 z-40 flex h-11 w-11 items-center justify-center border border-border/50 bg-background/95 text-foreground shadow-sm backdrop-blur-md transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 lg:hidden"
+      >
+        <Menu className="h-5 w-5" />
+      </button>
+
+      {isMobileMenuOpen && (
+        <div id="mobile-navigation" className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label="Navigation menu">
+          <button
+            type="button"
+            aria-label="Close navigation menu"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="absolute inset-0 cursor-default bg-background/60 backdrop-blur-sm"
+          />
+          <aside className="relative flex h-full w-[min(20rem,calc(100vw-2rem))] flex-col overflow-y-auto border-r border-border/40 bg-background p-6 shadow-2xl">
+            <div className="mb-8 flex items-center justify-between">
+              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Workspace</span>
+              <button
+                type="button"
+                aria-label="Close navigation menu"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex h-11 w-11 items-center justify-center text-muted-foreground transition-colors hover:bg-secondary/60 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <nav className="flex flex-col gap-1" aria-label="Mobile workspace navigation">
+              {workspaceLinks.map((item) => {
+                const isActive = pathname === item.href;
+                const Icon = item.icon;
+
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`flex min-h-11 items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 ${
+                      isActive
+                        ? "bg-foreground font-medium text-background"
+                        : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground"
+                    }`}
+                  >
+                    <Icon className="h-4 w-4 shrink-0 stroke-[1.5]" />
+                    {item.name}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            <div className="mt-8 border-t border-border/40 pt-8">
+              <ThemeToggle />
+            </div>
+          </aside>
+        </div>
+      )}
+
+    <aside className="sticky top-0 hidden h-screen w-80 flex-col overflow-y-auto border-r border-border/40 bg-background/95 p-6 backdrop-blur-md lg:flex [&::-webkit-scrollbar]:hidden">
       <div className="flex flex-col items-center text-center mb-8 mt-2">
         <div className="relative w-20 h-20 rounded-full overflow-hidden border border-border/50 shadow-sm mb-4">
           <Image
@@ -206,5 +223,6 @@ export default function Sidebar() {
       </div>
 
     </aside>
+    </>
   );
 }

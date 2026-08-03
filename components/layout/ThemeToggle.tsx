@@ -5,6 +5,12 @@ import { useEffect, useRef, useState } from "react";
 
 type Theme = "light" | "dark" | "system";
 
+type ViewTransitionDocument = Document & {
+  startViewTransition?: (update: () => void) => {
+    finished: Promise<void>;
+  };
+};
+
 const storageKey = "portfolio-theme";
 const themeOptions = [
   { value: "light" as const, label: "Light", icon: Sun },
@@ -18,6 +24,24 @@ function applyTheme(theme: Theme) {
 
   document.documentElement.classList.toggle("dark", isDark);
   document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+}
+
+function transitionTheme(theme: Theme) {
+  const root = document.documentElement;
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const clearTransition = () => root.removeAttribute("data-theme-transition");
+  const updateTheme = () => applyTheme(theme);
+
+  root.setAttribute("data-theme-transition", "");
+
+  const viewTransition = (document as ViewTransitionDocument).startViewTransition;
+  if (!reducedMotion && viewTransition) {
+    viewTransition.call(document, updateTheme).finished.finally(clearTransition);
+    return;
+  }
+
+  updateTheme();
+  window.setTimeout(clearTransition, reducedMotion ? 0 : 400);
 }
 
 function getStoredTheme(): Theme {
@@ -49,7 +73,7 @@ export default function ThemeToggle() {
     setTheme(nextTheme);
     themeRef.current = nextTheme;
     localStorage.setItem(storageKey, nextTheme);
-    applyTheme(nextTheme);
+    transitionTheme(nextTheme);
   };
 
   return (
@@ -67,13 +91,17 @@ export default function ThemeToggle() {
               type="button"
               aria-pressed={isActive}
               onClick={() => selectTheme(value)}
-              className={`flex flex-col items-center gap-1 rounded-sm px-2 py-2 text-[9px] font-medium transition-colors ${
+              className={`flex min-h-11 flex-col items-center justify-center gap-1 rounded-sm px-2 py-2 text-[9px] font-medium transition-[background-color,color,box-shadow] duration-[400ms] ease-out ${
                 isActive
                   ? "bg-background text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
-              <Icon className="h-3.5 w-3.5" />
+              <Icon
+                className={`h-3.5 w-3.5 transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none ${
+                  isActive ? "scale-100 rotate-0 opacity-100" : "scale-90 -rotate-12 opacity-60"
+                }`}
+              />
               {label}
             </button>
           );

@@ -8,33 +8,16 @@ import {
   Briefcase,
   Download,
   FileText,
-  Mail,
   MapPin,
   Terminal,
 } from "lucide-react";
-import { FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
-import { SiGithub, SiIndeed } from "react-icons/si";
 import RevealOnScroll from "@/components/RevealOnScroll";
-
-const contactMethods = [
-  { label: "Email", value: "johnrodmar@example.com", href: "mailto:johnrodmar@example.com", icon: Mail },
-  { label: "LinkedIn", value: "linkedin.com/in/...", href: "https://linkedin.com/in/yourprofile", icon: FaLinkedinIn },
-  { label: "GitHub", value: "github.com/...", href: "https://github.com/yourprofile", icon: SiGithub },
-  { label: "Facebook", value: "facebook.com/...", href: "https://facebook.com/yourprofile", icon: FaFacebookF },
-  { label: "Indeed", value: "indeed.com/...", href: "https://indeed.com/yourprofile", icon: SiIndeed },
-];
-
-const profileLinks = [
-  { label: "GitHub", description: "View repositories", href: "https://github.com/yourprofile", icon: SiGithub },
-  { label: "LinkedIn", description: "Professional profile", href: "https://linkedin.com/in/yourprofile", icon: FaLinkedinIn },
-  { label: "Indeed", description: "Professional profile", href: "#", icon: SiIndeed },
-  { label: "Facebook", description: "Social profile", href: "#", icon: FaFacebookF },
-];
+import { contactMethods, profileLinks } from "@/lib/data/contact";
 
 export default function ContactPage() {
   return (
     <main className="flex-1 min-h-screen overflow-y-auto bg-background pb-32 selection:bg-foreground selection:text-background">
-      <div className="w-full max-w-4xl mx-auto px-8 py-16 lg:px-16 lg:py-24">
+      <div className="w-full max-w-4xl mx-auto px-5 py-12 sm:px-8 sm:py-16 lg:px-16 lg:py-24">
         <RevealOnScroll>
           <header className="mb-20">
             <div className="mb-8 flex items-center gap-4 text-[10px] font-mono text-muted-foreground">
@@ -88,9 +71,9 @@ export default function ContactPage() {
               <h2 className="mb-8 flex items-center gap-2 border-b border-border/40 pb-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground"><Terminal className="h-3.5 w-3.5 stroke-[1.5]" /> Contact Information</h2>
               <div className="flex flex-1 flex-col justify-center gap-2">
                 {contactMethods.map(({ label, value, href, icon: Icon }) => (
-                  <Link key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined} className="group flex items-center justify-between border border-border/40 p-4 transition-all hover:border-foreground/30 hover:bg-secondary/5">
+                  <Link key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined} className="group flex min-h-11 flex-col items-start gap-2 border border-border/40 p-4 transition-all hover:border-foreground/30 hover:bg-secondary/5 sm:flex-row sm:items-center sm:justify-between">
                     <span className="flex items-center gap-3"><Icon className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-foreground" /><span className="text-[13px] font-medium text-foreground">{label}</span></span>
-                    <span className="text-[12px] font-mono text-muted-foreground">{value}</span>
+                    <span className="break-all text-left text-[12px] font-mono text-muted-foreground sm:text-right">{value}</span>
                   </Link>
                 ))}
               </div>

@@ -11,9 +11,10 @@ import {
   Target,
 } from "lucide-react";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import { overviewStats } from "@/lib/data/overview";
 
 export default function Overview() {
-  const lastUpdateDate = new Date("2026-08-01");
+  const lastUpdateDate = new Date(overviewStats.lastUpdated);
   const currentDate = new Date();
 
   const timeDifference = currentDate.getTime() - lastUpdateDate.getTime();
@@ -21,17 +22,11 @@ export default function Overview() {
   const daysText =
     daysAgo === 0 ? "Today" : daysAgo === 1 ? "1 day ago" : `${daysAgo} days ago`;
 
-  const systemStats = {
-    version: "v1.0.0",
-    caseFiles: 2,
-    credentials: 35,
-    ecosystemNodes: 6,
-    capabilities: 24,
-  };
+  const systemStats = overviewStats;
 
   return (
     <main className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background">
-      <div className="max-w-5xl mx-auto px-8 py-16 lg:px-16 lg:py-24 w-full">
+      <div className="max-w-5xl mx-auto w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-16 lg:py-24">
       {/* HERO TYPOGRAPHY & MICRO-DETAILS */}
         <RevealOnScroll delay={0}>
           <header className="mb-24">

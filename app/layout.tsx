@@ -36,7 +36,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="flex min-h-screen bg-background text-foreground antialiased">
+      <body className="flex min-h-screen overflow-x-hidden bg-background text-foreground antialiased">
         <Sidebar />
         {children}
       </body>
