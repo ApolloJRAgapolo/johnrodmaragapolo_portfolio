@@ -60,19 +60,40 @@
     font-family: var(--font-geist-sans), sans-serif;
   }
 
+  .document-viewer-backdrop {
+    animation: document-viewer-fade-in 220ms ease-out both;
+  }
+
+  .document-viewer-panel {
+    animation: document-viewer-enter 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  [data-state="closing"] .document-viewer-backdrop {
+    animation: document-viewer-fade-out 220ms ease-in both;
+  }
+
+  [data-state="closing"] .document-viewer-panel {
+    animation: document-viewer-exit 220ms ease-in both;
+  }
+
+  @keyframes document-viewer-fade-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes document-viewer-fade-out { from { opacity: 1; } to { opacity: 0; } }
+  @keyframes document-viewer-enter { from { opacity: 0; transform: translateY(0.75rem) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  @keyframes document-viewer-exit { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(0.5rem) scale(0.96); } }
+
   html[data-theme-transition],
   html[data-theme-transition] body,
   html[data-theme-transition] body *,
   html[data-theme-transition] body *::before,
   html[data-theme-transition] body *::after {
     transition-property: background-color, border-color, color, fill, stroke, box-shadow;
-    transition-duration: 400ms;
+    transition-duration: 320ms;
     transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   ::view-transition-old(root),
   ::view-transition-new(root) {
-    animation-duration: 400ms;
+    animation-duration: 320ms;
     animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
 
@@ -103,6 +124,11 @@
 
     ::view-transition-old(root),
     ::view-transition-new(root) {
+      animation-duration: 0ms;
+    }
+
+    .document-viewer-backdrop,
+    .document-viewer-panel {
       animation-duration: 0ms;
     }
   }

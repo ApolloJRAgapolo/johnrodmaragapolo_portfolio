@@ -85,6 +85,28 @@ export type DocumentItem = {
   meta: string;
   tags: string[];
   fileUrl: string;
+  viewerMetadata?: DocumentMetadata;
+  aspectRatio?: number;
+  viewerOptions?: ViewerOptions;
+};
+
+export type ViewerOptions = {
+  allowDownload: boolean;
+};
+
+export type DocumentMetadata = {
+  title?: string;
+  category?: string;
+  issuer?: string;
+  issuedDate?: string;
+  documentType?: string;
+  verificationStatus?: string;
+  description?: string;
+  lastUpdated?: string;
+  authors?: string;
+  publicationDate?: string;
+  publisher?: string;
+  entries?: { label: string; value: string }[];
 };
 
 export type DocumentCollection = {
@@ -105,14 +127,20 @@ export type ProfessionalDocument = {
   updated: string;
   fileType: string;
   fileUrl: string;
+  viewerMetadata?: DocumentMetadata;
+  aspectRatio?: number;
+  viewerOptions: ViewerOptions;
 };
 
-export type Credential = {
+type CredentialBase = {
   title: string;
   issuer: string;
   logoSrc?: string;
-  url: string;
 };
+
+export type Credential =
+  | (CredentialBase & { action: "viewer"; pdfPath: string; viewerMetadata?: DocumentMetadata; aspectRatio?: number; viewerOptions: ViewerOptions })
+  | (CredentialBase & { action: "verification"; verificationUrl: string });
 
 export type CaseFile = {
   id: string;

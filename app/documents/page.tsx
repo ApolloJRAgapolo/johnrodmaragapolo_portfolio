@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import DocumentViewer, { type PreviewDocument } from "@/components/DocumentViewer";
 import type { DocumentItem as Document } from "@/lib/types";
 import { documentCollections, documentFilterTags, professionalDocs } from "@/lib/data/documents";
 import { 
   FileText, 
   Eye, 
   Download, 
-  X, 
   Search,
   ChevronDown,
   ChevronUp,
@@ -16,9 +16,7 @@ import {
 
 // --- MAIN PAGE COMPONENT ---
 export default function CertificationLibrary() {
-  const [previewDoc, setPreviewDoc] = useState<{title: string, fileUrl: string} | null>(null);
-  const [previewAspectRatio, setPreviewAspectRatio] = useState(1.414);
-  const [previewSize, setPreviewSize] = useState({ width: 0, height: 0 });
+  const [previewDoc, setPreviewDoc] = useState<PreviewDocument | null>(null);
   const [expandedCol, setExpandedCol] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
@@ -61,56 +59,6 @@ export default function CertificationLibrary() {
 
   const isSearching = searchQuery.length > 0 || activeFilter !== "All";
 
-  useEffect(() => {
-    if (!previewDoc) return;
-
-    let isActive = true;
-    const fallbackAspectRatio = 1.414;
-
-    const fitPreview = (aspectRatio: number) => {
-      const horizontalPadding = window.innerWidth >= 640 ? 64 : 32;
-      const verticalChrome = window.innerWidth >= 640 ? 180 : 152;
-      const maxWidth = window.innerWidth - horizontalPadding;
-      const maxHeight = window.innerHeight - verticalChrome;
-      const width = Math.min(maxWidth, maxHeight * aspectRatio, 1000);
-
-      setPreviewSize({ width: Math.floor(width), height: Math.floor(width / aspectRatio) });
-    };
-
-    const readDocumentAspectRatio = async () => {
-      let aspectRatio = fallbackAspectRatio;
-
-      try {
-        const response = await fetch(previewDoc.fileUrl);
-        const source = new TextDecoder("iso-8859-1").decode(await response.arrayBuffer());
-        const match = source.match(/\/MediaBox\s*\[\s*[-.\d]+\s+[-.\d]+\s+([.\d]+)\s+([.\d]+)\s*\]/);
-
-        if (match) {
-          const width = Number(match[1]);
-          const height = Number(match[2]);
-          if (width > 0 && height > 0) aspectRatio = width / height;
-        }
-      } catch {
-        // Browser PDF rendering remains available when a document cannot be inspected.
-      }
-
-      if (isActive) {
-        setPreviewAspectRatio(aspectRatio);
-        fitPreview(aspectRatio);
-      }
-    };
-
-    const handleResize = () => fitPreview(previewAspectRatio);
-    fitPreview(previewAspectRatio);
-    readDocumentAspectRatio();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      isActive = false;
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [previewDoc, previewAspectRatio]);
-
   // Reusable Document Item (Inner Row)
   const DocumentItem = ({ item }: { item: Document }) => {
     const fileUrl = certificateFileUrl(item);
@@ -124,18 +72,18 @@ export default function CertificationLibrary() {
       </div>
       <div className="flex items-center gap-2 mt-3 sm:mt-0 opacity-100 sm:opacity-0 sm:-translate-x-4 sm:group-hover:opacity-100 sm:group-hover:translate-x-0 transition-all duration-300 ease-out">
         <button 
-          onClick={() => setPreviewDoc({ title: item.title, fileUrl })}
+          onClick={() => setPreviewDoc({ title: item.title, fileUrl, metadata: item.viewerMetadata, aspectRatio: item.aspectRatio, viewerOptions: item.viewerOptions })}
           className="inline-flex min-h-11 items-center text-[11px] font-medium text-foreground hover:bg-foreground hover:text-background border border-border/40 px-3 py-1.5 transition-colors"
         >
           Preview
         </button>
-        <a 
+        {item.viewerOptions?.allowDownload && <a
           href={fileUrl}
           download
           className="inline-flex min-h-11 items-center text-[11px] font-medium bg-foreground text-background hover:bg-foreground/80 px-3 py-1.5 transition-colors shadow-sm"
         >
           Download
-        </a>
+        </a>}
       </div>
     </div>
     );
@@ -182,18 +130,18 @@ export default function CertificationLibrary() {
             </div>
             <div className="flex items-center gap-3 mt-4 md:mt-0 pl-9 md:pl-0">
               <button 
-                onClick={() => setPreviewDoc({ title: professionalDocs[0].title, fileUrl: professionalDocs[0].fileUrl })}
+                onClick={() => setPreviewDoc({ title: professionalDocs[0].title, fileUrl: professionalDocs[0].fileUrl, metadata: professionalDocs[0].viewerMetadata, aspectRatio: professionalDocs[0].aspectRatio, mode: "resume", viewerOptions: professionalDocs[0].viewerOptions })}
                 className="flex min-h-11 items-center gap-2 px-4 py-2 border border-border/40 text-[12px] font-medium text-foreground hover:bg-foreground hover:text-background transition-colors"
               >
                 <Eye className="w-3.5 h-3.5" /> Preview
               </button>
-              <a 
+              {professionalDocs[0].viewerOptions.allowDownload && <a
                 href={professionalDocs[0].fileUrl}
                 download
                 className="flex min-h-11 items-center gap-2 px-4 py-2 bg-foreground text-background text-[12px] font-medium hover:bg-foreground/80 transition-colors"
               >
                 <Download className="w-3.5 h-3.5" /> Download
-              </a>
+              </a>}
             </div>
           </div>
         </section>
@@ -347,63 +295,7 @@ export default function CertificationLibrary() {
 
       </div>
 
-      {/* PREVIEW MODAL OVERLAY */}
-      {previewDoc && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8">
-          <div 
-            className="absolute inset-0 bg-background/80 backdrop-blur-md animate-in fade-in duration-300"
-            onClick={() => setPreviewDoc(null)}
-          />
-          <div className="relative flex w-fit max-w-full flex-col overflow-hidden rounded-sm border border-border/40 bg-card shadow-2xl animate-in fade-in zoom-in-95 slide-in-from-bottom-8 duration-500 ease-out">
-            
-            {/* Modal Header */}
-            <div className="flex items-center justify-between gap-4 border-b border-border/40 bg-secondary/10 px-4 py-3 sm:px-6 sm:py-4">
-              <div className="flex min-w-0 items-center gap-3">
-                <FileText className="w-4 h-4 text-muted-foreground animate-pulse" />
-                <h3 className="truncate text-sm font-medium text-foreground">{previewDoc.title}</h3>
-              </div>
-              <button 
-                onClick={() => setPreviewDoc(null)}
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-sm text-muted-foreground transition-transform duration-300 hover:rotate-90 hover:bg-secondary hover:text-foreground"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            {/* Modal Body */}
-            <div className="flex items-center justify-center bg-secondary/10 p-3 sm:p-5">
-              <div
-                className="overflow-hidden rounded-sm border border-border/20 bg-background shadow-lg animate-in fade-in duration-700 delay-200 fill-mode-both"
-                style={{ width: previewSize.width || undefined, height: previewSize.height || undefined }}
-              >
-              <iframe 
-                src={`${previewDoc.fileUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`} 
-                className="block h-full w-full bg-background"
-                title={previewDoc.title}
-              />
-              </div>
-            </div>
-
-            {/* Modal Footer */}
-            <div className="flex justify-end gap-3 border-t border-border/40 bg-secondary/10 px-4 py-3 sm:px-6 sm:py-4">
-              <button 
-                onClick={() => setPreviewDoc(null)}
-                className="min-h-11 px-4 py-2 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                Close
-              </button>
-              <a 
-                href={previewDoc.fileUrl}
-                download
-                className="flex min-h-11 items-center gap-2 rounded-sm bg-foreground px-4 py-2 text-xs font-medium text-background transition-all hover:scale-105 hover:bg-foreground/80 active:scale-95"
-              >
-                <Download className="w-3.5 h-3.5" />
-                Download Document
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
+      <DocumentViewer document={previewDoc} onClose={() => setPreviewDoc(null)} />
     </main>
   );
 }

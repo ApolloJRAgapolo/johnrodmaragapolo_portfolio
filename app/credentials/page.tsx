@@ -1,26 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { ShieldCheck, ExternalLink, FileText, Award, GraduationCap, Briefcase } from "lucide-react";
+import { useState } from "react";
+import { ShieldCheck, ExternalLink, FileText, Award, GraduationCap, Briefcase, Eye } from "lucide-react";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import DocumentViewer, { type PreviewDocument } from "@/components/DocumentViewer";
 import type { ComponentType } from "react";
-import { aiAndMlops, cloudAndSecurity, coreCertifications, dataLiteracy } from "@/lib/data/credentials";
+import type { Credential } from "@/lib/types";
+import { aiAndMlops, cloudAndSecurity, coreCertifications, dataLiteracy, honorsAndInternships } from "@/lib/data/credentials";
 
 // --- REUSABLE UI COMPONENT ---
 
-function CredentialItem({ 
-  title, 
-  issuer, 
-  url, 
-  logoSrc, 
-  icon: Icon = ShieldCheck 
-}: { 
-  title: string, 
-  issuer: string, 
-  url: string, 
-  logoSrc?: string, 
-  icon?: ComponentType<{ className?: string }>
-}) {
-  const isPending = url === "#";
+function CredentialItem({ credential, icon: Icon = ShieldCheck, onPreview }: { credential: Credential; icon?: ComponentType<{ className?: string }>; onPreview: (document: PreviewDocument) => void }) {
+  const { title, issuer, logoSrc } = credential;
   return (
     <div className="group flex flex-col justify-between p-6 border border-border/40 hover:border-foreground/20 transition-colors bg-secondary/5 h-full">
       <div>
@@ -42,13 +35,13 @@ function CredentialItem({
         </div>
       </div>
       <div className="mt-6 pt-4 border-t border-border/40">
-        {isPending ? (
-          <span className="text-[10px] text-muted-foreground/50 uppercase tracking-widest flex items-center gap-2">
-            Verification Pending
-          </span>
+        {credential.action === "viewer" ? (
+          <button type="button" onClick={() => onPreview({ title, fileUrl: credential.pdfPath, metadata: credential.viewerMetadata, aspectRatio: credential.aspectRatio, viewerOptions: credential.viewerOptions })} className="flex min-h-11 items-center gap-2 text-[10px] uppercase tracking-widest text-foreground transition-colors hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+            View Credential <Eye className="w-3 h-3 stroke-[1.5]" />
+          </button>
         ) : (
-          <Link href={url} target="_blank" className="flex min-h-11 items-center gap-2 text-[10px] uppercase tracking-widest text-foreground transition-colors hover:text-muted-foreground">
-            Verify Source <ExternalLink className="w-3 h-3 stroke-[1.5]" />
+          <Link href={credential.verificationUrl} target="_blank" className="flex min-h-11 items-center gap-2 text-[10px] uppercase tracking-widest text-foreground transition-colors hover:text-muted-foreground">
+            Verify Credential <ExternalLink className="w-3 h-3 stroke-[1.5]" />
           </Link>
         )}
       </div>
@@ -59,6 +52,8 @@ function CredentialItem({
 // --- MAIN PAGE ---
 
 export default function Credentials() {
+  const [previewDoc, setPreviewDoc] = useState<PreviewDocument | null>(null);
+  const honorIcons: ComponentType<{ className?: string }>[] = [GraduationCap, Award, Award, Award, FileText, Briefcase, Briefcase];
   return (
     <main className="flex-1 h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background">
       <div className="max-w-5xl mx-auto w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-16 lg:py-24">
@@ -90,13 +85,7 @@ export default function Credentials() {
             </h2>
           </RevealOnScroll>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <RevealOnScroll delay={100} className="h-full"><CredentialItem title="Magna Cum Laude" issuer="Academic Honors" url="#" icon={GraduationCap} /></RevealOnScroll>
-            <RevealOnScroll delay={150} className="h-full"><CredentialItem title="Best Capstone Project Award" issuer="Academic Honors" url="#" icon={Award} /></RevealOnScroll>
-            <RevealOnScroll delay={200} className="h-full"><CredentialItem title="Outstanding Intern Award" issuer="Academic Honors" url="#" icon={Award} /></RevealOnScroll>
-            <RevealOnScroll delay={250} className="h-full"><CredentialItem title="Iloilo Province Startup Hackathon Champion" issuer="Awards & Competitions" url="#" icon={Award} /></RevealOnScroll>
-            <RevealOnScroll delay={300} className="h-full"><CredentialItem title="Global Consumer Intelligence (GCI)" issuer="The University of Tokyo - Matsuo-Iwasawa Laboratory" url="#" icon={FileText} /></RevealOnScroll>
-            <RevealOnScroll delay={350} className="h-full"><CredentialItem title="ISAT U - Kwadra TBI" issuer="Internship Documentation" url="#" icon={Briefcase} /></RevealOnScroll>
-            <RevealOnScroll delay={400} className="h-full"><CredentialItem title="Wadhwani Foundation Philippines" issuer="Internship Documentation" url="#" icon={Briefcase} /></RevealOnScroll>
+            {honorsAndInternships.map((credential, i) => <RevealOnScroll key={credential.title} delay={(i + 2) * 50} className="h-full"><CredentialItem credential={credential} icon={honorIcons[i]} onPreview={setPreviewDoc} /></RevealOnScroll>)}
           </div>
         </section>
 
@@ -111,7 +100,7 @@ export default function Credentials() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {coreCertifications.map((cert, i) => (
               <RevealOnScroll key={i} delay={(i + 1) * 100} className="h-full">
-                <CredentialItem title={cert.title} issuer={cert.issuer} logoSrc={cert.logoSrc} url={cert.url} />
+                <CredentialItem credential={cert} onPreview={setPreviewDoc} />
               </RevealOnScroll>
             ))}
           </div>
@@ -127,7 +116,7 @@ export default function Credentials() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {dataLiteracy.map((cert, i) => (
               <RevealOnScroll key={i} delay={(i + 1) * 100} className="h-full">
-                <CredentialItem title={cert.title} issuer={cert.issuer} logoSrc={cert.logoSrc} url={cert.url} />
+                <CredentialItem credential={cert} onPreview={setPreviewDoc} />
               </RevealOnScroll>
             ))}
           </div>
@@ -143,7 +132,7 @@ export default function Credentials() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {aiAndMlops.map((cert, i) => (
               <RevealOnScroll key={i} delay={(i + 1) * 100} className="h-full">
-                <CredentialItem title={cert.title} issuer={cert.issuer} logoSrc={cert.logoSrc} url={cert.url} />
+                <CredentialItem credential={cert} onPreview={setPreviewDoc} />
               </RevealOnScroll>
             ))}
           </div>
@@ -159,13 +148,14 @@ export default function Credentials() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {cloudAndSecurity.map((cert, i) => (
               <RevealOnScroll key={i} delay={(i + 1) * 100} className="h-full">
-                <CredentialItem title={cert.title} issuer={cert.issuer} logoSrc={cert.logoSrc} url={cert.url} />
+                <CredentialItem credential={cert} onPreview={setPreviewDoc} />
               </RevealOnScroll>
             ))}
           </div>
         </section>
 
       </div>
+      <DocumentViewer document={previewDoc} onClose={() => setPreviewDoc(null)} />
     </main>
   );
 }

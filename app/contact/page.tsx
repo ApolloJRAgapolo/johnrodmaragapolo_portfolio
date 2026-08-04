@@ -57,7 +57,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="mb-3 text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Preferred Roles</h3>
                   <ul className="space-y-2">
-                    {["Business Analyst", "Systems Analyst", "Information Systems", "Government Digital Transformation"].map((role) => (
+                    {["Junior Business Analyst", "Junior Data Analyst", "Junior Systems Analyst", "Junior Project Manager", "Junior Software Developer", "Project Technical Assistant", "Intellectual Property Management Associate", "Any Entry-Level IT or GovTech Role"].map((role) => (
                       <li key={role} className="flex items-center gap-2 text-[13px] text-foreground"><Briefcase className="h-3.5 w-3.5 shrink-0 text-muted-foreground" /> {role}</li>
                     ))}
                   </ul>
@@ -71,9 +71,9 @@ export default function ContactPage() {
               <h2 className="mb-8 flex items-center gap-2 border-b border-border/40 pb-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground"><Terminal className="h-3.5 w-3.5 stroke-[1.5]" /> Contact Information</h2>
               <div className="flex flex-1 flex-col justify-center gap-2">
                 {contactMethods.map(({ label, value, href, icon: Icon }) => (
-                  <Link key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined} className="group flex min-h-11 flex-col items-start gap-2 border border-border/40 p-4 transition-all hover:border-foreground/30 hover:bg-secondary/5 sm:flex-row sm:items-center sm:justify-between">
-                    <span className="flex items-center gap-3"><Icon className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-foreground" /><span className="text-[13px] font-medium text-foreground">{label}</span></span>
-                    <span className="break-all text-left text-[12px] font-mono text-muted-foreground sm:text-right">{value}</span>
+                  <Link key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined} className="group flex min-h-24 flex-col justify-center gap-2 border border-border/40 p-4 transition-all hover:border-foreground/30 hover:bg-secondary/5">
+                    <span className="flex items-center justify-between gap-3"><span className="flex items-center gap-3"><Icon className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-foreground" /><span className="text-[13px] font-medium text-foreground">{label}</span></span><ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" /></span>
+                    <span className="pl-7 text-[12px] text-muted-foreground">{value}</span>
                   </Link>
                 ))}
               </div>

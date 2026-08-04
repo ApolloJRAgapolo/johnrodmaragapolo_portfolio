@@ -1,5 +1,5 @@
 import { Award, Brain, Briefcase, BookOpen, Heart, Rocket, ShieldCheck, Terminal, Users } from "lucide-react";
-import type { DocumentCollection } from "@/lib/types";
+import type { DocumentCollection, DocumentItem, DocumentMetadata } from "@/lib/types";
 
 
 
@@ -10,12 +10,19 @@ export const professionalDocs = [
     description: "The latest version of my professional résumé, including my education, experience, projects, and achievements.",
     updated: "August 2026",
     fileType: "PDF",
-    fileUrl: "/docs/resume-2026.pdf" // Ensure this file exists in your public/docs folder
+    fileUrl: "/docs/resume-2026.pdf", // Ensure this file exists in your public/docs folder
+    aspectRatio: 0.707,
+    viewerOptions: { allowDownload: true },
+    viewerMetadata: {
+      documentType: "Résumé / Curriculum Vitae",
+      lastUpdated: "August 2026",
+      description: "A current overview of education, experience, projects, and achievements.",
+    },
   }
 ];
 
 // Grouped Collections
-export const documentCollections = {
+const baseDocumentCollections = {
   awards: {
     id: "awards",
     title: "Awards & Recognition",
@@ -147,7 +154,75 @@ export const documentCollections = {
   }
 } satisfies Record<string, DocumentCollection>;
 
+const collectionPresentation = {
+  awards: { category: "Academic Achievement", documentType: "Certificate of Recognition" },
+  internships: { category: "Internship", documentType: "Internship Certificate" },
+  leadership: { category: "Leadership", documentType: "Certificate" },
+  startup: { category: "Innovation", documentType: "Certificate" },
+  ai: { category: "Artificial Intelligence", documentType: "Certificate" },
+  research: { category: "Research", documentType: "Conference Certificate" },
+  community: { category: "Community Engagement", documentType: "Certificate" },
+  cisco: { category: "Professional Certification", documentType: "Professional Certificate" },
+  datacamp: { category: "Professional Certification", documentType: "Professional Certificate" },
+} as const;
+
+const normalizedIssuers: [RegExp, string][] = [
+  [/cisco/i, "Cisco Networking Academy"],
+  [/datacamp/i, "DataCamp"],
+  [/wadhwani/i, "Wadhwani Foundation Philippines"],
+  [/(isat\s*u|blms)/i, "Iloilo Science and Technology University"],
+  [/kwadra/i, "ISAT U — KWADRA TBI"],
+  [/ai ready asean|asean/i, "AI Ready ASEAN"],
+  [/ched/i, "Commission on Higher Education"],
+  [/iloilo province/i, "Iloilo Province Government"],
+  [/tumanow/i, "TumaNow"],
+  [/wvs?ss/i, "Western Visayas Student Startup Summit"],
+  [/\bsec\b/i, "Securities and Exchange Commission"],
+];
+
+const documentMetadataOverrides: Record<string, Partial<DocumentMetadata>> = {
+  "startup-champion": { issuer: "Iloilo Province Government" },
+};
+
+function inferIssuer(meta: string): string | undefined {
+  return normalizedIssuers.find(([pattern]) => pattern.test(meta))?.[1];
+}
+
+function inferDescription(title: string, category: string): string {
+  if (/magna cum laude/i.test(title)) return "Academic distinction awarded upon graduating with Magna Cum Laude honors.";
+  if (/outstanding intern/i.test(title)) return "Recognition awarded for outstanding internship performance.";
+  if (category === "Professional Certification") return `Certificate awarded for successfully completing the ${title} course.`;
+  if (category === "Internship") return `Certificate documenting completion of the ${title} internship.`;
+  if (category === "Research") return `Certificate recognizing participation in ${title}.`;
+  return `${category} credential recognizing ${title}.`;
+}
+
+function enrichDocument(item: DocumentItem, collectionId: keyof typeof collectionPresentation): DocumentItem {
+  const presentation = collectionPresentation[collectionId];
+  const issueDate = item.meta.match(/\b(?:19|20)\d{2}\b/)?.[0];
+  const viewerMetadata: DocumentMetadata = {
+    title: item.title,
+    category: presentation.category,
+    issuer: inferIssuer(item.meta),
+    issuedDate: issueDate,
+    documentType: presentation.documentType,
+    verificationStatus: "Official Credential",
+    description: inferDescription(item.title, presentation.category),
+  };
+
+  return {
+    ...item,
+    aspectRatio: item.aspectRatio ?? 1.414,
+    viewerOptions: item.viewerOptions ?? { allowDownload: false },
+    viewerMetadata: { ...viewerMetadata, ...item.viewerMetadata, ...documentMetadataOverrides[item.id] },
+  };
+}
+
+export const documentCollections = Object.fromEntries(
+  Object.entries(baseDocumentCollections).map(([id, collection]) => [
+    id,
+    { ...collection, items: collection.items.map((item) => enrichDocument(item, id as keyof typeof collectionPresentation)) },
+  ]),
+) as Record<string, DocumentCollection>;
+
 export const documentFilterTags = ["All", "Python", "Data Analytics", "Data Science", "AI", "Cloud", "Security", "Business", "Leadership", "Startup", "Community", "Research"];
-
-
-

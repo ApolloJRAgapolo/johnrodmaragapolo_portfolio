@@ -13,7 +13,7 @@ import {
   Trophy,
   Wrench,
 } from "lucide-react";
-import { FaLinkedinIn } from "react-icons/fa6";
+import { FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
 import { SiGithub } from "react-icons/si";
 import type { IconComponent } from "@/lib/types";
 
@@ -47,8 +47,10 @@ export const ecosystem = [
 ];
 
 export const networkLinks: SidebarLink[] = [
-  { name: "GitHub", href: "https://github.com", icon: SiGithub },
-  { name: "LinkedIn", href: "https://linkedin.com", icon: FaLinkedinIn },
-  { name: "Email", href: "mailto:your.email@example.com", icon: Mail },
+  { name: "GitHub", href: "https://github.com/ApolloJRAgapolo/johnrodmaragapolo_portfolio", icon: SiGithub },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/john-rodmar-agapolo-9492602b2/", icon: FaLinkedinIn },
+  { name: "Facebook", href: "https://www.facebook.com/ApolloSgr", icon: FaFacebookF },
+  { name: "JobStreet", href: "https://ph.jobstreet.com/profiles/johnrodmar-agapolo-2m77k807cq", icon: Briefcase },
+  { name: "Email", href: "mailto:johnrodmaragapolo@gmail.com", icon: Mail },
   { name: "Resume", href: "/documents", icon: FileText },
 ];
