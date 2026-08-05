@@ -62,10 +62,10 @@ export default function Overview() {
               </h2>
               <div className="space-y-6">
                 <p className="text-2xl lg:text-[26px] leading-tight font-medium tracking-tight text-foreground">
-                  I enjoy understanding how organizations work, identifying inefficiencies, and translating complex requirements into structured digital solutions.
+                  I enjoy learning, collaborating, and creating practical solutions through technology.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  My work combines Information Systems, systems thinking, and continuous learning to build practical technology that solves real-world problems.
+                  Driven by curiosity and continuous learning, I enjoy exploring ideas and creating technology solutions that make a meaningful impact.
                 </p>
               </div>
             </section>
