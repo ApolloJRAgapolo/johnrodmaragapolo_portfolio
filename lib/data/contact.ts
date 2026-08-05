@@ -12,7 +12,7 @@ export const contactMethods: Social[] = [
 ];
 
 export const profileLinks: Social[] = [
-  { label: "GitHub", description: "View repositories", href: "https://github.com/ApolloJRAgapolo/johnrodmaragapolo_portfolio", icon: SiGithub },
+  { label: "GitHub", description: "View repositories", href: "https://github.com/ApolloJRAgapolo", icon: SiGithub },
   { label: "LinkedIn", description: "Professional profile", href: "https://www.linkedin.com/in/john-rodmar-agapolo-9492602b2/", icon: FaLinkedinIn },
   { label: "JobStreet", description: "Professional profile", href: "https://ph.jobstreet.com/profiles/johnrodmar-agapolo-2m77k807cq", icon: Briefcase },
   { label: "Facebook", description: "Social profile", href: "https://www.facebook.com/ApolloSgr", icon: FaFacebookF },
