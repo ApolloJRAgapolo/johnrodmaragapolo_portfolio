@@ -3,7 +3,7 @@ import type { OverviewStats } from "@/lib/types";
 export const overviewStats: OverviewStats = {
   version: "v1.0.0",
   caseFiles: 2,
-  credentials: 35,
+  credentials: 56,
   ecosystemNodes: 6,
   capabilities: 24,
   lastUpdated: "2026-08-01",

@@ -14,57 +14,54 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import { overviewStats } from "@/lib/data/overview";
 
 export default function Overview() {
-  const lastUpdateDate = new Date(overviewStats.lastUpdated);
-  const currentDate = new Date();
-
-  const timeDifference = currentDate.getTime() - lastUpdateDate.getTime();
-  const daysAgo = Math.floor(timeDifference / (1000 * 3600 * 24));
-  const daysText =
-    daysAgo === 0 ? "Today" : daysAgo === 1 ? "1 day ago" : `${daysAgo} days ago`;
-
   const systemStats = overviewStats;
 
   return (
     <main className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background">
-      <div className="max-w-5xl mx-auto w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-16 lg:py-24">
+      <div className="page-shell max-w-5xl">
       {/* HERO TYPOGRAPHY & MICRO-DETAILS */}
         <RevealOnScroll delay={0}>
-          <header className="mb-24">
-            <div className="flex items-center gap-4 text-[10px] font-mono text-muted-foreground mb-8">
+          <header className="mb-14 sm:mb-24">
+            <div className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-mono text-muted-foreground sm:mb-8 sm:gap-x-4">
               <span className="flex items-center gap-1.5 text-foreground">
-                <Terminal className="w-3 h-3" /> Workspace {systemStats.version}
+                <Terminal className="w-3 h-3" /> Information Systems Graduate
               </span>
               <span>/</span>
-              <span>Updated {daysText}</span>
+              <span>Available for Entry-Level Opportunities</span>
               <span>/</span>
-              <span className="hidden sm:inline-block">
+              <span className="hidden" aria-hidden="true">
                 {systemStats.caseFiles} Case File • {systemStats.credentials} Credentials • {systemStats.ecosystemNodes} Ecosystem Nodes • {systemStats.capabilities} Core Capabilities
               </span>
+              <span>Iloilo City, Philippines</span>
+              <span>/</span>
+              <span>{systemStats.credentials} Verified Credentials</span>
+              <span>/</span>
+              <span>{systemStats.caseFiles} Case Files</span>
             </div>
             
-            <h1 className="text-3xl font-bold tracking-tight text-foreground mb-6">
+            <h1 className="mb-4 font-bold tracking-tight text-foreground sm:mb-6">
               John Rodmar Agapolo
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed font-light max-w-2xl">
-              Passionate about using technology <br />
-              to solve real-world problems.<br />
+            <p className="max-w-2xl text-lg font-light leading-relaxed text-muted-foreground sm:text-xl">
+              Passionate about using technology <span className="hidden sm:inline"><br /></span>
+              to solve real-world problems.
             </p>
           </header>
         </RevealOnScroll>
 
         {/* ROW 1: MISSION & STATUS */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 mb-24">
+        <div className="mb-16 grid grid-cols-1 gap-12 sm:mb-24 lg:grid-cols-12 lg:gap-24">
           {/* Mission Brief */}
           <RevealOnScroll delay={100} className="col-span-1 lg:col-span-7">
             <section>
-              <h2 className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-8">
+              <h2 className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:mb-8">
                 Mission Brief
               </h2>
-              <div className="space-y-6">
-                <p className="text-2xl lg:text-[26px] leading-tight font-medium tracking-tight text-foreground">
+              <div className="space-y-4 sm:space-y-6">
+                <p className="text-[1.45rem] font-medium leading-tight tracking-tight text-foreground sm:text-2xl lg:text-[26px]">
                   I enjoy learning, collaborating, and creating practical solutions through technology.
                 </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="max-w-prose text-base leading-relaxed text-muted-foreground sm:text-lg">
                   Driven by curiosity and continuous learning, I enjoy exploring ideas and creating technology solutions that make a meaningful impact.
                 </p>
               </div>
@@ -74,7 +71,7 @@ export default function Overview() {
           {/* Workspace Status */}
           <RevealOnScroll delay={200} className="col-span-1 lg:col-span-5">
             <section>
-              <h2 className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-8">
+              <h2 className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:mb-8">
                 Workspace Status
               </h2>
 
@@ -132,9 +129,9 @@ export default function Overview() {
         </div>
 
         {/* ROW 2: FEATURED CASE FILE */}
-        <section className="mb-24 flex flex-col gap-8">
+        <section className="mb-16 flex flex-col gap-5 sm:mb-24 sm:gap-8">
           <RevealOnScroll delay={100}>
-            <div className="group relative overflow-hidden border border-border/40 p-8 transition-colors duration-500 hover:border-foreground/20 lg:p-10">
+            <div className="group relative overflow-hidden border border-border/40 p-5 transition-colors duration-500 hover:border-foreground/20 sm:p-8 lg:p-10">
               <div className="absolute top-0 right-0 -z-10 h-64 w-64 rounded-full bg-secondary/20 opacity-50 blur-3xl transition-opacity duration-700 group-hover:opacity-100"></div>
 
               <span className="mb-5 block text-[10px] font-mono tracking-widest text-muted-foreground">
@@ -191,7 +188,7 @@ export default function Overview() {
           </RevealOnScroll>
 
           <RevealOnScroll delay={200}>
-            <div className="group relative overflow-hidden border border-border/40 p-8 transition-colors duration-500 hover:border-foreground/20 lg:p-10">
+            <div className="group relative overflow-hidden border border-border/40 p-5 transition-colors duration-500 hover:border-foreground/20 sm:p-8 lg:p-10">
               <div className="absolute top-0 right-0 -z-10 h-64 w-64 rounded-full bg-secondary/20 opacity-50 blur-3xl transition-opacity duration-700 group-hover:opacity-100"></div>
 
               <span className="mb-5 block text-[10px] font-mono tracking-widest text-muted-foreground">
@@ -250,7 +247,7 @@ export default function Overview() {
 
         {/* ROW 3: SNAPSHOT & MILESTONES */}
         {/* Fixed Grid Layout: Explicitly set to 2 columns on large screens to keep items side-by-side */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 border-t border-border/40 pt-16">
+        <div className="grid grid-cols-1 gap-12 border-t border-border/40 pt-12 sm:gap-16 sm:pt-16 lg:grid-cols-2 lg:gap-24">
           
           {/* LEFT COLUMN: PROFESSIONAL SNAPSHOT */}
           <RevealOnScroll delay={100}>
