@@ -6,15 +6,15 @@ import type { DocumentCollection, DocumentItem, DocumentMetadata } from "@/lib/t
 export const professionalDocs = [
   {
     id: "resume-2026",
-    title: "Résumé / Curriculum Vitae",
-    description: "The latest version of my professional résumé, including my education, experience, projects, and achievements.",
+    title: "Resume / Curriculum Vitae",
+    description: "The latest version of my professional resume, including my education, experience, projects, and achievements.",
     updated: "August 2026",
     fileType: "PDF",
-    fileUrl: "/docs/resume-2026.pdf", // Ensure this file exists in your public/docs folder
+    fileUrl: "/resume/John Rodmar Agapolo Professional Resume.pdf", // Ensure this file exists in your public/docs folder
     aspectRatio: 0.707,
     viewerOptions: { allowDownload: true },
     viewerMetadata: {
-      documentType: "Résumé / Curriculum Vitae",
+      documentType: "Resume / Curriculum Vitae",
       lastUpdated: "August 2026",
       description: "A current overview of education, experience, projects, and achievements.",
     },
