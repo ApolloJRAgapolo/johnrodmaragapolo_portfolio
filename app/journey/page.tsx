@@ -406,6 +406,19 @@ export default function ProfessionalJourney() {
                   </p>
                 </div>
 
+                <div className="border border-border/40 bg-card/30 p-6 md:p-8">
+                  <div className="flex items-start gap-3">
+                    <Target className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
+                    <div>
+                      <p className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Open Category</p>
+                      <h3 className="mt-1 text-[15px] font-medium text-foreground">2026 AI Fest — AI Hackathon</h3>
+                      <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">
+                        Ranked among the Top 10 of 23 entries in the 2026 AI Fest AI Hackathon Open Category.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Graduation */}
                 <div className="border border-border/40 p-6 md:p-8 bg-foreground text-background">
                   <div className="flex gap-3 items-start mb-4">
@@ -492,5 +505,4 @@ export default function ProfessionalJourney() {
     </main>
   );
 }
-
 

@@ -2,6 +2,20 @@ import type { CaseFile } from "@/lib/types";
 
 export const caseFiles: CaseFile[] = [
   {
+    id: "portfolio-workspace",
+    type: "PERSONAL DIGITAL WORKSPACE",
+    title: "How I Built This Portfolio",
+    summary: "A personal professional website created as an organized digital workspace where visitors can explore my projects, experience, credentials, documents, skills, and professional journey.",
+    isAvailable: true,
+    metadata: {
+      role: "Portfolio Creator",
+      client: "Personal Professional Portfolio",
+      focus: ["Information Architecture", "Responsive Design", "Frontend Development"],
+      status: "Continuously Refined",
+      year: "2026",
+    },
+  },
+  {
     id: "blms",
     type: "IS CAPSTONE PROJECT",
     title: "Backyard Livestock Monitoring System",

@@ -181,6 +181,8 @@ const normalizedIssuers: [RegExp, string][] = [
 ];
 
 const documentMetadataOverrides: Record<string, Partial<DocumentMetadata>> = {
+  "best-capstone": { issuer: "ISAT U - College of Computing and Informatics" },
+  "outstanding-intern": { issuer: "ISAT U - College of Computing and Informatics" },
   "startup-champion": { issuer: "Iloilo Province Government" },
 };
 

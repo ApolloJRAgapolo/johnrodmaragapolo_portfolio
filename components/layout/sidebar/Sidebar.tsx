@@ -11,6 +11,18 @@ import { currentFocus, ecosystem, highlights, networkLinks, workspaceLinks } fro
 export default function Sidebar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showMobileMenuCue, setShowMobileMenuCue] = useState(false);
+
+  useEffect(() => {
+    const cueStorageKey = "mobile-navigation-cue-seen";
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!prefersReducedMotion && !window.localStorage.getItem(cueStorageKey)) {
+      window.localStorage.setItem(cueStorageKey, "true");
+      const cueTimer = window.setTimeout(() => setShowMobileMenuCue(true), 0);
+      return () => window.clearTimeout(cueTimer);
+    }
+  }, []);
 
   useEffect(() => {
     if (!isMobileMenuOpen) return;
@@ -27,13 +39,16 @@ export default function Sidebar() {
     <>
       <button
         type="button"
-        aria-label="Open navigation menu"
+        aria-label={isMobileMenuOpen ? "Close navigation" : "Open navigation"}
         aria-expanded={isMobileMenuOpen}
         aria-controls="mobile-navigation"
-        onClick={() => setIsMobileMenuOpen(true)}
-        className="fixed right-4 top-4 z-40 flex h-11 w-11 items-center justify-center border border-border/50 bg-background/95 text-foreground shadow-sm backdrop-blur-md transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 lg:hidden"
+        onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
+        className={`fixed right-4 top-4 z-[60] flex h-[52px] max-w-[calc(100vw-2rem)] items-center justify-center gap-2 whitespace-nowrap rounded-md border border-border bg-background/95 px-3 text-xs font-semibold uppercase tracking-[0.12em] text-foreground shadow-sm backdrop-blur-md transition-[background-color,border-color,color,box-shadow,transform] hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none lg:hidden ${
+          showMobileMenuCue && !isMobileMenuOpen ? "animate-mobile-menu-cue" : ""
+        }`}
       >
-        <Menu className="h-5 w-5" />
+        {isMobileMenuOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+        <span>{isMobileMenuOpen ? "Close" : "Menu"}</span>
       </button>
 
       {isMobileMenuOpen && (

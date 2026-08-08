@@ -119,6 +119,16 @@
     from { opacity: 0; }
   }
 
+  @keyframes mobile-menu-cue {
+    0% { opacity: 0.7; transform: scale(0.96); }
+    55% { opacity: 1; transform: scale(1.02); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-mobile-menu-cue {
+    animation: mobile-menu-cue 700ms ease-out both;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html[data-theme-transition],
     html[data-theme-transition] body,
@@ -134,7 +144,8 @@
     }
 
     .document-viewer-backdrop,
-    .document-viewer-panel {
+    .document-viewer-panel,
+    .animate-mobile-menu-cue {
       animation-duration: 0ms;
     }
   }

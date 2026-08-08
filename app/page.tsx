@@ -21,36 +21,61 @@ export default function Overview() {
       <div className="page-shell max-w-5xl">
       {/* HERO TYPOGRAPHY & MICRO-DETAILS */}
         <RevealOnScroll delay={0}>
-          <header className="mb-14 sm:mb-24">
-            <div className="mb-6 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-mono text-muted-foreground sm:mb-8 sm:gap-x-4">
+          <header className="mb-12 sm:mb-20">
+            <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-mono text-muted-foreground sm:mb-6 sm:gap-x-4">
               <span className="flex items-center gap-1.5 text-foreground">
                 <Terminal className="w-3 h-3" /> Information Systems Graduate
               </span>
-              <span>/</span>
+              <span aria-hidden="true">•</span>
               <span>Available for Entry-Level Opportunities</span>
-              <span>/</span>
+              <span aria-hidden="true">•</span>
               <span className="hidden" aria-hidden="true">
                 {systemStats.caseFiles} Case File • {systemStats.credentials} Credentials • {systemStats.ecosystemNodes} Ecosystem Nodes • {systemStats.capabilities} Core Capabilities
               </span>
               <span>Iloilo City, Philippines</span>
-              <span>/</span>
+              <span aria-hidden="true">•</span>
               <span>{systemStats.credentials} Verified Credentials</span>
-              <span>/</span>
-              <span>{systemStats.caseFiles} Case Files</span>
             </div>
             
-            <h1 className="mb-4 font-bold tracking-tight text-foreground sm:mb-6">
+            <h1 className="mb-5 text-[clamp(2.5rem,5vw,4rem)] font-bold leading-[0.98] tracking-tight text-foreground sm:mb-6">
               John Rodmar Agapolo
             </h1>
-            <p className="max-w-2xl text-lg font-light leading-relaxed text-muted-foreground sm:text-xl">
-              Passionate about using technology <span className="hidden sm:inline"><br /></span>
-              to solve real-world problems.
+            <p className="max-w-4xl text-lg font-light leading-relaxed text-muted-foreground sm:text-xl">
+              Passionate about using technology to solve real-world problems.
             </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <a
+                href="/resume/John Rodmar Agapolo Professional Resume.pdf"
+                download
+                className="inline-flex min-h-11 items-center justify-center border border-foreground bg-foreground px-5 text-[11px] font-mono uppercase tracking-widest text-background transition-colors hover:bg-foreground/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                Download Resume
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex min-h-11 items-center justify-center border border-border/60 px-5 text-[11px] font-mono uppercase tracking-widest text-foreground transition-colors hover:border-foreground/40 hover:bg-secondary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              >
+                Get in Touch
+              </Link>
+            </div>
+
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] font-mono text-muted-foreground">
+              <Link href="https://www.linkedin.com/in/john-rodmar-agapolo-9492602b2/" target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1.5 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50">
+                LinkedIn <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+              </Link>
+              <Link href="https://github.com/ApolloJRAgapolo" target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1.5 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50">
+                GitHub <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+              </Link>
+              <Link href="/credentials" className="inline-flex min-h-11 items-center gap-1.5 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50">
+                Verified Credentials <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+              </Link>
+            </div>
           </header>
         </RevealOnScroll>
 
         {/* ROW 1: MISSION & STATUS */}
-        <div className="mb-16 grid grid-cols-1 gap-12 sm:mb-24 lg:grid-cols-12 lg:gap-24">
+        <div className="mb-14 grid grid-cols-1 gap-10 sm:mb-20 lg:grid-cols-12 lg:gap-20">
           {/* Mission Brief */}
           <RevealOnScroll delay={100} className="col-span-1 lg:col-span-7">
             <section>
@@ -243,6 +268,63 @@ export default function Overview() {
               </Link>
             </div>
           </RevealOnScroll>
+
+          <RevealOnScroll delay={300}>
+            <div className="group relative overflow-hidden border border-border/40 p-5 transition-colors duration-500 hover:border-foreground/20 sm:p-8 lg:p-10">
+              <div className="absolute top-0 right-0 -z-10 h-64 w-64 rounded-full bg-secondary/20 opacity-50 blur-3xl transition-opacity duration-700 group-hover:opacity-100"></div>
+
+              <span className="mb-5 block text-[10px] font-mono tracking-widest text-muted-foreground">
+                PERSONAL DIGITAL WORKSPACE
+              </span>
+
+              <div className="mb-8 max-w-2xl">
+                <h3 className="mb-3 text-2xl font-medium tracking-tight text-foreground">
+                  How I Built This Portfolio
+                </h3>
+                <p className="text-[15px] leading-relaxed text-muted-foreground">
+                  A personal professional website created as an organized digital workspace where visitors can explore my projects, experience, credentials, documents, skills, and professional journey.
+                </p>
+              </div>
+
+              <hr className="mb-6 border-border/40" />
+
+              <div className="mb-8 grid grid-cols-2 gap-x-8 gap-y-6 md:grid-cols-5">
+                <div className="col-span-2 md:col-span-1">
+                  <span className="mb-2 block text-[10px] uppercase tracking-widest text-muted-foreground">Role</span>
+                  <span className="text-[13px] text-foreground">Portfolio Creator</span>
+                </div>
+                <div className="col-span-2 md:col-span-2">
+                  <span className="mb-2 block text-[10px] uppercase tracking-widest text-muted-foreground">Client</span>
+                  <span className="text-[13px] leading-snug text-foreground">Personal Professional Portfolio</span>
+                </div>
+                <div className="col-span-2 md:col-span-2">
+                  <span className="mb-2 block text-[10px] uppercase tracking-widest text-muted-foreground">Focus</span>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="border border-border/40 px-2 py-1 text-[11px] font-mono text-foreground">Information Architecture</span>
+                    <span className="border border-border/40 px-2 py-1 text-[11px] font-mono text-foreground">Responsive Design</span>
+                    <span className="border border-border/40 px-2 py-1 text-[11px] font-mono text-foreground">Frontend Development</span>
+                  </div>
+                </div>
+                <div className="col-span-1">
+                  <span className="mb-2 block text-[10px] uppercase tracking-widest text-muted-foreground">Status</span>
+                  <span className="text-[13px] text-foreground">Continuously Refined</span>
+                </div>
+                <div className="col-span-1">
+                  <span className="mb-2 block text-[10px] uppercase tracking-widest text-muted-foreground">Year</span>
+                  <span className="text-[13px] text-foreground">2026</span>
+                </div>
+              </div>
+
+              <hr className="mb-6 border-border/40" />
+
+              <Link
+                href="/case-files/portfolio-workspace"
+                className="inline-flex items-center gap-2 text-[13px] font-medium uppercase tracking-widest text-foreground transition-colors hover:text-muted-foreground"
+              >
+                VIEW FULL CASE FILE <ArrowUpRight className="h-3.5 w-3.5 stroke-[1.5]" />
+              </Link>
+            </div>
+          </RevealOnScroll>
         </section>
 
         {/* ROW 3: SNAPSHOT & MILESTONES */}
@@ -325,6 +407,12 @@ export default function Overview() {
                   <div className="absolute w-1.5 h-1.5 bg-foreground rounded-full -left-[3.5px] top-1.5"></div>
                   <h4 className="text-[10px] font-mono text-muted-foreground mb-2">2026</h4>
                   <p className="text-[13px] text-foreground">Best Capstone Project Awardee</p>
+                </div>
+
+                <div className="relative border-l border-border/40 pl-6">
+                  <div className="absolute w-1.5 h-1.5 bg-foreground rounded-full -left-[3.5px] top-1.5"></div>
+                  <h4 className="mb-2 text-[10px] font-mono text-muted-foreground">2026</h4>
+                  <p className="text-[13px] text-muted-foreground">Top 10 of 23 Entries — AI Fest AI Hackathon (Open Category)</p>
                 </div>
 
                 <div className="relative pl-6 border-l border-border/40">
