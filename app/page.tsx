@@ -62,14 +62,14 @@ export default function Overview() {
             </div>
 
             <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] font-mono text-muted-foreground">
-              <Link href="https://www.linkedin.com/in/john-rodmar-agapolo-9492602b2/" target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1.5 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50">
-                LinkedIn <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+              <Link href="https://www.linkedin.com/in/john-rodmar-agapolo-9492602b2/" target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 transition-colors duration-200 ease-out hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+                LinkedIn <ArrowUpRight className="h-3 w-3 transition-transform duration-200 ease-out group-hover:translate-x-1" aria-hidden="true" />
               </Link>
-              <Link href="https://github.com/ApolloJRAgapolo" target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-1.5 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50">
-                GitHub <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+              <Link href="https://github.com/ApolloJRAgapolo" target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 transition-colors duration-200 ease-out hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+                GitHub <ArrowUpRight className="h-3 w-3 transition-transform duration-200 ease-out group-hover:translate-x-1" aria-hidden="true" />
               </Link>
-              <Link href="/credentials" className="inline-flex min-h-11 items-center gap-1.5 transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50">
-                Verified Credentials <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
+              <Link href="/credentials" className="group inline-flex items-center gap-1.5 transition-colors duration-200 ease-out hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+                Verified Credentials <ArrowUpRight className="h-3 w-3 transition-transform duration-200 ease-out group-hover:translate-x-1" aria-hidden="true" />
               </Link>
             </div>
           </header>

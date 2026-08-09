@@ -54,11 +54,14 @@ function getStoredTheme(): Theme {
 }
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>(getStoredTheme);
-  const themeRef = useRef<Theme>(theme);
+  const [theme, setTheme] = useState<Theme>("system");
+  const themeRef = useRef<Theme>("system");
 
   useEffect(() => {
-    applyTheme(themeRef.current);
+    const stored = getStoredTheme();
+    themeRef.current = stored;
+    setTheme(stored);
+    applyTheme(stored);
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const updateSystemTheme = () => {

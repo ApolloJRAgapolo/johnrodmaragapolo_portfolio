@@ -88,9 +88,19 @@
     -webkit-mask-image: var(--workspace-dot-mask);
   }
 
+  @media (min-width: 1024px) {
+    main::before {
+      left: 20rem;
+      right: 0;
+    }
+  }
+
   main > * {
     position: relative;
     z-index: 1;
+  }
+  body {
+    position: relative;
   }
   html {
     scroll-behavior: smooth;
