@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import GlowingCard from "@/components/GlowingCard";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import { caseFiles } from "@/lib/data/case-files";
 import type { CaseFile } from "@/lib/types";
@@ -9,7 +10,7 @@ function DossierCard({ file }: { file: CaseFile }) {
   const { role, client, focus, status, year } = file.metadata;
 
   return (
-    <div className={`border border-border/40 p-8 md:p-10 transition-all duration-300 ${
+    <GlowingCard className={`border border-border/40 p-8 md:p-10 transition-all duration-300 ${
       file.isAvailable ? "hover:border-foreground/40 hover:bg-secondary/5" : "opacity-80"
     }`}>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -105,7 +106,7 @@ function DossierCard({ file }: { file: CaseFile }) {
         </div>
 
       </div>
-    </div>
+    </GlowingCard>
   );
 }
 

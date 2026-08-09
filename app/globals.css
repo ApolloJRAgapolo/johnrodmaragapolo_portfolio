@@ -65,9 +65,9 @@
 
   main::before {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
     background-image: radial-gradient(
       circle,
@@ -209,5 +209,28 @@
 
   @media (min-width: 1024px) {
     .page-shell { padding: 6rem 4rem; }
+  }
+
+  .glow-card {
+    position: relative;
+    transition: box-shadow 240ms ease, transform 240ms ease;
+    will-change: box-shadow, transform;
+    --card-glow-offset-x: 0px;
+    --card-glow-offset-y: 0px;
+    --card-glow-opacity: 0;
+    --card-glow-color: var(--foreground);
+    box-shadow:
+      calc(var(--card-glow-offset-x) * 0.35) calc(var(--card-glow-offset-y) * 0.35) 18px 0px hsl(var(--card-glow-color) / calc(var(--card-glow-opacity) * 0.66)),
+      calc(var(--card-glow-offset-x) * 0.75) calc(var(--card-glow-offset-y) * 0.75) 38px 16px hsl(var(--card-glow-color) / calc(var(--card-glow-opacity) * 0.18));
+  }
+
+  .dark .glow-card {
+    --card-glow-color: var(--card-foreground);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .glow-card {
+      transition-duration: 0ms !important;
+    }
   }
 }

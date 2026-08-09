@@ -14,6 +14,7 @@ import {
   BookOpen,
   Target
 } from "lucide-react";
+import GlowingCard from "@/components/GlowingCard";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import { journeyProgressNodes, foundationSkills, classMayorSkills, tumanowResponsibilities, auditorSkills, kwadraResponsibilities, wadhwaniResponsibilities, blmsResponsibilities, learningExperiences } from "@/lib/data/journey";
 
@@ -74,7 +75,7 @@ export default function ProfessionalJourney() {
                 <div className="w-full h-px bg-border/40 mt-4"></div>
               </div>
               
-              <div className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
+              <GlowingCard className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
                 <div className="flex gap-3 items-start mb-4">
                   <GraduationCap className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
                   <div>
@@ -87,7 +88,7 @@ export default function ProfessionalJourney() {
                 <p className="text-[14px] leading-relaxed text-muted-foreground">
                   Started my journey in Information Systems and began learning how technology can help solve real-world problems.
                 </p>
-              </div>
+              </GlowingCard>
             </div>
           </RevealOnScroll>
 
@@ -101,7 +102,7 @@ export default function ProfessionalJourney() {
                 <div className="w-full h-px bg-border/40 mt-4"></div>
               </div>
               
-              <div className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
+              <GlowingCard className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
                 <div className="flex gap-3 items-start mb-4">
                   <Lightbulb className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
                   <h3 className="text-lg font-medium text-foreground">Understanding Systems and Organizations</h3>
@@ -121,7 +122,7 @@ export default function ProfessionalJourney() {
                 <p className="text-[13px] text-muted-foreground italic border-l-2 border-border/40 pl-4">
                   This became the foundation of how I approach projects today: understanding the problem before designing the solution.
                 </p>
-              </div>
+              </GlowingCard>
             </div>
           </RevealOnScroll>
 
@@ -135,7 +136,7 @@ export default function ProfessionalJourney() {
                 <div className="w-full h-px bg-border/40 mt-4"></div>
               </div>
               
-              <div className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
+              <GlowingCard className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
                 <div className="flex gap-3 items-start mb-4">
                   <Users className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
                   <div>
@@ -158,7 +159,7 @@ export default function ProfessionalJourney() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </GlowingCard>
             </div>
           </RevealOnScroll>
 
@@ -172,7 +173,7 @@ export default function ProfessionalJourney() {
                 <div className="w-full h-px bg-foreground mt-4"></div>
               </div>
               
-              <div className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
+              <GlowingCard className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
                 <div className="flex gap-3 items-start mb-4">
                   <Rocket className="w-5 h-5 text-foreground shrink-0 mt-0.5" />
                   <div>
@@ -221,7 +222,7 @@ export default function ProfessionalJourney() {
                 <p className="text-[13px] text-muted-foreground italic border-t border-border/40 pt-4">
                   This experience strengthened my skills in business analysis, client engagement, teamwork, startup development, and solution validation.
                 </p>
-              </div>
+              </GlowingCard>
             </div>
           </RevealOnScroll>
 
@@ -235,7 +236,7 @@ export default function ProfessionalJourney() {
                 <div className="w-full h-px bg-border/40 mt-4"></div>
               </div>
               
-              <div className="border border-border/40 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors divide-y divide-border/40">
+              <GlowingCard className="border border-border/40 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors divide-y divide-border/40">
                 
                 {/* Role 1 */}
                 <div className="p-6 md:p-8">
@@ -273,7 +274,7 @@ export default function ProfessionalJourney() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </GlowingCard>
             </div>
           </RevealOnScroll>
 
@@ -287,7 +288,7 @@ export default function ProfessionalJourney() {
                 <div className="w-full h-px bg-border/40 mt-4"></div>
               </div>
               
-              <div className="border border-border/40 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors divide-y divide-border/40">
+              <GlowingCard className="border border-border/40 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors divide-y divide-border/40">
                 
                 {/* Internship 1 */}
                 <div className="p-6 md:p-8">
@@ -351,7 +352,7 @@ export default function ProfessionalJourney() {
                     Strengthened stakeholder communication, coordination, relationship management, and organizational skills while working with educators from different universities.
                   </p>
                 </div>
-              </div>
+              </GlowingCard>
             </div>
           </RevealOnScroll>
 
@@ -367,7 +368,7 @@ export default function ProfessionalJourney() {
               
               <div className="flex flex-col gap-10">
                 {/* Capstone */}
-                <div className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
+                <GlowingCard className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
                   <div className="flex gap-3 items-start mb-4">
                     <Terminal className="w-5 h-5 text-foreground shrink-0 mt-0.5" />
                     <div>
@@ -404,9 +405,9 @@ export default function ProfessionalJourney() {
                   <p className="text-[13px] text-muted-foreground italic border-t border-border/40 pt-4">
                     This project strengthened my ability to translate stakeholder requirements into practical digital solutions while leading a multidisciplinary development team.
                   </p>
-                </div>
+                </GlowingCard>
 
-                <div className="border border-border/40 bg-card/30 p-6 md:p-8">
+                <GlowingCard className="border border-border/40 bg-card/30 p-6 md:p-8">
                   <div className="flex items-start gap-3">
                     <Target className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
                     <div>
@@ -417,10 +418,9 @@ export default function ProfessionalJourney() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </GlowingCard>
 
-                {/* Graduation */}
-                <div className="border border-border/40 p-6 md:p-8 bg-foreground text-background">
+                <GlowingCard className="border border-border/40 p-6 md:p-8 bg-foreground text-background">
                   <div className="flex gap-3 items-start mb-4">
                     <GraduationCap className="w-6 h-6 text-background shrink-0" />
                     <div>
@@ -431,7 +431,7 @@ export default function ProfessionalJourney() {
                   <p className="text-[15px] leading-relaxed text-background/90 mt-4 border-t border-background/20 pt-4 font-medium">
                     Graduated <span className="font-bold underline decoration-background/50 underline-offset-4">Magna Cum Laude</span>, recognizing consistent academic excellence, leadership, and active participation in innovation and technology initiatives throughout the program.
                   </p>
-                </div>
+                </GlowingCard>
               </div>
             </div>
           </RevealOnScroll>
@@ -446,7 +446,7 @@ export default function ProfessionalJourney() {
                 <div className="w-full h-px bg-border/40 mt-4"></div>
               </div>
               
-              <div className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
+              <GlowingCard className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
                 <div className="flex gap-3 items-start mb-4">
                   <BookOpen className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
                   <h3 className="text-lg font-medium text-foreground">Beyond Academic Coursework</h3>
@@ -478,7 +478,7 @@ export default function ProfessionalJourney() {
                     Rather than listing every technical certificate here, detailed certifications such as Cisco Networking Academy and DataCamp are presented in the <strong className="text-foreground font-medium">Verified Credentials</strong> section of this portfolio.
                   </p>
                 </div>
-              </div>
+              </GlowingCard>
             </div>
           </RevealOnScroll>
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { ShieldCheck, ExternalLink, FileText, Award, GraduationCap, Briefcase, Eye } from "lucide-react";
+import GlowingCard from "@/components/GlowingCard";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import DocumentViewer, { type PreviewDocument } from "@/components/DocumentViewer";
 import type { ComponentType } from "react";
@@ -15,7 +16,7 @@ import { aiAndMlops, cloudAndSecurity, coreCertifications, dataLiteracy, honorsA
 function CredentialItem({ credential, icon: Icon = ShieldCheck, onPreview }: { credential: Credential; icon?: ComponentType<{ className?: string }>; onPreview: (document: PreviewDocument) => void }) {
   const { title, issuer, logoSrc } = credential;
   return (
-    <div className="group flex flex-col justify-between p-6 border border-border/40 hover:border-foreground/20 transition-colors bg-secondary/5 h-full">
+    <GlowingCard className="group flex flex-col justify-between p-6 border border-border/40 hover:border-foreground/20 transition-colors bg-secondary/5 h-full">
       <div>
         <Icon className="w-4 h-4 stroke-[1.5] text-muted-foreground mb-4" />
         <h4 className="text-[13px] font-medium text-foreground leading-snug mb-2">{title}</h4>
@@ -45,7 +46,7 @@ function CredentialItem({ credential, icon: Icon = ShieldCheck, onPreview }: { c
           </Link>
         )}
       </div>
-    </div>
+    </GlowingCard>
   );
 }
 

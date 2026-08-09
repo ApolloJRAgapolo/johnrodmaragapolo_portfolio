@@ -11,6 +11,7 @@ import {
   Target,
 } from "lucide-react";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import GlowingCard from "@/components/GlowingCard";
 import { overviewStats } from "@/lib/data/overview";
 
 export default function Overview() {
@@ -156,7 +157,7 @@ export default function Overview() {
         {/* ROW 2: FEATURED CASE FILE */}
         <section className="mb-16 flex flex-col gap-5 sm:mb-24 sm:gap-8">
           <RevealOnScroll delay={100}>
-            <div className="group relative overflow-hidden border border-border/40 p-5 transition-colors duration-500 hover:border-foreground/20 sm:p-8 lg:p-10">
+            <GlowingCard className="group relative overflow-hidden border border-border/40 p-5 transition-colors duration-500 hover:border-foreground/20 sm:p-8 lg:p-10">
               <div className="absolute top-0 right-0 -z-10 h-64 w-64 rounded-full bg-secondary/20 opacity-50 blur-3xl transition-opacity duration-700 group-hover:opacity-100"></div>
 
               <span className="mb-5 block text-[10px] font-mono tracking-widest text-muted-foreground">
@@ -209,11 +210,11 @@ export default function Overview() {
               >
                 VIEW FULL CASE FILE <ArrowRight className="h-3.5 w-3.5 stroke-[1.5]" />
               </Link>
-            </div>
+            </GlowingCard>
           </RevealOnScroll>
 
           <RevealOnScroll delay={200}>
-            <div className="group relative overflow-hidden border border-border/40 p-5 transition-colors duration-500 hover:border-foreground/20 sm:p-8 lg:p-10">
+            <GlowingCard className="group relative overflow-hidden border border-border/40 p-5 transition-colors duration-500 hover:border-foreground/20 sm:p-8 lg:p-10">
               <div className="absolute top-0 right-0 -z-10 h-64 w-64 rounded-full bg-secondary/20 opacity-50 blur-3xl transition-opacity duration-700 group-hover:opacity-100"></div>
 
               <span className="mb-5 block text-[10px] font-mono tracking-widest text-muted-foreground">
@@ -266,11 +267,11 @@ export default function Overview() {
               >
                 VIEW FULL CASE FILE <ArrowUpRight className="h-3.5 w-3.5 stroke-[1.5]" />
               </Link>
-            </div>
+            </GlowingCard>
           </RevealOnScroll>
 
           <RevealOnScroll delay={300}>
-            <div className="group relative overflow-hidden border border-border/40 p-5 transition-colors duration-500 hover:border-foreground/20 sm:p-8 lg:p-10">
+            <GlowingCard className="group relative overflow-hidden border border-border/40 p-5 transition-colors duration-500 hover:border-foreground/20 sm:p-8 lg:p-10">
               <div className="absolute top-0 right-0 -z-10 h-64 w-64 rounded-full bg-secondary/20 opacity-50 blur-3xl transition-opacity duration-700 group-hover:opacity-100"></div>
 
               <span className="mb-5 block text-[10px] font-mono tracking-widest text-muted-foreground">
@@ -323,15 +324,10 @@ export default function Overview() {
               >
                 VIEW FULL CASE FILE <ArrowUpRight className="h-3.5 w-3.5 stroke-[1.5]" />
               </Link>
-            </div>
+            </GlowingCard>
           </RevealOnScroll>
         </section>
-
-        {/* ROW 3: SNAPSHOT & MILESTONES */}
-        {/* Fixed Grid Layout: Explicitly set to 2 columns on large screens to keep items side-by-side */}
-        <div className="grid grid-cols-1 gap-12 border-t border-border/40 pt-12 sm:gap-16 sm:pt-16 lg:grid-cols-2 lg:gap-24">
-          
-          {/* LEFT COLUMN: PROFESSIONAL SNAPSHOT */}
+        <div className="grid gap-10 xl:grid-cols-2">
           <RevealOnScroll delay={100}>
             <section>
               <h2 className="mb-8 text-[11px] font-mono uppercase tracking-[0.2em] text-foreground">

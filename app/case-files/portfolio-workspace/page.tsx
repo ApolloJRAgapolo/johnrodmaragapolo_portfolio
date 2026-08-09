@@ -15,6 +15,7 @@ import {
   ShieldCheck,
   Workflow,
 } from "lucide-react";
+import GlowingCard from "@/components/GlowingCard";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
 const sections = [
@@ -144,13 +145,13 @@ export default function PortfolioWorkspaceCaseFile() {
                 {features.map((feature) => {
                   const Icon = feature.icon;
                   return (
-                    <article key={feature.title} className="flex flex-col border border-border/40 bg-card/30 p-6 transition-colors hover:border-foreground/30">
+                    <GlowingCard key={feature.title} as="article" className="flex flex-col border border-border/40 bg-card/30 p-6 transition-colors hover:border-foreground/30">
                       <div className="mb-3 flex items-center gap-3">
                         <Icon className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
                         <h3 className="text-[13px] font-medium text-foreground">{feature.title}</h3>
                       </div>
                       <p className="text-[12px] leading-relaxed text-muted-foreground">{feature.description}</p>
-                    </article>
+                    </GlowingCard>
                   );
                 })}
               </div>

@@ -15,6 +15,7 @@ import {
   Briefcase,
   Activity // <-- Add this right here
 } from "lucide-react";
+import GlowingCard from "@/components/GlowingCard";
 import RevealOnScroll from "@/components/RevealOnScroll";
 
 export default function BLMScaseFile() {
@@ -186,10 +187,10 @@ export default function BLMScaseFile() {
               { title: "Market Transactions", desc: "Record livestock sales and automatically update local inventory." },
               { title: "Municipal Dashboard", desc: "Monitor reports, requests, and livestock data across the entire municipality." },
             ].map((feature, i) => (
-              <div key={i} className="border border-border/40 p-6 hover:border-foreground/30 transition-colors bg-card/30 flex flex-col">
+              <GlowingCard key={i} className="border border-border/40 p-6 hover:border-foreground/30 transition-colors bg-card/30 flex flex-col">
                 <h3 className="text-[13px] font-medium text-foreground mb-3">{feature.title}</h3>
                 <p className="text-[12px] leading-relaxed text-muted-foreground mt-auto">{feature.desc}</p>
-              </div>
+              </GlowingCard>
             ))}
           </div>
         </section>
@@ -222,7 +223,7 @@ export default function BLMScaseFile() {
                 steps: ["System Evaluation", "Final System Design"]
               }
             ].map((phase, i) => (
-              <div key={i} className="p-6 md:p-8 hover:bg-secondary/10 transition-colors">
+              <GlowingCard key={i} className="p-6 md:p-8 hover:bg-secondary/10 transition-colors">
                 <div className="flex items-baseline gap-2 mb-6 border-b border-border/40 pb-4">
                   <span className="text-[10px] font-mono text-muted-foreground">{phase.id}</span>
                   <h3 className="text-[11px] font-mono uppercase tracking-widest text-foreground">{phase.title}</h3>
@@ -235,7 +236,7 @@ export default function BLMScaseFile() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </GlowingCard>
             ))}
           </div>
         </section>
@@ -257,12 +258,12 @@ export default function BLMScaseFile() {
             ].map((diagram, i) => {
               const Icon = diagram.icon;
               return (
-                <div key={i} className="aspect-video border border-border/40 bg-secondary/5 flex flex-col items-center justify-center p-4 hover:bg-secondary/10 transition-colors cursor-pointer group">
+                <GlowingCard key={i} className="aspect-video border border-border/40 bg-secondary/5 flex flex-col items-center justify-center p-4 hover:bg-secondary/10 transition-colors cursor-pointer group">
                   <Icon className="w-6 h-6 text-muted-foreground/40 mb-3 group-hover:text-foreground/60 transition-colors" />
                   <span className="text-[10px] font-mono text-muted-foreground uppercase text-center tracking-widest group-hover:text-foreground transition-colors">
                     {diagram.name}
                   </span>
-                </div>
+                </GlowingCard>
               );
             })}
           </div>
