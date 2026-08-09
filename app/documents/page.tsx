@@ -152,7 +152,7 @@ export default function CertificationLibrary() {
         <section className="mb-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 border border-border/40 p-6 bg-secondary/5 rounded-sm">
             <div>
-              <div className="text-3xl font-bold text-foreground mb-1">56</div>
+              <div className="text-3xl font-bold text-foreground mb-1">57</div>
               <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Certificates Earned</div>
             </div>
             <div>

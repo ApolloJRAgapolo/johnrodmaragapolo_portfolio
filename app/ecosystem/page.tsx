@@ -180,7 +180,7 @@ export default function CareerArchitecture() {
 
                     <div>
                       <h4 className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-4">
-                        Related Nodes
+                        Related Works
                       </h4>
                       <ul className="space-y-3">
                         {node.links.map((link, i) => (
@@ -210,5 +210,4 @@ export default function CareerArchitecture() {
     </main>
   );
 }
-
 

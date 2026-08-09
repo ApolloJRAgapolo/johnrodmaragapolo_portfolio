@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, MapPin, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import ThemeToggle from "@/components/layout/ThemeToggle";
-import { currentFocus, ecosystem, highlights, networkLinks, workspaceLinks } from "@/lib/data/sidebar";
+import { highlights, networkLinks, workspaceLinks } from "@/lib/data/sidebar";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -163,20 +163,6 @@ export default function Sidebar() {
 
       <div className="mb-8 border-t border-border/40 pt-8">
         <h3 className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-4 px-2">
-          Current Focus
-        </h3>
-        <ul className="flex flex-col gap-2.5 px-2">
-          {currentFocus.map((focus, i) => (
-            <li key={i} className="text-xs text-muted-foreground flex items-center gap-2">
-              <span className="w-1 h-1 rounded-full bg-muted-foreground/40"></span>
-              <span className="hover:text-foreground transition-colors">{focus}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="mb-8 border-t border-border/40 pt-8">
-        <h3 className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-4 px-2">
           Highlights
         </h3>
         <ul className="flex flex-col gap-3 px-2">
@@ -189,24 +175,6 @@ export default function Sidebar() {
               </li>
             );
           })}
-        </ul>
-      </div>
-
-      <div className="mb-8 border-t border-border/40 pt-8">
-        <h3 className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold mb-4 px-2">
-          Ecosystem
-        </h3>
-        <ul className="flex flex-col gap-3.5 px-2">
-          {ecosystem.map((item, i) => (
-            <li key={i} className="flex flex-col">
-              <span className="text-[9px] uppercase tracking-wider text-muted-foreground/60 font-medium mb-0.5">
-                {item.category}
-              </span>
-              <span className="text-xs text-muted-foreground hover:text-foreground transition-colors cursor-default">
-                {item.name}
-              </span>
-            </li>
-          ))}
         </ul>
       </div>
 

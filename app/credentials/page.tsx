@@ -64,7 +64,7 @@ export default function Credentials() {
             <div className="flex items-center gap-4 text-[10px] font-mono text-muted-foreground mb-8">
               <span className="text-foreground">Credentials Ledger</span>
               <span>/</span>
-              <span>56 Verified Credentials</span>
+              <span>57 Verified Credentials</span>
             </div>
             
             <h1 className="text-3xl font-bold tracking-tight text-foreground mb-6">

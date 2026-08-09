@@ -40,7 +40,7 @@ export const ecosystemData = [
     ],
     connections: ["isatu", "tumanow", "leadership", "wadhwani"],
     links: [
-      { label: "Case File #02: TumaNow", href: "/case-files/tumanow" }
+      { label: "Case File #03: TumaNow", href: "/case-files/tumanow" }
     ]
   },
   {
@@ -64,7 +64,7 @@ export const ecosystemData = [
     outcomes: ["Champion - Startup Hackathon", "Client Validation", "Incubation Track"],
     connections: ["kwadra", "ppdo", "san-miguel"],
     links: [
-      { label: "Case File #02: TumaNow", href: "/case-files/tumanow" }
+      { label: "Case File #03: TumaNow", href: "/case-files/tumanow" }
     ]
   },
   {
@@ -76,7 +76,7 @@ export const ecosystemData = [
     outcomes: ["Digital Governance Validation", "Client Interviews", "Requirements Analysis"],
     connections: ["tumanow"],
     links: [
-      { label: "Case File #02: TumaNow", href: "/case-files/tumanow" }
+      { label: "Case File #03: TumaNow", href: "/case-files/tumanow" }
     ]
   },
   {
@@ -88,7 +88,7 @@ export const ecosystemData = [
     outcomes: ["BLMS Deployment", "Requirements Gathering", "System Design"],
     connections: ["tumanow", "blms"],
     links: [
-      { label: "Case File #01: BLMS", href: "/case-files/blms" }
+      { label: "Case File #02: BLMS", href: "/case-files/blms" }
     ]
   },
   {
@@ -100,10 +100,9 @@ export const ecosystemData = [
     outcomes: ["Best Capstone Project", "Successful Final Defense (April 2026)", "System Deployment"],
     connections: ["san-miguel", "graduate"],
     links: [
-      { label: "Case File #01: BLMS", href: "/case-files/blms" }
+      { label: "Case File #02: BLMS", href: "/case-files/blms" }
     ]
   }
 ] satisfies EcosystemNode[];
-
 
 

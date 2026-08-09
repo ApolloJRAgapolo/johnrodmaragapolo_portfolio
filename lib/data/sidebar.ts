@@ -30,20 +30,12 @@ export const workspaceLinks: SidebarLink[] = [
   { name: "Let's Connect", href: "/contact", icon: Mail },
 ];
 
-export const currentFocus = ["Entry-Level Opportunities", "Business Process Analysis", "Data Analytics", "Systems Thinking", "Continuous Learning"];
-
 export const highlights: { label: string; icon: IconComponent }[] = [
   { label: "Magna Cum Laude", icon: Medal },
   { label: "Startup Hackathon Champion", icon: Trophy },
   { label: "Best Capstone Project", icon: Award },
   { label: "Outstanding Intern", icon: Star },
   { label: "Startup Co-Founder", icon: Rocket },
-];
-
-export const ecosystem = [
-  { category: "Academic", name: "ISAT U" }, { category: "Innovation", name: "KWADRA TBI" },
-  { category: "Industry", name: "Wadhwani Foundation" }, { category: "Learning", name: "Cisco Networking Academy" },
-  { category: "Learning", name: "DataCamp" }, { category: "Startup", name: "TumaNow" },
 ];
 
 export const networkLinks: SidebarLink[] = [
