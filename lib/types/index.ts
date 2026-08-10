@@ -84,7 +84,7 @@ export type DocumentItem = {
   title: string;
   meta: string;
   tags: string[];
-  fileUrl: string;
+  fileUrl?: string;
   viewerMetadata?: DocumentMetadata;
   aspectRatio?: number;
   viewerOptions?: ViewerOptions;

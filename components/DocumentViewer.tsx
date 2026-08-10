@@ -170,6 +170,7 @@ export default function DocumentViewer({ document, onClose }: DocumentViewerProp
 
   if (!renderedDocument) return null;
   const { metadata = {}, viewerOptions } = renderedDocument;
+  const isResumePreview = metadata.documentType === "Resume / Curriculum Vitae";
   const metadataEntries = [["Category", metadata.category], ["Issued by", metadata.issuer], ["Awarded", metadata.issuedDate], ["Document type", metadata.documentType], ["Status", metadata.verificationStatus], ["Last updated", metadata.lastUpdated], ["Authors", metadata.authors], ["Published", metadata.publicationDate], ["Publisher", metadata.publisher], ...(metadata.entries ?? []).map(({ label, value }) => [label, value] as [string, string])].filter((entry): entry is [string, string] => Boolean(entry[1]));
 
   return <div className="fixed inset-0 z-50 flex items-center justify-center p-[max(0.75rem,env(safe-area-inset-top))] sm:p-8" data-state={isClosing ? "closing" : "open"}>
@@ -177,20 +178,22 @@ export default function DocumentViewer({ document, onClose }: DocumentViewerProp
     <div ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="document-viewer-title" tabIndex={-1} className="document-viewer-panel relative flex max-h-[calc(100dvh-1.5rem)] w-[min(1440px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-sm border border-border/50 bg-card lg:flex-row">
       <section ref={viewerSectionRef} data-viewer-section className="order-1 min-h-0 flex-1 overflow-auto bg-secondary/20 p-3 sm:p-5 lg:order-1 lg:w-[72%] relative">
         <PdfPreview fileUrl={renderedDocument.fileUrl} title={renderedDocument.title} />
-        <div role="note" aria-hidden="true" className="hidden sm:block pointer-events-none absolute left-3 bottom-3 max-w-[46%] rounded-md border border-border/30 bg-background/70 px-2 py-1 shadow-sm backdrop-blur-sm">
-          <div className="flex items-start gap-2">
-            <div className="mt-0.5 flex-shrink-0 text-muted-foreground/90">
-              <Info className="h-4 w-4" />
-            </div>
-            <div className="min-w-0">
-              <div className="font-mono text-[10px] uppercase tracking-wider text-foreground/90 font-semibold">PORTFOLIO PREVIEW</div>
-              <div className="mt-0.5 text-[11px] leading-snug text-foreground/70">
-                <div>Displayed for credential verification and portfolio purposes only.</div>
-                <div className="mt-1">Please do not reproduce or redistribute.</div>
+        {!isResumePreview && (
+          <div role="note" aria-hidden="true" className="hidden sm:block pointer-events-none absolute left-3 bottom-3 max-w-[46%] rounded-md border border-border/30 bg-background/70 px-2 py-1 shadow-sm backdrop-blur-sm">
+            <div className="flex items-start gap-2">
+              <div className="mt-0.5 flex-shrink-0 text-muted-foreground/90">
+                <Info className="h-4 w-4" />
+              </div>
+              <div className="min-w-0">
+                <div className="font-mono text-[10px] uppercase tracking-wider text-foreground/90 font-semibold">PORTFOLIO PREVIEW</div>
+                <div className="mt-0.5 text-[11px] leading-snug text-foreground/70">
+                  <div>Displayed for credential verification and portfolio purposes only.</div>
+                  <div className="mt-1">Please do not reproduce or redistribute.</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </section>
       <aside className="order-2 shrink-0 border-t border-border/40 bg-card lg:order-2 lg:flex lg:w-[28%] lg:min-w-[280px] lg:flex-col lg:border-t-0 lg:border-l">
         <div className="relative p-4 pr-14 sm:p-6 sm:pr-20 lg:pr-16"><div className="flex min-w-0 gap-3"><FileText className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" /><div className="min-w-0"><h3 id="document-viewer-title" className="text-sm font-semibold leading-snug text-foreground">{metadata.title ?? renderedDocument.title}</h3>{metadata.description && <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:mt-3">{metadata.description}</p>}</div></div><button type="button" onClick={onClose} aria-label="Close document preview" className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center rounded-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:right-5 sm:top-5 lg:right-3 lg:top-3"><X className="h-4 w-4" /></button></div>

@@ -85,6 +85,28 @@ const baseDocumentCollections = {
       { id: "rdlead-training", title: "TRANCHE #1 RDLead Training", meta: "Iloilo Science and Technology University & National Research Council of the Philippines October 16, 2025", tags: ["AI", "Research"], fileUrl: "/certificates/Research%20%26%20Conferences/Cert%20of%20Participation%20on%20RD%20Lead%20Training.pdf", viewerMetadata: { category: "Research & Professional Development", issuer: "Iloilo Science and Technology University & National Research Council of the Philippines", issuedDate: "October 16, 2025", documentType: "Certificate of Participation", verificationStatus: "Official Credential", description: "Certificate of participation for TRANCHE #1 RDLead Training: Artificial Intelligence (Machine Learning) Training for Textile Research Innovation." } },
     ]
   },
+  pending: {
+    id: "pending", title: "Pending / In Progress", count: "1 Pending", icon: BookOpen,
+    skills: ["Professional Development"], progress: "█",
+    items: [
+      {
+        id: "gci-world-program-pending",
+        title: "Global Consumer Intelligence (GCI) World Program",
+        meta: "The University of Tokyo — Matsuo-Iwasawa Laboratory • 2026",
+        tags: ["Professional Development"],
+        viewerMetadata: {
+          title: "Global Consumer Intelligence (GCI) World Program",
+          category: "Professional Development",
+          issuer: "The University of Tokyo — Matsuo-Iwasawa Laboratory",
+          issuedDate: "2026",
+          documentType: "Program Credential",
+          verificationStatus: "Certificate Pending",
+          description: "Participation in the Global Consumer Intelligence (GCI) World Program. Certificate issuance is currently pending.",
+        },
+        viewerOptions: { allowDownload: false },
+      },
+    ],
+  },
   community: {
     id: "community", title: "Community Extension & Volunteerism", count: "3 Credentials", icon: Heart,
     skills: ["Community Service", "Event Facilitation", "Social Responsibility"], progress: "███",
@@ -165,6 +187,7 @@ const collectionPresentation = {
   community: { category: "Community Engagement", documentType: "Certificate" },
   cisco: { category: "Professional Certification", documentType: "Professional Certificate" },
   datacamp: { category: "Professional Certification", documentType: "Professional Certificate" },
+  pending: { category: "Professional Development", documentType: "Program Credential" },
 } as const;
 
 const normalizedIssuers: [RegExp, string][] = [

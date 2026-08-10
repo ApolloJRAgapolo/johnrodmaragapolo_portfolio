@@ -23,7 +23,7 @@ export default function CertificationLibrary() {
 
   // These routes match the exact filenames and folders in public/certificates.
   // Files in public are served from the site root, so spaces must be URL encoded.
-  const certificateFileUrl = (item: { title: string; fileUrl: string }) => {
+  const certificateFileUrl = (item: { title: string; fileUrl?: string }) => {
     const exactFiles: Record<string, string> = {
       "Magna Cum Laude": "Awards and Recognition/Magna Cum Laude.pdf",
       "Best Capstone Project": "Awards and Recognition/Cert of Recognition Best Capstone Research Award.pdf",
@@ -40,7 +40,7 @@ export default function CertificationLibrary() {
       "AI Ready ASEAN": "Artificial Intelligence/AGAPOLO AI READY ASEAN CERTIFICATE.pdf",
     };
 
-    const file = exactFiles[item.title] ?? (item.fileUrl.includes("/datacamp/")
+    const file = exactFiles[item.title] ?? (item.fileUrl?.includes("/datacamp/")
       ? `Datacamp/${item.title}.pdf`
       : undefined);
 
@@ -62,22 +62,40 @@ export default function CertificationLibrary() {
   // Reusable Document Item (Inner Row)
   const DocumentItem = ({ item }: { item: Document }) => {
     const fileUrl = certificateFileUrl(item);
+    const isPending = !item.fileUrl;
+
     return (
     <div className="flex flex-col sm:flex-row sm:items-center justify-between py-4 border-b border-border/20 hover:bg-secondary/10 transition-all duration-300 px-4 -mx-4 group">
       <div className="transition-transform duration-300 group-hover:translate-x-2">
         <h4 className="text-[13px] font-medium text-foreground">{item.title}</h4>
-        <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mt-1 block">
-          {item.meta} • PDF
-        </span>
+        <div className="mt-1 flex flex-col gap-1">
+          <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground block">
+            {item.meta}
+          </span>
+          {isPending && (
+            <span className="inline-flex items-center rounded-full border border-amber-400/40 bg-amber-400/10 px-2 py-1 text-[10px] font-medium uppercase tracking-widest text-amber-900">
+              Credential Pending
+            </span>
+          )}
+          {!isPending && (
+            <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground block">
+              PDF
+            </span>
+          )}
+        </div>
       </div>
       <div className="flex items-center gap-2 mt-3 sm:mt-0 opacity-100 sm:opacity-0 sm:-translate-x-4 sm:group-hover:opacity-100 sm:group-hover:translate-x-0 transition-all duration-300 ease-out">
-        <button 
-          onClick={() => setPreviewDoc({ title: item.title, fileUrl, metadata: item.viewerMetadata, aspectRatio: item.aspectRatio, viewerOptions: item.viewerOptions })}
-          className="inline-flex min-h-11 items-center text-[11px] font-medium text-foreground hover:bg-foreground hover:text-background border border-border/40 px-3 py-1.5 transition-colors"
+        <button
+          onClick={() => {
+            if (!fileUrl) return;
+            setPreviewDoc({ title: item.title, fileUrl, metadata: item.viewerMetadata, aspectRatio: item.aspectRatio, viewerOptions: item.viewerOptions });
+          }}
+          disabled={!fileUrl}
+          className={`inline-flex min-h-11 items-center text-[11px] font-medium px-3 py-1.5 transition-colors border border-border/40 ${fileUrl ? "text-foreground hover:bg-foreground hover:text-background" : "text-muted-foreground cursor-not-allowed bg-background"}`}
         >
           Preview
         </button>
-        {item.viewerOptions?.allowDownload && <a
+        {item.viewerOptions?.allowDownload && fileUrl && <a
           href={fileUrl}
           download
           className="inline-flex min-h-11 items-center text-[11px] font-medium bg-foreground text-background hover:bg-foreground/80 px-3 py-1.5 transition-colors shadow-sm"
