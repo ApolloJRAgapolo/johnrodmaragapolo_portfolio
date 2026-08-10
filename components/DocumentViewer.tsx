@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { AlertCircle, Download, FileText, LoaderCircle, X } from "lucide-react";
+import { AlertCircle, Download, FileText, LoaderCircle, X, Info } from "lucide-react";
 import type { DocumentMetadata, ViewerOptions } from "@/lib/types";
 import type { PDFDocumentLoadingTask } from "pdfjs-dist";
 
@@ -95,6 +95,7 @@ export default function DocumentViewer({ document, onClose }: DocumentViewerProp
   const [renderedDocument, setRenderedDocument] = useState<PreviewDocument | null>(document);
   const [isClosing, setIsClosing] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const viewerSectionRef = useRef<HTMLElement | null>(null);
   const lastFocused = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -114,6 +115,59 @@ export default function DocumentViewer({ document, onClose }: DocumentViewerProp
     return () => { window.document.body.style.overflow = previousOverflow; cancelAnimationFrame(frame); lastFocused.current?.focus(); };
   }, [renderedDocument]);
 
+  // Viewer-scoped protections: disable right-click inside the viewer area
+  // and intercept a small set of keyboard shortcuts while the viewer is open.
+  useEffect(() => {
+    if (!renderedDocument) return;
+
+    const isEditable = (el: Element | null) => {
+      if (!el) return false;
+      const tag = (el as HTMLElement).tagName;
+      return tag === "INPUT" || tag === "TEXTAREA" || (el as HTMLElement).isContentEditable;
+    };
+
+    const onContextMenu = (e: MouseEvent) => {
+      // Only prevent context menu inside the viewer section (PDF/document area)
+      const viewerEl = viewerSectionRef.current;
+      if (!viewerEl) return;
+      if (viewerEl.contains(e.target as Node)) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    };
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.defaultPrevented) return;
+      // Do not interfere with typing in inputs or editable regions
+      const activeEl = (globalThis as unknown as { document?: Document }).document?.activeElement ?? null;
+      if (isEditable(activeEl)) return;
+
+      const mod = e.ctrlKey || e.metaKey;
+      const key = e.key?.toLowerCase?.();
+
+      // Block: Ctrl/Cmd+S, Ctrl/Cmd+P, Ctrl/Cmd+U, Ctrl/Cmd+Shift+I, F12
+      const shouldBlock = (
+        (mod && key === "s") ||
+        (mod && key === "p") ||
+        (mod && key === "u") ||
+        (mod && e.shiftKey && key === "i") ||
+        e.key === "F12" || e.key === "f12"
+      );
+
+      if (shouldBlock) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+      }
+    };
+
+    window.addEventListener("contextmenu", onContextMenu, true);
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => {
+      window.removeEventListener("contextmenu", onContextMenu, true);
+      window.removeEventListener("keydown", onKeyDown, true);
+    };
+  }, [renderedDocument]);
+
   if (!renderedDocument) return null;
   const { metadata = {}, viewerOptions } = renderedDocument;
   const metadataEntries = [["Category", metadata.category], ["Issued by", metadata.issuer], ["Awarded", metadata.issuedDate], ["Document type", metadata.documentType], ["Status", metadata.verificationStatus], ["Last updated", metadata.lastUpdated], ["Authors", metadata.authors], ["Published", metadata.publicationDate], ["Publisher", metadata.publisher], ...(metadata.entries ?? []).map(({ label, value }) => [label, value] as [string, string])].filter((entry): entry is [string, string] => Boolean(entry[1]));
@@ -121,7 +175,23 @@ export default function DocumentViewer({ document, onClose }: DocumentViewerProp
   return <div className="fixed inset-0 z-50 flex items-center justify-center p-[max(0.75rem,env(safe-area-inset-top))] sm:p-8" data-state={isClosing ? "closing" : "open"}>
     <div className="document-viewer-backdrop absolute inset-0 bg-background/90 backdrop-blur-sm" onClick={onClose} aria-hidden="true" />
     <div ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="document-viewer-title" tabIndex={-1} className="document-viewer-panel relative flex max-h-[calc(100dvh-1.5rem)] w-[min(1440px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-sm border border-border/50 bg-card lg:flex-row">
-      <section className="order-1 min-h-0 flex-1 overflow-auto bg-secondary/20 p-3 sm:p-5 lg:order-1 lg:w-[72%]"><PdfPreview fileUrl={renderedDocument.fileUrl} title={renderedDocument.title} /></section>
+      <section ref={viewerSectionRef} data-viewer-section className="order-1 min-h-0 flex-1 overflow-auto bg-secondary/20 p-3 sm:p-5 lg:order-1 lg:w-[72%] relative">
+        <PdfPreview fileUrl={renderedDocument.fileUrl} title={renderedDocument.title} />
+        <div role="note" aria-hidden="true" className="hidden sm:block pointer-events-none absolute left-3 bottom-3 max-w-[46%] rounded-md border border-border/30 bg-background/70 px-2 py-1 shadow-sm backdrop-blur-sm">
+          <div className="flex items-start gap-2">
+            <div className="mt-0.5 flex-shrink-0 text-muted-foreground/90">
+              <Info className="h-4 w-4" />
+            </div>
+            <div className="min-w-0">
+              <div className="font-mono text-[10px] uppercase tracking-wider text-foreground/90 font-semibold">PORTFOLIO PREVIEW</div>
+              <div className="mt-0.5 text-[11px] leading-snug text-foreground/70">
+                <div>Displayed for credential verification and portfolio purposes only.</div>
+                <div className="mt-1">Please do not reproduce or redistribute.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <aside className="order-2 shrink-0 border-t border-border/40 bg-card lg:order-2 lg:flex lg:w-[28%] lg:min-w-[280px] lg:flex-col lg:border-t-0 lg:border-l">
         <div className="relative p-4 pr-14 sm:p-6 sm:pr-20 lg:pr-16"><div className="flex min-w-0 gap-3"><FileText className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" /><div className="min-w-0"><h3 id="document-viewer-title" className="text-sm font-semibold leading-snug text-foreground">{metadata.title ?? renderedDocument.title}</h3>{metadata.description && <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:mt-3">{metadata.description}</p>}</div></div><button type="button" onClick={onClose} aria-label="Close document preview" className="absolute right-2 top-2 flex h-11 w-11 items-center justify-center rounded-sm text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:right-5 sm:top-5 lg:right-3 lg:top-3"><X className="h-4 w-4" /></button></div>
         {metadataEntries.length > 0 && <dl className="grid grid-cols-2 gap-x-4 gap-y-3 border-t border-border/40 px-4 py-4 text-xs sm:gap-x-6 sm:px-6 lg:block lg:px-6">{metadataEntries.map(([label, value]) => <div key={label} className="min-w-0 lg:mb-4 lg:last:mb-0"><dt className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground">{label}</dt><dd className="mt-1 break-words leading-relaxed text-foreground/80">{value}</dd></div>)}</dl>}
@@ -130,3 +200,4 @@ export default function DocumentViewer({ document, onClose }: DocumentViewerProp
     </div>
   </div>;
 }
+
