@@ -1,9 +1,9 @@
 import { Briefcase, Cpu, Database, LayoutGrid, Bot, Code2, Users } from "lucide-react";
 import type { CapabilityGroup } from "@/lib/types";
 
-export const capabilityGroups: CapabilityGroup[] = [
+const groups: CapabilityGroup[] = [
   {
-    category: "Business Analysis",
+    category: "Business & Systems Analysis",
     icon: Briefcase,
     delay: 100,
     competencies: [
@@ -24,7 +24,7 @@ export const capabilityGroups: CapabilityGroup[] = [
             },
             {
               tool: "Documentation",
-              proficiency: "Advanced",
+              proficiency: "Experienced",
               application: "Preparing system documents, reports, user requirements, and project documentation."
             },
             {
@@ -62,7 +62,7 @@ export const capabilityGroups: CapabilityGroup[] = [
           ],
   },
   {
-    category: "Data & Analytics",
+    category: "Data & Integration",
     icon: Database,
     delay: 300,
     competencies: [
@@ -146,7 +146,7 @@ export const capabilityGroups: CapabilityGroup[] = [
           ],
   },
   {
-    category: "Development Tools",
+    category: "Software Development",
     icon: Code2,
     delay: 600,
     competencies: [
@@ -173,7 +173,12 @@ export const capabilityGroups: CapabilityGroup[] = [
             {
               tool: "Git & GitHub",
               proficiency: "Learning",
-              application: "Managing project versions, tracking codebase changes, and collaborating on software repositories."
+              application: "Using commits, branches, and repositories to organize incremental development of PricePulse and this portfolio."
+            },
+            {
+              tool: "REST API Integration",
+              proficiency: "Learning",
+              application: "Connecting web interfaces to services and structured data."
             },
             {
               tool: "Visual Studio Code",
@@ -201,3 +206,21 @@ export const capabilityGroups: CapabilityGroup[] = [
   }
 ];
 
+const projectEvidence: Record<string, { label: string; href: string }[]> = {
+  "Next.js & React": [{ label: "PricePulse PH", href: "/case-files/pricepulse" }, { label: "Portfolio Workspace", href: "/case-files/portfolio-workspace" }],
+  "TypeScript": [{ label: "PricePulse PH", href: "/case-files/pricepulse" }],
+  "Tailwind CSS": [{ label: "Portfolio Workspace", href: "/case-files/portfolio-workspace" }],
+  "Git & GitHub": [{ label: "PricePulse PH", href: "/case-files/pricepulse" }],
+  "REST API Integration": [{ label: "PricePulse Route Handlers", href: "/case-files/pricepulse#architecture" }],
+  "Requirements Gathering": [{ label: "BLMS", href: "/case-files/blms" }, { label: "TumaNow", href: "/case-files/tumanow" }],
+  "System Analysis & Design": [{ label: "BLMS", href: "/case-files/blms" }],
+  "Database Design": [{ label: "PricePulse PH", href: "/case-files/pricepulse#architecture" }],
+  "Data Visualization": [{ label: "PricePulse PH", href: "/case-files/pricepulse#experience" }],
+};
+const categoryOrder = ["Software Development", "Systems Design", "Data & Integration", "Business & Systems Analysis", "Project & Collaboration", "Productivity Tools", "AI & Digital Tools"];
+export const capabilityGroups: CapabilityGroup[] = categoryOrder.map(category => {
+  const group = groups.find(item => item.category === category)!;
+  const competencies = group.competencies.map(item => ({ ...item, proficiency: projectEvidence[item.tool] ? "Project experience" : item.proficiency, evidence: projectEvidence[item.tool] }));
+  if (category === "Software Development") competencies.push({ tool: "PostgreSQL & Prisma", proficiency: "Project experience", application: "Storing prepared commodity data and querying PostgreSQL through Prisma ORM in PricePulse.", evidence: [{ label: "PricePulse PH", href: "/case-files/pricepulse#architecture" }] });
+  return { ...group, competencies };
+});

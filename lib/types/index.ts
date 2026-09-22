@@ -1,75 +1,6 @@
 import type { ComponentType } from "react";
 
-export type EntityId = string;
 export type IconComponent = ComponentType<{ className?: string }>;
-export type RelatedEntity = {
-  id: EntityId;
-  title: string;
-};
-
-export type Profile = {
-  name: string;
-  title: string;
-  degree: string;
-  location: string;
-  tagline: string;
-  bio: string;
-  status: string[];
-  avatarUrl: string;
-};
-
-export type Timeline = {
-  start: string;
-  end: string;
-};
-
-export type Project = {
-  id: string;
-  slug: string;
-  title: string;
-  overview: string;
-  problem: string;
-  objectives: string[];
-  role: string;
-  stakeholders: string[];
-  architecture: string;
-  timeline: Timeline;
-  challenges: string[];
-  lessonsLearned: string[];
-  outcome: string;
-  links: Record<string, string>;
-  relatedToolkitIds: string[];
-  relatedLearningIds: string[];
-  relatedCommunityIds: string[];
-  relatedAchievementIds: string[];
-  relatedCareerIds: string[];
-};
-
-export type Community = {
-  id: string;
-  organization: string;
-  role: string;
-  description: string;
-  timeline: Timeline;
-  relatedProjectIds: string[];
-  relatedAchievementIds: string[];
-};
-
-export type Achievement = {
-  id: string;
-  title: string;
-  description: string;
-  date?: string;
-  relatedProjectIds: string[];
-  relatedCommunityIds: string[];
-};
-
-export type ToolkitItem = {
-  id: string;
-  name: string;
-  category: string;
-  description: string;
-};
 
 export type Social = {
   label?: string;
@@ -147,19 +78,25 @@ export type CaseFile = {
   type: string;
   title: string;
   summary: string;
+  headline?: string;
+  proofPoints?: string[];
+  liveUrl?: string;
+  repositoryUrl?: string;
   isAvailable: boolean;
   metadata: {
     role: string;
-    client: string;
+    client?: string;
+    audience?: string;
+    focusLabel?: string;
     focus: string[];
     status: string;
-    year: string;
+    year?: string;
   };
 };
 
 export type EcosystemNode = {
   id: string;
-  stars: string;
+  relationship: string;
   name: string;
   role: string;
   contribution: string;
@@ -168,20 +105,12 @@ export type EcosystemNode = {
   links: { label: string; href: string }[];
 };
 
-export type OverviewStats = {
-  version: string;
-  caseFiles: number;
-  credentials: number;
-  ecosystemNodes: number;
-  capabilities: number;
-  lastUpdated: string;
-};
-
 export type Capability = {
   tool: string;
   proficiency: string;
   application: string;
   subTools?: string;
+  evidence?: { label: string; href: string }[];
 };
 
 export type CapabilityGroup = {
@@ -189,4 +118,13 @@ export type CapabilityGroup = {
   icon: IconComponent;
   delay: number;
   competencies: Capability[];
+};
+
+export type PreviewDocument = {
+  title: string;
+  fileUrl: string;
+  metadata?: DocumentMetadata;
+  aspectRatio?: number;
+  mode?: "document" | "resume";
+  viewerOptions?: ViewerOptions;
 };

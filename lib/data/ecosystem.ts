@@ -3,7 +3,7 @@ import type { EcosystemNode } from "@/lib/types";
 export const ecosystemData = [
   {
     id: "isatu",
-    stars: "★★★★★",
+    relationship: "Academic institution",
     name: "Iloilo Science and Technology University (ISAT U)",
     role: "BS Information Systems",
     contribution: "Built my foundation in systems analysis, software development, documentation, business processes, and leadership.",
@@ -15,7 +15,7 @@ export const ecosystemData = [
   },
   {
     id: "leadership",
-    stars: "★★★★★",
+    relationship: "Student leadership",
     name: "Academic Leadership",
     role: "Class Mayor • Vice Mayor • ANALYTICA Auditor",
     contribution: "Developed foundational soft skills in team coordination, conflict resolution, and stakeholder communication.",
@@ -27,7 +27,7 @@ export const ecosystemData = [
   },
   {
     id: "kwadra",
-    stars: "★★★★★",
+    relationship: "Internship & incubation",
     name: "KWADRA Technology Business Incubator",
     role: "600-Hour Organizational Intern",
     contribution: "Transitioned from academic theory to applied innovation, directly facilitating tech commercialization and startup support.",
@@ -40,12 +40,12 @@ export const ecosystemData = [
     ],
     connections: ["isatu", "tumanow", "leadership", "wadhwani"],
     links: [
-      { label: "Case File #03: TumaNow", href: "/case-files/tumanow" }
+      { label: "Case File: TumaNow", href: "/case-files/tumanow" }
     ]
   },
   {
     id: "wadhwani",
-    stars: "★★★★",
+    relationship: "Internship",
     name: "Wadhwani Foundation Philippines",
     role: "Program Support Intern",
     contribution: "Coordinated program participation and monitored progress through the Wadhwani platform across different universities.",
@@ -57,50 +57,50 @@ export const ecosystemData = [
   },
   {
     id: "tumanow",
-    stars: "★★★★★",
+    relationship: "Startup project",
     name: "TumaNow",
     role: "Co-Founder • Business Analyst • CFO",
     contribution: "Built a startup focused on improving local government project monitoring through digital transformation and precise business analysis.",
     outcomes: ["Champion - Startup Hackathon", "Client Validation", "Incubation Track"],
     connections: ["kwadra", "ppdo", "san-miguel"],
     links: [
-      { label: "Case File #03: TumaNow", href: "/case-files/tumanow" }
+      { label: "Case File: TumaNow", href: "/case-files/tumanow" }
     ]
   },
   {
     id: "ppdo",
-    stars: "★★★★",
+    relationship: "Project stakeholder",
     name: "Provincial Planning & Development Office",
     role: "Startup Client",
     contribution: "Engaged with the office during the development of TumaNow to understand deeply rooted project monitoring challenges and propose a targeted digital solution.",
     outcomes: ["Digital Governance Validation", "Client Interviews", "Requirements Analysis"],
     connections: ["tumanow"],
     links: [
-      { label: "Case File #03: TumaNow", href: "/case-files/tumanow" }
+      { label: "Case File: TumaNow", href: "/case-files/tumanow" }
     ]
   },
   {
     id: "san-miguel",
-    stars: "★★★★",
+    relationship: "Capstone stakeholder",
     name: "Municipality of San Miguel",
     role: "Capstone Client (Department of Agriculture)",
     contribution: "Collaborated directly with the agricultural office to develop a digital system improving livestock monitoring and reporting.",
-    outcomes: ["BLMS Deployment", "Requirements Gathering", "System Design"],
+    outcomes: ["BLMS Capstone Prototype", "Requirements Gathering", "System Design"],
     connections: ["tumanow", "blms"],
     links: [
-      { label: "Case File #02: BLMS", href: "/case-files/blms" }
+      { label: "Case File: BLMS", href: "/case-files/blms" }
     ]
   },
   {
     id: "blms",
-    stars: "★★★★★",
+    relationship: "Capstone prototype",
     name: "Backyard Livestock Monitoring System (BLMS)",
     role: "Systems Architect • Capstone Project",
     contribution: "Engineered a master system blueprint with core AI triage features and comprehensive architecture for the agricultural sector.",
-    outcomes: ["Best Capstone Project", "Successful Final Defense (April 2026)", "System Deployment"],
+    outcomes: ["Best Capstone Project", "Successful Final Defense (April 2026)", "Completed Capstone Prototype"],
     connections: ["san-miguel", "graduate"],
     links: [
-      { label: "Case File #02: BLMS", href: "/case-files/blms" }
+      { label: "Case File: BLMS", href: "/case-files/blms" }
     ]
   }
 ] satisfies EcosystemNode[];

@@ -7,7 +7,7 @@ export const contactMethods: Social[] = [
   { label: "Email", value: "johnrodmaragapolo@gmail.com", href: "mailto:johnrodmaragapolo@gmail.com", icon: Mail },
   { label: "LinkedIn", value: "Professional Profile", href: "https://www.linkedin.com/in/john-rodmar-agapolo-9492602b2/", icon: FaLinkedinIn },
   { label: "JobStreet", value: "Career Profile", href: "https://ph.jobstreet.com/profiles/johnrodmar-agapolo-2m77k807cq", icon: Briefcase },
-  { label: "GitHub", value: "Portfolio Repository", href: "https://github.com/ApolloJRAgapolo", icon: SiGithub },
+  { label: "GitHub", value: "GitHub Profile", href: "https://github.com/ApolloJRAgapolo", icon: SiGithub },
   { label: "Facebook", value: "Personal Profile", href: "https://www.facebook.com/ApolloSgr", icon: FaFacebookF },
 ];
 

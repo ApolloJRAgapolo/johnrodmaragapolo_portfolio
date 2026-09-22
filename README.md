@@ -319,3 +319,8 @@ johnrodmaragapolo@gmail.com
 ---
 
 If you found this project interesting, feel free to give it a star!
+
+
+### Social sharing URL
+
+Set `NEXT_PUBLIC_SITE_URL` to the public portfolio origin (for example, `https://your-domain.example`) when building outside Vercel. Vercel deployments use `VERCEL_PROJECT_PRODUCTION_URL` automatically when the explicit setting is absent, with `https://johnrodmaragapolo-portfolio.vercel.app` as the public fallback. This makes social image links resolve to the portfolio rather than a local development address.

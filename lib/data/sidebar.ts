@@ -1,6 +1,6 @@
 import {
-  Award,
   Briefcase,
+  Award,
   FileText,
   FolderGit2,
   GraduationCap,
@@ -13,7 +13,7 @@ import {
   Trophy,
   Wrench,
 } from "lucide-react";
-import { FaFacebookF, FaLinkedinIn } from "react-icons/fa6";
+import { FaLinkedinIn } from "react-icons/fa6";
 import { SiGithub } from "react-icons/si";
 import type { IconComponent } from "@/lib/types";
 
@@ -39,10 +39,8 @@ export const highlights: { label: string; icon: IconComponent }[] = [
 ];
 
 export const networkLinks: SidebarLink[] = [
-  { name: "GitHub", href: "https://github.com/ApolloJRAgapolo/johnrodmaragapolo_portfolio", icon: SiGithub },
+  { name: "GitHub", href: "https://github.com/ApolloJRAgapolo", icon: SiGithub },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/john-rodmar-agapolo-9492602b2/", icon: FaLinkedinIn },
-  { name: "Facebook", href: "https://www.facebook.com/ApolloSgr", icon: FaFacebookF },
-  { name: "JobStreet", href: "https://ph.jobstreet.com/profiles/johnrodmar-agapolo-2m77k807cq", icon: Briefcase },
   { name: "Email", href: "mailto:johnrodmaragapolo@gmail.com", icon: Mail },
-  { name: "Resume", href: "/documents", icon: FileText },
+  { name: "Resume", href: "/documents#resume", icon: FileText },
 ];

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Database } from "lucide-react";
-import RevealOnScroll from "@/components/RevealOnScroll";
+import RevealOnScroll from "@/components/shared/RevealOnScroll";
 import { ecosystemData } from "@/lib/data/ecosystem";
 
 // --- INTERACTIVE MAP NODE COMPONENT ---
@@ -43,7 +43,7 @@ export default function CareerArchitecture() {
   const [activeNode, setActiveNode] = useState<string | null>(null);
 
   return (
-    <main className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background pb-32">
+    <main id="main-content" tabIndex={-1} className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background pb-32">
       <div className="max-w-4xl mx-auto w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-16 lg:py-24">
         
         {/* HEADER */}
@@ -56,17 +56,33 @@ export default function CareerArchitecture() {
           </div>
           
           <h1 className="text-3xl font-bold tracking-tight text-foreground mb-6">
-            Career Architecture Map
+            Professional Ecosystem
           </h1>
           <p className="text-xl text-muted-foreground leading-relaxed font-light max-w-2xl">
-            A visual map of the experiences, projects, and opportunities that shaped my professional journey.
+            The organizations, projects, and learning communities that inform my professional direction.
           </p>
         </header>
         </RevealOnScroll>
 
-        {/* SUBTLE LEGEND */}
         <RevealOnScroll delay={100}>
-        <div className="flex flex-wrap items-center justify-center gap-8 text-[11px] font-mono uppercase tracking-widest text-muted-foreground mb-12">
+          <section className="mb-16 grid gap-4 sm:grid-cols-2" aria-label="Professional ecosystem groups">
+            {[
+              ["Industry & Internship", "KWADRA Technology Business Incubator", "Wadhwani Foundation Philippines"],
+              ["Innovation & Startup", "TumaNow", "Startup Hackathon"],
+              ["Academic & Leadership", "Iloilo Science and Technology University", "Academic Leadership"],
+              ["Technical Learning", "Cisco Networking Academy", "DataCamp", "AI Ready ASEAN", "AWS Community Day"],
+            ].map(([category, ...members]) => (
+              <div key={category} className="border border-border/40 bg-card/30 p-5">
+                <h2 className="mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">{category}</h2>
+                <ul className="space-y-2 text-[13px] text-foreground">{members.map((member) => <li key={member}>{member}</li>)}</ul>
+              </div>
+            ))}
+          </section>
+        </RevealOnScroll>
+
+        {/* Legacy relationship map retained as supporting context, not the primary interface. */}
+        <RevealOnScroll delay={100}>
+        <div className="hidden flex-wrap items-center justify-center gap-8 text-[11px] font-mono uppercase tracking-widest text-muted-foreground mb-12">
           <span className="flex items-center gap-2"><span className="text-foreground font-bold">○</span> Academic</span>
           <span className="flex items-center gap-2"><span className="text-foreground font-bold">□</span> Innovation</span>
           <span className="flex items-center gap-2"><span className="text-foreground font-bold">◇</span> Government</span>
@@ -76,7 +92,7 @@ export default function CareerArchitecture() {
 
         {/* CAREER ARCHITECTURE MAP */}
         <RevealOnScroll delay={200}>
-          <section className="mb-32">
+          <section className="mb-16 hidden">
             <div className="relative overflow-hidden rounded-xl border border-border/20 bg-card/5 px-4 py-10 sm:px-6 sm:py-12">
               <div className="relative mx-auto flex w-full min-w-0 max-w-3xl flex-col items-center gap-8">
                 <Node id="isatu" activeNode={activeNode} setActiveNode={setActiveNode}>ISAT U</Node>
@@ -113,7 +129,7 @@ export default function CareerArchitecture() {
           <div className="flex items-center gap-2 mb-16">
             <Database className="w-4 h-4 text-foreground" />
             <h2 className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground">
-              Core Network Dossiers
+              Ecosystem Dossiers
             </h2>
           </div>
 
@@ -131,8 +147,8 @@ export default function CareerArchitecture() {
               >
                 {/* Dossier Header */}
                 <div className="mb-10 pl-4 md:pl-0">
-                  <div className="text-[14px] text-foreground tracking-widest mb-3">
-                    {node.stars}
+                  <div className="text-[10px] font-mono uppercase text-muted-foreground tracking-widest mb-3">
+                    {node.relationship}
                   </div>
                   <h3 className="text-2xl md:text-3xl font-semibold uppercase tracking-tight text-foreground">
                     {node.name}
@@ -210,4 +226,3 @@ export default function CareerArchitecture() {
     </main>
   );
 }
-

@@ -1,3 +1,4 @@
+import CaseStudyContext from "@/components/features/case-files/CaseStudyContext";
 import Link from "next/link";
 import {
   Accessibility,
@@ -15,8 +16,25 @@ import {
   ShieldCheck,
   Workflow,
 } from "lucide-react";
-import GlowingCard from "@/components/GlowingCard";
-import RevealOnScroll from "@/components/RevealOnScroll";
+import {
+  SiEslint, SiGit, SiGithub, SiLucide, SiNextdotjs, SiNpm,
+  SiReact, SiTailwindcss, SiTypescript, SiVercel,
+} from "react-icons/si";
+import GlowingCard from "@/components/shared/GlowingCard";
+import RevealOnScroll from "@/components/shared/RevealOnScroll";
+
+const technologies = [
+  { name: "Next.js", icon: SiNextdotjs },
+  { name: "React", icon: SiReact },
+  { name: "TypeScript", icon: SiTypescript },
+  { name: "Tailwind CSS", icon: SiTailwindcss },
+  { name: "Lucide React", icon: SiLucide },
+  { name: "PDF.js", icon: FileText },
+  { name: "npm", icon: SiNpm },
+  { name: "ESLint", icon: SiEslint },
+  { name: "Git", icon: SiGit },
+  { name: "GitHub", icon: SiGithub },
+];
 
 const sections = [
   {
@@ -76,7 +94,7 @@ const features = [
 
 export default function PortfolioWorkspaceCaseFile() {
   return (
-    <main className="min-h-screen flex-1 overflow-y-auto bg-background pb-32 selection:bg-foreground selection:text-background">
+    <main id="main-content" tabIndex={-1} className="min-h-screen flex-1 overflow-y-auto bg-background pb-32 selection:bg-foreground selection:text-background">
       <div className="mx-auto w-full max-w-4xl px-5 py-12 sm:px-8 sm:py-16 lg:px-16">
         <Link
           href="/case-files"
@@ -105,7 +123,7 @@ export default function PortfolioWorkspaceCaseFile() {
           </header>
         </RevealOnScroll>
 
-        <hr className="mb-16 border-border/40" />
+        <CaseStudyContext id="portfolio-workspace" sections={[{"id": "section-01", "label": "Idea"}, {"id": "section-04", "label": "Development"}, {"id": "section-05", "label": "Features"}, {"id": "section-06", "label": "Challenges"}, {"id": "section-08", "label": "Deployment"}]} />
 
         <div className="space-y-20">
           {sections.map((section, index) => {
@@ -120,6 +138,15 @@ export default function PortfolioWorkspaceCaseFile() {
                   </div>
                   <div className="border border-border/40 bg-card/30 p-6 sm:p-8">
                     <p className="max-w-3xl text-[14px] leading-relaxed text-muted-foreground">{section.content}</p>
+                    {section.id === "04" ? (
+                      <ul aria-label="Technology stack" className="mt-6 flex flex-wrap gap-2 border-t border-border/40 pt-6">
+                        {technologies.map(({ name, icon: Icon }) => (
+                          <li key={name} className="inline-flex items-center gap-2.5 border border-border/40 bg-card/30 px-3 py-2 text-[11px] font-mono text-foreground">
+                            <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />{name}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
                     <ul className="mt-6 grid grid-cols-1 gap-3 border-t border-border/40 pt-6 sm:grid-cols-3">
                       {section.details.map((detail) => (
                         <li key={detail} className="flex items-start gap-3 text-[12px] leading-relaxed text-foreground">
@@ -128,6 +155,7 @@ export default function PortfolioWorkspaceCaseFile() {
                         </li>
                       ))}
                     </ul>
+                    )}
                   </div>
                 </section>
               </RevealOnScroll>
@@ -141,7 +169,7 @@ export default function PortfolioWorkspaceCaseFile() {
                 <Blocks className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
                 <h2 id="section-05" className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground">Key Features</h2>
               </div>
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
                 {features.map((feature) => {
                   const Icon = feature.icon;
                   return (
@@ -196,8 +224,8 @@ export default function PortfolioWorkspaceCaseFile() {
                 <h2 id="section-08" className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground">Deployment</h2>
               </div>
               <div className="grid grid-cols-1 border border-border/40 bg-card/30 sm:grid-cols-2 sm:divide-x sm:divide-border/40">
-                <div className="p-6 sm:p-8"><p className="mb-2 text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Source Control</p><p className="text-[14px] font-medium text-foreground">GitHub</p><p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">The portfolio source code is maintained through GitHub.</p></div>
-                <div className="border-t border-border/40 p-6 sm:border-t-0 sm:p-8"><p className="mb-2 text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Hosting &amp; Deployment</p><p className="text-[14px] font-medium text-foreground">Vercel</p><p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">The portfolio is deployed through Vercel.</p></div>
+                <div className="p-6 sm:p-8"><p className="mb-2 text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Source Control</p><p className="flex items-center gap-3 text-[14px] font-medium text-foreground"><SiGithub className="h-5 w-5 shrink-0" aria-hidden="true" />GitHub</p><p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">The portfolio source code is maintained through GitHub.</p></div>
+                <div className="border-t border-border/40 p-6 sm:border-t-0 sm:p-8"><p className="mb-2 text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Hosting &amp; Deployment</p><p className="flex items-center gap-3 text-[14px] font-medium text-foreground"><SiVercel className="h-5 w-5 shrink-0" aria-hidden="true" />Vercel</p><p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">The portfolio is deployed through Vercel.</p></div>
               </div>
             </section>
           </RevealOnScroll>

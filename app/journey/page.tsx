@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { 
   GraduationCap, 
   Lightbulb, 
@@ -14,13 +15,13 @@ import {
   BookOpen,
   Target
 } from "lucide-react";
-import GlowingCard from "@/components/GlowingCard";
-import RevealOnScroll from "@/components/RevealOnScroll";
+import GlowingCard from "@/components/shared/GlowingCard";
+import RevealOnScroll from "@/components/shared/RevealOnScroll";
 import { journeyProgressNodes, foundationSkills, classMayorSkills, tumanowResponsibilities, auditorSkills, kwadraResponsibilities, wadhwaniResponsibilities, blmsResponsibilities, learningExperiences } from "@/lib/data/journey";
 
 export default function ProfessionalJourney() {
   return (
-    <main className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background pb-32">
+    <main id="main-content" tabIndex={-1} className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background pb-32">
       <div className="max-w-4xl mx-auto w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-16 lg:py-24">
         
         {/* HEADER */}
@@ -39,6 +40,19 @@ export default function ProfessionalJourney() {
               A timeline of the experiences, leadership roles, projects, internships, and learning milestones that shaped my growth as an Information Systems graduate.
             </p>
           </header>
+        </RevealOnScroll>
+
+        <RevealOnScroll delay={100}>
+        <section aria-labelledby="recent-experience" className="mb-16 border-y border-border/40 py-8">
+          <h2 id="recent-experience" className="mb-6 text-base font-semibold">Recent Experience</h2>
+          <ul className="grid gap-6 sm:grid-cols-2 text-sm">
+            <li><Link href="/case-files/pricepulse" className="font-medium underline underline-offset-4">PricePulse PH / Solo Developer</Link><p className="mt-2 text-muted-foreground">Built and deployed a Next.js dashboard backed by PostgreSQL and Prisma.</p></li>
+            <li><Link href="/case-files/blms" className="font-medium underline underline-offset-4">BLMS / Capstone Prototype</Link><p className="mt-2 text-muted-foreground">Led planning and systems analysis for an award-winning capstone.</p></li>
+            <li><p className="font-medium">KWADRA &amp; Wadhwani / Internships</p><p className="mt-2 text-muted-foreground">Supported innovation programs, documentation, and participant coordination during January-May 2026.</p></li>
+            <li><Link href="/case-files/tumanow" className="font-medium underline underline-offset-4">TumaNow / Startup Co-Founder</Link><p className="mt-2 text-muted-foreground">Contributed business analysis and financial planning to a hackathon-winning GovTech project.</p></li>
+          </ul>
+          <a href="#journey-timeline" className="mt-6 inline-block text-xs underline underline-offset-4">Explore the full timeline</a>
+        </section>
         </RevealOnScroll>
 
         {/* PROGRESS INDICATOR */}
@@ -63,7 +77,7 @@ export default function ProfessionalJourney() {
         </RevealOnScroll>
 
         {/* TIMELINE CONTAINER */}
-        <div className="relative border-l border-border/40 ml-2 md:ml-4 space-y-24 pb-12">
+        <div id="journey-timeline" className="relative border-l border-border/40 ml-2 md:ml-4 space-y-24 pb-12">
           
           {/* 2022: Beginning */}
           <RevealOnScroll delay={200}>
@@ -75,7 +89,7 @@ export default function ProfessionalJourney() {
                 <div className="w-full h-px bg-border/40 mt-4"></div>
               </div>
               
-              <GlowingCard className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
+              <section className="pb-8 border-b border-border/40">
                 <div className="flex gap-3 items-start mb-4">
                   <GraduationCap className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
                   <div>
@@ -88,7 +102,7 @@ export default function ProfessionalJourney() {
                 <p className="text-[14px] leading-relaxed text-muted-foreground">
                   Started my journey in Information Systems and began learning how technology can help solve real-world problems.
                 </p>
-              </GlowingCard>
+              </section>
             </div>
           </RevealOnScroll>
 
@@ -102,7 +116,7 @@ export default function ProfessionalJourney() {
                 <div className="w-full h-px bg-border/40 mt-4"></div>
               </div>
               
-              <GlowingCard className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
+              <section className="pb-8 border-b border-border/40">
                 <div className="flex gap-3 items-start mb-4">
                   <Lightbulb className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
                   <h3 className="text-lg font-medium text-foreground">Understanding Systems and Organizations</h3>
@@ -122,7 +136,7 @@ export default function ProfessionalJourney() {
                 <p className="text-[13px] text-muted-foreground italic border-l-2 border-border/40 pl-4">
                   This became the foundation of how I approach projects today: understanding the problem before designing the solution.
                 </p>
-              </GlowingCard>
+              </section>
             </div>
           </RevealOnScroll>
 
@@ -136,7 +150,7 @@ export default function ProfessionalJourney() {
                 <div className="w-full h-px bg-border/40 mt-4"></div>
               </div>
               
-              <GlowingCard className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
+              <section className="pb-8 border-b border-border/40">
                 <div className="flex gap-3 items-start mb-4">
                   <Users className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
                   <div>
@@ -150,7 +164,7 @@ export default function ProfessionalJourney() {
                   Served as the elected Class Mayor during my third year, representing the class in academic and student-related activities. My responsibilities included coordinating with faculty members, organizing class concerns, communicating announcements, and helping ensure smooth coordination between students and instructors.
                 </p>
                 <div className="pt-6 border-t border-border/40">
-                  <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-3">Skills Developed</h4>
+                  <h4 className="text-sm font-semibold text-foreground mb-3">Skills developed</h4>
                   <div className="flex flex-wrap gap-x-4 gap-y-2">
                     {classMayorSkills.map((skill, i) => (
                       <span key={i} className="text-[12px] text-muted-foreground flex items-center gap-1.5">
@@ -159,7 +173,7 @@ export default function ProfessionalJourney() {
                     ))}
                   </div>
                 </div>
-              </GlowingCard>
+              </section>
             </div>
           </RevealOnScroll>
 
@@ -177,7 +191,7 @@ export default function ProfessionalJourney() {
                 <div className="flex gap-3 items-start mb-4">
                   <Rocket className="w-5 h-5 text-foreground shrink-0 mt-0.5" />
                   <div>
-                    <h3 className="text-lg font-medium text-foreground">TumaNow Startup</h3>
+                    <h3 className="text-lg font-medium text-foreground"><Link href="/case-files/tumanow" className="underline underline-offset-4">TumaNow Startup</Link></h3>
                     <p className="text-[12px] font-mono uppercase tracking-widest text-muted-foreground mt-1">
                       Co-Founder • Business Analyst • Chief Financial Officer
                     </p>
@@ -189,7 +203,7 @@ export default function ProfessionalJourney() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div>
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-4">My Responsibilities</h4>
+                    <h4 className="text-sm font-semibold text-foreground mb-4">My responsibilities</h4>
                     <ul className="space-y-2">
                       {tumanowResponsibilities.map((resp, i) => (
                         <li key={i} className="text-[13px] text-muted-foreground flex items-start gap-2">
@@ -201,7 +215,7 @@ export default function ProfessionalJourney() {
                   </div>
 
                   <div>
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-4">Milestones</h4>
+                    <h4 className="text-sm font-semibold text-foreground mb-4">Milestones</h4>
                     <ul className="space-y-4">
                       <li className="text-[13px] text-foreground font-medium flex items-start gap-3">
                         <Trophy className="w-4 h-4 text-muted-foreground shrink-0 mt-[2px]" />
@@ -268,7 +282,7 @@ export default function ProfessionalJourney() {
                     Served as Auditor of ISAT U ANALYTICA, the Information Systems student organization. Managed organizational records, assisted in planning activities, and supported organizational operations while ensuring accountability and proper documentation.
                   </p>
                   <div className="flex flex-wrap gap-x-4 gap-y-2">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-foreground mr-2 mt-[2px]">Skills:</span>
+                    <span className="text-sm font-semibold text-foreground mr-2 mt-[2px]">Skills:</span>
                     {auditorSkills.map((skill, i) => (
                       <span key={i} className="text-[12px] text-muted-foreground">{skill}</span>
                     ))}
@@ -304,7 +318,7 @@ export default function ProfessionalJourney() {
                   </p>
                   
                   <div className="mb-6">
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-3">Responsibilities</h4>
+                    <h4 className="text-sm font-semibold text-foreground mb-3">Responsibilities</h4>
                     <ul className="space-y-2">
                       {kwadraResponsibilities.map((resp, i) => (
                         <li key={i} className="text-[13px] text-muted-foreground flex items-start gap-2">
@@ -315,7 +329,7 @@ export default function ProfessionalJourney() {
                   </div>
 
                   <div className="mb-8">
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-3">Achievement</h4>
+                    <h4 className="text-sm font-semibold text-foreground mb-3">Achievement</h4>
                     <div className="inline-flex items-center gap-3 bg-background border border-border/40 px-4 py-3 text-[13px] text-foreground font-medium">
                       <Trophy className="w-4 h-4 text-foreground shrink-0" />
                       Outstanding Intern Award
@@ -339,7 +353,7 @@ export default function ProfessionalJourney() {
                     Supported the implementation of Wadhwani Foundation programs by coordinating with faculty members from different universities and monitoring their progress on the Wadhwani platform.
                   </p>
                   <div className="mb-6">
-                    <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-3">Responsibilities</h4>
+                    <h4 className="text-sm font-semibold text-foreground mb-3">Responsibilities</h4>
                     <ul className="space-y-2">
                       {wadhwaniResponsibilities.map((resp, i) => (
                         <li key={i} className="text-[13px] text-muted-foreground flex items-start gap-2">
@@ -372,7 +386,7 @@ export default function ProfessionalJourney() {
                   <div className="flex gap-3 items-start mb-4">
                     <Terminal className="w-5 h-5 text-foreground shrink-0 mt-0.5" />
                     <div>
-                      <h3 className="text-lg font-medium text-foreground">Backyard Livestock Monitoring System (BLMS)</h3>
+                      <h3 className="text-lg font-medium text-foreground"><Link href="/case-files/blms" className="underline underline-offset-4">Backyard Livestock Monitoring System (BLMS)</Link></h3>
                       <p className="text-[12px] font-mono uppercase tracking-widest text-muted-foreground mt-1">Project Manager & System Analyst</p>
                     </div>
                   </div>
@@ -382,7 +396,7 @@ export default function ProfessionalJourney() {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                     <div>
-                      <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-4">Responsibilities</h4>
+                      <h4 className="text-sm font-semibold text-foreground mb-4">Responsibilities</h4>
                       <ul className="space-y-2">
                         {blmsResponsibilities.map((resp, i) => (
                           <li key={i} className="text-[13px] text-muted-foreground flex items-start gap-2">
@@ -394,7 +408,7 @@ export default function ProfessionalJourney() {
                     </div>
 
                     <div>
-                      <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-4">Achievement</h4>
+                      <h4 className="text-sm font-semibold text-foreground mb-4">Achievement</h4>
                       <div className="text-[13px] text-foreground font-medium flex items-center gap-3 bg-background border border-border/40 px-4 py-3">
                         <Trophy className="w-4 h-4 text-foreground shrink-0" />
                         Best Capstone Project Award
@@ -437,6 +451,15 @@ export default function ProfessionalJourney() {
           </RevealOnScroll>
 
           {/* Continuous Learning */}
+          <RevealOnScroll>
+            <section className="relative pl-8 md:pl-12">
+              <div className="absolute -left-[5.5px] top-3 h-2.5 w-2.5 rounded-full bg-foreground ring-4 ring-background" />
+              <h2 className="mb-6 text-2xl font-light">Independent Software Development</h2>
+              <h3 className="mb-3 text-lg font-medium"><Link href="/case-files/pricepulse" className="underline underline-offset-4">PricePulse PH</Link></h3>
+              <p className="text-sm leading-relaxed text-muted-foreground">Built a full-stack commodity-price dashboard as a solo developer, from cleaning and importing historical records to implementing analytics, refining the interface, and deploying the Next.js application on Vercel with PostgreSQL and Prisma.</p>
+            </section>
+          </RevealOnScroll>
+
           <RevealOnScroll delay={100}>
             <div className="relative pl-8 md:pl-12">
               <div className="absolute w-2.5 h-2.5 bg-foreground rounded-full -left-[5.5px] top-3 ring-4 ring-background"></div>
@@ -455,7 +478,7 @@ export default function ProfessionalJourney() {
                   I actively participate in conferences, innovation programs, leadership training, and technical workshops to continuously improve my knowledge and professional skills.
                 </p>
 
-                <h4 className="text-[10px] font-mono uppercase tracking-widest text-foreground mb-4">Selected Learning Experiences</h4>
+                <h4 className="text-sm font-semibold text-foreground mb-4">Selected learning experiences</h4>
                 <ul className="space-y-4 mb-8">
                   {learningExperiences.map((item, i) => (
                     <li key={i} className="text-[13px] text-foreground flex items-start gap-3">
@@ -505,4 +528,3 @@ export default function ProfessionalJourney() {
     </main>
   );
 }
-

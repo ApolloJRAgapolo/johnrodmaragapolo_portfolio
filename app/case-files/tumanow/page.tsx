@@ -1,3 +1,4 @@
+import CaseStudyContext from "@/components/features/case-files/CaseStudyContext";
 import Link from "next/link";
 import { 
   ArrowLeft, 
@@ -15,14 +16,17 @@ import {
   UserCog,
   Bot,
   Activity,
-  Code2
+  Code2,
+  ChartNoAxesCombined, Coins, LayoutTemplate, Palette, Rocket, Search, Workflow
 } from "lucide-react";
-import GlowingCard from "@/components/GlowingCard";
-import RevealOnScroll from "@/components/RevealOnScroll";
+import { SiFigma, SiGithub, SiHtml5, SiJavascript, SiMysql, SiPhp, SiTailwindcss } from "react-icons/si";
+import { FaCss3Alt } from "react-icons/fa";
+import GlowingCard from "@/components/shared/GlowingCard";
+import RevealOnScroll from "@/components/shared/RevealOnScroll";
 
 export default function TumaNowCaseFile() {
   return (
-    <main className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background pb-32">
+    <main id="main-content" tabIndex={-1} className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background pb-32">
       <div className="max-w-4xl mx-auto w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-16">
         
         {/* NAVIGATION */}
@@ -31,7 +35,7 @@ export default function TumaNowCaseFile() {
           className="inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors mb-16"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
-          Back to System Deployments
+          Back to Case Files
         </Link>
 
         {/* HEADER */}
@@ -66,7 +70,7 @@ export default function TumaNowCaseFile() {
         </header>
         </RevealOnScroll>
 
-        <hr className="border-border/40 mb-16" />
+        <CaseStudyContext id="tumanow" sections={[{"id": "areas-of-contribution", "label": "Areas of Contribution"}, {"id": "business-analysis-process", "label": "Business Analysis Process"}, {"id": "solution-overview", "label": "Solution Overview"}, {"id": "technology-stack", "label": "Technology Stack"}, {"id": "startup-journey", "label": "Startup Journey"}, {"id": "business-impact", "label": "Business Impact"}, {"id": "outcomes", "label": "Outcomes"}]} />
 
         {/* CORE CONTEXT (3-Column Grid) */}
         <RevealOnScroll delay={100}>
@@ -133,29 +137,30 @@ export default function TumaNowCaseFile() {
         {/* MY CONTRIBUTIONS (2x2 Grid) */}
         <RevealOnScroll delay={100}>
         <section className="mb-20">
-          <h2 className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground mb-6 flex items-center gap-2">
+          <h2 id="areas-of-contribution" className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground mb-6 flex items-center gap-2">
             <Briefcase className="w-4 h-4" /> Areas of Contribution
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               {
-                title: "Business Analysis",
+                title: "Business Analysis", icon: Search,
                 items: ["Conducted stakeholder interviews", "Gathered business requirements", "Documented project needs", "Analyzed existing workflows", "Identified process improvements"]
               },
               {
-                title: "Product Planning",
+                title: "Product Planning", icon: LayoutTemplate,
                 items: ["Helped define the product vision", "Prioritized core features", "Planned the project roadmap", "Coordinated with the development team"]
               },
               {
-                title: "Financial Planning",
+                title: "Financial Planning", icon: Coins,
                 items: ["Prepared financial projections", "Helped develop the business model", "Assisted in pricing and sustainability planning"]
               },
               {
-                title: "Startup Development",
+                title: "Startup Development", icon: Rocket,
                 items: ["Prepared pitch presentations", "Participated in startup mentoring", "Presented the solution to evaluators and stakeholders"]
               }
             ].map((area, i) => (
               <GlowingCard key={i} className="border border-border/40 p-6 bg-secondary/5 hover:bg-secondary/10 transition-colors">
+                <area.icon className="mb-4 h-5 w-5 text-muted-foreground" aria-hidden="true" />
                 <h3 className="text-[12px] font-mono uppercase tracking-widest text-foreground mb-4 border-b border-border/40 pb-2">{area.title}</h3>
                 <ul className="space-y-2">
                   {area.items.map((item, j) => (
@@ -173,16 +178,17 @@ export default function TumaNowCaseFile() {
         {/* BUSINESS ANALYSIS PROCESS (Phased Grid Layout) */}
         <RevealOnScroll delay={100}>
         <section className="mb-24">
-          <h2 className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground mb-6">Business Analysis Process</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-border/40 divide-y md:divide-y-0 md:divide-x divide-border/40 bg-secondary/5">
+          <h2 id="business-analysis-process" className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground mb-6 flex items-center gap-3"><Workflow className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />Business Analysis Process</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 border border-border/40 divide-y md:divide-y-0 md:divide-x divide-border/40 bg-secondary/5">
             {[
-              { id: "01", title: "Discovery", steps: ["Problem Identification", "Stakeholder Interviews (PPDO)", "Requirements Gathering"] },
-              { id: "02", title: "Architecture", steps: ["Workflow Analysis", "Process Mapping", "Solution Design"] },
-              { id: "03", title: "Prototyping", steps: ["Wireframing", "System Development", "Prototype Testing"] },
-              { id: "04", title: "Validation", steps: ["Client Validation", "Feedback Integration"] }
+              { id: "01", title: "Discovery", icon: Search, steps: ["Problem Identification", "Stakeholder Interviews (PPDO)", "Requirements Gathering"] },
+              { id: "02", title: "Architecture", icon: Workflow, steps: ["Workflow Analysis", "Process Mapping", "Solution Design"] },
+              { id: "03", title: "Prototyping", icon: LayoutTemplate, steps: ["Wireframing", "System Development", "Prototype Testing"] },
+              { id: "04", title: "Validation", icon: ShieldCheck, steps: ["Client Validation", "Feedback Integration"] }
             ].map((phase, i) => (
                <GlowingCard key={i} className="p-6 md:p-8 hover:bg-secondary/10 transition-colors">
-                 <div className="flex items-baseline gap-2 mb-6 border-b border-border/40 pb-4">
+                 <phase.icon className="mb-4 h-5 w-5 text-muted-foreground" aria-hidden="true" />
+                 <div className="flex flex-wrap items-baseline gap-2 mb-6 border-b border-border/40 pb-4">
                    <span className="text-[10px] font-mono text-muted-foreground">{phase.id}</span>
                    <h3 className="text-[11px] font-mono uppercase tracking-widest text-foreground">{phase.title}</h3>
                  </div>
@@ -203,8 +209,8 @@ export default function TumaNowCaseFile() {
         {/* SOLUTION OVERVIEW (Feature Cards) */}
         <RevealOnScroll delay={100}>
         <section className="mb-24">
-          <h2 className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground mb-6">Solution Overview</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <h2 id="solution-overview" className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground mb-6 flex items-center gap-3"><LayoutDashboard className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />Solution Overview</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {[
               { title: "Dashboard", desc: "Provides an overview of projects, budgets, and completion status.", icon: LayoutDashboard },
               { title: "Project Monitoring", desc: "Tracks project progress from planning to completion.", icon: Activity },
@@ -232,20 +238,26 @@ export default function TumaNowCaseFile() {
         {/* TECH STACK */}
         <RevealOnScroll delay={100}>
         <section className="mb-24">
-          <h2 className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground mb-6 flex items-center gap-2">
+          <h2 id="technology-stack" className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground mb-6 flex items-center gap-2">
             <Code2 className="w-4 h-4" /> Technology Stack
           </h2>
           <div className="border border-border/40 p-6 bg-secondary/5 flex flex-wrap gap-8">
             {[
-              { category: "Frontend", tools: "HTML, CSS, JavaScript, Tailwind CSS" },
-              { category: "Backend", tools: "PHP" },
-              { category: "Database", tools: "MySQL" },
-              { category: "AI Integrations", tools: "AI-assisted database querying" },
-              { category: "Tools", tools: "Figma, GitHub, Canva" }
+              { category: "Frontend", tools: [{ name: "HTML", icon: SiHtml5 }, { name: "CSS", icon: FaCss3Alt }, { name: "JavaScript", icon: SiJavascript }, { name: "Tailwind CSS", icon: SiTailwindcss }] },
+              { category: "Backend", tools: [{ name: "PHP", icon: SiPhp }] },
+              { category: "Database", tools: [{ name: "MySQL", icon: SiMysql }] },
+              { category: "AI Integrations", tools: [{ name: "AI-assisted database querying", icon: Bot }] },
+              { category: "Tools", tools: [{ name: "Figma", icon: SiFigma }, { name: "GitHub", icon: SiGithub }, { name: "Canva", icon: Palette }] }
             ].map((stack, i) => (
-              <div key={i} className="flex flex-col gap-1">
+              <div key={i} className="flex min-w-0 flex-col gap-3">
                 <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">{stack.category}</span>
-                <span className="text-[13px] text-foreground">{stack.tools}</span>
+                <ul aria-label={stack.category} className="flex flex-wrap gap-2">
+                  {stack.tools.map(({ name, icon: Icon }) => (
+                    <li key={name} className="inline-flex items-center gap-2.5 border border-border/40 bg-card/30 px-3 py-2 text-[11px] font-mono text-foreground">
+                      <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />{name}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
@@ -255,7 +267,7 @@ export default function TumaNowCaseFile() {
         {/* STARTUP JOURNEY (Horizontal Timeline) */}
         <RevealOnScroll delay={100}>
         <section className="mb-24 overflow-hidden">
-          <h2 className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground mb-6">Startup Journey</h2>
+          <h2 id="startup-journey" className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground mb-6 flex items-center gap-3"><Rocket className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />Startup Journey</h2>
           <div className="border border-border/40 p-8 bg-secondary/5 flex flex-wrap gap-y-6 gap-x-4 items-center">
             {[
               "Hackathon Challenge", "Problem Selection", "PPDO Stakeholder Interviews", 
@@ -264,7 +276,7 @@ export default function TumaNowCaseFile() {
               "Client Validation", "Potential Government Adoption"
             ].map((step, i, arr) => (
               <div key={i} className="flex items-center gap-4">
-                <span className={`text-[11px] font-mono px-3 py-1.5 whitespace-nowrap border ${
+                <span className={`text-[11px] font-mono px-3 py-1.5 whitespace-normal border ${
                   step === "Champion" || step === "Potential Government Adoption" 
                   ? "bg-foreground text-background border-foreground font-semibold" 
                   : "bg-background text-foreground border-border/60"
@@ -283,7 +295,8 @@ export default function TumaNowCaseFile() {
         {/* BUSINESS IMPACT (Before vs After Ledger) */}
         <RevealOnScroll delay={100}>
         <section className="mb-24">
-          <h2 className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground mb-6">Business Impact</h2>
+          <h2 id="business-impact" className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground mb-6 flex items-center gap-3"><ChartNoAxesCombined className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />Capabilities &amp; Expected Benefits</h2>
+          <p className="mb-6 text-sm leading-relaxed text-muted-foreground">The prototype demonstrates centralized monitoring workflows. The comparisons below describe intended benefits, not measured improvements from government adoption. PPDO evaluation remains separate from deployment.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 border border-border/40 divide-y md:divide-y-0 md:divide-x divide-border/40 bg-card/50">
             {/* BEFORE */}
             <div className="p-8">
@@ -301,10 +314,10 @@ export default function TumaNowCaseFile() {
             {/* AFTER */}
             <div className="p-8 bg-secondary/5">
               <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-foreground mb-6 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-500/50"></span> TumaNow Platform
+                <span className="w-2 h-2 rounded-full bg-green-500/50"></span> Prototype capabilities
               </h3>
               <ul className="space-y-4">
-                {["Centralized project records", "Real-time dashboards", "Faster, automated reporting", "Location-based map monitoring", "Improved public transparency"].map((item, i) => (
+                {["Centralized project records", "Real-time dashboards", "Structured reporting workflows", "Location-based map monitoring", "Support for public transparency"].map((item, i) => (
                    <li key={i} className="text-[13px] text-foreground font-medium flex items-center gap-3">
                      <span className="text-foreground/40">+</span> {item}
                    </li>
@@ -322,7 +335,7 @@ export default function TumaNowCaseFile() {
           <section>
             <div className="flex items-center gap-2 mb-8">
               <Trophy className="w-4 h-4 text-foreground" />
-              <h2 className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground">Outcomes</h2>
+              <h2 id="outcomes" className="text-[11px] font-mono uppercase tracking-[0.2em] text-foreground">Outcomes</h2>
             </div>
             <dl className="space-y-6">
               <div>

@@ -27,6 +27,8 @@ const config = {
         input: "hsl(var(--input))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        muted: { DEFAULT: "hsl(var(--muted))", foreground: "hsl(var(--muted-foreground))" },
+        secondary: { DEFAULT: "hsl(var(--secondary))", foreground: "hsl(var(--secondary-foreground))" },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

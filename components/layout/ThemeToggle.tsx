@@ -60,8 +60,8 @@ export default function ThemeToggle() {
   useEffect(() => {
     const stored = getStoredTheme();
     themeRef.current = stored;
-    setTheme(stored);
     applyTheme(stored);
+    const syncTheme = window.setTimeout(() => setTheme(stored), 0);
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const updateSystemTheme = () => {
@@ -69,7 +69,10 @@ export default function ThemeToggle() {
     };
 
     mediaQuery.addEventListener("change", updateSystemTheme);
-    return () => mediaQuery.removeEventListener("change", updateSystemTheme);
+    return () => {
+      window.clearTimeout(syncTheme);
+      mediaQuery.removeEventListener("change", updateSystemTheme);
+    };
   }, []);
 
   const selectTheme = (nextTheme: Theme) => {
@@ -80,11 +83,11 @@ export default function ThemeToggle() {
   };
 
   return (
-    <div suppressHydrationWarning className="mb-8 border-t border-border/40 pt-8">
-      <h3 className="mb-4 px-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+    <div suppressHydrationWarning className="mb-3 pt-3">
+      <h3 className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
         Appearance
       </h3>
-      <div className="grid grid-cols-3 rounded-md border border-border/50 bg-secondary/20 p-1">
+      <div className="flex items-center gap-1">
         {themeOptions.map(({ value, label, icon: Icon }) => {
           const isActive = theme === value;
 
@@ -94,9 +97,9 @@ export default function ThemeToggle() {
               type="button"
               aria-pressed={isActive}
               onClick={() => selectTheme(value)}
-              className={`flex min-h-11 flex-col items-center justify-center gap-1 rounded-sm px-2 py-2 text-[9px] font-medium transition-[background-color,color,box-shadow] duration-[400ms] ease-out ${
+              className={`flex min-h-7 flex-row items-center justify-center gap-1 rounded-sm px-1.5 py-1 text-[9px] font-medium transition-[background-color,color,box-shadow] duration-[400ms] ease-out ${
                 isActive
-                  ? "bg-background text-foreground shadow-sm"
+                  ? "bg-secondary text-foreground"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
