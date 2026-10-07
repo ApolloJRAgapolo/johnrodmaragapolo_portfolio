@@ -308,7 +308,7 @@ GitHub:
 https://github.com/ApolloJRAgapolo
 
 Portfolio:
-(Your deployed portfolio URL)
+https://johnrodmaragapolo-portfolio.vercel.app/
 
 LinkedIn:
 https://www.linkedin.com/in/john-rodmar-agapolo-9492602b2/
