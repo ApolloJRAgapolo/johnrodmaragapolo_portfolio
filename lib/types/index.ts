@@ -19,6 +19,7 @@ export type DocumentItem = {
   viewerMetadata?: DocumentMetadata;
   aspectRatio?: number;
   viewerOptions?: ViewerOptions;
+  kind?: CredentialKind;
 };
 
 export type ViewerOptions = {
@@ -63,10 +64,21 @@ export type ProfessionalDocument = {
   viewerOptions: ViewerOptions;
 };
 
+export type CredentialKind =
+  | "Professional certification"
+  | "Course completion"
+  | "Certificate of completion"
+  | "Certificate of participation"
+  | "Recognition / award"
+  | "Internship documentation"
+  | "Training documentation"
+  | "Supporting document";
+
 type CredentialBase = {
   title: string;
   issuer: string;
   logoSrc?: string;
+  kind: CredentialKind;
 };
 
 export type Credential =
@@ -76,6 +88,8 @@ export type Credential =
 export type CaseFile = {
   id: string;
   type: string;
+  category?: string;
+  cardDescription?: string;
   title: string;
   summary: string;
   headline?: string;
@@ -93,6 +107,18 @@ export type CaseFile = {
     year?: string;
   };
 };
+
+export type ProjectImage = {
+  id: string;
+  title: string;
+  description: string;
+  alt: string;
+  original: { src: string; width: number; height: number };
+  preview: { src: string; width: number; height: number };
+  display: { src: string; width: number; height: number };
+};
+
+export type ProjectDiagram = ProjectImage & { originalFilename: string };
 
 export type EcosystemNode = {
   id: string;
@@ -118,6 +144,21 @@ export type CapabilityGroup = {
   icon: IconComponent;
   delay: number;
   competencies: Capability[];
+};
+
+export type StackTechnology = {
+  name: string;
+  icon: IconComponent;
+};
+
+export type TechnologyStackGroup = {
+  id: string;
+  title: string;
+  technologies: StackTechnology[];
+  summary: string;
+  learning?: StackTechnology[];
+  learningNote?: string;
+  evidence: { label: string; href: string }[];
 };
 
 export type PreviewDocument = {

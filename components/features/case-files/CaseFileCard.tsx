@@ -1,114 +1,53 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import GlowingCard from "@/components/shared/GlowingCard";
+import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
+import { SiGithub } from "react-icons/si";
+import TechnologyList from "@/components/shared/TechnologyList";
+import { actionStyles } from "@/lib/action-styles";
 import type { CaseFile } from "@/lib/types";
 
 export default function CaseFileCard({ file }: { file: CaseFile }) {
-  const { role, client, audience, focus, focusLabel, status, year } = file.metadata;
+  const { role, focus, focusLabel, status, year } = file.metadata;
+  const contributionLabel = focusLabel === "TECH STACK" ? "Technology stack" : "Areas of contribution";
 
   return (
-    <GlowingCard className={`border border-border/40 p-5 sm:p-8 md:p-10 transition-all duration-300 ${
-      file.isAvailable ? "hover:border-foreground/40 hover:bg-secondary/5" : "opacity-80"
-    }`}>
-      <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
-        
-        {/* LEFT: MAIN SUMMARY & ACTION */}
-        <div className="min-w-0 xl:col-span-7 flex flex-col justify-between h-full">
-          <div>
-            <div className="mb-6">
-              <span className="inline-block max-w-full text-[11px] font-mono uppercase tracking-widest text-muted-foreground border border-border/40 px-3 py-1">
-                {file.type}
-              </span>
-            </div>
-            
-            <h2 className="text-2xl font-semibold text-foreground mb-4">
-              {file.title}
-            </h2>
-            
-            <p className="text-[14px] leading-relaxed text-foreground/80 mb-12 max-w-lg">
-              {file.headline ?? file.summary}
-            </p>
-            {file.proofPoints && (
-              <p className="mb-8 text-[11px] font-mono leading-relaxed text-muted-foreground">
-                {file.proofPoints.join(" · ")}
-              </p>
-            )}
-          </div>
-
-          <div>
-            {file.isAvailable && (
-              <Link 
-                href={`/case-files/${file.id}`}
-                className="inline-flex min-h-11 items-center gap-2 text-[11px] font-mono text-foreground uppercase tracking-widest hover:text-muted-foreground transition-colors group/link"
-              >
-                <span>VIEW FULL CASE FILE</span>
-                <ArrowUpRight className="w-3.5 h-3.5 stroke-[1.5] transition-transform duration-300 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
-              </Link>
-            )}
-            {file.liveUrl && <a href={file.liveUrl} target="_blank" rel="noreferrer" className="mt-4 block text-xs underline underline-offset-4 text-foreground">Open live application</a>}
-          </div>
+    <article data-case-file={file.id} className="min-w-0 rounded-lg border border-border bg-card p-5 transition-colors hover:border-muted-foreground/50 motion-reduce:transition-none sm:p-7">
+      <header>
+        <p className="mb-2 text-xs leading-relaxed text-muted-foreground">{file.category ?? file.type}</p>
+        <div className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">
+          <h2 className="text-xl font-semibold leading-snug tracking-tight text-foreground sm:text-2xl">{file.title}</h2>
+          <p className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1.5 text-xs leading-relaxed text-muted-foreground">
+            <span className="max-w-full rounded-full bg-secondary/40 px-3 py-1.5 leading-snug">{status}</span>
+            {year && <span>{year}</span>}
+          </p>
         </div>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-foreground/80">{file.cardDescription ?? file.headline ?? file.summary}</p>
+      </header>
 
-        {/* RIGHT: METADATA LEDGER */}
-        <div className="min-w-0 xl:col-span-5 border-t xl:border-t-0 xl:border-l border-border/40 pt-8 xl:pt-0 xl:pl-10">
-          <dl className="grid grid-cols-2 gap-y-8 gap-x-6">
-            
-            <div className="col-span-2">
-              <dt className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-2">
-                ROLE
-              </dt>
-              <dd className="text-[13px] font-medium text-foreground leading-snug">
-                {role}
-              </dd>
-            </div>
-
-            <div className="col-span-2">
-              <dt className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-2">
-                {audience ? "PRIMARY USERS" : "CLIENT"}
-              </dt>
-              <dd className="text-[13px] font-medium text-foreground leading-snug">
-                {audience ?? client}
-              </dd>
-            </div>
-
-            <div className="col-span-2">
-              <dt className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                {focusLabel ?? "FOCUS"}
-              </dt>
-              <dd className="flex flex-wrap gap-2">
-                {focus.map((item, i) => (
-                  <span 
-                    key={i} 
-                    className="text-[11px] font-mono text-foreground border border-border/40 px-2.5 py-1"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </dd>
-            </div>
-
-            <div>
-              <dt className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-2">
-                STATUS
-              </dt>
-              <dd className="text-[13px] font-medium text-foreground">
-                {status}
-              </dd>
-            </div>
-
-            {year && <div>
-              <dt className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mb-2">
-                YEAR
-              </dt>
-              <dd className="text-[13px] font-mono text-foreground">
-                {year}
-              </dd>
-            </div>}
-
-          </dl>
+      <dl className="mt-5 grid gap-x-8 gap-y-5 border-t border-border/60 pt-4 sm:grid-cols-2">
+        <div className="min-w-0">
+          <dt className="text-xs leading-relaxed text-muted-foreground">My contribution</dt>
+          <dd className="mt-2">
+            <p className="text-sm leading-relaxed text-foreground/90">{role}</p>
+            {file.proofPoints && file.proofPoints.length > 0 && <ul aria-label={`${file.title}: project evidence`} className="mt-2.5 space-y-1.5">
+              {file.proofPoints.map((point) => <li key={point} className="flex items-start gap-2 text-xs leading-relaxed text-muted-foreground"><Check className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />{point}</li>)}
+            </ul>}
+          </dd>
         </div>
+        <div className="min-w-0">
+          <dt className="text-xs leading-relaxed text-muted-foreground">{contributionLabel}</dt>
+          <dd className="mt-2">
+            <TechnologyList items={focus} label={`${file.title}: ${contributionLabel.toLowerCase()}`} className="gap-x-4 gap-y-2.5 sm:grid sm:grid-cols-1 md:grid-cols-2" />
+          </dd>
+        </div>
+      </dl>
 
+      <div role="group" aria-label={`${file.title}: project links`} className="mt-5 flex flex-wrap items-center gap-2 border-t border-border/60 pt-4">
+        {file.isAvailable && <Link href={`/case-files/${file.id}`} className={actionStyles({ variant: "primary" })}>
+          View case study<ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+        </Link>}
+        {file.liveUrl && <a href={file.liveUrl} target="_blank" rel="noreferrer" aria-label={`Open ${file.title} live app in a new tab`} className={actionStyles({ variant: "secondary" })}>Live app<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" /></a>}
+        {file.repositoryUrl && <a href={file.repositoryUrl} target="_blank" rel="noreferrer" aria-label={`Open ${file.title} source on GitHub in a new tab`} className={actionStyles({ variant: "quiet" })}><SiGithub className="h-4 w-4 shrink-0" aria-hidden="true" />Source<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true" /></a>}
       </div>
-    </GlowingCard>
+    </article>
   );
 }

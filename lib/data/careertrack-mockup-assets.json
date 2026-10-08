@@ -1,0 +1,183 @@
+{
+  "method": "Native screenshot compositing with a code-drawn browser frame, cropped to the browser window without an outer backdrop; no generated or redrawn app UI.",
+  "address": "careertrack-ops.vercel.app",
+  "canvas": {
+    "width": 1552,
+    "height": 974
+  },
+  "browserWindow": {
+    "left": 0,
+    "top": 0,
+    "width": 1552,
+    "height": 974,
+    "radius": 14
+  },
+  "viewport": {
+    "left": 8,
+    "top": 56,
+    "width": 1536,
+    "height": 910
+  },
+  "screens": [
+    {
+      "id": "opportunity-desk",
+      "title": "Opportunity Desk",
+      "sourceFilename": "Screenshot 2026-10-07 222203.png",
+      "original": {
+        "src": "/case-files/careertrack/originals/opportunity-desk.png",
+        "width": 1919,
+        "height": 909,
+        "sha256": "3a313abb4fa0334fe154cc381418d05aa253010103a752f7db20cca6e319ae98"
+      },
+      "crop": {
+        "left": 191,
+        "top": 0,
+        "width": 1536,
+        "height": 909
+      },
+      "placement": {
+        "left": 8,
+        "top": 56
+      },
+      "master": {
+        "src": "/case-files/careertrack/mockups/opportunity-desk.png",
+        "width": 1552,
+        "height": 974,
+        "bytes": 80848,
+        "sha256": "5b7dfa4de2d14cb931c686b4d9a872f0196280b0f5144b1c729da17036bb63d4"
+      },
+      "web": {
+        "src": "/case-files/careertrack/mockups/opportunity-desk.webp",
+        "width": 1552,
+        "height": 974,
+        "bytes": 46068,
+        "sha256": "bd6fe832c5e246143ab8e8bf309db9627d35811660e5c2545a07e751057a7a57"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "nativeScreenshotPixelsIdentical": true,
+        "webEncodingLossless": true
+      }
+    },
+    {
+      "id": "applications",
+      "title": "Applications",
+      "sourceFilename": "Screenshot 2026-10-07 222213.png",
+      "original": {
+        "src": "/case-files/careertrack/originals/applications.png",
+        "width": 1918,
+        "height": 908,
+        "sha256": "99d25b6edb8b7f5af12318b6ca1cde0b542daeae484d28c96e1e7450cdad39fd"
+      },
+      "crop": {
+        "left": 191,
+        "top": 0,
+        "width": 1536,
+        "height": 908
+      },
+      "placement": {
+        "left": 8,
+        "top": 57
+      },
+      "master": {
+        "src": "/case-files/careertrack/mockups/applications.png",
+        "width": 1552,
+        "height": 974,
+        "bytes": 71914,
+        "sha256": "ded84a17dba520e6f4dd6902acc84c7898069971e5b688125787b1b07304ef7a"
+      },
+      "web": {
+        "src": "/case-files/careertrack/mockups/applications.webp",
+        "width": 1552,
+        "height": 974,
+        "bytes": 39674,
+        "sha256": "66a33cd2bde5bdb7fc5c2fe3c22bb49a9807f5d61214de6df93897ef9c704389"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "nativeScreenshotPixelsIdentical": true,
+        "webEncodingLossless": true
+      }
+    },
+    {
+      "id": "pipeline",
+      "title": "Pipeline",
+      "sourceFilename": "Screenshot 2026-10-07 222225.png",
+      "original": {
+        "src": "/case-files/careertrack/originals/pipeline.png",
+        "width": 1918,
+        "height": 908,
+        "sha256": "556edfaa69a499cc10eada6e6acd10589ab3cb61ab6a93c234a133b564604ee2"
+      },
+      "crop": {
+        "left": 191,
+        "top": 0,
+        "width": 1536,
+        "height": 908
+      },
+      "placement": {
+        "left": 8,
+        "top": 57
+      },
+      "master": {
+        "src": "/case-files/careertrack/mockups/pipeline.png",
+        "width": 1552,
+        "height": 974,
+        "bytes": 63481,
+        "sha256": "a0443478fb4c35e73994d44dd6f41e2b12dec5a947e3b772606cf652b576f81f"
+      },
+      "web": {
+        "src": "/case-files/careertrack/mockups/pipeline.webp",
+        "width": 1552,
+        "height": 974,
+        "bytes": 36674,
+        "sha256": "015d4fa5546890f35a214460a90492c5c9db6b90937c55057a8cdb762aa0111e"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "nativeScreenshotPixelsIdentical": true,
+        "webEncodingLossless": true
+      }
+    },
+    {
+      "id": "insights",
+      "title": "Insights",
+      "sourceFilename": "Screenshot 2026-10-07 222243.png",
+      "original": {
+        "src": "/case-files/careertrack/originals/insights.png",
+        "width": 1917,
+        "height": 907,
+        "sha256": "521af47e260aac8782a9c1b1ff75e3d0abbb443a368bfa35f5dd300288af97a5"
+      },
+      "crop": {
+        "left": 190,
+        "top": 0,
+        "width": 1536,
+        "height": 907
+      },
+      "placement": {
+        "left": 8,
+        "top": 57
+      },
+      "master": {
+        "src": "/case-files/careertrack/mockups/insights.png",
+        "width": 1552,
+        "height": 974,
+        "bytes": 78986,
+        "sha256": "c8d9c031a02eea888d149909454af52e63b45475fb1d6d7584c039d881155371"
+      },
+      "web": {
+        "src": "/case-files/careertrack/mockups/insights.webp",
+        "width": 1552,
+        "height": 974,
+        "bytes": 45452,
+        "sha256": "4ce9d7b7c9b487ef2521be5faa1986880d2eac937c607ed234bf3a448bcd530a"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "nativeScreenshotPixelsIdentical": true,
+        "webEncodingLossless": true
+      }
+    }
+  ]
+}

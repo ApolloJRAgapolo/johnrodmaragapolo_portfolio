@@ -1,226 +1,202 @@
-import { Briefcase, Cpu, Database, LayoutGrid, Bot, Code2, Users } from "lucide-react";
-import type { CapabilityGroup } from "@/lib/types";
+import { Cpu, Database, LayoutGrid, Users } from "lucide-react";
+import { FaCss3Alt } from "react-icons/fa";
+import {
+  SiGit,
+  SiCloudflare,
+  SiExpress,
+  SiGithub,
+  SiHtml5,
+  SiJavascript,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPrisma,
+  SiRailway,
+  SiReact,
+  SiTailwindcss,
+  SiTypescript,
+  SiVercel,
+} from "react-icons/si";
+import type { CapabilityGroup, TechnologyStackGroup } from "@/lib/types";
 
-const groups: CapabilityGroup[] = [
+const pricePulse = { label: "PricePulse PH", href: "/case-files/pricepulse" };
+const careerTrack = { label: "CareerTrack", href: "/case-files/careertrack" };
+const careerTrackArchitecture = { label: "CareerTrack architecture", href: "/case-files/careertrack#architecture" };
+const pricePulseArchitecture = { label: "PricePulse architecture", href: "/case-files/pricepulse#architecture" };
+const portfolio = { label: "Portfolio Workspace", href: "/case-files/portfolio-workspace" };
+const blms = { label: "BLMS", href: "/case-files/blms" };
+const tumaNow = { label: "TumaNow", href: "/case-files/tumanow" };
+
+export const technologyStackGroups: TechnologyStackGroup[] = [
   {
-    category: "Business & Systems Analysis",
-    icon: Briefcase,
-    delay: 100,
-    competencies: [
-            {
-              tool: "Requirements Gathering",
-              proficiency: "Experienced",
-              application: "Understanding user needs and turning them into clear system requirements."
-            },
-            {
-              tool: "Business Process Analysis",
-              proficiency: "Learning",
-              application: "Studying how organizations work and identifying opportunities for improvement through technology."
-            },
-            {
-              tool: "Process Mapping",
-              proficiency: "Experienced",
-              application: "Creating flowcharts and diagrams to document workflows and business processes."
-            },
-            {
-              tool: "Documentation",
-              proficiency: "Experienced",
-              application: "Preparing system documents, reports, user requirements, and project documentation."
-            },
-            {
-              tool: "Stakeholder Communication",
-              proficiency: "Experienced",
-              application: "Working effectively with faculty, startup founders, mentors, clients, and cross-functional project teams."
-            }
-          ],
+    id: "frontend",
+    title: "Frontend",
+    technologies: [
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "React", icon: SiReact },
+      { name: "Next.js", icon: SiNextdotjs },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+    ],
+    summary: "Building responsive dashboards, application workflows, and document previews with typed components.",
+    learning: [
+      { name: "HTML", icon: SiHtml5 },
+      { name: "CSS", icon: FaCss3Alt },
+      { name: "JavaScript", icon: SiJavascript },
+    ],
+    evidence: [careerTrack, pricePulse, portfolio],
   },
   {
-    category: "Systems Design",
-    icon: Cpu,
-    delay: 200,
-    competencies: [
-            {
-              tool: "System Analysis & Design",
-              proficiency: "Experienced",
-              application: "Planning system features, user roles, workflows, and overall system structure before development."
-            },
-            {
-              tool: "UI/UX Design & Figma",
-              proficiency: "Experienced",
-              application: "Designing user interfaces and interactive prototypes for web and mobile applications using component properties and auto layout."
-            },
-            {
-              tool: "Wireframing",
-              proficiency: "Experienced",
-              application: "Creating simple, effective layouts to visualize how a system will look and operate."
-            },
-            {
-              tool: "Database Design",
-              proficiency: "Learning",
-              application: "Organizing data into structured databases using precise entity-relationship diagrams (ERDs)."
-            }
-          ],
+    id: "backend",
+    title: "Backend",
+    technologies: [
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "Express", icon: SiExpress },
+      { name: "Next.js", icon: SiNextdotjs },
+    ],
+    summary: "Building Express APIs with server-side sessions, record ownership checks, and private file access, alongside Next.js Route Handlers for dashboard analytics.",
+    evidence: [careerTrackArchitecture, { label: "PricePulse Route Handlers", href: "/case-files/pricepulse#architecture" }],
   },
   {
-    category: "Data & Integration",
-    icon: Database,
-    delay: 300,
-    competencies: [
-            {
-              tool: "Google Sheets",
-              proficiency: "Experienced",
-              application: "Using advanced formulas, pivot tables, dashboards, and charts to organize and analyze operational data."
-            },
-            {
-              tool: "Microsoft Excel",
-              proficiency: "Experienced",
-              application: "Working heavily with structured spreadsheets, comprehensive reports, data validation, and formulas."
-            },
-            {
-              tool: "SQL",
-              proficiency: "Learning",
-              application: "Writing structured queries to retrieve, manipulate, and analyze information from relational databases."
-            },
-            {
-              tool: "Python",
-              proficiency: "Learning",
-              application: "Applying Python for foundational data analysis, automation scripts, and beginner data science logic."
-            },
-            {
-              tool: "Data Visualization",
-              proficiency: "Learning",
-              application: "Presenting complex information through charts, dashboards, and reports that are easily digestible for stakeholders."
-            },
-            {
-              tool: "Power BI",
-              proficiency: "Learning",
-              application: "Exploring business intelligence reporting and interactive dashboard creation for organizational data."
-            }
-          ],
+    id: "databases",
+    title: "Databases",
+    technologies: [
+      { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "Prisma ORM", icon: SiPrisma },
+    ],
+    summary: "Modeling career records and commodity data in PostgreSQL, querying through Prisma, and using transactions to preserve application history.",
+    learning: [{ name: "SQL", icon: Database }],
+    learningNote: "Practicing relational queries; current application queries use Prisma ORM.",
+    evidence: [careerTrackArchitecture, pricePulseArchitecture],
   },
   {
-    category: "Productivity Tools",
-    icon: LayoutGrid,
-    delay: 400,
-    competencies: [
-            {
-              tool: "Microsoft Office",
-              proficiency: "Experienced",
-              application: "Creating reports, presentations, spreadsheets, and official documents.",
-              subTools: "Word, Excel, PowerPoint, Outlook"
-            },
-            {
-              tool: "Google Workspace",
-              proficiency: "Experienced",
-              application: "Collaborating with teams and managing shared documentation in real-time online environments.",
-              subTools: "Docs, Sheets, Slides, Drive, Forms"
-            },
-            {
-              tool: "monday.com",
-              proficiency: "Learning",
-              application: "Managing projects, defining tasks, tracking timelines, and facilitating team collaboration."
-            },
-            {
-              tool: "Jira",
-              proficiency: "Learning",
-              application: "Tracking project progress, managing task tickets, and supporting Agile workflows."
-            },
-            {
-              tool: "Notion & Trello",
-              proficiency: "Learning",
-              application: "Organizing kanban boards, building collaborative workspaces, and managing knowledge bases."
-            }
-          ],
+    id: "development-deployment",
+    title: "Development & Deployment",
+    technologies: [
+      { name: "Git", icon: SiGit },
+      { name: "GitHub", icon: SiGithub },
+      { name: "Vercel", icon: SiVercel },
+      { name: "Railway", icon: SiRailway },
+      { name: "Cloudflare R2", icon: SiCloudflare },
+    ],
+    summary: "Deploying frontends on Vercel and the CareerTrack API on Railway, with Neon PostgreSQL and private R2 storage. Using Git and GitHub for incremental development.",
+    evidence: [careerTrackArchitecture, { label: "PricePulse deployment", href: "/case-files/pricepulse#challenges" }, portfolio],
   },
-  {
-    category: "AI & Digital Tools",
-    icon: Bot,
-    delay: 500,
-    competencies: [
-            {
-              tool: "AI Productivity Suites",
-              proficiency: "Experienced",
-              application: "Leveraging large language models and AI tools to accelerate research, drafting, documentation, brainstorming, and software development.",
-              subTools: "ChatGPT, Gemini, Claude, GitHub Copilot, NotebookLM, Perplexity"
-            }
-          ],
-  },
-  {
-    category: "Software Development",
-    icon: Code2,
-    delay: 600,
-    competencies: [
-            {
-              tool: "HTML, CSS & JavaScript",
-              proficiency: "Learning",
-              application: "Building foundational web structures and interactive browser-based elements."
-            },
-            {
-              tool: "Next.js & React",
-              proficiency: "Learning",
-              application: "Building modern, component-driven web applications using React architecture."
-            },
-            {
-              tool: "TypeScript",
-              proficiency: "Learning",
-              application: "Developing scalable web applications with strictly typed JavaScript to prevent runtime errors."
-            },
-            {
-              tool: "Tailwind CSS",
-              proficiency: "Learning",
-              application: "Creating responsive and modern user interfaces efficiently using utility-class frameworks."
-            },
-            {
-              tool: "Git & GitHub",
-              proficiency: "Learning",
-              application: "Using commits, branches, and repositories to organize incremental development of PricePulse and this portfolio."
-            },
-            {
-              tool: "REST API Integration",
-              proficiency: "Learning",
-              application: "Connecting web interfaces to services and structured data."
-            },
-            {
-              tool: "Visual Studio Code",
-              proficiency: "Experienced",
-              application: "Writing, editing, and managing code environments for web and software engineering projects."
-            }
-          ],
-  },
-  {
-    category: "Project & Collaboration",
-    icon: Users,
-    delay: 700,
-    competencies: [
-            {
-              tool: "Event Coordination",
-              proficiency: "Experienced",
-              application: "Planning, organizing, and executing logistical support for university events, technical workshops, and startup incubator activities."
-            },
-            {
-              tool: "Agile Fundamentals",
-              proficiency: "Learning",
-              application: "Understanding iterative project management cycles, sprint planning, and cross-functional teamwork dynamics."
-            }
-          ],
-  }
 ];
 
-const projectEvidence: Record<string, { label: string; href: string }[]> = {
-  "Next.js & React": [{ label: "PricePulse PH", href: "/case-files/pricepulse" }, { label: "Portfolio Workspace", href: "/case-files/portfolio-workspace" }],
-  "TypeScript": [{ label: "PricePulse PH", href: "/case-files/pricepulse" }],
-  "Tailwind CSS": [{ label: "Portfolio Workspace", href: "/case-files/portfolio-workspace" }],
-  "Git & GitHub": [{ label: "PricePulse PH", href: "/case-files/pricepulse" }],
-  "REST API Integration": [{ label: "PricePulse Route Handlers", href: "/case-files/pricepulse#architecture" }],
-  "Requirements Gathering": [{ label: "BLMS", href: "/case-files/blms" }, { label: "TumaNow", href: "/case-files/tumanow" }],
-  "System Analysis & Design": [{ label: "BLMS", href: "/case-files/blms" }],
-  "Database Design": [{ label: "PricePulse PH", href: "/case-files/pricepulse#architecture" }],
-  "Data Visualization": [{ label: "PricePulse PH", href: "/case-files/pricepulse#experience" }],
-};
-const categoryOrder = ["Software Development", "Systems Design", "Data & Integration", "Business & Systems Analysis", "Project & Collaboration", "Productivity Tools", "AI & Digital Tools"];
-export const capabilityGroups: CapabilityGroup[] = categoryOrder.map(category => {
-  const group = groups.find(item => item.category === category)!;
-  const competencies = group.competencies.map(item => ({ ...item, proficiency: projectEvidence[item.tool] ? "Project experience" : item.proficiency, evidence: projectEvidence[item.tool] }));
-  if (category === "Software Development") competencies.push({ tool: "PostgreSQL & Prisma", proficiency: "Project experience", application: "Storing prepared commodity data and querying PostgreSQL through Prisma ORM in PricePulse.", evidence: [{ label: "PricePulse PH", href: "/case-files/pricepulse#architecture" }] });
-  return { ...group, competencies };
-});
+export const capabilityGroups: CapabilityGroup[] = [
+  {
+    category: "Systems Analysis & Design",
+    icon: Cpu,
+    delay: 0,
+    competencies: [
+      {
+        tool: "Requirements gathering",
+        proficiency: "Project experience",
+        application: "Interviewing stakeholders and translating user needs into project and system requirements.",
+        evidence: [blms, tumaNow],
+      },
+      {
+        tool: "Process analysis & mapping",
+        proficiency: "Project experience",
+        application: "Analyzing existing workflows and documenting processes with flowcharts and diagrams.",
+        evidence: [blms, tumaNow],
+      },
+      {
+        tool: "System analysis & design",
+        proficiency: "Project experience",
+        application: "Planning user roles, features, workflows, and system structure before development.",
+        evidence: [blms],
+      },
+      {
+        tool: "UI/UX design, Figma & wireframing",
+        proficiency: "Experienced",
+        application: "Designing interfaces, wireframes, and interactive prototypes, including Figma component properties and auto layout.",
+        evidence: [blms],
+      },
+      {
+        tool: "Database design",
+        proficiency: "Project experience",
+        application: "Designing relational models for career records and commodity data, with Prisma migrations and documented relationships.",
+        evidence: [careerTrackArchitecture, pricePulseArchitecture],
+      },
+      {
+        tool: "Technical documentation & stakeholder communication",
+        proficiency: "Experienced",
+        application: "Preparing system documents, requirements, and reports while coordinating with clients, mentors, and project teams.",
+        evidence: [blms, tumaNow],
+      },
+    ],
+  },
+];
+
+export const secondaryCapabilityGroups: CapabilityGroup[] = [
+  {
+    category: "Data tools",
+    icon: Database,
+    delay: 0,
+    competencies: [
+      {
+        tool: "Google Sheets & Microsoft Excel",
+        proficiency: "Experienced",
+        application: "Working with formulas, pivot tables, charts, reports, and data validation to organize operational data.",
+      },
+      {
+        tool: "Python",
+        proficiency: "Learning",
+        application: "Practicing foundational data analysis and automation scripts.",
+      },
+      {
+        tool: "Power BI",
+        proficiency: "Learning",
+        application: "Exploring business-intelligence reporting and interactive dashboards.",
+      },
+    ],
+  },
+  {
+    category: "Project & collaboration practice",
+    icon: Users,
+    delay: 0,
+    competencies: [
+      {
+        tool: "Event coordination",
+        proficiency: "Experienced",
+        application: "Organizing logistical support for university events, technical workshops, and startup-incubator activities.",
+      },
+      {
+        tool: "Agile fundamentals",
+        proficiency: "Learning",
+        application: "Learning iterative planning, task tracking, and team workflows.",
+      },
+      {
+        tool: "Project organization tools",
+        proficiency: "Learning",
+        application: "Practicing task boards, timelines, and shared knowledge organization.",
+        subTools: "monday.com, Jira, Notion, Trello",
+      },
+    ],
+  },
+  {
+    category: "Everyday tools",
+    icon: LayoutGrid,
+    delay: 0,
+    competencies: [
+      {
+        tool: "Microsoft Office & Google Workspace",
+        proficiency: "Experienced",
+        application: "Preparing reports, presentations, spreadsheets, and shared documents.",
+        subTools: "Word, Excel, PowerPoint, Outlook; Docs, Sheets, Slides, Drive, Forms",
+      },
+      {
+        tool: "Visual Studio Code",
+        proficiency: "Experienced",
+        application: "Writing and managing code for web projects.",
+      },
+      {
+        tool: "AI productivity tools",
+        proficiency: "Experienced",
+        application: "Supporting research, drafting, brainstorming, documentation, and software development.",
+        subTools: "ChatGPT, Gemini, Claude, GitHub Copilot, NotebookLM, Perplexity",
+      },
+    ],
+  },
+];

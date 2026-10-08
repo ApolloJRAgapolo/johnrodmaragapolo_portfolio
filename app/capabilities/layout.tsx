@@ -1,6 +1,6 @@
 import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = pageMetadata("Capabilities", "Software development, systems design, data, and collaboration skills with links to project evidence.", "/capabilities");
+export const metadata = pageMetadata("Capabilities", "Web development and software engineering skills, with project evidence and supporting systems analysis experience.", "/capabilities");
 
 export default function PageLayout({ children }: { children: React.ReactNode }) {
   return children;

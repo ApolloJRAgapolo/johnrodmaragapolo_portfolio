@@ -1,0 +1,24 @@
+.forward {
+  animation: screen-forward 220ms ease-out;
+}
+
+.backward {
+  animation: screen-backward 220ms ease-out;
+}
+
+@keyframes screen-forward {
+  from { opacity: .55; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes screen-backward {
+  from { opacity: .55; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .forward,
+  .backward {
+    animation: none;
+  }
+}

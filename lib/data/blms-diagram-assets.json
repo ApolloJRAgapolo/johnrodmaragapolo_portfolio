@@ -1,0 +1,233 @@
+{
+  "conceptual-framework": {
+    "originalFilename": "BLMS CONCEPTUAL FRAMEWORK.png",
+    "original": {
+      "src": "/case-files/blms/originals/conceptual-framework.png",
+      "width": 2646,
+      "height": 1383,
+      "sha256": "ce2123709b4d25c0ea82faa981123ded68c13c0af3deb5f3fc5102ab90578151"
+    },
+    "preview": {
+      "src": "/case-files/blms/previews/conceptual-framework.webp",
+      "width": 1440,
+      "height": 753,
+      "sha256": "0387ee8454462982405c542cff4e142f060dbf80f0dccbf0806f0f8e2e07bd43"
+    },
+    "display": {
+      "src": "/case-files/blms/display/conceptual-framework.webp",
+      "width": 2646,
+      "height": 1383,
+      "sha256": "4a9ae27edb6afb8155a35b2aba6fbcf23da1e0f22654d6f5adcfa31ba15af99a"
+    }
+  },
+  "methodology": {
+    "originalFilename": "BLMS METHODOLOGY.png",
+    "original": {
+      "src": "/case-files/blms/originals/methodology.png",
+      "width": 2556,
+      "height": 1758,
+      "sha256": "0e830cdde9961b2289f2bcc38330e0a023aa02a4df9a81a03fa992abbc48b5c8"
+    },
+    "preview": {
+      "src": "/case-files/blms/previews/methodology.webp",
+      "width": 1440,
+      "height": 990,
+      "sha256": "bd55aeba4761849f488ac96d392b7aa4f64659286f2a1e6c36cdcf4c6df5bc90"
+    },
+    "display": {
+      "src": "/case-files/blms/display/methodology.webp",
+      "width": 2556,
+      "height": 1758,
+      "sha256": "e552c04783efdc9a81573c13c9c01382c46f9e8da0d2ffa48f79b2018a12df18"
+    }
+  },
+  "use-case": {
+    "originalFilename": "BLMS-USE CASE.png",
+    "original": {
+      "src": "/case-files/blms/originals/use-case.png",
+      "width": 3699,
+      "height": 4611,
+      "sha256": "f1ad485758e0318ba5f5bfd7daf9d7382563bdc216a6e3ebbdace0317a9c150c"
+    },
+    "preview": {
+      "src": "/case-files/blms/previews/use-case.webp",
+      "width": 898,
+      "height": 1120,
+      "sha256": "f9ba58ff2d60d157f8ebeb60203bb2fb142740aeff6b131e0925a02661ff4334"
+    },
+    "display": {
+      "src": "/case-files/blms/display/use-case.webp",
+      "width": 3286,
+      "height": 4096,
+      "sha256": "f5112065de7e6a1845174e93a988fd9945ef373ca9af8fb7591fd94fbce8dae4"
+    }
+  },
+  "class-diagram": {
+    "originalFilename": "BLMS CLASS DIAGRAM.png",
+    "original": {
+      "src": "/case-files/blms/originals/class-diagram.png",
+      "width": 16248,
+      "height": 10278,
+      "sha256": "d98e656d1402119b8cd0e7f7ae5f5836daa3cc513388c58ecc0313ad004ea44a"
+    },
+    "preview": {
+      "src": "/case-files/blms/previews/class-diagram.webp",
+      "width": 1440,
+      "height": 911,
+      "sha256": "039baf880612adffb39913a53d38ffea67ab32e4d1e69cff969cf911cf9f9579"
+    },
+    "display": {
+      "src": "/case-files/blms/display/class-diagram.webp",
+      "width": 4096,
+      "height": 2591,
+      "sha256": "0028b5c1e9dac3786b5012ad97a6f3812f820a9491a7fff482d67112b27d71c1"
+    }
+  },
+  "deployment": {
+    "originalFilename": "BLMS DEPLOYMENT DIAGRAM.png",
+    "original": {
+      "src": "/case-files/blms/originals/deployment.png",
+      "width": 2913,
+      "height": 2736,
+      "sha256": "90d64b190af66146c4029e7f045b3640f065859033071e591a57a12a721dcf26"
+    },
+    "preview": {
+      "src": "/case-files/blms/previews/deployment.webp",
+      "width": 1192,
+      "height": 1120,
+      "sha256": "7decb4589c8332b55609e1fb21f59afb777bc3798aabd60c2c335c58c66473b1"
+    },
+    "display": {
+      "src": "/case-files/blms/display/deployment.webp",
+      "width": 2913,
+      "height": 2736,
+      "sha256": "5e163217aab09118d7ee36f13079b813dd195b1727571cca1517c28132a0a53c"
+    }
+  },
+  "security": {
+    "originalFilename": "BLMS-BLMS SECURITY DIAGRAM.png",
+    "original": {
+      "src": "/case-files/blms/originals/security.png",
+      "width": 4758,
+      "height": 2496,
+      "sha256": "014c20aebb3c45433475c87a75ace045ad62118f8cdc10768aa8f613ab2e27a4"
+    },
+    "preview": {
+      "src": "/case-files/blms/previews/security.webp",
+      "width": 1440,
+      "height": 755,
+      "sha256": "cb717d4137ec48a9a51f4c131581cfb9b0cd00e3ff2ccc8d9e9a0dac420d5821"
+    },
+    "display": {
+      "src": "/case-files/blms/display/security.webp",
+      "width": 4096,
+      "height": 2149,
+      "sha256": "3c444397f472676db0ebf29d2057ee80b521de390f29e1748561772161249f21"
+    }
+  },
+  "farmer-workflow": {
+    "originalFilename": "BLMS-ACTIVITY DIAGRAM - FARMER.png",
+    "original": {
+      "src": "/case-files/blms/originals/farmer-workflow.png",
+      "width": 13308,
+      "height": 8358,
+      "sha256": "84be2603f022efc8dc8ba50d6e9852e4fa5c76f6d18afb156f2aade63ff60082"
+    },
+    "preview": {
+      "src": "/case-files/blms/previews/farmer-workflow.webp",
+      "width": 1440,
+      "height": 904,
+      "sha256": "68637ea262a316533664e674531cf4e63a11d5ccdadaf13e6625b2ba7b9394d8"
+    },
+    "display": {
+      "src": "/case-files/blms/display/farmer-workflow.webp",
+      "width": 4096,
+      "height": 2572,
+      "sha256": "1f952f2ff03e9d47e558079ae3aeb9e02d6a12b0e1bf66648b4b6ad03440f867"
+    }
+  },
+  "barangay-da-workflow": {
+    "originalFilename": "BLMS-ACTIVITY DIAGRAM - BRGY DA REP.png",
+    "original": {
+      "src": "/case-files/blms/originals/barangay-da-workflow.png",
+      "width": 7890,
+      "height": 6861,
+      "sha256": "f08a34eec2f7e7c2063da2328702c0a6989e2ed0ef61e016273e25c37c7faa25"
+    },
+    "preview": {
+      "src": "/case-files/blms/previews/barangay-da-workflow.webp",
+      "width": 1288,
+      "height": 1120,
+      "sha256": "f33126c17d804c93ba3a019827dda73dcdc6b2f14c3831adc71d7565a5ab7188"
+    },
+    "display": {
+      "src": "/case-files/blms/display/barangay-da-workflow.webp",
+      "width": 4096,
+      "height": 3562,
+      "sha256": "df8523933f5b5b19424d2066fd83557cf9ee2ae166542a5ba7dfa5d0b100f42f"
+    }
+  },
+  "veterinarian-workflow": {
+    "originalFilename": "BLMS-ACTIVITY DIAGRAM - MAO VET.png",
+    "original": {
+      "src": "/case-files/blms/originals/veterinarian-workflow.png",
+      "width": 9447,
+      "height": 6762,
+      "sha256": "57e654d14b10bfafd11524e570a48b5880c50f322c3030fb68360ff33a8c875f"
+    },
+    "preview": {
+      "src": "/case-files/blms/previews/veterinarian-workflow.webp",
+      "width": 1440,
+      "height": 1031,
+      "sha256": "4d8723b67a6cf9b34302772b6203baf8281be3ff450b2b4caffdbdff7d6b94a7"
+    },
+    "display": {
+      "src": "/case-files/blms/display/veterinarian-workflow.webp",
+      "width": 4096,
+      "height": 2932,
+      "sha256": "2a00aaabc554abf3e9ee9010b510e9e007cabad9ab4ea9630bc274dd17302dca"
+    }
+  },
+  "mao-head-workflow": {
+    "originalFilename": "BLMS-ACTIVITY DIAGRAM - MAO HEAD.png",
+    "original": {
+      "src": "/case-files/blms/originals/mao-head-workflow.png",
+      "width": 11010,
+      "height": 7044,
+      "sha256": "fead70ce08c8a4951f119ed0949c52c82cebc4856672b634a4469f580b1b48cc"
+    },
+    "preview": {
+      "src": "/case-files/blms/previews/mao-head-workflow.webp",
+      "width": 1440,
+      "height": 921,
+      "sha256": "c824e777bc67020c7fc16356f5ce0e2d630e3b92155e979a5d322089f050183f"
+    },
+    "display": {
+      "src": "/case-files/blms/display/mao-head-workflow.webp",
+      "width": 4096,
+      "height": 2621,
+      "sha256": "e9d896185699e9c29dc5dd3c2a7445a70efc287ac47477204efc8868e00c48e9"
+    }
+  },
+  "auction-market-workflow": {
+    "originalFilename": "BLMS-ACTIVITY DIAGRAM - AUCTION MARKET STAFF.png",
+    "original": {
+      "src": "/case-files/blms/originals/auction-market-workflow.png",
+      "width": 5958,
+      "height": 8232,
+      "sha256": "b32524ef90e0afc4273b24a41acb8ac94c1c03695eab183adf69250352191906"
+    },
+    "preview": {
+      "src": "/case-files/blms/previews/auction-market-workflow.webp",
+      "width": 811,
+      "height": 1120,
+      "sha256": "9c77a06cd172b59eb050558c4ee311c78685a799d673cb65d68a42b2d1e032c7"
+    },
+    "display": {
+      "src": "/case-files/blms/display/auction-market-workflow.webp",
+      "width": 2965,
+      "height": 4096,
+      "sha256": "3b0143dfde4b93cb202407a67c857bc2f9d34472e407402d90d850b1179c1c56"
+    }
+  }
+}

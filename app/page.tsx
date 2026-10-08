@@ -1,34 +1,37 @@
+import TechnologyList from "@/components/shared/TechnologyList";
+import { actionStyles } from "@/lib/action-styles";
+import { getCredentialAnchor } from "@/lib/credential-anchors";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ArrowUpRight,
-  Terminal,
-  UserCircle,
-  Clock,
-  Target,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight, Terminal } from "lucide-react";
 import RevealOnScroll from "@/components/shared/RevealOnScroll";
 import FeaturedCaseFiles from "@/components/features/overview/FeaturedCaseFiles";
-import { verifiedCredentialCount } from "@/lib/data/documents";
+
+const technicalStrengths = [
+  { title: "Frontend development", technologies: ["TypeScript", "React", "Next.js", "Tailwind CSS"], detail: "Responsive interfaces, dashboard filters, and document viewing." },
+  { title: "APIs & databases", technologies: ["Node.js", "Express", "PostgreSQL", "Prisma"], detail: "Server-side sessions, private file access, and relational data; continuing to learn SQL." },
+  { title: "Delivery & debugging", technologies: ["Git", "GitHub", "Vercel", "Railway"], detail: "Production builds, environment configuration, and deployment across services." },
+  { title: "Systems analysis", technologies: ["Systems Analysis", "Requirements Gathering", "System Design"], detail: "Process analysis, database design, and technical documentation." },
+];
+
+const recognition = [
+  { title: "Best Capstone Project", context: "BLMS · ISAT U", year: "2026", credentialTitle: "Best Capstone Project Award" },
+  { title: "Outstanding Intern", context: "KWADRA Technology Business Incubator", year: "2026", credentialTitle: "Outstanding Intern Award" },
+  { title: "Startup Hackathon Champion", context: "TumaNow · Iloilo Province", year: "2025", credentialTitle: "Iloilo Province Startup Hackathon Champion" },
+];
+
+const sectionLinkStyle = "inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground underline decoration-muted-foreground/50 underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none";
 
 export default function Overview() {
 
   return (
     <main id="main-content" tabIndex={-1} className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background">
-      <div className="page-shell max-w-5xl">
-      {/* HERO TYPOGRAPHY & MICRO-DETAILS */}
+      <div className="page-shell">
         <RevealOnScroll delay={0}>
-          <header className="mb-8 border-b border-border/40 pb-8 sm:mb-20 sm:pb-16 lg:flex lg:min-h-[clamp(480px,58vh,620px)] lg:flex-col">
-            <div className="mb-4 font-mono text-[9px] leading-[1.55] text-muted-foreground sm:mb-6 sm:hidden">
-              <span className="flex items-center gap-1.5 text-foreground"><Terminal className="h-3 w-3 shrink-0" aria-hidden="true" /> Information Systems Graduate</span>
-              <span className="block pl-[18px]">Open to Entry-Level Opportunities · {verifiedCredentialCount} Verified Credentials</span>
-            </div>
-            <div className="mb-6 hidden flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-mono text-muted-foreground sm:flex">
-              <span className="flex items-center gap-1.5 text-foreground"><Terminal className="h-3 w-3" aria-hidden="true" /> Information Systems Graduate</span>
-              <span aria-hidden="true">•</span>
-              <span>Open to Entry-Level Opportunities</span>
-              <span aria-hidden="true">•</span>
-              <span>{verifiedCredentialCount} Verified Credentials</span>
+          <header className="mb-10 border-b border-border/40 pb-8 sm:mb-12 sm:pb-10 lg:flex lg:flex-col">
+            <div className="mb-4 pr-20 text-xs leading-relaxed text-muted-foreground sm:mb-6 lg:pr-0">
+              <span className="flex items-center gap-1.5 text-foreground"><Terminal className="h-3 w-3 shrink-0" aria-hidden="true" /> Professional Portfolio</span>
+              <span className="mt-1 block pl-[18px] lg:hidden">Open to Opportunities</span>
             </div>
             <div className="grid flex-1 items-center gap-4 sm:grid-cols-[clamp(220px,20vw,250px)_minmax(0,1fr)] sm:gap-10 lg:gap-14">
             <div className="relative mx-auto hidden h-[clamp(300px,30vw,350px)] w-full overflow-hidden rounded-md border border-border/60 bg-secondary/20 sm:block">
@@ -42,26 +45,29 @@ export default function Overview() {
               </div>
             </div>
             <p className="max-w-xl text-base font-light leading-relaxed text-muted-foreground sm:text-xl">
-              Building practical digital solutions through software, systems, data, and technology.
+              Information Systems graduate with an interest in web development and software engineering.
+            </p>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              I enjoy turning ideas into practical web applications and learning along the way.
             </p>
 
             <div className="mt-4 grid grid-cols-1 gap-2 min-[390px]:grid-cols-2 sm:mt-8 sm:flex sm:flex-wrap sm:items-center sm:gap-3">
-              <Link href="/case-files" className="inline-flex min-h-11 items-center justify-center border border-foreground bg-foreground px-4 text-[11px] font-mono uppercase tracking-widest text-background hover:bg-foreground/90">View Projects</Link>
+              <Link href="/case-files" className={actionStyles({ variant: "primary" })}>View Projects</Link>
               <a
                 href="/documents#resume"
-                className="inline-flex min-h-10 items-center justify-center border border-border/60 px-3 text-[10px] font-mono uppercase tracking-widest text-foreground transition-colors hover:bg-secondary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:min-h-11 sm:px-5 sm:text-[11px]"
+                className={actionStyles()}
               >
                 View Resume
               </a>
               <Link
                 href="/contact"
-                className="inline-flex min-h-10 items-center justify-center border border-border/60 px-3 text-[10px] font-mono uppercase tracking-widest text-foreground transition-colors hover:border-foreground/40 hover:bg-secondary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:min-h-11 sm:px-5 sm:text-[11px]"
+                className={actionStyles()}
               >
                 Get in Touch
               </Link>
             </div>
 
-            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[10px] font-mono text-muted-foreground sm:mt-5 sm:gap-x-5 sm:gap-y-2 sm:text-[11px]">
+            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[13px] text-muted-foreground sm:mt-5 sm:gap-x-5 sm:gap-y-2">
               <Link href="https://www.linkedin.com/in/john-rodmar-agapolo-9492602b2/" target="_blank" rel="noreferrer" className="group inline-flex items-center gap-1.5 transition-colors duration-200 ease-out hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
                 LinkedIn <ArrowUpRight className="h-3 w-3 transition-transform duration-200 ease-out group-hover:translate-x-1" aria-hidden="true" />
               </Link>
@@ -69,7 +75,7 @@ export default function Overview() {
                 GitHub <ArrowUpRight className="h-3 w-3 transition-transform duration-200 ease-out group-hover:translate-x-1" aria-hidden="true" />
               </Link>
               <Link href="/credentials" className="group inline-flex items-center gap-1.5 transition-colors duration-200 ease-out hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
-                <span className="sm:hidden">Credentials</span><span className="hidden sm:inline">Verified Credentials</span> <ArrowUpRight className="h-3 w-3 transition-transform duration-200 ease-out group-hover:translate-x-1" aria-hidden="true" />
+                Credentials <ArrowUpRight className="h-3 w-3 transition-transform duration-200 ease-out group-hover:translate-x-1" aria-hidden="true" />
               </Link>
             </div>
             </div>
@@ -77,146 +83,72 @@ export default function Overview() {
           </header>
         </RevealOnScroll>
 
-        {/* ROW 1: MISSION & STATUS */}
-        <div className="mb-14 grid grid-cols-1 gap-10 sm:mb-20 lg:grid-cols-12 lg:gap-20">
-          {/* Mission Brief */}
-          <RevealOnScroll delay={100} className="col-span-1 lg:col-span-7">
-            <section>
-              <h2 className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:mb-8">
-                Mission Brief
-              </h2>
-              <div className="space-y-4 sm:space-y-6">
-                <p className="text-[1.45rem] font-medium leading-tight tracking-tight text-foreground sm:text-2xl lg:text-[26px]">I build web applications and turn user needs into clear system designs.</p>
-                <p className="max-w-prose text-base leading-relaxed text-muted-foreground sm:text-lg">My work includes PricePulse PH, a deployed commodity-price dashboard built with Next.js, Prisma, and PostgreSQL, and BLMS, an award-winning capstone focused on livestock monitoring.</p>
-              </div>
-            </section>
-          </RevealOnScroll>
-
-          {/* At a glance */}
-          <RevealOnScroll delay={200} className="col-span-1 lg:col-span-5">
-            <section>
-              <h2 className="mb-5 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground sm:mb-8">
-                Workspace Status
-              </h2>
-
-              <div className="flex flex-col text-[13px]">
-                <div className="flex items-center justify-between py-3 border-b border-border/40">
-                  <div className="flex items-center gap-2.5 text-muted-foreground">
-                    <UserCircle className="w-3.5 h-3.5 stroke-[1.5]" /> Availability
-                  </div>
-                  <div className="text-foreground">Open for Opportunities</div>
-                </div>
-
-                <div className="flex items-center justify-between py-3 border-b border-border/40">
-                  <div className="flex items-center gap-2.5 text-muted-foreground">
-                    <Clock className="w-3.5 h-3.5 stroke-[1.5]" /> Last Update
-                  </div>
-                  <div className="text-foreground">September 2026</div>
-                </div>
-
-                <div className="flex items-center justify-between py-3">
-                  <div className="flex items-center gap-2.5 text-muted-foreground">
-                    <Target className="w-3.5 h-3.5 stroke-[1.5]" /> Focus
-                  </div>
-                  <div className="text-foreground text-right">Software Engineering</div>
-                </div>
-              </div>
-            </section>
-          </RevealOnScroll>
-        </div>
-
         <FeaturedCaseFiles />
-        <div className="grid gap-10 xl:grid-cols-2">
-          <RevealOnScroll delay={100}>
-            <section>
-              <h2 className="mb-8 text-base font-semibold tracking-tight text-foreground">
-                Professional Snapshot
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
-                
-                <div>
-                  <h4 className="mb-2 text-xs font-medium text-muted-foreground">Education</h4>
-                  <p className="text-[13px] text-foreground leading-relaxed">BS Information Systems</p>
-                  <p className="text-[13px] text-foreground leading-relaxed">Magna Cum Laude</p>
-                </div>
-                
-                <div>
-                  <h4 className="mb-2 text-xs font-medium text-muted-foreground">Current Direction</h4>
-                  <p className="text-[13px] text-foreground leading-relaxed">
-                    Building expertise in Software Engineering,<br />
-                    Web Development,<br />
-                    and Systems Design.
-                  </p>
-                </div>
-                
-                <div>
-                  <h4 className="mb-2 text-xs font-medium text-muted-foreground">Interests</h4>
-                  <p className="text-[13px] text-foreground leading-relaxed">Software Engineering</p>
-                  <p className="text-[13px] text-foreground leading-relaxed">Web Development</p>
-                  <p className="text-[13px] text-foreground leading-relaxed">Systems Analysis &amp; Design</p>
-                  <p className="text-[13px] text-foreground leading-relaxed">API &amp; Database Integration</p>
-                </div>
-                
-                <div>
-                  <h4 className="mb-2 text-xs font-medium text-muted-foreground">Current Status</h4>
-                  <p className="text-[13px] text-foreground leading-relaxed">Open to Entry-Level Opportunities</p>
-                </div>
 
-                <div>
-                  <h4 className="mb-2 text-xs font-medium text-muted-foreground">Experience</h4>
-                  <p className="text-[13px] text-foreground leading-relaxed">600-Hour Internship</p>
-                  <p className="text-[13px] text-foreground leading-relaxed">ISAT U – Kwadra Technology Business Incubator</p>
-                  <p className="text-[13px] text-foreground leading-relaxed">Wadhwani Foundation Philippines</p>
-                  <p className="text-[13px] text-foreground leading-relaxed">Startup Incubation</p>
-                </div>
+        <section aria-labelledby="experience-education" className="page-section">
+          <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+            <h2 id="experience-education" className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Experience &amp; Education</h2>
+            <Link href="/journey" className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground">Professional Journey</Link>
+          </div>
+          <dl className="divide-y divide-border/40">
+            <div className="grid gap-2 py-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:gap-8">
+              <dt className="text-base font-medium text-foreground">KWADRA Technology Business Incubator</dt>
+              <dd className="text-sm leading-relaxed text-muted-foreground">600-hour internship supporting project documentation, innovation programs, and startup activities.</dd>
+            </div>
+            <div className="grid gap-2 py-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:gap-8">
+              <dt className="text-base font-medium text-foreground">Wadhwani Foundation Philippines</dt>
+              <dd className="text-sm leading-relaxed text-muted-foreground">Internship supporting faculty participation, platform progress monitoring, and communication across partner universities.</dd>
+            </div>
+            <div className="grid gap-2 py-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:gap-8">
+              <dt className="text-base font-medium text-foreground">BS Information Systems</dt>
+              <dd className="text-sm leading-relaxed text-muted-foreground">Iloilo Science and Technology University · 2026<br />Magna Cum Laude</dd>
+            </div>
+          </dl>
+        </section>
 
+        <section aria-labelledby="technical-strengths" className="page-section">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+            <h2 id="technical-strengths" className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Technical Strengths</h2>
+            <Link href="/capabilities" className={sectionLinkStyle}>Capabilities &amp; evidence<ArrowRight className="h-3.5 w-3.5 shrink-0" aria-hidden="true" /></Link>
+          </div>
+          <div className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
+            {technicalStrengths.map((strength) => (
+              <div key={strength.title} className="min-w-0 border-t border-border/40 pt-4">
+                <h3 className="mb-3 text-base font-medium leading-relaxed text-foreground">{strength.title}</h3>
+                <TechnologyList items={strength.technologies} label={strength.title} className="mb-3 grid grid-cols-2 content-start gap-x-4 gap-y-2.5 sm:min-h-16" />
+                <p className="text-sm leading-relaxed text-muted-foreground">{strength.detail}</p>
               </div>
-            </section>
-          </RevealOnScroll>
+            ))}
+          </div>
+        </section>
 
-          {/* RIGHT COLUMN: RECENT MILESTONES */}
-          <RevealOnScroll delay={200}>
-            <section>
-              <h2 className="mb-8 text-base font-semibold tracking-tight text-foreground">
-                Recent Milestones
-              </h2>
-              <div className="flex flex-col gap-6">
-
-                <div className="relative pl-6 border-l border-border/40">
-                  <div className="absolute w-1.5 h-1.5 bg-foreground rounded-full -left-[3.5px] top-1.5"></div>
-                  <h4 className="text-[10px] font-mono text-muted-foreground mb-2">2026</h4>
-                  <p className="text-[13px] text-foreground">Magna Cum Laude</p>
+        <section aria-labelledby="selected-recognition" className="page-section">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+            <h2 id="selected-recognition" className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Selected Recognition</h2>
+            <Link href="/credentials" className={sectionLinkStyle}>Credential archive<ArrowRight className="h-3.5 w-3.5 shrink-0" aria-hidden="true" /></Link>
+          </div>
+          <ul className="divide-y divide-border/40 border-y border-border/40">
+            {recognition.map((item) => (
+              <li key={item.title} className="py-3">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <h3 className="min-w-0 text-base font-medium text-foreground">
+                    <Link href={`/credentials#${getCredentialAnchor(item.credentialTitle)}`} className="inline-flex min-h-11 items-center gap-2 underline decoration-muted-foreground/50 underline-offset-4 transition-colors hover:decoration-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none">
+                      <span>{item.title}</span><ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />
+                    </Link>
+                  </h3>
+                  <span className="font-mono text-xs text-muted-foreground">{item.year}</span>
                 </div>
+                <p className="text-sm leading-relaxed text-muted-foreground">{item.context}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-                <div className="relative pl-6 border-l border-border/40">
-                  <div className="absolute w-1.5 h-1.5 bg-foreground rounded-full -left-[3.5px] top-1.5"></div>
-                  <h4 className="text-[10px] font-mono text-muted-foreground mb-2">2026</h4>
-                  <p className="text-[13px] text-foreground">Outstanding Intern Awardee</p>
-                </div>
-
-                <div className="relative pl-6 border-l border-border/40">
-                  <div className="absolute w-1.5 h-1.5 bg-foreground rounded-full -left-[3.5px] top-1.5"></div>
-                  <h4 className="text-[10px] font-mono text-muted-foreground mb-2">2026</h4>
-                  <p className="text-[13px] text-foreground">Best Capstone Project Awardee</p>
-                </div>
-
-                <div className="relative border-l border-border/40 pl-6">
-                  <div className="absolute w-1.5 h-1.5 bg-foreground rounded-full -left-[3.5px] top-1.5"></div>
-                  <h4 className="mb-2 text-[10px] font-mono text-muted-foreground">2026</h4>
-                  <p className="text-[13px] text-muted-foreground">Top 10 of 23 Entries — AI Fest AI Hackathon (Open Category)</p>
-                </div>
-
-                <div className="relative pl-6 border-l border-border/40">
-                  <div className="absolute w-1.5 h-1.5 bg-foreground rounded-full -left-[3.5px] top-1.5"></div>
-                  <h4 className="text-[10px] font-mono text-muted-foreground mb-2">2025</h4>
-                  <p className="text-[13px] text-foreground">Iloilo Province Startup Hackathon Champion</p>
-                </div>
-
-              </div>
-            </section>
-          </RevealOnScroll>
-
-        </div>
+        <section aria-labelledby="connect" className="border-t border-border/40 pt-8">
+          <h2 id="connect" className="mb-3 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Let&apos;s Connect</h2>
+          <p className="max-w-prose text-base leading-relaxed text-muted-foreground">I enjoy learning, collaborating, and creating practical solutions through technology.</p>
+          <Link href="/contact" className={`${actionStyles()} mt-5`}>Get in Touch <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+        </section>
       </div>
     </main>
   );

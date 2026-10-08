@@ -1,108 +1,84 @@
-import type { EcosystemNode } from "@/lib/types";
+﻿type EcosystemRelationship = {
+  id: string;
+  group: string;
+  relationship: string;
+  name: string;
+  context: string;
+  links: { label: string; href: string }[];
+};
+
+export const ecosystemGroups = [
+  "Industry & innovation",
+  "Academic & leadership",
+  "Project stakeholders",
+] as const;
 
 export const ecosystemData = [
   {
-    id: "isatu",
-    relationship: "Academic institution",
-    name: "Iloilo Science and Technology University (ISAT U)",
-    role: "BS Information Systems",
-    contribution: "Built my foundation in systems analysis, software development, documentation, business processes, and leadership.",
-    outcomes: ["Magna Cum Laude", "Best Capstone Project", "Foundational Systems Thinking"],
-    connections: ["leadership", "kwadra", "wadhwani"],
-    links: [
-      { label: "Professional Journey (2022–2026)", href: "/journey" }
-    ]
-  },
-  {
-    id: "leadership",
-    relationship: "Student leadership",
-    name: "Academic Leadership",
-    role: "Class Mayor • Vice Mayor • ANALYTICA Auditor",
-    contribution: "Developed foundational soft skills in team coordination, conflict resolution, and stakeholder communication.",
-    outcomes: ["Class Mayor", "Class Vice Mayor", "ANALYTICA Auditor", "Peer Coordination"],
-    connections: ["isatu", "kwadra"],
-    links: [
-      { label: "Professional Journey", href: "/journey" }
-    ]
-  },
-  {
     id: "kwadra",
+    group: "Industry & innovation",
     relationship: "Internship & incubation",
     name: "KWADRA Technology Business Incubator",
-    role: "600-Hour Organizational Intern",
-    contribution: "Transitioned from academic theory to applied innovation, directly facilitating tech commercialization and startup support.",
-    outcomes: [
-      "Startup Mentoring", 
-      "Innovation Programs", 
-      "600-hour Internship", 
-      "TumaNow Incubation", 
-      "Technology Commercialization"
-    ],
-    connections: ["isatu", "tumanow", "leadership", "wadhwani"],
+    context: "ISAT U's incubator connects student startups with mentors and innovation programs. It hosted my internship and TumaNow's incubation.",
     links: [
-      { label: "Case File: TumaNow", href: "/case-files/tumanow" }
-    ]
+      { label: "Internship experience", href: "/journey#kwadra-internship" },
+      { label: "TumaNow project", href: "/case-files/tumanow" },
+    ],
   },
   {
     id: "wadhwani",
+    group: "Industry & innovation",
     relationship: "Internship",
     name: "Wadhwani Foundation Philippines",
-    role: "Program Support Intern",
-    contribution: "Coordinated program participation and monitored progress through the Wadhwani platform across different universities.",
-    outcomes: ["Stakeholder Communication", "Progress Monitoring", "Program Coordination"],
-    connections: ["isatu", "kwadra"],
-    links: [
-      { label: "Professional Journey (2026)", href: "/journey" }
-    ]
+    context: "Program support connected faculty participants from partner universities through the Wadhwani platform.",
+    links: [{ label: "Internship experience", href: "/journey#wadhwani-internship" }],
   },
   {
     id: "tumanow",
+    group: "Industry & innovation",
     relationship: "Startup project",
     name: "TumaNow",
-    role: "Co-Founder • Business Analyst • CFO",
-    contribution: "Built a startup focused on improving local government project monitoring through digital transformation and precise business analysis.",
-    outcomes: ["Champion - Startup Hackathon", "Client Validation", "Incubation Track"],
-    connections: ["kwadra", "ppdo", "san-miguel"],
-    links: [
-      { label: "Case File: TumaNow", href: "/case-files/tumanow" }
-    ]
+    context: "Our startup team connected KWADRA's incubation support with local-government discussions about infrastructure project monitoring.",
+    links: [{ label: "TumaNow project and my role", href: "/case-files/tumanow" }],
   },
   {
-    id: "ppdo",
-    relationship: "Project stakeholder",
-    name: "Provincial Planning & Development Office",
-    role: "Startup Client",
-    contribution: "Engaged with the office during the development of TumaNow to understand deeply rooted project monitoring challenges and propose a targeted digital solution.",
-    outcomes: ["Digital Governance Validation", "Client Interviews", "Requirements Analysis"],
-    connections: ["tumanow"],
-    links: [
-      { label: "Case File: TumaNow", href: "/case-files/tumanow" }
-    ]
+    id: "isatu",
+    group: "Academic & leadership",
+    relationship: "Academic institution",
+    name: "Iloilo Science and Technology University (ISAT U)",
+    context: "My Information Systems education at the Iloilo City Campus brought together software development, systems analysis, and applied projects with external stakeholders.",
+    links: [{ label: "Education and academic recognition", href: "/journey#education" }],
   },
   {
-    id: "san-miguel",
-    relationship: "Capstone stakeholder",
-    name: "Municipality of San Miguel",
-    role: "Capstone Client (Department of Agriculture)",
-    contribution: "Collaborated directly with the agricultural office to develop a digital system improving livestock monitoring and reporting.",
-    outcomes: ["BLMS Capstone Prototype", "Requirements Gathering", "System Design"],
-    connections: ["tumanow", "blms"],
-    links: [
-      { label: "Case File: BLMS", href: "/case-files/blms" }
-    ]
+    id: "leadership",
+    group: "Academic & leadership",
+    relationship: "Student leadership",
+    name: "Academic Leadership",
+    context: "Class representation and the ISAT U ANALYTICA student organization provided separate settings for coordination and organizational accountability.",
+    links: [{ label: "Class Mayor, Vice Mayor, and Auditor roles", href: "/journey#student-leadership" }],
   },
   {
     id: "blms",
+    group: "Academic & leadership",
     relationship: "Capstone prototype",
     name: "Backyard Livestock Monitoring System (BLMS)",
-    role: "Systems Architect • Capstone Project",
-    contribution: "Engineered a master system blueprint with core AI triage features and comprehensive architecture for the agricultural sector.",
-    outcomes: ["Best Capstone Project", "Successful Final Defense (April 2026)", "Completed Capstone Prototype"],
-    connections: ["san-miguel", "graduate"],
-    links: [
-      { label: "Case File: BLMS", href: "/case-files/blms" }
-    ]
-  }
-] satisfies EcosystemNode[];
-
-
+    context: "The capstone connected university systems-design work with the livestock monitoring and reporting needs of a municipal agricultural office.",
+    links: [{ label: "BLMS project and my role", href: "/case-files/blms" }],
+  },
+  {
+    id: "ppdo",
+    group: "Project stakeholders",
+    relationship: "TumaNow stakeholder",
+    name: "Provincial Planning & Development Office",
+    context: "The PPDO, Iloilo Province, was consulted on infrastructure project monitoring. Potential adoption of TumaNow remains under evaluation.",
+    links: [{ label: "TumaNow stakeholder context", href: "/case-files/tumanow" }],
+  },
+  {
+    id: "san-miguel",
+    group: "Project stakeholders",
+    relationship: "BLMS stakeholder",
+    name: "Municipality of San Miguel",
+    context: "The Department of Agriculture served as the capstone client for the BLMS prototype, grounding its requirements in livestock monitoring and health reporting.",
+    links: [{ label: "BLMS stakeholder context", href: "/case-files/blms" }],
+  },
+] satisfies EcosystemRelationship[];

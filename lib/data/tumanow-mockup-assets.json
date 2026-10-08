@@ -1,0 +1,652 @@
+{
+  "method": "Native screenshot pixels, opaque flattened redactions, minimal code-drawn frames; no generated app UI or outer presentation backdrop.",
+  "privacy": "Private source files remain outside the project. All published images and PNG downloads are sanitized and have metadata stripped. Mask coordinates refer to the source screenshot.",
+  "screens": [
+    {
+      "id": "gis-map",
+      "title": "GIS Map",
+      "platform": "web",
+      "source": {
+        "filename": "825261118_2693717281047340_570412169159668746_n.png",
+        "width": 2048,
+        "height": 1280,
+        "sha256": "95eb791ccb30edae903dc1b46634963d9936b9e72235e3eb42ba8c9ffe857618"
+      },
+      "crop": {
+        "left": 0,
+        "top": 128,
+        "width": 2048,
+        "height": 1152
+      },
+      "placement": {
+        "left": 8,
+        "top": 56
+      },
+      "redactions": [
+        {
+          "category": "notification count",
+          "left": 1625,
+          "top": 148,
+          "width": 76,
+          "height": 47
+        }
+      ],
+      "master": {
+        "src": "/case-files/tumanow/mockups/gis-map.png",
+        "width": 2064,
+        "height": 1216,
+        "bytes": 1813731,
+        "sha256": "98b76e7c5e292131d6c7a17bc90c0693e8bab3fd52c066179167e36b3f0aed3c"
+      },
+      "web": {
+        "src": "/case-files/tumanow/mockups/gis-map.webp",
+        "width": 2064,
+        "height": 1216,
+        "bytes": 1308208,
+        "sha256": "6f026619e9432ef80f8fc1a936f0f5c159889321376407feaa9891efaf2cf390"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "opaqueMaskPixelsVerified": true,
+        "allOtherNativePixelsIdentical": true,
+        "losslessWebpVerified": true,
+        "metadataStripped": true
+      }
+    },
+    {
+      "id": "user-management",
+      "title": "User Roles",
+      "platform": "web",
+      "source": {
+        "filename": "825261088_2568736563623098_6500328891952919643_n.png",
+        "width": 2048,
+        "height": 1280,
+        "sha256": "c8f4f5141ea39a04d8623ea7a6e5393128b94d98fd5412ac80703342488e0368"
+      },
+      "crop": {
+        "left": 0,
+        "top": 128,
+        "width": 2048,
+        "height": 1152
+      },
+      "placement": {
+        "left": 8,
+        "top": 56
+      },
+      "redactions": [
+        {
+          "category": "notification count",
+          "left": 1625,
+          "top": 148,
+          "width": 76,
+          "height": 47
+        },
+        {
+          "category": "account avatar",
+          "left": 162,
+          "top": 818,
+          "width": 76,
+          "height": 76
+        },
+        {
+          "category": "account name and handle",
+          "left": 240,
+          "top": 820,
+          "width": 250,
+          "height": 72
+        },
+        {
+          "category": "account join date",
+          "left": 1264,
+          "top": 832,
+          "width": 162,
+          "height": 50
+        },
+        {
+          "category": "account avatar",
+          "left": 162,
+          "top": 923,
+          "width": 76,
+          "height": 76
+        },
+        {
+          "category": "account name and handle",
+          "left": 240,
+          "top": 925,
+          "width": 250,
+          "height": 72
+        },
+        {
+          "category": "account join date",
+          "left": 1264,
+          "top": 937,
+          "width": 162,
+          "height": 50
+        },
+        {
+          "category": "account avatar",
+          "left": 162,
+          "top": 1028,
+          "width": 76,
+          "height": 76
+        },
+        {
+          "category": "account name and handle",
+          "left": 240,
+          "top": 1030,
+          "width": 250,
+          "height": 72
+        },
+        {
+          "category": "account join date",
+          "left": 1264,
+          "top": 1042,
+          "width": 162,
+          "height": 50
+        }
+      ],
+      "master": {
+        "src": "/case-files/tumanow/mockups/user-management.png",
+        "width": 2064,
+        "height": 1216,
+        "bytes": 213332,
+        "sha256": "d59f5ca5b0251c4a0e5b818d172a323078f3a285caf857582be0945709fe9280"
+      },
+      "web": {
+        "src": "/case-files/tumanow/mockups/user-management.webp",
+        "width": 2064,
+        "height": 1216,
+        "bytes": 150714,
+        "sha256": "68e2e6b6a58cdb8cba8573fb1284b778b97f575fce784ad79d486b9d43ff13c6"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "opaqueMaskPixelsVerified": true,
+        "allOtherNativePixelsIdentical": true,
+        "losslessWebpVerified": true,
+        "metadataStripped": true
+      }
+    },
+    {
+      "id": "public-map",
+      "title": "Public Map",
+      "platform": "web",
+      "source": {
+        "filename": "828531494_29030123759947198_577959485629935114_n.png",
+        "width": 2048,
+        "height": 1280,
+        "sha256": "dc3dcf9eab78349de4152f02f751fd327301c9b43bd0625c132f027260677a97"
+      },
+      "crop": {
+        "left": 0,
+        "top": 128,
+        "width": 2048,
+        "height": 1152
+      },
+      "placement": {
+        "left": 8,
+        "top": 56
+      },
+      "redactions": [
+        {
+          "category": "project photograph",
+          "left": 1109,
+          "top": 352,
+          "width": 342,
+          "height": 12
+        },
+        {
+          "category": "project photograph",
+          "left": 1109,
+          "top": 364,
+          "width": 215,
+          "height": 182
+        },
+        {
+          "category": "project photograph",
+          "left": 1445,
+          "top": 364,
+          "width": 6,
+          "height": 182
+        },
+        {
+          "category": "project photograph",
+          "left": 1324,
+          "top": 397,
+          "width": 121,
+          "height": 149
+        },
+        {
+          "category": "project title",
+          "left": 1116,
+          "top": 550,
+          "width": 324,
+          "height": 64
+        },
+        {
+          "category": "project location",
+          "left": 1136,
+          "top": 614,
+          "width": 302,
+          "height": 34
+        }
+      ],
+      "master": {
+        "src": "/case-files/tumanow/mockups/public-map.png",
+        "width": 2064,
+        "height": 1216,
+        "bytes": 1488020,
+        "sha256": "92f9cc437a6026952c63173be51548113249e05c757be3cf7324df1b300dbdb5"
+      },
+      "web": {
+        "src": "/case-files/tumanow/mockups/public-map.webp",
+        "width": 2064,
+        "height": 1216,
+        "bytes": 1025432,
+        "sha256": "effa4d3c7132f921f7357b4b032760699933b88efb854e87512ce7d56b8f100f"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "opaqueMaskPixelsVerified": true,
+        "allOtherNativePixelsIdentical": true,
+        "losslessWebpVerified": true,
+        "metadataStripped": true
+      }
+    },
+    {
+      "id": "municipality-report",
+      "title": "Municipal Report",
+      "platform": "web",
+      "source": {
+        "filename": "825261120_4293980544065454_8645246821936054213_n.png",
+        "width": 2048,
+        "height": 1280,
+        "sha256": "1e5303f2b565bb933e9c1b95cf536d442b1726422fa8eef468e30aa714d87556"
+      },
+      "crop": {
+        "left": 0,
+        "top": 128,
+        "width": 2048,
+        "height": 1152
+      },
+      "placement": {
+        "left": 8,
+        "top": 56
+      },
+      "redactions": [
+        {
+          "category": "internal accounting values",
+          "left": 1348,
+          "top": 292,
+          "width": 100,
+          "height": 988
+        },
+        {
+          "category": "internal accounting values",
+          "left": 1562,
+          "top": 292,
+          "width": 90,
+          "height": 988
+        },
+        {
+          "category": "internal accounting values",
+          "left": 1710,
+          "top": 292,
+          "width": 115,
+          "height": 988
+        }
+      ],
+      "master": {
+        "src": "/case-files/tumanow/mockups/municipality-report.png",
+        "width": 2064,
+        "height": 1216,
+        "bytes": 233398,
+        "sha256": "f3907b40281c02facf8d6a73701317bafe8c75647ab697f48b305c47431d4c18"
+      },
+      "web": {
+        "src": "/case-files/tumanow/mockups/municipality-report.webp",
+        "width": 2064,
+        "height": 1216,
+        "bytes": 152608,
+        "sha256": "fca1456470bafef63640e200267ea4de31d99650b064af9b7dcf5598404f708e"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "opaqueMaskPixelsVerified": true,
+        "allOtherNativePixelsIdentical": true,
+        "losslessWebpVerified": true,
+        "metadataStripped": true
+      }
+    },
+    {
+      "id": "staff-sign-in",
+      "title": "Staff Sign-in",
+      "platform": "web",
+      "source": {
+        "filename": "825312500_1392463526428065_3389552752328965855_n.png",
+        "width": 2048,
+        "height": 1280,
+        "sha256": "c207e9b59bb221b61ce7f2cab1dbbb1ae010a80f34d2668bba2edf016d3f18c7"
+      },
+      "crop": {
+        "left": 0,
+        "top": 128,
+        "width": 2048,
+        "height": 1152
+      },
+      "placement": {
+        "left": 8,
+        "top": 56
+      },
+      "redactions": [
+        {
+          "category": "support contact line",
+          "left": 1312,
+          "top": 705,
+          "width": 456,
+          "height": 43
+        }
+      ],
+      "master": {
+        "src": "/case-files/tumanow/mockups/staff-sign-in.png",
+        "width": 2064,
+        "height": 1216,
+        "bytes": 363415,
+        "sha256": "4c01af9bfddb0843e8ae94d6169df016c10e374b21e09472133c01fb7810879c"
+      },
+      "web": {
+        "src": "/case-files/tumanow/mockups/staff-sign-in.webp",
+        "width": 2064,
+        "height": 1216,
+        "bytes": 244712,
+        "sha256": "a031bd5744b2ddbad368883a8fbef8ca3c0dc1ca0c4cbccd9e00a76c6a688438"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "opaqueMaskPixelsVerified": true,
+        "allOtherNativePixelsIdentical": true,
+        "losslessWebpVerified": true,
+        "metadataStripped": true
+      }
+    },
+    {
+      "id": "mobile-map",
+      "title": "Field Map",
+      "platform": "mobile",
+      "source": {
+        "filename": "825312498_1603472251328545_8485417149816720333_n.png",
+        "width": 942,
+        "height": 2048,
+        "sha256": "dd596143aa4e5254363a980e01cbb8a88ea18ae90bcb55b23b9d9e8a65dc1068"
+      },
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 942,
+        "height": 2048
+      },
+      "placement": {
+        "left": 8,
+        "top": 8
+      },
+      "redactions": [
+        {
+          "category": "project title",
+          "left": 28,
+          "top": 1273,
+          "width": 609,
+          "height": 50
+        },
+        {
+          "category": "project location",
+          "left": 28,
+          "top": 1323,
+          "width": 460,
+          "height": 38
+        },
+        {
+          "category": "project title",
+          "left": 28,
+          "top": 1396,
+          "width": 338,
+          "height": 50
+        },
+        {
+          "category": "project location",
+          "left": 28,
+          "top": 1446,
+          "width": 442,
+          "height": 39
+        },
+        {
+          "category": "project title",
+          "left": 28,
+          "top": 1520,
+          "width": 446,
+          "height": 50
+        },
+        {
+          "category": "project location",
+          "left": 28,
+          "top": 1570,
+          "width": 442,
+          "height": 38
+        },
+        {
+          "category": "project title",
+          "left": 28,
+          "top": 1643,
+          "width": 658,
+          "height": 50
+        },
+        {
+          "category": "project location",
+          "left": 28,
+          "top": 1693,
+          "width": 442,
+          "height": 40
+        },
+        {
+          "category": "project title",
+          "left": 28,
+          "top": 1767,
+          "width": 462,
+          "height": 53
+        },
+        {
+          "category": "project location",
+          "left": 28,
+          "top": 1820,
+          "width": 442,
+          "height": 33
+        },
+        {
+          "category": "notification count",
+          "left": 452,
+          "top": 1852,
+          "width": 67,
+          "height": 57
+        }
+      ],
+      "master": {
+        "src": "/case-files/tumanow/mockups/mobile-map.png",
+        "width": 958,
+        "height": 2064,
+        "bytes": 1012578,
+        "sha256": "0c489de7285dc4bedad02d7e5a4bc466ad4f7415625e08a6e33e4e6bbc9a50c1"
+      },
+      "web": {
+        "src": "/case-files/tumanow/mockups/mobile-map.webp",
+        "width": 958,
+        "height": 2064,
+        "bytes": 685040,
+        "sha256": "45cbd89e6c696ae1605a9b76caad67ec08806f9d9daa3d778e11e3915e71d54a"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "opaqueMaskPixelsVerified": true,
+        "allOtherNativePixelsIdentical": true,
+        "losslessWebpVerified": true,
+        "metadataStripped": true
+      }
+    },
+    {
+      "id": "mobile-filters",
+      "title": "Filters",
+      "platform": "mobile",
+      "source": {
+        "filename": "825261076_1286021714599934_8776364192974987504_n.png",
+        "width": 942,
+        "height": 2048,
+        "sha256": "50838dbbedb2d60d4828cf0f803f58f1c46b1ad039770655904db9f4273ee2d1"
+      },
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 942,
+        "height": 2048
+      },
+      "placement": {
+        "left": 8,
+        "top": 8
+      },
+      "redactions": [],
+      "master": {
+        "src": "/case-files/tumanow/mockups/mobile-filters.png",
+        "width": 958,
+        "height": 2064,
+        "bytes": 335157,
+        "sha256": "844090a84c4d0fb31ddbc72a57f3af02babe1859c59817f616337658896adac6"
+      },
+      "web": {
+        "src": "/case-files/tumanow/mockups/mobile-filters.webp",
+        "width": 958,
+        "height": 2064,
+        "bytes": 233722,
+        "sha256": "075933cdba5fca2d1b2e064c2537b32dcf2c6283291319bf8cb15882afd4f6da"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "opaqueMaskPixelsVerified": true,
+        "allOtherNativePixelsIdentical": true,
+        "losslessWebpVerified": true,
+        "metadataStripped": true
+      }
+    },
+    {
+      "id": "mobile-new-project",
+      "title": "New Project",
+      "platform": "mobile",
+      "source": {
+        "filename": "825312526_2774851576250187_8469452770851506659_n.png",
+        "width": 942,
+        "height": 2048,
+        "sha256": "3a8976f672bd6f486a20179dc20f46e4b05a6f234caffcd667b1e84b5abe46f9"
+      },
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 942,
+        "height": 1920
+      },
+      "placement": {
+        "left": 8,
+        "top": 8
+      },
+      "redactions": [],
+      "master": {
+        "src": "/case-files/tumanow/mockups/mobile-new-project.png",
+        "width": 958,
+        "height": 1936,
+        "bytes": 170506,
+        "sha256": "db459eb379b486bfc9eb9c59efdff47aea4bf69145cec80d9a5d41f31225d537"
+      },
+      "web": {
+        "src": "/case-files/tumanow/mockups/mobile-new-project.webp",
+        "width": 958,
+        "height": 1936,
+        "bytes": 108646,
+        "sha256": "97b08631870ecba138ff2ded0a94bef70afa2383e781aba259305e3fe5714809"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "opaqueMaskPixelsVerified": true,
+        "allOtherNativePixelsIdentical": true,
+        "losslessWebpVerified": true,
+        "metadataStripped": true
+      }
+    },
+    {
+      "id": "mobile-sync",
+      "title": "Sync",
+      "platform": "mobile",
+      "source": {
+        "filename": "825261067_1712893226468869_3602894232113037514_n.png",
+        "width": 942,
+        "height": 2048,
+        "sha256": "9ef3bd4d88509788b25e87f7b4ab662f0627ef780b91f70c0620b7652d702e4a"
+      },
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 942,
+        "height": 2048
+      },
+      "placement": {
+        "left": 8,
+        "top": 8
+      },
+      "redactions": [
+        {
+          "category": "account name",
+          "left": 68,
+          "top": 221,
+          "width": 474,
+          "height": 48
+        },
+        {
+          "category": "account handle",
+          "left": 286,
+          "top": 272,
+          "width": 145,
+          "height": 41
+        },
+        {
+          "category": "deployment address",
+          "left": 68,
+          "top": 314,
+          "width": 375,
+          "height": 47
+        },
+        {
+          "category": "notification count",
+          "left": 452,
+          "top": 1852,
+          "width": 67,
+          "height": 57
+        }
+      ],
+      "master": {
+        "src": "/case-files/tumanow/mockups/mobile-sync.png",
+        "width": 958,
+        "height": 2064,
+        "bytes": 188273,
+        "sha256": "d4eef0cda180a7ee7d87f105cfef476990d176eeabdd9ec4a1880bd86102119a"
+      },
+      "web": {
+        "src": "/case-files/tumanow/mockups/mobile-sync.webp",
+        "width": 958,
+        "height": 2064,
+        "bytes": 127382,
+        "sha256": "25236376f47cfd2096fdbffdb308448e8c85d8474e03cf5a970e0afdc51f6194"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "opaqueMaskPixelsVerified": true,
+        "allOtherNativePixelsIdentical": true,
+        "losslessWebpVerified": true,
+        "metadataStripped": true
+      }
+    }
+  ]
+}

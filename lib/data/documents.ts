@@ -1,5 +1,5 @@
 import { Award, Brain, Briefcase, BookOpen, Heart, Rocket, ShieldCheck, Terminal, Users } from "lucide-react";
-import type { DocumentCollection, DocumentItem, DocumentMetadata, ProfessionalDocument } from "@/lib/types";
+import type { CredentialKind, DocumentCollection, DocumentItem, DocumentMetadata, ProfessionalDocument } from "@/lib/types";
 
 
 
@@ -162,9 +162,33 @@ const collectionPresentation = {
   ai: { category: "Artificial Intelligence", documentType: "Certificate" },
   research: { category: "Research", documentType: "Conference Certificate" },
   community: { category: "Community Engagement", documentType: "Certificate" },
-  cisco: { category: "Professional Certification", documentType: "Professional Certificate" },
-  datacamp: { category: "Professional Certification", documentType: "Professional Certificate" },
+  cisco: { category: "Technical Courses", documentType: "Course Completion" },
+  datacamp: { category: "Courses & Certification", documentType: "Course Completion" },
 } as const;
+
+// Classifications describe the evidence supplied by each record, not its file URL.
+const collectionKinds: Record<keyof typeof collectionPresentation, CredentialKind> = {
+  awards: "Recognition / award",
+  internships: "Internship documentation",
+  leadership: "Supporting document",
+  startup: "Certificate of participation",
+  ai: "Training documentation",
+  research: "Certificate of participation",
+  community: "Recognition / award",
+  cisco: "Course completion",
+  datacamp: "Course completion",
+};
+
+const documentKinds: Record<string, CredentialKind> = {
+  "l-1": "Recognition / award",
+  "l-3": "Certificate of participation",
+  "ai-4": "Certificate of participation",
+  "ai-5": "Certificate of participation",
+  "r-3": "Recognition / award",
+  "gci-world-april-2026": "Certificate of completion",
+  "v-3": "Certificate of participation",
+  "d-1": "Professional certification",
+};
 
 const normalizedIssuers: [RegExp, string][] = [
   [/cisco/i, "Cisco Networking Academy"],
@@ -184,39 +208,48 @@ const documentMetadataOverrides: Record<string, Partial<DocumentMetadata>> = {
   "best-capstone": { issuer: "ISAT U - College of Computing and Informatics" },
   "outstanding-intern": { issuer: "ISAT U - College of Computing and Informatics" },
   "startup-champion": { issuer: "Iloilo Province Government" },
+  "d-1": { category: "Professional Certification", documentType: "Professional Certification", description: "Professional certification record for Data Literacy Professional." },
 };
 
 function inferIssuer(meta: string): string | undefined {
   return normalizedIssuers.find(([pattern]) => pattern.test(meta))?.[1];
 }
 
-function inferDescription(title: string, category: string): string {
+function inferDescription(title: string, kind: CredentialKind): string {
   if (/magna cum laude/i.test(title)) return "Academic distinction awarded upon graduating with Magna Cum Laude honors.";
   if (/outstanding intern/i.test(title)) return "Recognition awarded for outstanding internship performance.";
-  if (category === "Professional Certification") return `Certificate awarded for successfully completing the ${title} course.`;
-  if (category === "Internship") return `Certificate documenting completion of the ${title} internship.`;
-  if (category === "Research") return `Certificate recognizing participation in ${title}.`;
-  return `${category} credential recognizing ${title}.`;
+  if (kind === "Course completion") return `Course completion record for ${title}.`;
+  if (kind === "Internship documentation") return `Certificate documenting completion of the ${title} internship.`;
+  if (kind === "Certificate of participation") return `Certificate recognizing participation in ${title}.`;
+  if (kind === "Recognition / award") return `Recognition document for ${title}.`;
+  return `Supporting document for ${title}.`;
 }
 
 function enrichDocument(item: DocumentItem, collectionId: keyof typeof collectionPresentation): DocumentItem {
   const presentation = collectionPresentation[collectionId];
+  const kind = documentKinds[item.id] ?? collectionKinds[collectionId];
   const issueDate = item.meta.match(/\b(?:19|20)\d{2}\b/)?.[0];
   const viewerMetadata: DocumentMetadata = {
     title: item.title,
     category: presentation.category,
     issuer: inferIssuer(item.meta),
     issuedDate: issueDate,
-    documentType: presentation.documentType,
-    verificationStatus: "Official Credential",
-    description: inferDescription(item.title, presentation.category),
+    documentType: kind,
+    verificationStatus: "Supporting document",
+    description: inferDescription(item.title, kind),
   };
 
   return {
     ...item,
+    kind,
     aspectRatio: item.aspectRatio ?? 1.414,
     viewerOptions: item.viewerOptions ?? { allowDownload: false },
-    viewerMetadata: { ...viewerMetadata, ...item.viewerMetadata, ...documentMetadataOverrides[item.id] },
+    viewerMetadata: {
+      ...viewerMetadata,
+      ...item.viewerMetadata,
+      ...documentMetadataOverrides[item.id],
+      verificationStatus: item.viewerMetadata?.verificationStatus === "Certificate Pending" ? "Certificate Pending" : "Supporting document",
+    },
   };
 }
 
@@ -237,6 +270,7 @@ export const featuredResearchCredentials = documentCollections.research.items
   .map((item) => ({
     title: item.title,
     issuer: item.viewerMetadata?.issuer ?? "",
+    kind: item.kind ?? "Supporting document",
     action: "viewer" as const,
     pdfPath: item.fileUrl ?? "",
     aspectRatio: item.aspectRatio,

@@ -1,529 +1,184 @@
-"use client";
-
+import { actionStyles } from "@/lib/action-styles";
+import { getCredentialAnchor } from "@/lib/credential-anchors";
+import PageHeader from "@/components/shared/PageHeader";
 import Link from "next/link";
-import { 
-  GraduationCap, 
-  Lightbulb, 
-  Users, 
-  Rocket, 
-  Briefcase, 
-  Terminal, 
-  Trophy, 
-  Building2, 
-  Handshake,
-  CheckCircle2,
-  BookOpen,
-  Target
-} from "lucide-react";
-import GlowingCard from "@/components/shared/GlowingCard";
-import RevealOnScroll from "@/components/shared/RevealOnScroll";
-import { journeyProgressNodes, foundationSkills, classMayorSkills, tumanowResponsibilities, auditorSkills, kwadraResponsibilities, wadhwaniResponsibilities, blmsResponsibilities, learningExperiences } from "@/lib/data/journey";
+import type { ReactNode } from "react";
+import { Award } from "lucide-react";
+import {
+  blmsResponsibilities,
+  foundationSkills,
+  kwadraResponsibilities,
+  learningExperiences,
+  tumanowResponsibilities,
+  wadhwaniResponsibilities,
+} from "@/lib/data/journey";
+
+const focusStyle = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-foreground focus-visible:outline-offset-4";
+const linkStyle = actionStyles();
+
+function Milestone({ id, headingId, date, title, children }: {
+  id?: string;
+  headingId: string;
+  date: string;
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <li className="group/milestone grid grid-cols-[1rem_minmax(0,1fr)] gap-x-4 sm:grid-cols-[6.5rem_1rem_minmax(0,1fr)] sm:gap-x-5">
+      <p className="col-start-2 row-start-1 mb-2 text-xs font-mono leading-relaxed text-muted-foreground sm:col-start-1 sm:mb-0 sm:pt-1">{date}</p>
+      <div aria-hidden="true" className="relative col-start-1 row-span-2 row-start-1 flex justify-center sm:col-start-2 sm:row-span-1">
+        <span className="absolute -bottom-[11px] left-1/2 top-[11px] w-px -translate-x-1/2 bg-border group-last/milestone:hidden" />
+        <span className="relative mt-1.5 h-2.5 w-2.5 rounded-full border border-muted-foreground bg-background group-first/milestone:border-foreground group-first/milestone:bg-foreground" />
+      </div>
+      <section id={id} aria-labelledby={headingId} className="col-start-2 row-start-2 min-w-0 scroll-mt-24 pb-10 group-last/milestone:pb-0 sm:col-start-3 sm:row-start-1 sm:pb-12">
+        <h2 id={headingId} className="text-xl font-semibold tracking-tight text-foreground">{title}</h2>
+        {children}
+      </section>
+    </li>
+  );
+}
+
+function Recognition({ children }: { children: ReactNode }) {
+  return (
+    <p className="mt-4 flex items-start gap-2 text-sm font-medium leading-relaxed text-foreground">
+      <Award aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
+      <span>{children}</span>
+    </p>
+  );
+}
+
+function MilestoneDetails({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <details className="mt-3 text-sm">
+      <summary className={`min-h-11 cursor-pointer py-3 font-medium text-muted-foreground transition-colors hover:text-foreground ${focusStyle}`}>{label}</summary>
+      <div className="pb-2 text-sm leading-relaxed text-muted-foreground">{children}</div>
+    </details>
+  );
+}
+
+function Contributions({ items }: { items: readonly string[] }) {
+  return (
+    <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground marker:text-muted-foreground">
+      {items.map((item) => <li key={item}>{item}</li>)}
+    </ul>
+  );
+}
 
 export default function ProfessionalJourney() {
   return (
-    <main id="main-content" tabIndex={-1} className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background pb-32">
-      <div className="max-w-4xl mx-auto w-full px-5 py-12 sm:px-8 sm:py-16 lg:px-16 lg:py-24">
-        
-        {/* HEADER */}
-        <RevealOnScroll delay={0}>
-          <header className="mb-20">
-            <div className="flex items-center gap-4 text-[10px] font-mono text-muted-foreground mb-8">
-              <span className="text-foreground">About</span>
-              <span>/</span>
-              <span>Professional Journey</span>
-            </div>
-            
-            <h1 className="text-3xl font-bold tracking-tight text-foreground mb-6">
-              Professional Journey
-            </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed font-light max-w-2xl">
-              A timeline of the experiences, leadership roles, projects, internships, and learning milestones that shaped my growth as an Information Systems graduate.
-            </p>
-          </header>
-        </RevealOnScroll>
+    <main id="main-content" tabIndex={-1} className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background pb-24">
+      <div className="page-shell">
+        <PageHeader title={"Professional Journey"} description={"My experience in web development, systems analysis, and program support, alongside the education and leadership roles that shaped my work."} eyebrow={"Experience & education"} />
 
-        <RevealOnScroll delay={100}>
-        <section aria-labelledby="recent-experience" className="mb-16 border-y border-border/40 py-8">
-          <h2 id="recent-experience" className="mb-6 text-base font-semibold">Recent Experience</h2>
-          <ul className="grid gap-6 sm:grid-cols-2 text-sm">
-            <li><Link href="/case-files/pricepulse" className="font-medium underline underline-offset-4">PricePulse PH / Solo Developer</Link><p className="mt-2 text-muted-foreground">Built and deployed a Next.js dashboard backed by PostgreSQL and Prisma.</p></li>
-            <li><Link href="/case-files/blms" className="font-medium underline underline-offset-4">BLMS / Capstone Prototype</Link><p className="mt-2 text-muted-foreground">Led planning and systems analysis for an award-winning capstone.</p></li>
-            <li><p className="font-medium">KWADRA &amp; Wadhwani / Internships</p><p className="mt-2 text-muted-foreground">Supported innovation programs, documentation, and participant coordination during January-May 2026.</p></li>
-            <li><Link href="/case-files/tumanow" className="font-medium underline underline-offset-4">TumaNow / Startup Co-Founder</Link><p className="mt-2 text-muted-foreground">Contributed business analysis and financial planning to a hackathon-winning GovTech project.</p></li>
-          </ul>
-          <a href="#journey-timeline" className="mt-6 inline-block text-xs underline underline-offset-4">Explore the full timeline</a>
+        <ol id="journey-timeline" aria-label="Experience and milestones, recent experience first" className="scroll-mt-24">
+          <Milestone id="careertrack-development" date="2026" title="CareerTrack" headingId="careertrack-heading">
+            <p className="mt-2 text-xs text-muted-foreground">Solo Developer / Software Engineer · Deployed Release Candidate</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Built a personal career workspace connecting applications, hiring-stage history, private documents, offers, and employment records.</p>
+            <MilestoneDetails label="View development details">
+              <p>Implemented the Next.js frontend, Express API, PostgreSQL data model, server-side sessions, and private document storage. Deployed the frontend on Vercel and the API on Railway; v1.0 remains pending.</p>
+            </MilestoneDetails>
+            <Link href="/case-files/careertrack" className={`mt-2 ${linkStyle}`}>View case study</Link>
+          </Milestone>
+
+          <Milestone date="Jan–May 2026" title="Internship experience" headingId="internships-heading">
+            <div className="mt-5 space-y-6">
+              <article id="kwadra-internship" className="scroll-mt-24">
+                <h3 className="text-sm font-medium">ISAT U – KWADRA Technology Business Incubator</h3>
+                <p className="mt-1 text-xs text-muted-foreground">Student Intern · 600 hours</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Supported innovation programs, project documentation, and startup activities.</p>
+                <Recognition>Outstanding Intern Award</Recognition>
+                <MilestoneDetails label="View KWADRA responsibilities"><Contributions items={kwadraResponsibilities} /></MilestoneDetails>
+              </article>
+              <article id="wadhwani-internship" className="scroll-mt-24">
+                <h3 className="text-sm font-medium">Wadhwani Foundation Philippines</h3>
+                <p className="mt-1 text-xs text-muted-foreground">Student Intern</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Coordinated faculty participation across partner universities, monitored progress, and supported participant engagement.</p>
+                <MilestoneDetails label="View Wadhwani responsibilities"><Contributions items={wadhwaniResponsibilities} /></MilestoneDetails>
+              </article>
+            </div>
+            <Link href={`/credentials#${getCredentialAnchor("Outstanding Intern Award")}`} className={`mt-2 ${linkStyle}`}>View internship recognition</Link>
+          </Milestone>
+
+          <Milestone id="project-experience" date="Independent development" title="PricePulse PH" headingId="project-experience-heading">
+            <p className="mt-2 text-xs text-muted-foreground">Solo Developer</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Built a full-stack dashboard for exploring Philippine commodity prices, from historical data imports to analytics and a responsive interface.</p>
+            <MilestoneDetails label="View development details">
+              <p>Cleaned and imported historical records, implemented analytics and the responsive interface, and deployed the Next.js application on Vercel with PostgreSQL and Prisma.</p>
+            </MilestoneDetails>
+            <Link href="/case-files/pricepulse" className={`mt-2 ${linkStyle}`}>View case study</Link>
+          </Milestone>
+
+          <Milestone id="blms-capstone" date="2026" title="BLMS capstone" headingId="blms-heading">
+            <p className="mt-2 text-xs text-muted-foreground">Project Manager &amp; System Analyst</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Led the design of the Backyard Livestock Monitoring System, a capstone prototype for the Municipality of San Miguel – Department of Agriculture.</p>
+            <Recognition>Best Capstone Project Award</Recognition>
+            <p className="mt-2 text-xs text-muted-foreground">Successful final defense · April 2026</p>
+            <MilestoneDetails label="View capstone contributions">
+              <p className="mb-3">Focused on livestock monitoring, health reporting, and agricultural data management.</p>
+              <Contributions items={blmsResponsibilities} />
+            </MilestoneDetails>
+            <div className="mt-2 flex flex-wrap gap-2"><Link href="/case-files/blms" className={linkStyle}>View case study</Link><Link href={`/credentials#${getCredentialAnchor("Best Capstone Project Award")}`} className={actionStyles({ variant: "quiet" })}>Award record</Link></div>
+          </Milestone>
+
+          <Milestone id="tumanow-startup" date="2025" title="TumaNow startup experience" headingId="tumanow-heading">
+            <p className="mt-2 text-xs leading-relaxed text-muted-foreground">Co-Founder · Business Analyst · Chief Financial Officer</p>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Contributed stakeholder interviews, business requirements, system workflows, and financial planning to the startup.</p>
+            <Recognition>Champion — 2025 Iloilo Province Startup Hackathon</Recognition>
+            <MilestoneDetails label="View startup contributions and context">
+              <Contributions items={tumanowResponsibilities} />
+              <p className="mt-4">Incubated under ISAT U–KWADRA Technology Business Incubator (KWADRA TBI). Potential system adoption remains under evaluation by the PPDO, Iloilo Province.</p>
+            </MilestoneDetails>
+            <Link href="/case-files/tumanow" className={`mt-2 ${linkStyle}`}>View case study</Link>
+          </Milestone>
+
+          <Milestone id="student-leadership" date="AY 2024–2026" title="Student leadership" headingId="leadership-heading">
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Represented student concerns, coordinated faculty communication, and supported organizational records and accountability.</p>
+            <MilestoneDetails label="View leadership roles">
+              <dl className="space-y-5">
+                <div>
+                  <dt className="font-medium text-foreground">Class representation · BS Information Systems</dt>
+                  <dd className="mt-2">Class Mayor (elected) · AY 2024–2025</dd>
+                  <dd className="mt-1">Class Vice Mayor · AY 2025–2026</dd>
+                  <dd className="mt-3">Represented student concerns, coordinated faculty communication and announcements, and supported class activities.</dd>
+                </div>
+                <div>
+                  <dt className="font-medium text-foreground">Auditor · ISAT U ANALYTICA</dt>
+                  <dd className="mt-1">AY 2025–2026</dd>
+                  <dd className="mt-3">Maintained organizational records and documentation, assisted activity planning, and supported accountable operations for the Information Systems student organization.</dd>
+                </div>
+              </dl>
+            </MilestoneDetails>
+            <Link href="/documents" className={`mt-2 ${linkStyle}`}>View leadership records</Link>
+          </Milestone>
+
+          <Milestone id="education" date="2022–2026" title="Information Systems foundations" headingId="education-heading">
+            <p className="mt-3 text-sm font-medium">Bachelor of Science in Information Systems</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">Iloilo Science and Technology University – Iloilo City Campus</p>
+            <Recognition>Magna Cum Laude</Recognition>
+            <MilestoneDetails label="Early academic foundations · 2022–2023">
+              <div className="space-y-3">
+                <p>Started the Information Systems program in 2022. By 2023, coursework connected software development with organizational processes and the needs a system should address.</p>
+                <p>{foundationSkills.join(", ")}.</p>
+              </div>
+            </MilestoneDetails>
+            <Link href={`/credentials#${getCredentialAnchor("Magna Cum Laude")}`} className={`mt-2 ${linkStyle}`}>View academic recognition</Link>
+          </Milestone>
+        </ol>
+
+        <section id="continuous-learning" aria-labelledby="learning-heading" className="mt-12 scroll-mt-24 border-t border-border/60 pt-8 sm:mt-16">
+          <h2 id="learning-heading" className="text-xl font-semibold tracking-tight">Additional milestones &amp; learning</h2>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground"><span className="font-medium text-foreground">2026 AI Fest — AI Hackathon, Open Category:</span> Ranked among the Top 10 of 23 entries.</p>
+          <MilestoneDetails label="Conferences, programs & technical training">
+            <ul className="list-disc space-y-3 pl-5">
+              {learningExperiences.map((item) => (
+                <li key={typeof item === "string" ? item : item.title}>
+                  {typeof item === "string" ? item : <><span className="font-medium text-foreground">{item.title}</span><p className="mt-1">{item.desc}</p></>}
+                </li>
+              ))}
+            </ul>
+          </MilestoneDetails>
+          <Link href="/credentials" className={`mt-2 ${linkStyle}`}>View supporting credentials and records</Link>
         </section>
-        </RevealOnScroll>
-
-        {/* PROGRESS INDICATOR */}
-        <RevealOnScroll delay={100}>
-          <div className="mb-24 hidden sm:block">
-            <div className="relative pt-4 pb-4">
-              {/* FIXED: The Horizontal Line shifted to exactly 49px to strike through the dots */}
-              <div className="absolute left-0 right-0 h-px bg-border/60 top-[49px] z-0"></div>
-              
-              {/* The Nodes */}
-              <div className="relative z-10 flex items-center justify-between">
-                {journeyProgressNodes.map((node, i) => (
-                  <div key={i} className="flex flex-col items-center bg-background px-2 md:px-4">
-                    <span className="text-[10px] font-mono text-muted-foreground uppercase h-4 mb-3 block">{node.top}</span>
-                    <div className="w-2.5 h-2.5 rounded-full bg-foreground ring-4 ring-background mb-4"></div>
-                    <span className="text-[10px] font-mono text-foreground uppercase block">{node.bottom}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </RevealOnScroll>
-
-        {/* TIMELINE CONTAINER */}
-        <div id="journey-timeline" className="relative border-l border-border/40 ml-2 md:ml-4 space-y-24 pb-12">
-          
-          {/* 2022: Beginning */}
-          <RevealOnScroll delay={200}>
-            <div className="relative pl-8 md:pl-12">
-              <div className="absolute w-2.5 h-2.5 bg-foreground rounded-full -left-[5.5px] top-3 ring-4 ring-background"></div>
-              
-              <div className="mb-10">
-                <h2 className="text-2xl font-light text-foreground tracking-tight">2022</h2>
-                <div className="w-full h-px bg-border/40 mt-4"></div>
-              </div>
-              
-              <section className="pb-8 border-b border-border/40">
-                <div className="flex gap-3 items-start mb-4">
-                  <GraduationCap className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
-                  <div>
-                    <h3 className="text-lg font-medium text-foreground">Starting My Information Systems Journey</h3>
-                    <p className="text-[12px] font-mono uppercase tracking-widest text-muted-foreground mt-1">
-                      BS Information Systems • Iloilo Science and Technology University - Iloilo City Campus
-                    </p>
-                  </div>
-                </div>
-                <p className="text-[14px] leading-relaxed text-muted-foreground">
-                  Started my journey in Information Systems and began learning how technology can help solve real-world problems.
-                </p>
-              </section>
-            </div>
-          </RevealOnScroll>
-
-          {/* 2023: Systems & Organizations */}
-          <RevealOnScroll delay={100}>
-            <div className="relative pl-8 md:pl-12">
-              <div className="absolute w-2.5 h-2.5 bg-foreground rounded-full -left-[5.5px] top-3 ring-4 ring-background"></div>
-              
-              <div className="mb-10">
-                <h2 className="text-2xl font-light text-foreground tracking-tight">2023</h2>
-                <div className="w-full h-px bg-border/40 mt-4"></div>
-              </div>
-              
-              <section className="pb-8 border-b border-border/40">
-                <div className="flex gap-3 items-start mb-4">
-                  <Lightbulb className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
-                  <h3 className="text-lg font-medium text-foreground">Understanding Systems and Organizations</h3>
-                </div>
-                <p className="text-[14px] leading-relaxed text-muted-foreground mb-6">
-                  As I progressed in the program, I realized that technology is more than writing code—it is about understanding how organizations work and using digital solutions to improve processes. During this stage, I developed my understanding of:
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {foundationSkills.map((skill, i) => (
-                    <span key={i} className="text-[11px] font-mono text-foreground border border-border/40 px-2.5 py-1 bg-background">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-                
-                <p className="text-[13px] text-muted-foreground italic border-l-2 border-border/40 pl-4">
-                  This became the foundation of how I approach projects today: understanding the problem before designing the solution.
-                </p>
-              </section>
-            </div>
-          </RevealOnScroll>
-
-          {/* AY 2024-2025: Class Mayor */}
-          <RevealOnScroll delay={100}>
-            <div className="relative pl-8 md:pl-12">
-              <div className="absolute w-2.5 h-2.5 bg-foreground rounded-full -left-[5.5px] top-3 ring-4 ring-background"></div>
-              
-              <div className="mb-10">
-                <h2 className="text-2xl font-light text-foreground tracking-tight uppercase">AY 2024–2025</h2>
-                <div className="w-full h-px bg-border/40 mt-4"></div>
-              </div>
-              
-              <section className="pb-8 border-b border-border/40">
-                <div className="flex gap-3 items-start mb-4">
-                  <Users className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
-                  <div>
-                    <h3 className="text-lg font-medium text-foreground">Class Mayor</h3>
-                    <p className="text-[12px] font-mono uppercase tracking-widest text-muted-foreground mt-1">
-                      BS Information Systems
-                    </p>
-                  </div>
-                </div>
-                <p className="text-[14px] leading-relaxed text-muted-foreground mb-6">
-                  Served as the elected Class Mayor during my third year, representing the class in academic and student-related activities. My responsibilities included coordinating with faculty members, organizing class concerns, communicating announcements, and helping ensure smooth coordination between students and instructors.
-                </p>
-                <div className="pt-6 border-t border-border/40">
-                  <h4 className="text-sm font-semibold text-foreground mb-3">Skills developed</h4>
-                  <div className="flex flex-wrap gap-x-4 gap-y-2">
-                    {classMayorSkills.map((skill, i) => (
-                      <span key={i} className="text-[12px] text-muted-foreground flex items-center gap-1.5">
-                        <span className="text-foreground/30 font-mono">↳</span> {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </section>
-            </div>
-          </RevealOnScroll>
-
-          {/* 2025: TumaNow */}
-          <RevealOnScroll delay={100}>
-            <div className="relative pl-8 md:pl-12">
-              <div className="absolute w-2.5 h-2.5 bg-foreground rounded-full -left-[5.5px] top-3 ring-4 ring-background"></div>
-              
-              <div className="mb-10">
-                <h2 className="text-2xl font-light text-foreground tracking-tight">2025</h2>
-                <div className="w-full h-px bg-foreground mt-4"></div>
-              </div>
-              
-              <GlowingCard className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
-                <div className="flex gap-3 items-start mb-4">
-                  <Rocket className="w-5 h-5 text-foreground shrink-0 mt-0.5" />
-                  <div>
-                    <h3 className="text-lg font-medium text-foreground"><Link href="/case-files/tumanow" className="underline underline-offset-4">TumaNow Startup</Link></h3>
-                    <p className="text-[12px] font-mono uppercase tracking-widest text-muted-foreground mt-1">
-                      Co-Founder • Business Analyst • Chief Financial Officer
-                    </p>
-                  </div>
-                </div>
-                <p className="text-[14px] leading-relaxed text-muted-foreground mb-8">
-                  Co-founded TumaNow, a startup that developed a digital monitoring platform for local government infrastructure projects. The project began during the 2025 Iloilo Province Startup Hackathon, where our team identified a real problem faced by the Provincial Planning and Development Office (PPDO). Through stakeholder interviews and client consultations, we designed a system to improve project monitoring, reporting, and transparency.
-                </p>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                  <div>
-                    <h4 className="text-sm font-semibold text-foreground mb-4">My responsibilities</h4>
-                    <ul className="space-y-2">
-                      {tumanowResponsibilities.map((resp, i) => (
-                        <li key={i} className="text-[13px] text-muted-foreground flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-foreground/40 shrink-0 mt-[3px]" />
-                          <span className="leading-snug">{resp}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="text-sm font-semibold text-foreground mb-4">Milestones</h4>
-                    <ul className="space-y-4">
-                      <li className="text-[13px] text-foreground font-medium flex items-start gap-3">
-                        <Trophy className="w-4 h-4 text-muted-foreground shrink-0 mt-[2px]" />
-                        <span className="leading-snug">Champion — 2025 Iloilo Province Startup Hackathon</span>
-                      </li>
-                      <li className="text-[13px] text-foreground flex items-start gap-3">
-                        <Building2 className="w-4 h-4 text-muted-foreground shrink-0 mt-[2px]" />
-                        <span className="leading-snug text-muted-foreground">Incubated under ISAT U–KWADRA Technology Business Incubator (KWADRA TBI)</span>
-                      </li>
-                      <li className="text-[13px] text-foreground flex items-start gap-3">
-                        <Handshake className="w-4 h-4 text-muted-foreground shrink-0 mt-[2px]" />
-                        <span className="leading-snug text-muted-foreground">Potential system adoption under evaluation by the PPDO, Iloilo Province</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <p className="text-[13px] text-muted-foreground italic border-t border-border/40 pt-4">
-                  This experience strengthened my skills in business analysis, client engagement, teamwork, startup development, and solution validation.
-                </p>
-              </GlowingCard>
-            </div>
-          </RevealOnScroll>
-
-          {/* AY 2025-2026: Vice Mayor & Auditor */}
-          <RevealOnScroll delay={100}>
-            <div className="relative pl-8 md:pl-12">
-              <div className="absolute w-2.5 h-2.5 bg-foreground rounded-full -left-[5.5px] top-3 ring-4 ring-background"></div>
-              
-              <div className="mb-10">
-                <h2 className="text-2xl font-light text-foreground tracking-tight uppercase">AY 2025–2026</h2>
-                <div className="w-full h-px bg-border/40 mt-4"></div>
-              </div>
-              
-              <GlowingCard className="border border-border/40 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors divide-y divide-border/40">
-                
-                {/* Role 1 */}
-                <div className="p-6 md:p-8">
-                  <div className="flex gap-3 items-start mb-4">
-                    <Users className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
-                    <div>
-                      <h3 className="text-lg font-medium text-foreground">Class Vice Mayor</h3>
-                      <p className="text-[12px] font-mono uppercase tracking-widest text-muted-foreground mt-1">BS Information Systems</p>
-                    </div>
-                  </div>
-                  <p className="text-[14px] leading-relaxed text-muted-foreground mb-4">
-                    Served as Class Vice Mayor during my fourth year, assisting in coordinating class activities, supporting student concerns, and working closely with faculty members and classmates.
-                  </p>
-                  <p className="text-[13px] text-muted-foreground/80 font-medium">
-                    Strengthened collaboration, communication, and leadership skills.
-                  </p>
-                </div>
-
-                {/* Role 2 */}
-                <div className="p-6 md:p-8">
-                  <div className="flex gap-3 items-start mb-3">
-                    <Briefcase className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
-                    <div>
-                      <h3 className="text-lg font-medium text-foreground">Auditor</h3>
-                      <p className="text-[12px] font-mono uppercase tracking-widest text-muted-foreground mt-1">ISAT U ANALYTICA</p>
-                    </div>
-                  </div>
-                  <p className="text-[14px] leading-relaxed text-muted-foreground mb-6">
-                    Served as Auditor of ISAT U ANALYTICA, the Information Systems student organization. Managed organizational records, assisted in planning activities, and supported organizational operations while ensuring accountability and proper documentation.
-                  </p>
-                  <div className="flex flex-wrap gap-x-4 gap-y-2">
-                    <span className="text-sm font-semibold text-foreground mr-2 mt-[2px]">Skills:</span>
-                    {auditorSkills.map((skill, i) => (
-                      <span key={i} className="text-[12px] text-muted-foreground">{skill}</span>
-                    ))}
-                  </div>
-                </div>
-              </GlowingCard>
-            </div>
-          </RevealOnScroll>
-
-          {/* Jan-May 2026: Internships */}
-          <RevealOnScroll delay={100}>
-            <div className="relative pl-8 md:pl-12">
-              <div className="absolute w-2.5 h-2.5 bg-foreground rounded-full -left-[5.5px] top-3 ring-4 ring-background"></div>
-              
-              <div className="mb-10">
-                <h2 className="text-2xl font-light text-foreground tracking-tight uppercase">January – May 2026</h2>
-                <div className="w-full h-px bg-border/40 mt-4"></div>
-              </div>
-              
-              <GlowingCard className="border border-border/40 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors divide-y divide-border/40">
-                
-                {/* Internship 1 */}
-                <div className="p-6 md:p-8">
-                  <div className="flex gap-3 items-start mb-4">
-                    <Briefcase className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
-                    <div>
-                      <h3 className="text-lg font-medium text-foreground">Student Intern</h3>
-                      <p className="text-[12px] font-mono uppercase tracking-widest text-muted-foreground mt-1">ISAT U – KWADRA Technology Business Incubator</p>
-                    </div>
-                  </div>
-                  <p className="text-[14px] leading-relaxed text-muted-foreground mb-6">
-                    Completed a 600-hour internship supporting innovation, entrepreneurship, and startup development initiatives.
-                  </p>
-                  
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-foreground mb-3">Responsibilities</h4>
-                    <ul className="space-y-2">
-                      {kwadraResponsibilities.map((resp, i) => (
-                        <li key={i} className="text-[13px] text-muted-foreground flex items-start gap-2">
-                          <span className="text-foreground/30 font-mono mt-[-1px]">↳</span> {resp}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="mb-8">
-                    <h4 className="text-sm font-semibold text-foreground mb-3">Achievement</h4>
-                    <div className="inline-flex items-center gap-3 bg-background border border-border/40 px-4 py-3 text-[13px] text-foreground font-medium">
-                      <Trophy className="w-4 h-4 text-foreground shrink-0" />
-                      Outstanding Intern Award
-                    </div>
-                  </div>
-
-                  <p className="text-[13px] text-muted-foreground italic border-l-2 border-border/40 pl-4">
-                    Strengthened project coordination, professional communication, documentation, and organizational skills.
-                  </p>
-                </div>
-                {/* Internship 2 */}
-                <div className="p-6 md:p-8">
-                  <div className="flex gap-3 items-start mb-3">
-                    <Briefcase className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
-                    <div>
-                      <h3 className="text-lg font-medium text-foreground">Student Intern</h3>
-                      <p className="text-[12px] font-mono uppercase tracking-widest text-muted-foreground mt-1">Wadhwani Foundation Philippines</p>
-                    </div>
-                  </div>
-                  <p className="text-[14px] leading-relaxed text-muted-foreground mb-6">
-                    Supported the implementation of Wadhwani Foundation programs by coordinating with faculty members from different universities and monitoring their progress on the Wadhwani platform.
-                  </p>
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-foreground mb-3">Responsibilities</h4>
-                    <ul className="space-y-2">
-                      {wadhwaniResponsibilities.map((resp, i) => (
-                        <li key={i} className="text-[13px] text-muted-foreground flex items-start gap-2">
-                          <span className="text-foreground/30 font-mono mt-[-1px]">↳</span> {resp}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <p className="text-[13px] text-muted-foreground italic border-l-2 border-border/40 pl-4">
-                    Strengthened stakeholder communication, coordination, relationship management, and organizational skills while working with educators from different universities.
-                  </p>
-                </div>
-              </GlowingCard>
-            </div>
-          </RevealOnScroll>
-
-          {/* 2026: BLMS Capstone & Graduation */}
-          <RevealOnScroll delay={100}>
-            <div className="relative pl-8 md:pl-12">
-              <div className="absolute w-2.5 h-2.5 bg-foreground rounded-full -left-[5.5px] top-3 ring-4 ring-background"></div>
-              
-              <div className="mb-10">
-                <h2 className="text-2xl font-light text-foreground tracking-tight">2026</h2>
-                <div className="w-full h-px bg-border/40 mt-4"></div>
-              </div>
-              
-              <div className="flex flex-col gap-10">
-                {/* Capstone */}
-                <GlowingCard className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
-                  <div className="flex gap-3 items-start mb-4">
-                    <Terminal className="w-5 h-5 text-foreground shrink-0 mt-0.5" />
-                    <div>
-                      <h3 className="text-lg font-medium text-foreground"><Link href="/case-files/blms" className="underline underline-offset-4">Backyard Livestock Monitoring System (BLMS)</Link></h3>
-                      <p className="text-[12px] font-mono uppercase tracking-widest text-muted-foreground mt-1">Project Manager & System Analyst</p>
-                    </div>
-                  </div>
-                  <p className="text-[14px] leading-relaxed text-muted-foreground mb-8">
-                    Led the system designing of the Backyard Livestock Monitoring System (BLMS), a capstone project created for the Municipality of San Miguel – Department of Agriculture. The system was designed to improve livestock monitoring, health reporting, and agricultural data management.
-                  </p>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                    <div>
-                      <h4 className="text-sm font-semibold text-foreground mb-4">Responsibilities</h4>
-                      <ul className="space-y-2">
-                        {blmsResponsibilities.map((resp, i) => (
-                          <li key={i} className="text-[13px] text-muted-foreground flex items-start gap-2">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-foreground/40 shrink-0 mt-[3px]" />
-                            <span className="leading-snug">{resp}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h4 className="text-sm font-semibold text-foreground mb-4">Achievement</h4>
-                      <div className="text-[13px] text-foreground font-medium flex items-center gap-3 bg-background border border-border/40 px-4 py-3">
-                        <Trophy className="w-4 h-4 text-foreground shrink-0" />
-                        Best Capstone Project Award
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className="text-[13px] text-muted-foreground italic border-t border-border/40 pt-4">
-                    This project strengthened my ability to translate stakeholder requirements into practical digital solutions while leading a multidisciplinary development team.
-                  </p>
-                </GlowingCard>
-
-                <GlowingCard className="border border-border/40 bg-card/30 p-6 md:p-8">
-                  <div className="flex items-start gap-3">
-                    <Target className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
-                    <div>
-                      <p className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Open Category</p>
-                      <h3 className="mt-1 text-[15px] font-medium text-foreground">2026 AI Fest — AI Hackathon</h3>
-                      <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground">
-                        Ranked among the Top 10 of 23 entries in the 2026 AI Fest AI Hackathon Open Category.
-                      </p>
-                    </div>
-                  </div>
-                </GlowingCard>
-
-                <GlowingCard className="border border-border/40 p-6 md:p-8 bg-foreground text-background">
-                  <div className="flex gap-3 items-start mb-4">
-                    <GraduationCap className="w-6 h-6 text-background shrink-0" />
-                    <div>
-                      <h3 className="text-xl font-bold">Bachelor of Science in Information Systems</h3>
-                      <p className="text-[12px] font-mono uppercase tracking-widest text-background/80 mt-1">Iloilo Science and Technology University</p>
-                    </div>
-                  </div>
-                  <p className="text-[15px] leading-relaxed text-background/90 mt-4 border-t border-background/20 pt-4 font-medium">
-                    Graduated <span className="font-bold underline decoration-background/50 underline-offset-4">Magna Cum Laude</span>, recognizing consistent academic excellence, leadership, and active participation in innovation and technology initiatives throughout the program.
-                  </p>
-                </GlowingCard>
-              </div>
-            </div>
-          </RevealOnScroll>
-
-          {/* Continuous Learning */}
-          <RevealOnScroll>
-            <section className="relative pl-8 md:pl-12">
-              <div className="absolute -left-[5.5px] top-3 h-2.5 w-2.5 rounded-full bg-foreground ring-4 ring-background" />
-              <h2 className="mb-6 text-2xl font-light">Independent Software Development</h2>
-              <h3 className="mb-3 text-lg font-medium"><Link href="/case-files/pricepulse" className="underline underline-offset-4">PricePulse PH</Link></h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">Built a full-stack commodity-price dashboard as a solo developer, from cleaning and importing historical records to implementing analytics, refining the interface, and deploying the Next.js application on Vercel with PostgreSQL and Prisma.</p>
-            </section>
-          </RevealOnScroll>
-
-          <RevealOnScroll delay={100}>
-            <div className="relative pl-8 md:pl-12">
-              <div className="absolute w-2.5 h-2.5 bg-foreground rounded-full -left-[5.5px] top-3 ring-4 ring-background"></div>
-              
-              <div className="mb-10">
-                <h2 className="text-2xl font-light text-foreground tracking-tight uppercase">Continuous Learning</h2>
-                <div className="w-full h-px bg-border/40 mt-4"></div>
-              </div>
-              
-              <GlowingCard className="border border-border/40 p-6 md:p-8 bg-card/30 hover:bg-secondary/5 hover:border-foreground/30 transition-colors">
-                <div className="flex gap-3 items-start mb-4">
-                  <BookOpen className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
-                  <h3 className="text-lg font-medium text-foreground">Beyond Academic Coursework</h3>
-                </div>
-                <p className="text-[14px] leading-relaxed text-muted-foreground mb-8">
-                  I actively participate in conferences, innovation programs, leadership training, and technical workshops to continuously improve my knowledge and professional skills.
-                </p>
-
-                <h4 className="text-sm font-semibold text-foreground mb-4">Selected learning experiences</h4>
-                <ul className="space-y-4 mb-8">
-                  {learningExperiences.map((item, i) => (
-                    <li key={i} className="text-[13px] text-foreground flex items-start gap-3">
-                      <span className="text-muted-foreground/50 font-mono mt-[-2px]">—</span>
-                      {typeof item === "string" ? (
-                        <span className="leading-snug">{item}</span>
-                      ) : (
-                        <div className="flex flex-col gap-1">
-                          <span className="font-medium">{item.title}</span>
-                          <span className="text-[12px] text-muted-foreground leading-relaxed">{item.desc}</span>
-                        </div>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-                
-                <div className="bg-secondary/10 p-4 border border-border/40 flex items-start gap-3">
-                  <Target className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
-                  <p className="text-[12px] text-muted-foreground leading-relaxed">
-                    Rather than listing every technical certificate here, detailed certifications such as Cisco Networking Academy and DataCamp are presented in the <strong className="text-foreground font-medium">Verified Credentials</strong> section of this portfolio.
-                  </p>
-                </div>
-              </GlowingCard>
-            </div>
-          </RevealOnScroll>
-
-          {/* Today: Confident Ending */}
-          <RevealOnScroll delay={100}>
-            <div className="relative pl-8 md:pl-12">
-              <div className="absolute w-2.5 h-2.5 bg-foreground rounded-full -left-[5.5px] top-3 ring-4 ring-background"></div>
-              
-              <div className="mb-8">
-                <h2 className="text-2xl font-light text-foreground tracking-tight uppercase">Today</h2>
-                <div className="w-full h-px bg-border/40 mt-4"></div>
-              </div>
-              
-              <div className="py-4">
-                <h3 className="text-2xl md:text-[28px] leading-[1.4] text-foreground font-medium tracking-tight">
-                  &quot;I believe technology creates the greatest impact when it solves real problems for people. I look forward to contributing through analysis, collaboration, and continuous learning.&quot;
-                </h3>
-              </div>
-            </div>
-          </RevealOnScroll>
-
-        </div>
       </div>
     </main>
   );

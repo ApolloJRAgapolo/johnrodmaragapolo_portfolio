@@ -1,93 +1,99 @@
 "use client";
 
 import { Monitor, Moon, Sun } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
+import { createThemeTransitionController } from "@/lib/theme-transition";
 
 type Theme = "light" | "dark" | "system";
 
-type ViewTransitionDocument = Document & {
-  startViewTransition?: (update: () => void) => {
-    finished: Promise<void>;
-  };
-};
-
 const storageKey = "portfolio-theme";
+const themeChangeEvent = "portfolio-theme-change";
+let preferredTheme: Theme | undefined;
+let changeTheme: ReturnType<typeof createThemeTransitionController> | undefined;
 const themeOptions = [
   { value: "light" as const, label: "Light", icon: Sun },
   { value: "dark" as const, label: "Dark", icon: Moon },
   { value: "system" as const, label: "System", icon: Monitor },
 ];
 
-function applyTheme(theme: Theme) {
+function resolvesToDark(theme: Theme) {
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const isDark = theme === "dark" || (theme === "system" && prefersDark);
+  return theme === "dark" || (theme === "system" && prefersDark);
+}
+
+function applyTheme(theme: Theme) {
+  const isDark = resolvesToDark(theme);
 
   document.documentElement.classList.toggle("dark", isDark);
   document.documentElement.style.colorScheme = isDark ? "dark" : "light";
 }
 
-function transitionTheme(theme: Theme) {
-  const root = document.documentElement;
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const clearTransition = () => root.removeAttribute("data-theme-transition");
-  const updateTheme = () => applyTheme(theme);
-
-  root.setAttribute("data-theme-transition", "");
-
-  const viewTransition = (document as ViewTransitionDocument).startViewTransition;
-  if (!reducedMotion && viewTransition) {
-    viewTransition.call(document, updateTheme).finished.finally(clearTransition);
-    return;
-  }
-
-  updateTheme();
-  window.setTimeout(clearTransition, reducedMotion ? 0 : 400);
-}
-
 function getStoredTheme(): Theme {
   if (typeof window === "undefined") return "system";
 
-  const storedTheme = localStorage.getItem(storageKey);
-  return storedTheme === "light" || storedTheme === "dark" || storedTheme === "system"
-    ? storedTheme
-    : "system";
+  try {
+    const storedTheme = localStorage.getItem(storageKey);
+    return storedTheme === "light" || storedTheme === "dark" || storedTheme === "system"
+      ? storedTheme
+      : "system";
+  } catch {
+    return "system";
+  }
+}
+
+function selectTheme(nextTheme: Theme, button: HTMLButtonElement) {
+  preferredTheme = nextTheme;
+  try {
+    localStorage.setItem(storageKey, nextTheme);
+  } catch {
+    // Switching still works when the browser disallows persistent storage.
+  }
+  const bounds = button.getBoundingClientRect();
+  changeTheme ??= createThemeTransitionController(document, window);
+  changeTheme(() => {
+    flushSync(() => {
+      applyTheme(nextTheme);
+      window.dispatchEvent(new CustomEvent(themeChangeEvent, { detail: nextTheme }));
+    });
+  }, {
+    origin: { x: bounds.left + bounds.width / 2, y: bounds.top + bounds.height / 2 },
+    animate: resolvesToDark(nextTheme) !== document.documentElement.classList.contains("dark"),
+  });
 }
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>("system");
-  const themeRef = useRef<Theme>("system");
 
   useEffect(() => {
-    const stored = getStoredTheme();
-    themeRef.current = stored;
-    applyTheme(stored);
-    const syncTheme = window.setTimeout(() => setTheme(stored), 0);
+    preferredTheme ??= getStoredTheme();
+    changeTheme ??= createThemeTransitionController(document, window);
+    applyTheme(preferredTheme);
+    const syncTheme = window.setTimeout(() => setTheme(preferredTheme ?? "system"), 0);
+
+    // Keep the desktop control and the mobile menu's control in sync.
+    const updateSelection = (event: Event) => setTheme((event as CustomEvent<Theme>).detail);
+    window.addEventListener(themeChangeEvent, updateSelection);
 
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const updateSystemTheme = () => {
-      if (themeRef.current === "system") applyTheme("system");
+      if (preferredTheme === "system") changeTheme?.(() => applyTheme("system"), { animate: false });
     };
 
     mediaQuery.addEventListener("change", updateSystemTheme);
     return () => {
       window.clearTimeout(syncTheme);
+      window.removeEventListener(themeChangeEvent, updateSelection);
       mediaQuery.removeEventListener("change", updateSystemTheme);
     };
   }, []);
 
-  const selectTheme = (nextTheme: Theme) => {
-    setTheme(nextTheme);
-    themeRef.current = nextTheme;
-    localStorage.setItem(storageKey, nextTheme);
-    transitionTheme(nextTheme);
-  };
-
   return (
-    <div suppressHydrationWarning className="mb-3 pt-3">
-      <h3 className="mb-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+    <div suppressHydrationWarning className="sidebar-appearance">
+      <h3 className="sidebar-section-heading mb-2.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
         Appearance
       </h3>
-      <div className="flex items-center gap-1">
+      <div className="grid grid-cols-3 gap-1" role="group" aria-label="Appearance">
         {themeOptions.map(({ value, label, icon: Icon }) => {
           const isActive = theme === value;
 
@@ -96,17 +102,16 @@ export default function ThemeToggle() {
               key={value}
               type="button"
               aria-pressed={isActive}
-              onClick={() => selectTheme(value)}
-              className={`flex min-h-7 flex-row items-center justify-center gap-1 rounded-sm px-1.5 py-1 text-[9px] font-medium transition-[background-color,color,box-shadow] duration-[400ms] ease-out ${
+              onClick={(event) => selectTheme(value, event.currentTarget)}
+              className={`flex min-h-11 items-center justify-center gap-1 rounded-sm px-1.5 py-1 text-xs font-medium transition-colors duration-150 motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 lg:min-h-8 ${
                 isActive
                   ? "bg-secondary text-foreground"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
               <Icon
-                className={`h-3.5 w-3.5 transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none ${
-                  isActive ? "scale-100 rotate-0 opacity-100" : "scale-90 -rotate-12 opacity-60"
-                }`}
+                aria-hidden="true"
+                className={`h-3.5 w-3.5 ${isActive ? "opacity-100" : "opacity-60"}`}
               />
               {label}
             </button>

@@ -8,7 +8,6 @@ import {
   Mail,
   Medal,
   Network,
-  Rocket,
   Star,
   Trophy,
   Wrench,
@@ -18,16 +17,17 @@ import { SiGithub } from "react-icons/si";
 import type { IconComponent } from "@/lib/types";
 
 type SidebarLink = { name: string; href: string; icon: IconComponent };
+type WorkspaceLink = SidebarLink & { priority: "primary" | "supporting" };
 
-export const workspaceLinks: SidebarLink[] = [
-  { name: "Overview", href: "/", icon: LayoutDashboard },
-  { name: "Case Files", href: "/case-files", icon: FolderGit2 },
-  { name: "Professional Journey", href: "/journey", icon: Briefcase },
-  { name: "Verified Credentials", href: "/credentials", icon: GraduationCap },
-  { name: "Professional Ecosystem", href: "/ecosystem", icon: Network },
-  { name: "Capabilities", href: "/capabilities", icon: Wrench },
-  { name: "Documents", href: "/documents", icon: FileText },
-  { name: "Let's Connect", href: "/contact", icon: Mail },
+export const workspaceLinks: WorkspaceLink[] = [
+  { name: "Overview", href: "/", icon: LayoutDashboard, priority: "primary" },
+  { name: "Case Files / Projects", href: "/case-files", icon: FolderGit2, priority: "primary" },
+  { name: "Professional Journey", href: "/journey", icon: Briefcase, priority: "primary" },
+  { name: "Let's Connect", href: "/contact", icon: Mail, priority: "primary" },
+  { name: "Capabilities", href: "/capabilities", icon: Wrench, priority: "supporting" },
+  { name: "Verified Credentials", href: "/credentials", icon: GraduationCap, priority: "supporting" },
+  { name: "Documents", href: "/documents", icon: FileText, priority: "supporting" },
+  { name: "Professional Ecosystem", href: "/ecosystem", icon: Network, priority: "supporting" },
 ];
 
 export const highlights: { label: string; icon: IconComponent }[] = [
@@ -35,7 +35,6 @@ export const highlights: { label: string; icon: IconComponent }[] = [
   { label: "Startup Hackathon Champion", icon: Trophy },
   { label: "Best Capstone Project", icon: Award },
   { label: "Outstanding Intern", icon: Star },
-  { label: "Startup Co-Founder", icon: Rocket },
 ];
 
 export const networkLinks: SidebarLink[] = [
