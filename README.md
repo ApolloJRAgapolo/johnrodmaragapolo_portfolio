@@ -1,326 +1,110 @@
-# John Rodmar E. Agapolo – Professional Portfolio
+# John Rodmar E. Agapolo - Professional Portfolio
 
-A modern and responsive personal portfolio built with **Next.js**, **TypeScript**, and **Tailwind CSS**.
+My personal portfolio brings together my projects, internships, education, skills, and supporting documents. I am an Information Systems graduate from Iloilo Science and Technology University, pursuing web development and software engineering opportunities.
 
-This portfolio showcases my academic achievements, certifications, projects, internship experiences, technical skills, and professional journey as a Bachelor of Science in Information Systems graduate.
+[Visit the portfolio](https://johnrodmaragapolo-portfolio.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/john-rodmar-agapolo-9492602b2/) · [GitHub](https://github.com/ApolloJRAgapolo) · [Email](mailto:johnrodmaragapolo@gmail.com)
 
----
+## Explore the portfolio
 
-## About
+| Page | What you will find |
+| --- | --- |
+| Overview | Selected projects, a short experience and education summary, four technical strengths, selected awards, and a way to get in touch. |
+| Professional Journey | Internships and startup work, independent projects, education and leadership, and learning milestones. Expand an entry for more details. |
+| Capabilities | Tools I have used, areas I am learning, and links to projects that demonstrate those skills. Systems analysis is organized into discovery and requirements, design and modeling, and documentation and collaboration. |
+| Case Files | Project case studies explaining the problem, my role, the work completed, and supporting screenshots or diagrams. |
+| Professional Ecosystem | An interactive map showing how institutions, organizations, projects, and learning experiences connect to my professional development. |
+| Credentials | Selected recognition and certifications, followed by records grouped by topic. Preview a document or follow its verification link when one is available. |
+| Documents | My resume and a searchable certificate archive, with category filters and document previews. Downloads are shown for records that allow them. |
+| Contact | Email, LinkedIn, GitHub, other profile links, and access to my resume. |
 
-This portfolio serves as my digital professional profile. Instead of using a traditional resume alone, I created a website where recruiters, employers, professors, and collaborators can explore my work, achievements, and experiences in one place.
+## Featured project work
 
-The portfolio focuses on:
+- **CareerTrack:** A personal workspace for job applications, hiring stages, interviews, offers, private documents, and career history. I built its screens, behind-the-scenes service, database, and sign-in system. It is online for review, with the final v1.0 release still pending.
+- **PricePulse PH:** A web application for exploring historical Philippine commodity prices, comparing locations, and estimating household basket costs. These are historical observations and estimates, not live shop quotes.
+- **Backyard Livestock Monitoring System (BLMS):** An Information Systems capstone prototype for livestock monitoring and reporting. My work focused on requirements, process analysis, project coordination, and system design. It received the Best Capstone Project Award.
+- **TumaNow:** A startup project for local government project monitoring. My contributions cover business analysis and financial planning. Potential adoption remains under evaluation by the Provincial Planning and Development Office; it is not presented as a completed government rollout.
+- **How I Built This Portfolio:** A case study explaining the organization, design decisions, and document-viewing features of this website.
 
-- Academic achievements
-- Professional certifications
-- Internship experiences
-- Software development projects
-- Startup and innovation journey
-- Technical skills
-- Professional ecosystem
-- Official documents and certificates
-- Contact information
+CareerTrack includes eight mockups showing desktop and phone screens together, and PricePulse includes five. Their galleries support swiping, mouse dragging, arrows, and keyboard navigation. Visitors can open a larger image to inspect the interface. TumaNow has separate web and mobile galleries with private details removed from screenshots; BLMS includes system diagrams.
 
-The goal is to provide a more interactive and transparent way of presenting my qualifications.
+## Design and interaction
 
----
+The portfolio uses a restrained layout, light and dark themes, and layouts that adapt to available screen space. Longer explanations stay on the detailed pages so the Overview remains easy to scan.
 
-# Features
+The Professional Ecosystem places organization and project cards inside a dotted canvas. Gray connection lines and moving dots show the paths between them. Selecting a card reveals its context and related links. On narrow screens, the map becomes grouped paths. A clearly marked, unfilled card represents my first professional role; connections to it describe preparation for that role, not an employer or organizational endorsement.
 
-## Home
+Visitors can pause the ecosystem animation. It also respects the device's reduced-motion setting and pauses when it is not visible. Galleries likewise respect reduced-motion preferences.
 
-Provides a quick overview of who I am, my background, and highlights of my experience.
+Documents open in a shared viewer with document details and PDF controls. Preview and download availability depend on the individual record.
 
----
+## Run it locally
 
-## Capabilities
-
-Showcases my technical and professional competencies, including:
-
-- Systems Analysis
-- Business Analysis
-- UI/UX Design
-- Web Development
-- Database Management
-- Project Management
-- Documentation
-- Artificial Intelligence
-
----
-
-## Case Files
-
-A collection of my major projects.
-
-Examples include:
-
-- Backyard Livestock Monitoring System (BLMS)
-- TumaNow
-- Other featured works
-
-Each project contains:
-
-- Overview
-- Technologies Used
-- Features
-- Architecture
-- Screenshots
-- Challenges
-- Lessons Learned
-
----
-
-## Verified Credentials
-
-Displays my professional certifications, academic recognitions, internships, and achievements.
-
-Professional certifications link directly to their official verification pages whenever available.
-
-Academic awards and internship certificates can be previewed through the built-in document viewer.
-
----
-
-## Documents
-
-A centralized repository of my important documents.
-
-Examples include:
-
-- Resume
-- Academic Certificates
-- Awards
-- Internship Certificates
-- Recognition Certificates
-- Participation Certificates
-
-Each document can be previewed directly within the website without leaving the page.
-
----
-
-## Professional Ecosystem
-
-Highlights organizations, communities, institutions, and programs that contributed to my academic and professional growth.
-
----
-
-## Journey
-
-A timeline of my educational background, leadership experiences, competitions, internships, and career milestones.
-
----
-
-## Contact
-
-Provides multiple ways to connect with me professionally.
-
-Examples include:
-
-- Email
-- LinkedIn
-- GitHub
-- Facebook
-- JobStreet
-
----
-
-# Tech Stack
-
-### Frontend
-
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-
-### UI
-
-- Lucide React Icons
-- Framer Motion (animations)
-- Responsive Layout
-
-### Development
-
-- ESLint
-- Git
-- GitHub
-
----
-
-The project follows a modular structure to keep components reusable and the codebase easy to maintain.
-
----
-
-# Responsive Design
-
-The portfolio is fully responsive and optimized for:
-
-- Desktop
-- Laptop
-- Tablet
-- Mobile Devices
-
-The layout automatically adjusts to different screen sizes while maintaining readability and usability.
-
----
-
-# Premium Document Viewer
-
-The portfolio includes a reusable document viewer used throughout the application.
-
-Features include:
-
-- Responsive PDF preview
-- Download support
-- Smooth animations
-- Mobile-friendly viewing
-- Metadata panel
-- Consistent viewing experience across the portfolio
-
----
-
-# Design Philosophy
-
-The design follows a minimalist and professional approach.
-
-Goals include:
-
-- Clean interface
-- Fast loading
-- Easy navigation
-- Consistent visual hierarchy
-- Accessibility
-- Responsive experience
-
-The focus is to let the content speak for itself without unnecessary distractions.
-
----
-
-# Why I Built This Portfolio
-
-As a fresh graduate, I wanted something more than a traditional PDF resume.
-
-I wanted a place where employers could easily explore my:
-
-- Projects
-- Skills
-- Certifications
-- Achievements
-- Internship experiences
-
-This portfolio allows me to present these accomplishments in a more interactive and organized way while demonstrating my frontend development skills.
-
----
-
-# Getting Started
-
-Clone the repository.
+Use **Node.js 24** and npm. The site is built with Next.js, React, TypeScript, and Tailwind CSS. PDF.js handles PDF previews; Lucide and React Icons supply icons.
 
 ```bash
 git clone https://github.com/ApolloJRAgapolo/johnrodmaragapolo_portfolio.git
-```
-
-Go to the project folder.
-
-```bash
 cd johnrodmaragapolo_portfolio
-```
-
-Install dependencies.
-
-```bash
-npm install
-```
-
-Run the development server.
-
-```bash
+npm ci
 npm run dev
 ```
 
-Open your browser.
+Open [http://localhost:3000](http://localhost:3000). Next.js may select a different port if 3000 is already in use; use the address printed in the terminal.
 
-```
-http://127.0.0.1:3000
-```
-
----
-
-# Build for Production
+To build the site and run the production version locally:
 
 ```bash
 npm run build
-```
-
-Start the production server.
-
-```bash
 npm start
 ```
 
----
+## Check changes before publishing
 
-# Code Quality
-
-To check linting:
+Run the code checks and automated tests:
 
 ```bash
 npm run lint
+npx tsc --noEmit --incremental false
+node --test tests/*.test.mjs
+npm run build
 ```
 
----
+Check certificate thumbnails and project mockups without regenerating them:
 
-# Future Improvements
+```bash
+npm run previews:check
+node scripts/generate-careertrack-mockups.mjs --check
+node scripts/generate-pricepulse-mockups.mjs --check
+```
 
-Some features planned for future updates include:
+Review dependency security findings separately:
 
-- More featured projects
-- Interactive project demos
-- Additional case studies
-- Improved search functionality
-- Enhanced document viewer
-- More project screenshots
-- Blog or insights section
-- Dark mode enhancements
-- Performance optimizations
+```bash
+npm audit
+npm audit --omit=dev
+```
 
----
+Dependency review on **12 October 2026**: after the security updates, `npm audit --omit=dev` reports no findings. The full check still reports seven high-severity findings linked to one unpatched package used by development tools to match filenames. Those tools use project-owned filename patterns. There is currently no compatible published fix for that package; the remaining findings are still recorded and should be reviewed when a fix becomes available.
 
-# License
+These commands check different things. A successful build does not prove that every screen looks correct. Before publishing, also review phone and desktop layouts, keyboard access, document previews, and gallery interactions in a browser.
 
-This project is intended as my personal professional portfolio.
+## Where to make updates
 
-The code is shared for learning and portfolio purposes.
+| Folder | Purpose |
+| --- | --- |
+| `app/` | Page content, layouts, and page-specific styles. |
+| `components/features/` | Features such as project galleries, the ecosystem map, and the document viewer. |
+| `components/shared/` | Elements reused across pages. |
+| `lib/data/` | Project descriptions, skills, journey records, credentials, and asset lists. |
+| `public/` | Images, logos, PDFs, diagrams, and project mockups. |
+| `scripts/` | Helpers for preparing and checking document thumbnails and project images. |
+| `tests/` | Automated checks for galleries, PDF rendering, credentials, diagrams, and theme changes. |
 
-Please do not copy the content, certificates, or personal information without permission.
+After changing credential records or their PDFs, use `npm run previews:generate` to update thumbnails, then run `npm run previews:check`. Keep original records and project images consistent with their descriptions, and review screenshots for personal or private information before adding them.
 
----
+### Social sharing address
 
-# Author
+When building outside Vercel, set `NEXT_PUBLIC_SITE_URL` to the public website address, such as `https://your-domain.example`. If that setting is absent, the site uses `VERCEL_PROJECT_PRODUCTION_URL` when available, then falls back to `https://johnrodmaragapolo-portfolio.vercel.app`. This keeps shared-page and social-image links pointed at the public site.
 
-**John Rodmar E. Agapolo**
+## Content and reuse
 
-Bachelor of Science in Information Systems Graduate
-
-Iloilo Science and Technology University - Iloilo City Campus
-
-GitHub:
-https://github.com/ApolloJRAgapolo
-
-Portfolio:
-https://johnrodmaragapolo-portfolio.vercel.app/
-
-LinkedIn:
-https://www.linkedin.com/in/john-rodmar-agapolo-9492602b2/
-
-Email:
-johnrodmaragapolo@gmail.com
-
----
-
-If you found this project interesting, feel free to give it a star!
-
-
-### Social sharing URL
-
-Set `NEXT_PUBLIC_SITE_URL` to the public portfolio origin (for example, `https://your-domain.example`) when building outside Vercel. Vercel deployments use `VERCEL_PROJECT_PRODUCTION_URL` automatically when the explicit setting is absent, with `https://johnrodmaragapolo-portfolio.vercel.app` as the public fallback. This makes social image links resolve to the portfolio rather than a local development address.
+This repository is my personal professional portfolio. Certificates, personal information, project materials, and organization logos are included in the context of my work and experience. Please ask permission before reusing my content or personal documents.
