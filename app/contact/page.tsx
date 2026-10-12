@@ -45,7 +45,7 @@ export default function ContactPage() {
 
         <section aria-labelledby="professional-direction" className="mb-10">
           <h2 id="professional-direction" className="mb-3 text-xl font-semibold tracking-tight text-foreground">Professional Direction</h2>
-          <p className="max-w-prose text-base leading-relaxed text-muted-foreground">I&apos;m pursuing entry-level web development and software engineering roles, with systems analysis and project coordination as supporting experience.</p>
+          <p className="max-w-prose text-base leading-relaxed text-muted-foreground">I&apos;m pursuing web development and software engineering roles, with systems analysis and project coordination as supporting experience.</p>
         </section>
 
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
