@@ -1,11 +1,26 @@
 import TechnologyList from "@/components/shared/TechnologyList";
 import PageHeader from "@/components/shared/PageHeader";
 import Link from "next/link";
-import { Code2 } from "lucide-react";
+import { ArrowRight, ChevronDown, Code2 } from "lucide-react";
 import type { CapabilityGroup, TechnologyStackGroup } from "@/lib/types";
-import { capabilityGroups, secondaryCapabilityGroups, technologyStackGroups } from "@/lib/data/capabilities";
+import { capabilityGroups, secondaryCapabilityGroups, technologyStackGroups, type GroupedCapabilityGroup } from "@/lib/data/capabilities";
+import styles from "./SystemsCapabilities.module.css";
 
-const evidenceLinkStyle = "inline-flex min-h-11 items-center text-[13px] text-foreground underline underline-offset-4 transition-colors hover:text-muted-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-foreground focus-visible:outline-offset-4";
+const evidenceLinkStyle = "inline-flex min-h-11 max-w-full items-center gap-2 text-[13px] leading-snug text-foreground underline decoration-muted-foreground/50 underline-offset-4 transition-colors hover:decoration-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none";
+
+function ProjectEvidence({ title, links }: { title: string; links: NonNullable<CapabilityGroup["competencies"][number]["evidence"]> }) {
+  return (
+    <ul aria-label={`Project evidence for ${title}`} className="flex flex-wrap gap-x-4 gap-y-1">
+      {links.map((link) => (
+        <li key={link.href} className="min-w-0 max-w-full">
+          <Link href={link.href} className={evidenceLinkStyle}>
+            <span>{link.label}</span><ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 function TechnologyGroup({ id, title, technologies, summary, learning, learningNote, evidence }: TechnologyStackGroup) {
   return (
@@ -23,53 +38,56 @@ function TechnologyGroup({ id, title, technologies, summary, learning, learningN
         </div>
       )}
 
-      <ul aria-label={`Project evidence for ${title}`} className="mt-auto flex flex-wrap gap-x-4 pt-4">
-        {evidence.map((link) => (
-          <li key={link.href}><Link href={link.href} className={evidenceLinkStyle}>{link.label}</Link></li>
-        ))}
-      </ul>
+      <div className="mt-auto pt-4"><ProjectEvidence title={title} links={evidence} /></div>
     </article>
   );
 }
 
-function CapabilityBlock({ category, icon: Icon, competencies }: CapabilityGroup) {
+function CapabilityBlock({ category, icon: Icon, description, stages }: GroupedCapabilityGroup) {
+  const sectionId = category.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
   return (
-    <section className="mb-12" aria-label={category}>
-      <div className="mb-5 flex items-center gap-3">
+    <section id={sectionId} className={`${styles.section} mb-12 scroll-mt-24`} aria-labelledby={`${sectionId}-heading`}>
+      <div className="mb-3 flex items-center gap-3">
         <Icon aria-hidden="true" className="h-5 w-5 shrink-0 stroke-[1.5] text-muted-foreground" />
-        <h2 className="text-xl font-semibold tracking-tight text-foreground">
+        <h2 id={`${sectionId}-heading`} className="text-xl font-semibold tracking-tight text-foreground">
           {category}
         </h2>
       </div>
+      <p className="mb-6 max-w-2xl text-sm leading-relaxed text-muted-foreground">{description}</p>
 
-      <dl className="divide-y divide-border/40 border-y border-border/40">
-        {competencies.map((item) => (
-          <div key={item.tool} className="grid gap-3 py-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] sm:gap-6">
-            <dt>
-              <span className="block text-sm font-medium leading-relaxed text-foreground">
-                {item.tool}
-              </span>
-              <span className="mt-1 block text-xs text-muted-foreground">
-                {item.proficiency}
-              </span>
-            </dt>
-            <dd className="min-w-0 text-sm leading-relaxed text-muted-foreground">
-              {item.application}
-              {item.evidence && (
-                <ul aria-label={`Project evidence for ${item.tool}`} className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
-                  {item.evidence.map((link) => (
-                    <li key={link.href}>
-                      <Link href={link.href} className={evidenceLinkStyle}>
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </dd>
-          </div>
+      <div className={styles.stages}>
+        {stages.map((stage) => (
+          <section key={stage.id} className={styles.stage} aria-labelledby={`${sectionId}-${stage.id}-heading`}>
+            <header className={styles.stageHeader}>
+              <h3 id={`${sectionId}-${stage.id}-heading`} className={styles.stageTitle}>{stage.title}</h3>
+              <p className={styles.stageDescription}>{stage.description}</p>
+            </header>
+            <dl className={styles.entries}>
+              {stage.competencies.map((item) => (
+                <div key={item.tool} className={styles.entry}>
+                  <dt>
+                    <div className={styles.entryHeading}>
+                      <span className={styles.entryTitle}>{item.tool}</span>
+                      {item.proficiency !== "Project experience" && <span className={styles.experience}>{item.proficiency}</span>}
+                    </div>
+                    {item.subTools && <span className={styles.tools}>{item.subTools}</span>}
+                  </dt>
+                  <dd>
+                    <p className={styles.application}>{item.application}</p>
+                    {item.evidence && item.evidence.length > 0 && (
+                      <div className={styles.evidence}>
+                        <p className={styles.evidenceLabel} aria-hidden="true">Evidence</p>
+                        <ProjectEvidence title={item.tool} links={item.evidence} />
+                      </div>
+                    )}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </section>
         ))}
-      </dl>
+      </div>
     </section>
   );
 }
@@ -102,27 +120,35 @@ export default function Capabilities() {
             Supporting tools and areas I continue to develop.
           </p>
           <div className="divide-y divide-border/40 border-y border-border/40">
-            {secondaryCapabilityGroups.map((group) => (
-              <details key={group.category} className="group py-4">
-                <summary className="min-h-11 cursor-pointer py-3 text-sm font-medium text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-foreground focus-visible:outline-offset-4">
-                  {group.category}
-                </summary>
-                <dl className="mt-5 space-y-5">
-                  {group.competencies.map((item) => (
-                    <div key={item.tool}>
-                      <dt className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm font-medium text-foreground">
-                        {item.tool}
-                        <span className="text-xs font-normal text-muted-foreground">{item.proficiency}</span>
-                      </dt>
-                      <dd className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                        {item.application}
-                        {item.subTools && <span className="mt-1 block text-xs leading-relaxed">{item.subTools}</span>}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </details>
-            ))}
+            {secondaryCapabilityGroups.map((group) => {
+              const GroupIcon = group.icon;
+
+              return (
+                <details key={group.category} className="group">
+                  <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-3 text-sm font-medium text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background [&::-webkit-details-marker]:hidden">
+                    <span className="flex min-w-0 items-center gap-3">
+                      <GroupIcon className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
+                      <span>{group.category}</span>
+                    </span>
+                    <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180 motion-reduce:transition-none" aria-hidden="true" />
+                  </summary>
+                  <dl className="divide-y divide-border/40 border-t border-border/40 pb-2">
+                    {group.competencies.map((item) => (
+                      <div key={item.tool} className="grid gap-2 py-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] sm:gap-x-6">
+                        <dt className="min-w-0 text-sm font-medium leading-relaxed text-foreground">
+                          {item.tool}
+                          <span className="mt-1 block text-xs font-normal text-muted-foreground">{item.proficiency}</span>
+                        </dt>
+                        <dd className="min-w-0 text-sm leading-relaxed text-muted-foreground">
+                          <p>{item.application}</p>
+                          {item.subTools && <p className="mt-2 text-xs leading-relaxed">{item.subTools}</p>}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </details>
+              );
+            })}
           </div>
         </section>
       </div>

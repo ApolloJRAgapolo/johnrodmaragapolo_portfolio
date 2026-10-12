@@ -83,47 +83,82 @@ export const technologyStackGroups: TechnologyStackGroup[] = [
   },
 ];
 
-export const capabilityGroups: CapabilityGroup[] = [
+type CapabilityStage = {
+  id: string;
+  title: string;
+  description: string;
+  competencies: CapabilityGroup["competencies"];
+};
+
+export type GroupedCapabilityGroup = Pick<CapabilityGroup, "category" | "icon"> & {
+  description: string;
+  stages: CapabilityStage[];
+};
+
+export const capabilityGroups: GroupedCapabilityGroup[] = [
   {
     category: "Systems Analysis & Design",
     icon: Cpu,
-    delay: 0,
-    competencies: [
+    description: "Project experience across requirements, design, and documentation. Explore the linked projects for evidence of each capability.",
+    stages: [
       {
-        tool: "Requirements gathering",
-        proficiency: "Project experience",
-        application: "Interviewing stakeholders and translating user needs into project and system requirements.",
-        evidence: [blms, tumaNow],
+        id: "discovery-requirements",
+        title: "Discovery & requirements",
+        description: "Understand the problem and define what the system needs to do.",
+        competencies: [
+          {
+            tool: "Requirements gathering",
+            proficiency: "Project experience",
+            application: "Interviewing stakeholders and translating user needs into project and system requirements.",
+            evidence: [blms, tumaNow],
+          },
+          {
+            tool: "Process analysis & mapping",
+            proficiency: "Project experience",
+            application: "Analyzing existing workflows and documenting processes with flowcharts and diagrams.",
+            evidence: [blms, tumaNow],
+          },
+        ],
       },
       {
-        tool: "Process analysis & mapping",
-        proficiency: "Project experience",
-        application: "Analyzing existing workflows and documenting processes with flowcharts and diagrams.",
-        evidence: [blms, tumaNow],
+        id: "design-modeling",
+        title: "Design & modeling",
+        description: "Plan the system structure, data, and interfaces.",
+        competencies: [
+          {
+            tool: "System design",
+            proficiency: "Project experience",
+            application: "Planning user roles, features, workflows, and system structure before development.",
+            evidence: [blms],
+          },
+          {
+            tool: "Database design",
+            proficiency: "Project experience",
+            application: "Designing relational models for career records and commodity data, with Prisma migrations and documented relationships.",
+            evidence: [careerTrackArchitecture, pricePulseArchitecture],
+          },
+          {
+            tool: "Interface design",
+            subTools: "UI/UX · Figma · Wireframing · Prototyping",
+            proficiency: "Experienced",
+            application: "Designing interfaces, wireframes, and interactive prototypes, including Figma component properties and auto layout.",
+            evidence: [blms],
+          },
+        ],
       },
       {
-        tool: "System analysis & design",
-        proficiency: "Project experience",
-        application: "Planning user roles, features, workflows, and system structure before development.",
-        evidence: [blms],
-      },
-      {
-        tool: "UI/UX design, Figma & wireframing",
-        proficiency: "Experienced",
-        application: "Designing interfaces, wireframes, and interactive prototypes, including Figma component properties and auto layout.",
-        evidence: [blms],
-      },
-      {
-        tool: "Database design",
-        proficiency: "Project experience",
-        application: "Designing relational models for career records and commodity data, with Prisma migrations and documented relationships.",
-        evidence: [careerTrackArchitecture, pricePulseArchitecture],
-      },
-      {
-        tool: "Technical documentation & stakeholder communication",
-        proficiency: "Experienced",
-        application: "Preparing system documents, requirements, and reports while coordinating with clients, mentors, and project teams.",
-        evidence: [blms, tumaNow],
+        id: "documentation-collaboration",
+        title: "Documentation & collaboration",
+        description: "Document decisions and coordinate with the people involved.",
+        competencies: [
+          {
+            tool: "Technical documentation",
+            subTools: "Stakeholder communication",
+            proficiency: "Experienced",
+            application: "Preparing system documents, requirements, and reports while coordinating with clients, mentors, and project teams.",
+            evidence: [blms, tumaNow],
+          },
+        ],
       },
     ],
   },

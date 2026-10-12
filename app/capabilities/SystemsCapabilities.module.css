@@ -1,0 +1,121 @@
+.section {
+  container-type: inline-size;
+}
+
+.stages {
+  display: grid;
+  gap: 1rem;
+}
+
+.stage {
+  display: grid;
+  min-width: 0;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border: 1px solid hsl(var(--border) / 65%);
+  border-radius: 0.75rem;
+  background: hsl(var(--card) / 90%);
+}
+
+.stageHeader {
+  min-width: 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid hsl(var(--border) / 45%);
+}
+
+.stageTitle {
+  color: hsl(var(--foreground));
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-wrap: balance;
+}
+
+.stageDescription {
+  margin-top: 0.5rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.8125rem;
+  line-height: 1.65;
+}
+
+.entries,
+.entry,
+.entry dt,
+.entry dd {
+  min-width: 0;
+}
+
+.entry + .entry {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid hsl(var(--border) / 40%);
+}
+
+.entryHeading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.375rem 0.75rem;
+}
+
+.entryTitle {
+  color: hsl(var(--foreground));
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.experience {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.6875rem;
+  line-height: 1.6;
+}
+
+.tools {
+  display: block;
+  margin-top: 0.25rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.75rem;
+  line-height: 1.65;
+}
+
+.application {
+  margin-top: 0.5rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+.evidence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 0.875rem;
+  margin-top: 0.375rem;
+}
+
+.evidenceLabel {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.6875rem;
+  line-height: 1.6;
+}
+
+.evidence > ul {
+  flex: 1 1 15rem;
+  min-width: 0;
+}
+
+@container (min-width: 680px) {
+  .stage {
+    grid-template-columns: minmax(0, 10.5rem) minmax(0, 1fr);
+    align-items: start;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+
+  .stageHeader {
+    padding: 0 1.5rem 0 0;
+    border-right: 1px solid hsl(var(--border) / 45%);
+    border-bottom: 0;
+  }
+}

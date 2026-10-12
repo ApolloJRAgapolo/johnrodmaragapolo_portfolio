@@ -16,7 +16,7 @@ export default function DocumentRow({ item, onPreview, showThumbnail = true }: {
     };
 
     return (
-    <div data-document-id={item.id} className="-mx-3 grid grid-cols-[4.5rem_minmax(0,1fr)] gap-x-4 gap-y-3 border-b border-border/20 px-3 py-4 transition-colors hover:bg-secondary/10 sm:grid-cols-[5.5rem_minmax(0,1fr)] md:grid-cols-[5.5rem_minmax(0,1fr)_auto]">
+    <div data-document-id={item.id} className="-mx-3 grid grid-cols-[4.5rem_minmax(0,1fr)] gap-x-4 gap-y-3 border-b border-border/20 px-3 py-4 transition-colors hover:bg-secondary/10 sm:grid-cols-[5.5rem_minmax(0,1fr)] md:grid-cols-[5.5rem_minmax(0,1fr)_10rem]">
       <button
         type="button"
         onClick={preview}
@@ -44,7 +44,7 @@ export default function DocumentRow({ item, onPreview, showThumbnail = true }: {
           )}
         </div>
       </div>
-      <div className="col-span-2 flex flex-wrap items-center gap-2 sm:col-span-1 sm:col-start-2 md:col-start-3 md:row-start-1 md:max-w-[13rem] md:self-center">
+      <div className="col-span-2 flex flex-wrap items-center gap-2 sm:col-span-1 sm:col-start-2 md:col-start-3 md:row-start-1 md:flex-col md:flex-nowrap md:items-end md:self-start">
         <button
           type="button"
           onClick={preview}

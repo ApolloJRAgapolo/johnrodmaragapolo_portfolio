@@ -1,0 +1,160 @@
+{
+  "method": "Import the supplied finished desktop-and-phone paired PNG mockups unchanged; encode lossless WebP copies without cropping, resizing, or adding frames.",
+  "presentation": "paired",
+  "canvas": {
+    "width": 3200,
+    "height": 2320
+  },
+  "screens": [
+    {
+      "id": "explore",
+      "title": "Explore Food Prices",
+      "sourceFilename": "paired/01-explore.png",
+      "source": {
+        "width": 3200,
+        "height": 2320,
+        "sha256": "da77fb227c5c314c2b2b1e54c2805a0e3d80f8743899951b610ce2bdfb589a34"
+      },
+      "master": {
+        "src": "/case-files/pricepulse/mockups/explore.png",
+        "width": 3200,
+        "height": 2320,
+        "bytes": 670875,
+        "sha256": "da77fb227c5c314c2b2b1e54c2805a0e3d80f8743899951b610ce2bdfb589a34"
+      },
+      "web": {
+        "src": "/case-files/pricepulse/mockups/explore.webp",
+        "width": 3200,
+        "height": 2320,
+        "bytes": 450424,
+        "sha256": "3371f697c68039a5cb080a5e79754d36b05e8045d7ab02cd73acede05c9b3839"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "masterBytesIdentical": true,
+        "dimensionsPreserved": true,
+        "webEncodingLossless": true
+      }
+    },
+    {
+      "id": "compare",
+      "title": "Compare Locations",
+      "sourceFilename": "paired/02-compare.png",
+      "source": {
+        "width": 3200,
+        "height": 2320,
+        "sha256": "b973dbfaac94a451c8efb8dc9853a618d61c8e831fad9f881b93c315b7f30086"
+      },
+      "master": {
+        "src": "/case-files/pricepulse/mockups/compare.png",
+        "width": 3200,
+        "height": 2320,
+        "bytes": 692899,
+        "sha256": "b973dbfaac94a451c8efb8dc9853a618d61c8e831fad9f881b93c315b7f30086"
+      },
+      "web": {
+        "src": "/case-files/pricepulse/mockups/compare.webp",
+        "width": 3200,
+        "height": 2320,
+        "bytes": 422706,
+        "sha256": "dfec2884f29a7fa1521dc1acaf366d70575a1e43e45e9516bb3060a874d37a05"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "masterBytesIdentical": true,
+        "dimensionsPreserved": true,
+        "webEncodingLossless": true
+      }
+    },
+    {
+      "id": "basket",
+      "title": "Household Basket",
+      "sourceFilename": "paired/03-basket.png",
+      "source": {
+        "width": 3200,
+        "height": 2320,
+        "sha256": "e9ba1570d24d42dc5d1cea18c2aef3b93b24067b9d590f94e493401f826335cd"
+      },
+      "master": {
+        "src": "/case-files/pricepulse/mockups/basket.png",
+        "width": 3200,
+        "height": 2320,
+        "bytes": 701337,
+        "sha256": "e9ba1570d24d42dc5d1cea18c2aef3b93b24067b9d590f94e493401f826335cd"
+      },
+      "web": {
+        "src": "/case-files/pricepulse/mockups/basket.webp",
+        "width": 3200,
+        "height": 2320,
+        "bytes": 437506,
+        "sha256": "af3528de7a2df3caf6af856a97e4bd42ee8419a973eed83bf78d48a21f0efb66"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "masterBytesIdentical": true,
+        "dimensionsPreserved": true,
+        "webEncodingLossless": true
+      }
+    },
+    {
+      "id": "analysis",
+      "title": "Analysis Coverage",
+      "sourceFilename": "paired/04-analysis.png",
+      "source": {
+        "width": 3200,
+        "height": 2320,
+        "sha256": "0db9d697d8842a3edd3efcba58589d461e7c96d62e4fef01b749f517ebce110c"
+      },
+      "master": {
+        "src": "/case-files/pricepulse/mockups/analysis.png",
+        "width": 3200,
+        "height": 2320,
+        "bytes": 653293,
+        "sha256": "0db9d697d8842a3edd3efcba58589d461e7c96d62e4fef01b749f517ebce110c"
+      },
+      "web": {
+        "src": "/case-files/pricepulse/mockups/analysis.webp",
+        "width": 3200,
+        "height": 2320,
+        "bytes": 338764,
+        "sha256": "cded5db7a1e5c7b95007f701685f0952c3852a1bb233895c8959fcbcd14019af"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "masterBytesIdentical": true,
+        "dimensionsPreserved": true,
+        "webEncodingLossless": true
+      }
+    },
+    {
+      "id": "methodology",
+      "title": "Data & Methods",
+      "sourceFilename": "paired/05-methodology.png",
+      "source": {
+        "width": 3200,
+        "height": 2320,
+        "sha256": "7d25de84ff13751c240b4645a5b2aec2e75507911410707ca6ce2ced3e350915"
+      },
+      "master": {
+        "src": "/case-files/pricepulse/mockups/methodology.png",
+        "width": 3200,
+        "height": 2320,
+        "bytes": 807257,
+        "sha256": "7d25de84ff13751c240b4645a5b2aec2e75507911410707ca6ce2ced3e350915"
+      },
+      "web": {
+        "src": "/case-files/pricepulse/mockups/methodology.webp",
+        "width": 3200,
+        "height": 2320,
+        "bytes": 569302,
+        "sha256": "b9897f729d6ac3a2ddb46b2e75e9dc3a3f9e4125fe45820e5c82568f36287c7a"
+      },
+      "verification": {
+        "sourceUnchanged": true,
+        "masterBytesIdentical": true,
+        "dimensionsPreserved": true,
+        "webEncodingLossless": true
+      }
+    }
+  ]
+}

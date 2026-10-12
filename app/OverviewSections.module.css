@@ -1,0 +1,196 @@
+.sections {
+  min-width: 0;
+  container-type: inline-size;
+}
+
+.sectionHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .25rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.backgroundGrid {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.backgroundGroup {
+  min-width: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid hsl(var(--border) / .4);
+}
+
+.groupHeading {
+  color: hsl(var(--muted-foreground));
+  font-size: .6875rem;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.experienceList {
+  margin-top: 1.25rem;
+}
+
+.experienceList > li + li {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid hsl(var(--border) / .4);
+}
+
+.recordTitle {
+  min-width: 0;
+  color: hsl(var(--foreground));
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.recordMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .25rem .4rem;
+  margin-top: .4rem;
+  color: hsl(var(--muted-foreground));
+  font-size: .75rem;
+  line-height: 1.65;
+}
+
+.recordDescription,
+.strengthDescription,
+.recognitionContext {
+  color: hsl(var(--muted-foreground));
+  font-size: .875rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.recordDescription {
+  margin-top: .65rem;
+}
+
+.educationRecord {
+  margin-top: 1.25rem;
+}
+
+.educationHonor {
+  margin-top: .75rem;
+  color: hsl(var(--foreground));
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.strengthGrid {
+  display: grid;
+  gap: 1.75rem 2.5rem;
+}
+
+.strength {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding-top: 1rem;
+  border-top: 1px solid hsl(var(--border) / .4);
+}
+
+.strengthDescription {
+  margin: .5rem 0 1rem;
+}
+
+.technologies {
+  margin-top: auto;
+}
+
+.technologies li > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.recognitionRow {
+  display: grid;
+  grid-template-areas: "title" "year" "context";
+  gap: .25rem;
+  min-width: 0;
+  padding: .75rem 0;
+}
+
+.recognitionTitle {
+  grid-area: title;
+  min-width: 0;
+  color: hsl(var(--foreground));
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.recognitionYear {
+  grid-area: year;
+  color: hsl(var(--muted-foreground));
+  font-size: .75rem;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+
+.recognitionContext {
+  grid-area: context;
+  min-width: 0;
+}
+
+.connectLayout {
+  display: grid;
+  align-items: start;
+  gap: 1.25rem 2rem;
+}
+
+.contactAction {
+  justify-self: start;
+}
+
+@container (min-width: 500px) {
+  .recognitionRow {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "title year" "context year";
+    column-gap: 1.5rem;
+  }
+
+  .recognitionYear {
+    align-self: start;
+    padding-top: .8rem;
+    text-align: right;
+  }
+}
+
+@container (min-width: 560px) {
+  .strengthGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .technologies {
+    min-height: 4rem;
+  }
+}
+
+@container (min-width: 640px) {
+  .connectLayout {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .contactAction {
+    justify-self: end;
+  }
+}
+
+@container (min-width: 760px) {
+  .backgroundGrid {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+}

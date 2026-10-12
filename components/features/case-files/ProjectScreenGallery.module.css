@@ -1,24 +1,56 @@
-.forward {
-  animation: screen-forward 220ms ease-out;
+.track {
+  position: relative;
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: #0a0a0a;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y pinch-zoom;
 }
 
-.backward {
-  animation: screen-backward 220ms ease-out;
+.track::-webkit-scrollbar {
+  display: none;
 }
 
-@keyframes screen-forward {
-  from { opacity: .55; transform: translateX(12px); }
-  to { opacity: 1; transform: translateX(0); }
+.track:focus-visible {
+  outline: 2px solid rgb(255 255 255 / 80%);
+  outline-offset: -4px;
 }
 
-@keyframes screen-backward {
-  from { opacity: .55; transform: translateX(-12px); }
-  to { opacity: 1; transform: translateX(0); }
+.track[data-draggable="true"] {
+  cursor: grab;
+}
+
+.track[data-dragging="true"] {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+.slide {
+  position: relative;
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.imageButton {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: inherit;
+  -webkit-user-drag: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .forward,
-  .backward {
-    animation: none;
+  .track {
+    scroll-behavior: auto;
   }
 }

@@ -59,7 +59,7 @@ export default function CredentialCard({ credential, icon: Icon = FileText, onPr
   );
 
   const actions = (
-    <div className={`flex flex-wrap gap-2 ${compact ? "col-span-2 sm:col-span-1 sm:col-start-2 lg:col-start-3 lg:row-start-1 lg:max-w-[16rem] lg:self-center" : "mt-5 border-t border-border/40 pt-3"}`}>
+    <div className={`flex flex-wrap gap-2 ${compact ? "col-span-2 sm:col-span-1 sm:col-start-2 lg:col-start-3 lg:row-start-1 lg:flex-col lg:flex-nowrap lg:items-end lg:self-start" : "mt-5 border-t border-border/40 pt-3"}`}>
       {document && (
         <button type="button" onClick={() => onPreview(document)} className={actionClassName} aria-label={`Preview ${title}`}>
           <Eye aria-hidden="true" className="h-4 w-4 stroke-[1.5]" />Preview
@@ -74,7 +74,7 @@ export default function CredentialCard({ credential, icon: Icon = FileText, onPr
   );
 
   if (compact) {
-    return <article id={getCredentialAnchor(title)} data-credential-layout="record" className="grid scroll-mt-24 grid-cols-[4.5rem_minmax(0,1fr)] gap-x-4 gap-y-3 border-b border-border/40 py-5 sm:grid-cols-[5.5rem_minmax(0,1fr)] lg:grid-cols-[5.5rem_minmax(0,1fr)_auto]">
+    return <article id={getCredentialAnchor(title)} data-credential-layout="record" className="grid scroll-mt-24 grid-cols-[4.5rem_minmax(0,1fr)] gap-x-4 gap-y-3 border-b border-border/40 py-5 sm:grid-cols-[5.5rem_minmax(0,1fr)] lg:grid-cols-[5.5rem_minmax(0,1fr)_10rem]">
       {previewSurface}
       {details}
       {actions}

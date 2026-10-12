@@ -6,12 +6,13 @@ import Image from "next/image";
 import { ArrowRight, ArrowUpRight, Terminal } from "lucide-react";
 import RevealOnScroll from "@/components/shared/RevealOnScroll";
 import FeaturedCaseFiles from "@/components/features/overview/FeaturedCaseFiles";
+import styles from "./OverviewSections.module.css";
 
 const technicalStrengths = [
   { title: "Frontend development", technologies: ["TypeScript", "React", "Next.js", "Tailwind CSS"], detail: "Responsive interfaces, dashboard filters, and document viewing." },
   { title: "APIs & databases", technologies: ["Node.js", "Express", "PostgreSQL", "Prisma"], detail: "Server-side sessions, private file access, and relational data; continuing to learn SQL." },
   { title: "Delivery & debugging", technologies: ["Git", "GitHub", "Vercel", "Railway"], detail: "Production builds, environment configuration, and deployment across services." },
-  { title: "Systems analysis", technologies: ["Systems Analysis", "Requirements Gathering", "System Design"], detail: "Process analysis, database design, and technical documentation." },
+  { title: "Systems analysis", technologies: ["Requirements Gathering", "System Design"], detail: "Process analysis, database design, and technical documentation." },
 ];
 
 const recognition = [
@@ -85,70 +86,86 @@ export default function Overview() {
 
         <FeaturedCaseFiles />
 
-        <section aria-labelledby="experience-education" className="page-section">
-          <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-            <h2 id="experience-education" className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Experience &amp; Education</h2>
-            <Link href="/journey" className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground">Professional Journey</Link>
-          </div>
-          <dl className="divide-y divide-border/40">
-            <div className="grid gap-2 py-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:gap-8">
-              <dt className="text-base font-medium text-foreground">KWADRA Technology Business Incubator</dt>
-              <dd className="text-sm leading-relaxed text-muted-foreground">600-hour internship supporting project documentation, innovation programs, and startup activities.</dd>
+        <div className={styles.sections}>
+          <section aria-labelledby="experience-education" className="page-section">
+            <div className={styles.sectionHeader}>
+              <h2 id="experience-education" className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Experience &amp; Education</h2>
+              <Link href="/journey" className={sectionLinkStyle}>Professional Journey<ArrowRight className="h-3.5 w-3.5 shrink-0" aria-hidden="true" /></Link>
             </div>
-            <div className="grid gap-2 py-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:gap-8">
-              <dt className="text-base font-medium text-foreground">Wadhwani Foundation Philippines</dt>
-              <dd className="text-sm leading-relaxed text-muted-foreground">Internship supporting faculty participation, platform progress monitoring, and communication across partner universities.</dd>
+            <div className={styles.backgroundGrid}>
+              <section aria-labelledby="overview-experience" className={styles.backgroundGroup}>
+                <h3 id="overview-experience" className={styles.groupHeading}>Experience</h3>
+                <ul className={styles.experienceList}>
+                  <li>
+                    <h4 className={styles.recordTitle}>KWADRA Technology Business Incubator</h4>
+                    <p className={styles.recordMeta}>Student Intern <span aria-hidden="true">·</span> <span><time dateTime="2026-01">Jan</time>–<time dateTime="2026-05">May 2026</time></span></p>
+                    <p className={styles.recordDescription}>600-hour internship supporting project documentation, innovation programs, and startup activities.</p>
+                  </li>
+                  <li>
+                    <h4 className={styles.recordTitle}>Wadhwani Foundation Philippines</h4>
+                    <p className={styles.recordMeta}>Student Intern <span aria-hidden="true">·</span> <time dateTime="2026">2026</time></p>
+                    <p className={styles.recordDescription}>Internship supporting faculty participation, platform progress monitoring, and communication across partner universities.</p>
+                  </li>
+                </ul>
+              </section>
+              <section aria-labelledby="overview-education" className={styles.backgroundGroup}>
+                <h3 id="overview-education" className={styles.groupHeading}>Education</h3>
+                <div className={styles.educationRecord}>
+                  <h4 className={styles.recordTitle}>BS Information Systems</h4>
+                  <p className={styles.recordMeta}>Graduated <time dateTime="2026">2026</time></p>
+                  <p className={styles.recordDescription}>Iloilo Science and Technology University</p>
+                  <p className={styles.educationHonor}>Magna Cum Laude</p>
+                </div>
+              </section>
             </div>
-            <div className="grid gap-2 py-5 sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] sm:gap-8">
-              <dt className="text-base font-medium text-foreground">BS Information Systems</dt>
-              <dd className="text-sm leading-relaxed text-muted-foreground">Iloilo Science and Technology University · 2026<br />Magna Cum Laude</dd>
-            </div>
-          </dl>
-        </section>
+          </section>
 
-        <section aria-labelledby="technical-strengths" className="page-section">
-          <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
-            <h2 id="technical-strengths" className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Technical Strengths</h2>
-            <Link href="/capabilities" className={sectionLinkStyle}>Capabilities &amp; evidence<ArrowRight className="h-3.5 w-3.5 shrink-0" aria-hidden="true" /></Link>
-          </div>
-          <div className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
-            {technicalStrengths.map((strength) => (
-              <div key={strength.title} className="min-w-0 border-t border-border/40 pt-4">
-                <h3 className="mb-3 text-base font-medium leading-relaxed text-foreground">{strength.title}</h3>
-                <TechnologyList items={strength.technologies} label={strength.title} className="mb-3 grid grid-cols-2 content-start gap-x-4 gap-y-2.5 sm:min-h-16" />
-                <p className="text-sm leading-relaxed text-muted-foreground">{strength.detail}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+          <section aria-labelledby="technical-strengths" className="page-section">
+            <div className={styles.sectionHeader}>
+              <h2 id="technical-strengths" className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Technical Strengths</h2>
+              <Link href="/capabilities" className={sectionLinkStyle}>Capabilities &amp; evidence<ArrowRight className="h-3.5 w-3.5 shrink-0" aria-hidden="true" /></Link>
+            </div>
+            <div className={styles.strengthGrid}>
+              {technicalStrengths.map((strength) => (
+                <div key={strength.title} className={styles.strength}>
+                  <h3 className={styles.recordTitle}>{strength.title}</h3>
+                  <p className={styles.strengthDescription}>{strength.detail}</p>
+                  <TechnologyList items={strength.technologies} label={strength.title} className={`${styles.technologies} grid grid-cols-2 content-start gap-x-4 gap-y-2.5`} />
+                </div>
+              ))}
+            </div>
+          </section>
 
-        <section aria-labelledby="selected-recognition" className="page-section">
-          <div className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
-            <h2 id="selected-recognition" className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Selected Recognition</h2>
-            <Link href="/credentials" className={sectionLinkStyle}>Credential archive<ArrowRight className="h-3.5 w-3.5 shrink-0" aria-hidden="true" /></Link>
-          </div>
-          <ul className="divide-y divide-border/40 border-y border-border/40">
-            {recognition.map((item) => (
-              <li key={item.title} className="py-3">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <h3 className="min-w-0 text-base font-medium text-foreground">
-                    <Link href={`/credentials#${getCredentialAnchor(item.credentialTitle)}`} className="inline-flex min-h-11 items-center gap-2 underline decoration-muted-foreground/50 underline-offset-4 transition-colors hover:decoration-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none">
-                      <span>{item.title}</span><ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />
+          <section aria-labelledby="selected-recognition" className="page-section">
+            <div className={styles.sectionHeader}>
+              <h2 id="selected-recognition" className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Selected Recognition</h2>
+              <Link href="/credentials" className={sectionLinkStyle}>Credential archive<ArrowRight className="h-3.5 w-3.5 shrink-0" aria-hidden="true" /></Link>
+            </div>
+            <ul className="divide-y divide-border/40 border-y border-border/40">
+              {recognition.map((item) => (
+                <li key={item.title} className={styles.recognitionRow}>
+                  <h3 className={styles.recognitionTitle}>
+                    <Link href={`/credentials#${getCredentialAnchor(item.credentialTitle)}`} className="inline-flex min-h-11 max-w-full items-center gap-2 underline decoration-muted-foreground/50 underline-offset-4 transition-colors hover:decoration-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background motion-reduce:transition-none">
+                      <span className="min-w-0 break-words">{item.title}</span><ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />
                     </Link>
                   </h3>
-                  <span className="font-mono text-xs text-muted-foreground">{item.year}</span>
-                </div>
-                <p className="text-sm leading-relaxed text-muted-foreground">{item.context}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
+                  <time dateTime={item.year} className={`${styles.recognitionYear} font-mono`}>{item.year}</time>
+                  <p className={styles.recognitionContext}>{item.context}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
 
-        <section aria-labelledby="connect" className="border-t border-border/40 pt-8">
-          <h2 id="connect" className="mb-3 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Let&apos;s Connect</h2>
-          <p className="max-w-prose text-base leading-relaxed text-muted-foreground">I enjoy learning, collaborating, and creating practical solutions through technology.</p>
-          <Link href="/contact" className={`${actionStyles()} mt-5`}>Get in Touch <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
-        </section>
+          <section aria-labelledby="connect" className="border-t border-border/40 pt-8">
+            <div className={styles.connectLayout}>
+              <div className="min-w-0">
+                <h2 id="connect" className="mb-3 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Let&apos;s Connect</h2>
+                <p className="max-w-prose text-base leading-relaxed text-muted-foreground">Open to software development opportunities and meaningful collaboration.</p>
+              </div>
+              <Link href="/contact" className={`${actionStyles()} ${styles.contactAction}`}>Get in Touch <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
+            </div>
+          </section>
+        </div>
       </div>
     </main>
   );

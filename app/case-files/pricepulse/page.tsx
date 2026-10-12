@@ -1,15 +1,17 @@
 import CaseStudyContext from "@/components/features/case-files/CaseStudyContext";
 import CaseStudyHeader from "@/components/features/case-files/CaseStudyHeader";
+import ProjectScreenGallery from "@/components/features/case-files/ProjectScreenGallery";
 import { pageMetadata } from "@/lib/metadata";
 import {
   ArrowDown, ArrowRight, BookOpen, ChartNoAxesCombined,
   Database, FileSpreadsheet, Layers, LayoutDashboard, Lightbulb,
-  ListFilter, MapPin, Search, Server, ShieldCheck,
+  ListFilter, MapPin, Monitor, Search, Server, ShieldCheck,
   Sparkles, TableProperties, User, Workflow, Wrench,
 } from "lucide-react";
 import GlowingCard from "@/components/shared/GlowingCard";
 import RevealOnScroll from "@/components/shared/RevealOnScroll";
 import { caseFiles } from "@/lib/data/case-files";
+import { pricepulseMockups } from "@/lib/data/pricepulse-mockups";
 
 const project = caseFiles.find((file) => file.id === "pricepulse")!;
 const technologies = ["Next.js", "React", "TypeScript", "Node.js", "Tailwind CSS", "PostgreSQL", "Prisma", "Vercel", "Git", "GitHub"];
@@ -62,7 +64,7 @@ export default function PricePulseCaseFile() {
         <CaseStudyHeader id="pricepulse" />
 
 
-        <CaseStudyContext id="pricepulse" technologies={technologies} sections={[{ id: "problem", label: "Problem" }, { id: "solution", label: "Solution" }, { id: "architecture", label: "Architecture" }, { id: "decisions", label: "Engineering decisions" }, { id: "experience", label: "Dashboard" }, { id: "challenges", label: "Challenges" }, { id: "learning", label: "Learning" }]} />
+        <CaseStudyContext id="pricepulse" technologies={technologies} sections={[{ id: "problem", label: "Problem" }, { id: "solution", label: "Solution" }, { id: "screens", label: "Screens" }, { id: "architecture", label: "Architecture" }, { id: "decisions", label: "Engineering decisions" }, { id: "experience", label: "Dashboard" }, { id: "challenges", label: "Challenges" }, { id: "learning", label: "Learning" }]} />
 
         <div className="space-y-12 sm:space-y-14">
           <RevealOnScroll>
@@ -107,8 +109,15 @@ export default function PricePulseCaseFile() {
           </RevealOnScroll>
 
           <RevealOnScroll>
+            <section aria-labelledby="screens">
+              <h2 id="screens" className="mb-6 flex scroll-mt-24 items-center gap-3 text-lg font-semibold tracking-tight text-foreground"><Monitor className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />03 / Application Screens</h2>
+              <ProjectScreenGallery projectName="PricePulse PH" screens={pricepulseMockups} />
+            </section>
+          </RevealOnScroll>
+
+          <RevealOnScroll>
             <section aria-labelledby="architecture">
-              <h2 id="architecture" className="mb-6 flex items-center gap-3 text-lg font-semibold tracking-tight text-foreground"><Workflow className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />03 / System &amp; Data Flow</h2>
+              <h2 id="architecture" className="mb-6 flex items-center gap-3 text-lg font-semibold tracking-tight text-foreground"><Workflow className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />04 / System &amp; Data Flow</h2>
               <div className="space-y-6 border border-border/40 bg-card p-6 sm:p-8">
                 {flows.map((flow) => (
                   <div key={flow.title}>
@@ -138,7 +147,7 @@ export default function PricePulseCaseFile() {
           </RevealOnScroll>
 
           <section aria-labelledby="decisions">
-            <h2 id="decisions" className="mb-6 flex items-center gap-3 text-lg font-semibold tracking-tight text-foreground"><Layers className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />04 / Key Engineering Decisions</h2>
+            <h2 id="decisions" className="mb-6 flex items-center gap-3 text-lg font-semibold tracking-tight text-foreground"><Layers className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />05 / Key Engineering Decisions</h2>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {decisions.map((decision) => (
                 <RevealOnScroll key={decision.title}>
@@ -159,7 +168,7 @@ export default function PricePulseCaseFile() {
 
           <RevealOnScroll>
             <section aria-labelledby="experience">
-              <h2 id="experience" className="mb-6 flex items-center gap-3 text-lg font-semibold tracking-tight text-foreground"><LayoutDashboard className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />05 / Dashboard Experience</h2>
+              <h2 id="experience" className="mb-6 flex items-center gap-3 text-lg font-semibold tracking-tight text-foreground"><LayoutDashboard className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />06 / Dashboard Experience</h2>
               <p className="mb-6 text-sm leading-relaxed text-muted-foreground">The interface went through several refinements to prioritize useful information. It starts with the user&apos;s question, establishes the current price context, and then opens up comparisons and supporting detail.</p>
               <p className="mb-4 text-sm leading-relaxed text-muted-foreground">A new &ldquo;Try an Example&rdquo; action selects a commodity and location with existing observations, reducing friction for first-time visitors and helping them start with a useful view.</p>
               <p className="mb-6 text-sm leading-relaxed text-muted-foreground">Empty and invalid states now explain unavailable observations, the absence of a common reporting period, invalid date ranges, and missing required basket prices. Missing data is treated as a valid condition in the dataset, rather than automatically as an application error.</p>
@@ -182,7 +191,7 @@ export default function PricePulseCaseFile() {
           </RevealOnScroll>
 
           <section aria-labelledby="challenges">
-            <h2 id="challenges" className="mb-6 flex items-center gap-3 text-lg font-semibold tracking-tight text-foreground"><Wrench className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />06 / Technical Challenges</h2>
+            <h2 id="challenges" className="mb-6 flex items-center gap-3 text-lg font-semibold tracking-tight text-foreground"><Wrench className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />07 / Technical Challenges</h2>
             <div className="divide-y divide-border/40 border-y border-border/40">
               {challenges.map((challenge) => (
                 <RevealOnScroll key={challenge.title}>
@@ -198,7 +207,7 @@ export default function PricePulseCaseFile() {
 
           <RevealOnScroll>
             <section aria-labelledby="learning">
-              <h2 id="learning" className="mb-6 flex items-center gap-3 text-lg font-semibold tracking-tight text-foreground"><BookOpen className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />07 / What I Learned</h2>
+              <h2 id="learning" className="mb-6 flex items-center gap-3 text-lg font-semibold tracking-tight text-foreground"><BookOpen className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />08 / What I Learned</h2>
               <div className="space-y-4 text-sm leading-relaxed text-muted-foreground">
                 <p>Building PricePulse connected the full application lifecycle: preparing and validating data, modeling it in PostgreSQL, querying it through Prisma, and writing Next.js Route Handlers and analytics logic on Node.js. Reliable data preparation and clear calculations became the foundation for the interface.</p>
                 <p>On the frontend, React, Next.js, TypeScript, and Tailwind CSS supported a responsive dashboard where visualization and UX refinement worked together. Git and GitHub supported incremental development, code organization, and debugging throughout the project.</p>
