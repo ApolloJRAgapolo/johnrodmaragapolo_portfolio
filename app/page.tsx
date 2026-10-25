@@ -46,10 +46,10 @@ export default function Overview() {
               </div>
             </div>
             <p className="max-w-xl text-base font-light leading-relaxed text-muted-foreground sm:text-xl">
-              Information Systems graduate with an interest in web development and software engineering.
+              Information Systems graduate with an interest in web development, software engineering, and analytics.
             </p>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              I enjoy turning ideas into practical web applications and learning along the way.
+              I enjoy turning ideas into practical applications and exploring how data can reveal useful insights and help solve real-world problems.
             </p>
 
             <div className="mt-4 grid grid-cols-1 gap-2 min-[390px]:grid-cols-2 sm:mt-8 sm:flex sm:flex-wrap sm:items-center sm:gap-3">
