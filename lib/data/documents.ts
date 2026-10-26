@@ -8,14 +8,14 @@ export const professionalDocs: ProfessionalDocument[] = [
     id: "resume-2026",
     title: "Resume / Curriculum Vitae",
     description: "The latest version of my professional resume, including my education, experience, projects, and achievements.",
-    updated: "August 2026",
+    updated: "September 2026",
     fileType: "PDF",
-    fileUrl: "/resume/John Rodmar Agapolo Professional Resume.pdf",
+    fileUrl: "/resume/%5BResume%5D%20-%20John%20Rodmar%20Agapolo.pdf",
     aspectRatio: 0.707,
     viewerOptions: { allowDownload: true },
     viewerMetadata: {
       documentType: "Resume / Curriculum Vitae",
-      lastUpdated: "August 2026",
+      lastUpdated: "September 2026",
       description: "A current overview of education, experience, projects, and achievements.",
     },
   }
