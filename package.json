@@ -11,6 +11,7 @@
     "previews:check": "node scripts/generate-credential-previews.mjs --check"
   },
   "dependencies": {
+    "@next/third-parties": "^16.4.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.28.0",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { Geist, Geist_Mono } from "next/font/google";
 import Sidebar from "@/components/layout/Sidebar";
 import "./globals.css";
@@ -41,6 +42,7 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-screen overflow-x-hidden bg-background text-foreground antialiased">
+        <GoogleTagManager gtmId="GTM-KPGHT26K" />
         <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-background focus:p-4 focus:text-foreground">Skip to content</a>
         <Sidebar />
         {children}
