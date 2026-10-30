@@ -87,11 +87,9 @@
 }
 
 .evidence {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0 0.875rem;
-  margin-top: 0.375rem;
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.65rem;
 }
 
 .evidenceLabel {
@@ -101,20 +99,20 @@
 }
 
 .evidence > ul {
-  flex: 1 1 15rem;
   min-width: 0;
 }
 
 @container (min-width: 680px) {
   .stage {
-    grid-template-columns: minmax(0, 10.5rem) minmax(0, 1fr);
-    align-items: start;
-    gap: 2rem;
+    grid-template-columns: minmax(12rem, 0.82fr) minmax(0, 2fr);
+    align-items: stretch;
+    gap: 2.5rem;
     padding: 1.5rem;
   }
 
   .stageHeader {
-    padding: 0 1.5rem 0 0;
+    height: 100%;
+    padding: 0 2rem 0 0;
     border-right: 1px solid hsl(var(--border) / 45%);
     border-bottom: 0;
   }

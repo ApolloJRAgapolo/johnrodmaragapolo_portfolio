@@ -31,7 +31,7 @@ function NodeMark({ node }: { node: EcosystemRelationship }) {
     return (
       <span className={styles.logo} aria-hidden="true">
         <Image src={node.logo} alt="" width={112} height={56} unoptimized className={node.darkLogo ? styles.lightLogo : undefined} />
-        {node.darkLogo && <Image src={node.darkLogo} alt="" width={112} height={56} unoptimized className={styles.darkLogo} />}
+        {node.darkLogo && <Image src={node.darkLogo} alt="" width={112} height={56} unoptimized className={`${styles.darkLogo} ${node.id === "gci-world" ? styles.invertLogo : ""} ${node.whiteInDark ? styles.whiteInDark : ""}`} />}
       </span>
     );
   }

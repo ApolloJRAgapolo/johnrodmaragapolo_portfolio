@@ -3,7 +3,7 @@ import CaseFileCard from "@/components/features/case-files/CaseFileCard";
 import RevealOnScroll from "@/components/shared/RevealOnScroll";
 import { caseFiles } from "@/lib/data/case-files";
 
-const featuredIds = ["careertrack", "pricepulse", "blms"];
+const featuredIds = ["customer-churn-prediction", "careertrack", "pricepulse"];
 
 export default function FeaturedCaseFiles() {
   return (

@@ -14,7 +14,7 @@ import {
 } from "@/lib/data/journey";
 import styles from "./ProfessionalJourney.module.css";
 
-type JourneyLogo = { src: string; darkSrc?: string };
+type JourneyLogo = { src: string; darkSrc?: string; whiteInDark?: boolean };
 type JourneyAction = { href: string; label: string };
 
 function Logo({ logo, leadership = false }: { logo?: JourneyLogo; leadership?: boolean }) {
@@ -25,7 +25,7 @@ function Logo({ logo, leadership = false }: { logo?: JourneyLogo; leadership?: b
   return (
     <span className={styles.logo} aria-hidden="true">
       <Image src={logo.src} alt="" width={112} height={56} unoptimized className={logo.darkSrc ? styles.lightLogo : undefined} />
-      {logo.darkSrc && <Image src={logo.darkSrc} alt="" width={112} height={56} unoptimized className={styles.darkLogo} />}
+      {logo.darkSrc &&       <Image src={logo.darkSrc} alt="" width={112} height={56} unoptimized className={`${styles.darkLogo} ${logo.whiteInDark ? styles.whiteInDark : ""}`} />}
     </span>
   );
 }
@@ -129,7 +129,7 @@ export default function ProfessionalJourney() {
                 <JourneyEntry
                   id="kwadra-internship" title="Student Intern" organization="KWADRA Technology Business Incubator"
                   date={<><time dateTime="2026-01">Jan</time>–<time dateTime="2026-05">May 2026</time></>}
-                  kind="Internship" meta="ISAT U · 600 hours" logo={{ src: "/ecosystem/logos/kwadra.webp" }}
+                  kind="Internship" meta="ISAT U · 600 hours" logo={{ src: "/ecosystem/logos/kwadra.webp", darkSrc: "/ecosystem/logos/kwadra-dark.svg" }}
                   summary="Supported innovation programs, project documentation, and startup activities at ISAT U’s incubator."
                   contributions={[kwadraResponsibilities[0]]}
                   recognition={<Recognition title="Outstanding Intern Award" />}
@@ -138,7 +138,7 @@ export default function ProfessionalJourney() {
                 </JourneyEntry>
                 <JourneyEntry
                   id="wadhwani-internship" title="Student Intern" organization="Wadhwani Foundation Philippines"
-                  date={<time dateTime="2026">2026</time>} kind="Internship" meta="Program support" logo={{ src: "/ecosystem/logos/wadhwani.webp" }}
+                  date={<time dateTime="2026">2026</time>} kind="Internship" meta="Program support" logo={{ src: "/ecosystem/logos/wadhwani.webp", darkSrc: "/ecosystem/logos/wadhwani.webp", whiteInDark: true }}
                   summary="Supported faculty participation and participant engagement across partner universities."
                   contributions={[wadhwaniResponsibilities[0]]}
                   action={{ href: `/credentials#${getCredentialAnchor("Wadhwani Foundation Philippines")}`, label: "Internship record" }}

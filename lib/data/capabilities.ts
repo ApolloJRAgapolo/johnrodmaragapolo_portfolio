@@ -1,21 +1,28 @@
-import { Cpu, Database, LayoutGrid, Users } from "lucide-react";
+import { BarChart3, Cpu, Database, LayoutGrid, Users } from "lucide-react";
 import { FaCss3Alt } from "react-icons/fa";
 import {
-  SiGit,
-  SiCloudflare,
   SiExpress,
-  SiGithub,
+  SiGit,
   SiHtml5,
   SiJavascript,
   SiNextdotjs,
   SiNodedotjs,
+  SiPython,
+  SiPandas,
+  SiNumpy,
+  SiScikitlearn,
   SiPostgresql,
   SiPrisma,
-  SiRailway,
   SiReact,
   SiTailwindcss,
   SiTypescript,
   SiVercel,
+  SiGoogleanalytics,
+  SiGoogletagmanager,
+  SiGooglesearchconsole,
+  SiGooglesheets,
+  SiLooker,
+  SiSemrush,
 } from "react-icons/si";
 import type { CapabilityGroup, TechnologyStackGroup } from "@/lib/types";
 
@@ -29,56 +36,64 @@ const tumaNow = { label: "TumaNow", href: "/case-files/tumanow" };
 
 export const technologyStackGroups: TechnologyStackGroup[] = [
   {
-    id: "frontend",
-    title: "Frontend",
+    id: "software-development",
+    title: "Software Development",
     technologies: [
+      { name: "HTML", icon: SiHtml5 },
+      { name: "CSS", icon: FaCss3Alt },
+      { name: "JavaScript", icon: SiJavascript },
       { name: "TypeScript", icon: SiTypescript },
       { name: "React", icon: SiReact },
       { name: "Next.js", icon: SiNextdotjs },
       { name: "Tailwind CSS", icon: SiTailwindcss },
     ],
-    summary: "Building responsive dashboards, application workflows, and document previews with typed components.",
-    learning: [
-      { name: "HTML", icon: SiHtml5 },
-      { name: "CSS", icon: FaCss3Alt },
-      { name: "JavaScript", icon: SiJavascript },
-    ],
+    summary: "Building responsive interfaces, dashboards, application workflows, and document previews with typed components.",
     evidence: [careerTrack, pricePulse, portfolio],
   },
   {
-    id: "backend",
-    title: "Backend",
+    id: "data-analytics",
+    title: "Data Analytics & Data Science",
+    technologies: [
+      { name: "Python", icon: SiPython },
+      { name: "pandas", icon: SiPandas },
+      { name: "NumPy", icon: SiNumpy },
+      { name: "Matplotlib", icon: BarChart3 },
+      { name: "Seaborn", icon: BarChart3 },
+      { name: "scikit-learn", icon: SiScikitlearn },
+      { name: "SQL", icon: Database },
+    ],
+    technologyStatus: "Project experience",
+    summary: "Foundational practice in data preparation, exploratory analysis, visualization, data validation, and introductory machine learning using Python.",
+    learningNote: "Exploring data cleaning, exploratory data analysis, and classification through PricePulse PH and the GCI World final assignment.",
+    evidence: [pricePulse, { label: "Customer Churn Prediction", href: "/case-files/customer-churn-prediction" }],
+  },
+  {
+    id: "analytics-seo",
+    title: "Analytics & SEO Tools",
+    technologies: [
+      { name: "Google Analytics 4", icon: SiGoogleanalytics },
+      { name: "Google Tag Manager", icon: SiGoogletagmanager },
+      { name: "Google Search Console", icon: SiGooglesearchconsole },
+      { name: "Google Sheets", icon: SiGooglesheets },
+      { name: "Looker Studio", icon: SiLooker },
+      { name: "Semrush", icon: SiSemrush },
+    ],
+    technologyStatus: "Currently exploring",
+    summary: "Currently exploring digital analytics, measurement, reporting, and SEO workflows.",
+    evidence: [portfolio],
+  },
+  {
+    id: "backend-delivery",
+    title: "Backend & Delivery",
     technologies: [
       { name: "Node.js", icon: SiNodedotjs },
       { name: "Express", icon: SiExpress },
-      { name: "Next.js", icon: SiNextdotjs },
-    ],
-    summary: "Building Express APIs with server-side sessions, record ownership checks, and private file access, alongside Next.js Route Handlers for dashboard analytics.",
-    evidence: [careerTrackArchitecture, { label: "PricePulse Route Handlers", href: "/case-files/pricepulse#architecture" }],
-  },
-  {
-    id: "databases",
-    title: "Databases",
-    technologies: [
       { name: "PostgreSQL", icon: SiPostgresql },
       { name: "Prisma ORM", icon: SiPrisma },
-    ],
-    summary: "Modeling career records and commodity data in PostgreSQL, querying through Prisma, and using transactions to preserve application history.",
-    learning: [{ name: "SQL", icon: Database }],
-    learningNote: "Practicing relational queries; current application queries use Prisma ORM.",
-    evidence: [careerTrackArchitecture, pricePulseArchitecture],
-  },
-  {
-    id: "development-deployment",
-    title: "Development & Deployment",
-    technologies: [
-      { name: "Git", icon: SiGit },
-      { name: "GitHub", icon: SiGithub },
+      { name: "Git & GitHub", icon: SiGit },
       { name: "Vercel", icon: SiVercel },
-      { name: "Railway", icon: SiRailway },
-      { name: "Cloudflare R2", icon: SiCloudflare },
     ],
-    summary: "Deploying frontends on Vercel and the CareerTrack API on Railway, with Neon PostgreSQL and private R2 storage. Using Git and GitHub for incremental development.",
+    summary: "Supporting application development with APIs, relational data, version control, and deployment workflows.",
     evidence: [careerTrackArchitecture, { label: "PricePulse deployment", href: "/case-files/pricepulse#challenges" }, portfolio],
   },
 ];
@@ -97,20 +112,26 @@ export type GroupedCapabilityGroup = Pick<CapabilityGroup, "category" | "icon"> 
 
 export const capabilityGroups: GroupedCapabilityGroup[] = [
   {
-    category: "Systems Analysis & Design",
+    category: "Business & Systems Analysis",
     icon: Cpu,
-    description: "Project experience across requirements, design, and documentation. Explore the linked projects for evidence of each capability.",
+    description: "Connecting business questions, stakeholder needs, workflows, and system decisions through research, analysis, requirements, design, and documentation.",
     stages: [
       {
         id: "discovery-requirements",
         title: "Discovery & requirements",
-        description: "Understand the problem and define what the system needs to do.",
+        description: "Understand stakeholder needs, investigate the business problem, and define what the system needs to do.",
         competencies: [
           {
             tool: "Requirements gathering",
             proficiency: "Project experience",
             application: "Interviewing stakeholders and translating user needs into project and system requirements.",
             evidence: [blms, tumaNow],
+          },
+          {
+            tool: "Business research & market validation",
+            proficiency: "Project experience",
+            application: "Researching problems, validating opportunities, and shaping proposals around stakeholder and market needs.",
+            evidence: [tumaNow],
           },
           {
             tool: "Process analysis & mapping",
@@ -123,7 +144,7 @@ export const capabilityGroups: GroupedCapabilityGroup[] = [
       {
         id: "design-modeling",
         title: "Design & modeling",
-        description: "Plan the system structure, data, and interfaces.",
+        description: "Translate requirements into proposed structures, workflows, models, diagrams, and interface concepts.",
         competencies: [
           {
             tool: "System design",
@@ -149,7 +170,7 @@ export const capabilityGroups: GroupedCapabilityGroup[] = [
       {
         id: "documentation-collaboration",
         title: "Documentation & collaboration",
-        description: "Document decisions and coordinate with the people involved.",
+        description: "Record requirements and decisions, organize project information, and communicate with stakeholders and teammates.",
         competencies: [
           {
             tool: "Technical documentation",

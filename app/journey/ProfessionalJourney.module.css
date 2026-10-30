@@ -33,6 +33,7 @@
 .logo .darkLogo { display: none; }
 :global(.dark) .logo .lightLogo { display: none; }
 :global(.dark) .logo .darkLogo { display: block; }
+:global(.dark) .logo .whiteInDark { filter: brightness(0) invert(1); }
 .entryMeta { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .65rem; margin-top: 1rem; color: hsl(var(--muted-foreground)); font-size: .7rem; line-height: 1.55; }
 .kind { padding: .2rem .5rem; border: 1px solid hsl(var(--border)); border-radius: .3rem; background: hsl(var(--muted) / .4); }
 .summary { margin-top: .85rem; color: hsl(var(--muted-foreground)); font-size: .875rem; line-height: 1.75; }

@@ -9,10 +9,10 @@ import FeaturedCaseFiles from "@/components/features/overview/FeaturedCaseFiles"
 import styles from "./OverviewSections.module.css";
 
 const technicalStrengths = [
-  { title: "Frontend development", technologies: ["TypeScript", "React", "Next.js", "Tailwind CSS"], detail: "Responsive interfaces, dashboard filters, and document viewing." },
-  { title: "APIs & databases", technologies: ["Node.js", "Express", "PostgreSQL", "Prisma"], detail: "Server-side sessions, private file access, and relational data; continuing to learn SQL." },
-  { title: "Delivery & debugging", technologies: ["Git", "GitHub", "Vercel", "Railway"], detail: "Production builds, environment configuration, and deployment across services." },
-  { title: "Systems analysis", technologies: ["Requirements Gathering", "System Design"], detail: "Process analysis, database design, and technical documentation." },
+  { title: "Software development", technologies: ["TypeScript", "React", "Next.js", "Tailwind CSS"], detail: "Building responsive interfaces, dashboards, and practical application workflows." },
+  { title: "Data analytics", technologies: ["Python", "pandas", "PostgreSQL", "scikit-learn"], detail: "Preparing data, exploring patterns, validating information, and communicating insights." },
+  { title: "Business & systems analysis", technologies: ["Requirements Gathering", "System Design"], detail: "Researching problems, analyzing processes, and translating stakeholder needs into documented solutions." },
+  { title: "Digital analytics & SEO", technologies: ["Google Analytics 4", "Google Search Console", "Semrush"], detail: "Currently exploring measurement, reporting, and SEO workflows." },
 ];
 
 const recognition = [
@@ -46,10 +46,10 @@ export default function Overview() {
               </div>
             </div>
             <p className="max-w-xl text-base font-light leading-relaxed text-muted-foreground sm:text-xl">
-              Information Systems graduate with an interest in web development, software engineering, and analytics.
+              Information Systems graduate interested in software development, data analytics, and business analysis.
             </p>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              I enjoy turning ideas into practical applications and exploring how data can reveal useful insights and help solve real-world problems.
+              I enjoy understanding business needs, building practical applications, and using data to uncover insights that support better decisions.
             </p>
 
             <div className="mt-4 grid grid-cols-1 gap-2 min-[390px]:grid-cols-2 sm:mt-8 sm:flex sm:flex-wrap sm:items-center sm:gap-3">
@@ -159,8 +159,8 @@ export default function Overview() {
           <section aria-labelledby="connect" className="border-t border-border/40 pt-8">
             <div className={styles.connectLayout}>
               <div className="min-w-0">
-                <h2 id="connect" className="mb-3 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Let&apos;s Connect</h2>
-                <p className="max-w-prose text-base leading-relaxed text-muted-foreground">Open to software development opportunities and meaningful collaboration.</p>
+                <h2 id="connect" className="mb-3 text-xl font-semibold tracking-tight text-foreground sm:text-2xl">Professional Direction</h2>
+                <p className="max-w-prose text-base leading-relaxed text-muted-foreground">I&apos;m exploring opportunities in software development, data analytics, and business analysis, where I can apply my Information Systems background to solve practical problems and continue learning.</p>
               </div>
               <Link href="/contact" className={`${actionStyles()} ${styles.contactAction}`}>Get in Touch <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></Link>
             </div>

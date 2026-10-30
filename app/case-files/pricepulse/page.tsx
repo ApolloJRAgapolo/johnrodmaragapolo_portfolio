@@ -43,18 +43,18 @@ const flows = [
 ];
 
 const decisions = [
-  { title: "Searchable commodity selection", icon: Search, text: "With more than 160 commodities, a long dropdown made selection cumbersome. A searchable selector lets users find a commodity directly and reduces navigation friction." },
-  { title: "Structured database storage", icon: Database, text: "Cleaned records live in PostgreSQL instead of being parsed from the source dataset on every dashboard load. This separates data preparation from application usage and supports structured queries through Prisma. Available dates and coverage counts now come from database records, keeping displayed metadata aligned with stored data without manually updating coverage text." },
-  { title: "Contextual analytics", icon: ChartNoAxesCombined, text: "Server-side calculations connect the latest available price to the previous observation, peso and percentage changes, the average across available locations, location ranking, and its position within the historical minimum–maximum range." },
-  { title: "Evidence behind visualizations", icon: TableProperties, text: "The experience moves from summary to visualization to exact observations. Charts make patterns easier to see, while a detailed table exposes the records behind them for closer inspection. CSV export uses the observations supporting the main chart so users can continue their analysis outside PricePulse." },
+  { title: "Searchable commodity selection", icon: Search, text: "There are more than 160 commodities, so a long dropdown made selection slow. I added a searchable selector so users can find a commodity directly." },
+  { title: "Structured database storage", icon: Database, text: "I store cleaned records in PostgreSQL instead of parsing the source dataset on every dashboard load. This separates data preparation from application usage and supports structured queries through Prisma. Database records also provide available dates and coverage counts, so the displayed metadata stays aligned with the stored data." },
+  { title: "Contextual analytics", icon: ChartNoAxesCombined, text: "I added server-side calculations for the latest available price, the previous observation, peso and percentage changes, the average across available locations, location ranking, and the current value's position within the historical minimum–maximum range." },
+  { title: "Evidence behind visualizations", icon: TableProperties, text: "I structured the experience to move from a summary to a visualization and then to the exact observations. Charts make patterns easier to see, while a detailed table shows the records behind them. CSV export uses the observations behind the main chart so users can continue their analysis outside PricePulse." },
 ];
 
 const challenges = [
-  { title: "Preparing raw commodity data", text: "Raw records needed cleaning, normalization, validation, and structured import before they could reliably support analytics." },
-  { title: "Navigating a large commodity list", text: "More than 160 options made a basic dropdown inconvenient. The searchable selector addressed that friction without complicating the filtering workflow." },
-  { title: "Creating meaningful analytics", text: "Displaying prices was straightforward; choosing calculations that help users interpret them required additional backend logic for price movement, location comparisons, and historical context." },
-  { title: "Generating Prisma Client in production", text: "The application worked locally but initially failed during the Vercel build because Prisma Client had not been generated. The build sequence was corrected to generate the client before the Next.js production build.", command: "prisma generate && next build" },
-  { title: "Configuring the production database", text: "Database environment variables were configured in Vercel so the deployed server-side application could connect securely to PostgreSQL. Production application traffic uses the pooled Prisma Postgres connection." },
+  { title: "Preparing raw commodity data", text: "I cleaned, normalized, validated, and imported the raw records before using them for analytics." },
+  { title: "Navigating a large commodity list", text: "More than 160 options made a basic dropdown inconvenient. I added a searchable selector without making the filtering workflow more complicated." },
+  { title: "Creating meaningful analytics", text: "Showing prices was straightforward. Choosing calculations that help users interpret them required backend logic for price movement, location comparisons, and historical context." },
+  { title: "Generating Prisma Client in production", text: "The application worked locally but initially failed during the Vercel build because Prisma Client had not been generated. I corrected the build sequence so it generates the client before the Next.js production build.", command: "prisma generate && next build" },
+  { title: "Configuring the production database", text: "I configured database environment variables in Vercel so the deployed server-side application could connect securely to PostgreSQL. Production traffic uses the pooled Prisma Postgres connection." },
 ];
 
 export default function PricePulseCaseFile() {
@@ -70,14 +70,14 @@ export default function PricePulseCaseFile() {
           <RevealOnScroll>
             <section aria-labelledby="problem">
               <h2 id="problem" className="mb-6 flex items-center gap-3 text-lg font-semibold tracking-tight text-foreground"><Search className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />01 / The Problem</h2>
-              <p className="text-sm leading-relaxed text-muted-foreground">Raw commodity datasets hold useful information, but ordinary users must work through records to answer simple questions: What is the latest available price? Did it increase or decrease? How has it changed over time, how does one city compare with others, and is the current value high or low relative to past observations?</p>
+              <p className="text-sm leading-relaxed text-muted-foreground">Raw commodity datasets contain useful information, but people should not have to work through rows of records to answer simple questions. I wanted users to see the latest price, whether it increased or decreased, how it changed over time, how locations compare, and whether the current value is high or low compared with past observations.</p>
             </section>
           </RevealOnScroll>
 
           <RevealOnScroll>
             <section aria-labelledby="solution">
               <h2 id="solution" className="mb-6 flex items-center gap-3 text-lg font-semibold tracking-tight text-foreground"><Lightbulb className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />02 / The Solution</h2>
-              <p className="mb-6 text-sm leading-relaxed text-muted-foreground">PricePulse turns the dataset into an interactive dashboard built around context. Searchable commodity and location selection connect users to a focused view of price movement and market comparisons.</p>
+              <p className="mb-6 text-sm leading-relaxed text-muted-foreground">I turned the dataset into an interactive dashboard built around context. Searchable commodity and location selectors give users a focused view of price movement and market comparisons.</p>
               <ul className="grid grid-cols-1 gap-4 border border-border/40 bg-card p-6 text-sm leading-relaxed text-foreground sm:grid-cols-2 sm:p-8">
                 <li>Latest available and previous prices, with peso and percentage movement.</li>
                 <li>Historical price trends, minimum and maximum values, and position within that range.</li>
@@ -89,19 +89,19 @@ export default function PricePulseCaseFile() {
                 <dl className="space-y-6">
                   <div className="border-l-2 border-foreground/30 pl-5">
                     <dt className="mb-2 text-sm font-medium text-foreground">Multi-Location Trend Comparison</dt>
-                    <dd className="text-sm leading-relaxed text-muted-foreground">Users can compare the historical movement of the same commodity across up to three locations on one chart, with a supporting data table. This extends the existing location comparison from a reporting context to changes over time.</dd>
+                    <dd className="text-sm leading-relaxed text-muted-foreground">I added a way to compare the same commodity across up to three locations on one chart, with a supporting data table. This extends location comparison from a single reporting context to changes over time.</dd>
                   </div>
                   <div className="border-l-2 border-foreground/30 pl-5">
                     <dt className="mb-2 text-sm font-medium text-foreground">Household Basket Calculator</dt>
-                    <dd className="text-sm leading-relaxed text-muted-foreground">Users can build a custom basket of up to eight commodities, adjust each quantity, and compare estimated costs across locations or reporting periods. This expands single-commodity exploration into an estimated commodity basket cost comparison, with completeness checks before a total is shown.</dd>
+                    <dd className="text-sm leading-relaxed text-muted-foreground">I added a custom basket for up to eight commodities. Users can adjust quantities and compare estimated costs across locations or reporting periods. Completeness checks run before a total is shown.</dd>
                   </div>
                   <div>
                     <dt className="mb-2 text-sm font-medium text-foreground">Shareable Views &amp; CSV Export</dt>
-                    <dd className="text-sm leading-relaxed text-muted-foreground">A configured dashboard view can be shared and reopened. CSV downloads let users take chart data into tools such as Excel, Google Sheets, Python, or R for further analysis.</dd>
+                    <dd className="text-sm leading-relaxed text-muted-foreground">I made configured dashboard views shareable and added CSV downloads so users can continue working with chart data in Excel, Google Sheets, Python, or R.</dd>
                   </div>
                   <div>
                     <dt className="mb-2 text-sm font-medium text-foreground">Dynamic Data Coverage &amp; Source and Methodology</dt>
-                    <dd className="text-sm leading-relaxed text-muted-foreground">Coverage reflects the records currently available. A Source and Methodology page explains where the data comes from, what the dashboard represents, how records are handled, and how missing observations are treated.</dd>
+                    <dd className="text-sm leading-relaxed text-muted-foreground">Coverage reflects the records currently available. I also added a Source and Methodology page that explains where the data comes from, what the dashboard represents, how records are handled, and how missing observations are treated.</dd>
                   </div>
                 </dl>
               </div>
@@ -161,17 +161,17 @@ export default function PricePulseCaseFile() {
             </div>
             <div className="mt-6 space-y-4 border-t border-border/40 pt-6 text-sm leading-relaxed text-muted-foreground">
               <h3 className="font-medium text-foreground">Data Completeness &amp; Shareable State</h3>
-              <p>Multi-location charts preserve gaps where observations are unavailable; missing values are never interpolated or fabricated. For a basket, each item cost is its recorded commodity price multiplied by the selected quantity. These costs are summed only when every required price is available. Otherwise, the total is withheld and the interface identifies the missing data, preventing a partial estimate from appearing complete.</p>
-              <p>Main dashboard filters are encoded in the URL so a selected analysis can be shared and reopened with the same selections. This makes the view reproducible without requiring saved dashboards or user accounts.</p>
+              <p>I preserve gaps in multi-location charts when observations are unavailable; missing values are never interpolated or fabricated. For a basket, each item cost is its recorded commodity price multiplied by the selected quantity. I sum these costs only when every required price is available. Otherwise, the total is withheld and the interface identifies the missing data instead of showing a partial estimate as complete.</p>
+              <p>Main dashboard filters are encoded in the URL so users can share and reopen an analysis with the same selections. This makes the view reproducible without requiring saved dashboards or user accounts.</p>
             </div>
           </section>
 
           <RevealOnScroll>
             <section aria-labelledby="experience">
               <h2 id="experience" className="mb-6 flex items-center gap-3 text-lg font-semibold tracking-tight text-foreground"><LayoutDashboard className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />06 / Dashboard Experience</h2>
-              <p className="mb-6 text-sm leading-relaxed text-muted-foreground">The interface went through several refinements to prioritize useful information. It starts with the user&apos;s question, establishes the current price context, and then opens up comparisons and supporting detail.</p>
-              <p className="mb-4 text-sm leading-relaxed text-muted-foreground">A new &ldquo;Try an Example&rdquo; action selects a commodity and location with existing observations, reducing friction for first-time visitors and helping them start with a useful view.</p>
-              <p className="mb-6 text-sm leading-relaxed text-muted-foreground">Empty and invalid states now explain unavailable observations, the absence of a common reporting period, invalid date ranges, and missing required basket prices. Missing data is treated as a valid condition in the dataset, rather than automatically as an application error.</p>
+              <p className="mb-6 text-sm leading-relaxed text-muted-foreground">I refined the interface to put useful information first. It starts with the user&apos;s question, establishes the current price context, and then opens up comparisons and supporting detail.</p>
+              <p className="mb-4 text-sm leading-relaxed text-muted-foreground">The &ldquo;Try an Example&rdquo; action selects a commodity and location with existing observations. This gives first-time visitors a useful starting view.</p>
+              <p className="mb-6 text-sm leading-relaxed text-muted-foreground">Empty and invalid states explain unavailable observations, the absence of a common reporting period, invalid date ranges, and missing required basket prices. I treat missing data as a valid condition in the dataset, not automatically as an application error.</p>
               <ol className="grid grid-cols-1 gap-4 border-y border-border/40 py-6 sm:grid-cols-2">
                 {[
                   { label: "Filters", icon: ListFilter },

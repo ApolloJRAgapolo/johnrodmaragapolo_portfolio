@@ -22,12 +22,12 @@ function ProjectEvidence({ title, links }: { title: string; links: NonNullable<C
   );
 }
 
-function TechnologyGroup({ id, title, technologies, summary, learning, learningNote, evidence }: TechnologyStackGroup) {
+function TechnologyGroup({ id, title, technologies, technologyStatus = "Project experience", summary, learning, learningNote, evidence }: TechnologyStackGroup) {
   return (
     <article id={id} aria-labelledby={`${id}-heading`} className="flex min-w-0 scroll-mt-24 flex-col rounded-lg border border-border bg-card p-5 sm:p-6">
       <h3 id={`${id}-heading`} className="text-base font-semibold leading-snug tracking-tight text-foreground">{title}</h3>
-      <p className="mt-3 text-xs text-muted-foreground">Project experience</p>
-      <TechnologyList items={technologies.map(({ name }) => name)} className="mt-3" label={`${title}: technologies used in projects`} />
+      <p className="mt-3 text-xs text-muted-foreground">{technologyStatus}</p>
+      <TechnologyList items={technologies.map(({ name }) => name)} className="mt-3 gap-x-4 gap-y-2.5" label={`${title}: technologies used in projects`} />
       <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{summary}</p>
 
       {learning && learning.length > 0 && (
@@ -77,7 +77,7 @@ function CapabilityBlock({ category, icon: Icon, description, stages }: GroupedC
                     <p className={styles.application}>{item.application}</p>
                     {item.evidence && item.evidence.length > 0 && (
                       <div className={styles.evidence}>
-                        <p className={styles.evidenceLabel} aria-hidden="true">Evidence</p>
+                        <p className={styles.evidenceLabel}>Evidence</p>
                         <ProjectEvidence title={item.tool} links={item.evidence} />
                       </div>
                     )}
@@ -96,7 +96,7 @@ export default function Capabilities() {
   return (
     <main id="main-content" tabIndex={-1} className="min-h-screen flex-1 overflow-y-auto bg-background selection:bg-foreground selection:text-background">
       <div className="page-shell">
-        <PageHeader title={"Capabilities"} description={"Web development and software engineering, supported by systems analysis and data work. Project links show where I have put these skills into practice."} />
+        <PageHeader title={"Capabilities"} description={"A versatile Information Systems foundation across software development, data analytics, business and systems analysis, and digital analytics tools currently being explored."} />
 
         <section aria-labelledby="technology-stack-heading" className="mb-12">
           <div className="mb-5 flex items-center gap-3">

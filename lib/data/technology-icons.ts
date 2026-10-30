@@ -1,6 +1,6 @@
 import { BriefcaseBusiness, ChartNoAxesCombined, ClipboardList, Database, FileText, Landmark, LayoutTemplate, MonitorSmartphone, PencilRuler, Workflow } from "lucide-react";
 import { FaCss3Alt } from "react-icons/fa";
-import { SiCloudflare, SiEslint, SiExpress, SiGit, SiGithub, SiHtml5, SiJavascript, SiLucide, SiNextdotjs, SiNodedotjs, SiNpm, SiPostgresql, SiPrisma, SiRailway, SiReact, SiTailwindcss, SiTypescript, SiVercel, SiZod } from "react-icons/si";
+import { SiCloudflare, SiEslint, SiExpress, SiGit, SiGithub, SiGoogleanalytics, SiGooglesearchconsole, SiGoogletagmanager, SiGooglesheets, SiHtml5, SiJavascript, SiLucide, SiNextdotjs, SiNodedotjs, SiNpm, SiPandas, SiPostgresql, SiPrisma, SiPython, SiRailway, SiReact, SiScikitlearn, SiSemrush, SiTailwindcss, SiTypescript, SiVercel, SiZod } from "react-icons/si";
 import type { IconComponent } from "@/lib/types";
 
 export const technologyIcons: Record<string, IconComponent> = {
@@ -25,6 +25,14 @@ export const technologyIcons: Record<string, IconComponent> = {
   "Neon PostgreSQL": SiPostgresql,
   "Cloudflare R2": SiCloudflare,
   "Lucide React": SiLucide,
+  Python: SiPython,
+  pandas: SiPandas,
+  "scikit-learn": SiScikitlearn,
+  "Google Analytics 4": SiGoogleanalytics,
+  "Google Tag Manager": SiGoogletagmanager,
+  "Google Search Console": SiGooglesearchconsole,
+  "Google Sheets": SiGooglesheets,
+  Semrush: SiSemrush,
   "PDF.js": FileText,
   npm: SiNpm,
   ESLint: SiEslint,

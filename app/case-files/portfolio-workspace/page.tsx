@@ -27,7 +27,7 @@ const sections = [
     id: "01",
     title: "The Idea",
     icon: Lightbulb,
-    content: "I created this portfolio as a complement to a traditional resume. It gives recruiters, employers, and other visitors one organized place to explore my projects, professional experience, credentials, certifications, skills, documents, contact information, and professional journey.",
+    content: "I created this portfolio to complement my resume. It gives recruiters, employers, and other visitors one organized place to explore my projects, experience, credentials, certifications, skills, documents, contact information, and professional journey.",
     details: [
       "Present professional information in one digital workspace",
       "Make projects and credentials easier to explore",
@@ -38,7 +38,7 @@ const sections = [
     id: "02",
     title: "Planning",
     icon: Workflow,
-    content: "The workspace was planned around clear areas for different types of professional information. Instead of placing everything in one long page, the structure separates the Overview, Case Files, Professional Journey, Verified Credentials, Professional Ecosystem, Capabilities, Documents, and Contact sections.",
+    content: "I planned the workspace around clear areas for different types of professional information. Instead of putting everything on one long page, I separated the Overview, Case Files, Professional Journey, Verified Credentials, Professional Ecosystem, Capabilities, Documents, and Contact sections.",
     details: [
       "Organize information by the visitor's likely goal",
       "Use navigation that supports quick exploration",
@@ -49,7 +49,7 @@ const sections = [
     id: "03",
     title: "Design",
     icon: Palette,
-    content: "The visual direction is a clean, workspace-inspired interface with a professional tone. Typography, spacing, and layout are used to create a readable hierarchy while light, dark, and system themes let the experience remain comfortable in different viewing environments.",
+    content: "I chose a clean, workspace-inspired interface with a professional tone. Typography, spacing, and layout create a readable hierarchy, while light, dark, and system themes support different viewing preferences.",
     details: [
       "Keep the interface professional rather than overly decorative",
       "Maintain readable contrast and clear visual hierarchy",
@@ -60,7 +60,7 @@ const sections = [
     id: "04",
     title: "Development",
     icon: Code2,
-    content: "The portfolio is built with Next.js, React, TypeScript, and Tailwind CSS. Lucide React provides interface icons, while PDF.js supports in-portfolio document viewing. The project also uses npm and ESLint during development, with Git and GitHub used for source control.",
+    content: "I built the portfolio with Next.js, React, TypeScript, and Tailwind CSS. I use Lucide React for interface icons and PDF.js for in-portfolio document viewing. npm and ESLint support development, while Git and GitHub provide source control.",
     details: [
       "Next.js, React, and TypeScript",
       "Tailwind CSS and Lucide React",
@@ -70,10 +70,10 @@ const sections = [
 ];
 
 const features = [
-  { title: "Workspace Navigation", description: "A sidebar on larger screens and a responsive mobile menu help visitors move between portfolio areas.", icon: Menu },
-  { title: "Case Files", description: "Project pages provide structured documentation for important work and experiences.", icon: FolderGit2 },
-  { title: "Verified Credentials", description: "Credentials and certificates can be explored in a dedicated section.", icon: ShieldCheck },
-  { title: "Document Viewer", description: "Documents and certificates can be viewed within the portfolio instead of requiring visitors to leave it.", icon: FileText },
+  { title: "Workspace Navigation", description: "I use a sidebar on larger screens and a responsive mobile menu to help visitors move between portfolio areas.", icon: Menu },
+  { title: "Case Files", description: "I use project pages to document important work and experiences in a consistent structure.", icon: FolderGit2 },
+  { title: "Verified Credentials", description: "Visitors can explore credentials and certificates in a dedicated section.", icon: ShieldCheck },
+  { title: "Document Viewer", description: "Visitors can view documents and certificates within the portfolio instead of leaving the site.", icon: FileText },
   { title: "Theme Options", description: "Light, dark, and system modes support different viewing preferences.", icon: MonitorSmartphone },
   { title: "Responsive Layouts", description: "Cards, grids, typography, and controls adapt across mobile, tablet, laptop, and desktop screens.", icon: LayoutTemplate },
 ];
@@ -165,7 +165,7 @@ export default function PortfolioWorkspaceCaseFile() {
               </div>
               <div className="border border-border/40 bg-card p-6 sm:p-8">
                 <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
-                  This workspace continues to evolve through refinements to mobile responsiveness, navigation, typography, spacing, document viewing, certificate presentation, accessibility, user experience, and overall visual polish. Each improvement responds to real usability and presentation needs while keeping the portfolio organized and professional.
+                  I continue to refine this workspace based on usability and presentation needs. Recent work has covered mobile responsiveness, navigation, typography, spacing, document viewing, certificate presentation, accessibility, and overall visual polish while keeping the portfolio organized.
                 </p>
               </div>
             </section>
@@ -179,8 +179,8 @@ export default function PortfolioWorkspaceCaseFile() {
                 <h2 id="section-08" className="text-lg font-semibold tracking-tight text-foreground">Deployment</h2>
               </div>
               <div className="grid grid-cols-1 border border-border/40 bg-card sm:grid-cols-2 sm:divide-x sm:divide-border/40">
-                <div className="p-6 sm:p-8"><p className="mb-2 text-xs leading-relaxed text-muted-foreground">Source Control</p><p className="flex items-center gap-3 text-sm font-medium text-foreground"><SiGithub className="h-5 w-5 shrink-0" aria-hidden="true" />GitHub</p><p className="mt-3 text-sm leading-relaxed text-muted-foreground">The portfolio source code is maintained through GitHub.</p></div>
-                <div className="border-t border-border/40 p-6 sm:border-t-0 sm:p-8"><p className="mb-2 text-xs leading-relaxed text-muted-foreground">Hosting &amp; Deployment</p><p className="flex items-center gap-3 text-sm font-medium text-foreground"><SiVercel className="h-5 w-5 shrink-0" aria-hidden="true" />Vercel</p><p className="mt-3 text-sm leading-relaxed text-muted-foreground">The portfolio is deployed through Vercel.</p></div>
+                <div className="p-6 sm:p-8"><p className="mb-2 text-xs leading-relaxed text-muted-foreground">Source Control</p><p className="flex items-center gap-3 text-sm font-medium text-foreground"><SiGithub className="h-5 w-5 shrink-0" aria-hidden="true" />GitHub</p><p className="mt-3 text-sm leading-relaxed text-muted-foreground">I maintain the portfolio source code through GitHub.</p></div>
+                <div className="border-t border-border/40 p-6 sm:border-t-0 sm:p-8"><p className="mb-2 text-xs leading-relaxed text-muted-foreground">Hosting &amp; Deployment</p><p className="flex items-center gap-3 text-sm font-medium text-foreground"><SiVercel className="h-5 w-5 shrink-0" aria-hidden="true" />Vercel</p><p className="mt-3 text-sm leading-relaxed text-muted-foreground">I deploy the portfolio through Vercel.</p></div>
               </div>
             </section>
           </RevealOnScroll>
@@ -189,7 +189,7 @@ export default function PortfolioWorkspaceCaseFile() {
             <section aria-labelledby="section-09" className="border-t border-border/40 pt-10">
               <div className="mb-6 flex items-center gap-3"><span className="text-[10px] font-mono text-muted-foreground">09</span><Lightbulb className="h-4 w-4 text-muted-foreground" aria-hidden="true" /><h2 id="section-09" className="text-lg font-semibold tracking-tight text-foreground">Final Result</h2></div>
               <p className="max-w-3xl border-l-2 border-foreground/30 py-2 pl-6 text-[16px] leading-relaxed text-foreground/90">
-                This portfolio is designed as more than an online resume. It is a digital workspace where my projects, experience, credentials, skills, and professional journey can be explored in one organized place. It also reflects how I approach planning, designing, developing, testing, deploying, and continuously improving digital solutions.
+                This portfolio is more than an online resume. I built it as a digital workspace where visitors can explore my projects, experience, credentials, skills, and professional journey in one place. It also shows how I approach planning, designing, developing, testing, deploying, and improving digital solutions.
               </p>
             </section>
           </RevealOnScroll>

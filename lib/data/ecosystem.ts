@@ -8,6 +8,7 @@ export type EcosystemRelationship = {
   involvement: string;
   logo?: string;
   darkLogo?: string;
+  whiteInDark?: boolean;
   position: { column: number; row: number };
   links: readonly { label: string; href: string }[];
 };
@@ -26,7 +27,7 @@ export const ecosystemData = [
     name: "KWADRA Technology Business Incubator",
     context: "ISAT U's incubator connects student startups with mentors and innovation programs. It hosted my internship and TumaNow's incubation.",
     involvement: "Completed a 600-hour student internship, preparing documentation and helping coordinate innovation programs, startup activities, and participants.",
-    logo: "/ecosystem/logos/kwadra.webp", position: { column: 2, row: 1 },
+    logo: "/ecosystem/logos/kwadra.webp", darkLogo: "/ecosystem/logos/kwadra-dark.svg", position: { column: 2, row: 1 },
     links: [
       { label: "Internship experience", href: "/journey#kwadra-internship" },
       { label: "TumaNow project", href: "/case-files/tumanow" },
@@ -85,7 +86,7 @@ export const ecosystemData = [
     name: "Wadhwani Foundation Philippines",
     context: "Program support connected faculty participants from partner universities through the Wadhwani platform.",
     involvement: "As a student intern, coordinated faculty participation, monitored platform progress, maintained communication records, and supported participant engagement.",
-    logo: "/ecosystem/logos/wadhwani.webp", position: { column: 2, row: 4 },
+    logo: "/ecosystem/logos/wadhwani.webp", darkLogo: "/ecosystem/logos/wadhwani.webp", whiteInDark: true, position: { column: 2, row: 4 },
     links: [{ label: "Internship experience", href: "/journey#wadhwani-internship" }],
   },
   {
@@ -118,6 +119,17 @@ export const ecosystemData = [
     position: { column: 2, row: 6 },
     links: [{ label: "Learning & participation records", href: "/credentials" }],
   },
+  {
+    id: "gci-world", shortName: "GCI World", group: "Professional development", relationship: "Final assignment",
+    name: "GCI World April 2026",
+    context: "The Matsuo-Iwasawa Laboratory at The University of Tokyo organized GCI World April 2026. The program's final assessment connected data analytics and machine learning with a business proposal about telecommunications customer churn.",
+    involvement: "Completed the individual final assignment, analyzing the course dataset, evaluating a Random Forest classifier, and proposing customer retention strategies. The related Certificate of Completion remains a separate credential record.",
+    logo: "/ecosystem/logos/matsuo-iwasawa-lab.png", darkLogo: "/ecosystem/logos/matsuo-iwasawa-lab.png", position: { column: 3, row: 6 },
+    links: [
+      { label: "Customer churn case file", href: "/case-files/customer-churn-prediction" },
+      { label: "Related certificate", href: "/credentials" },
+    ],
+  },
 ] as const satisfies readonly EcosystemRelationship[];
 
 export type EcosystemId = (typeof ecosystemData)[number]["id"];
@@ -135,6 +147,7 @@ export const ecosystemConnections = [
   { from: "experience", to: "careertrack", label: "Independent development" },
   { from: "experience", to: "pricepulse", label: "Independent development", below: true },
   { from: "experience", to: "learning", label: "Continued learning" },
+  { from: "learning", to: "gci-world", label: "Program final assessment" },
 ] as const satisfies readonly {
   from: EcosystemId | "experience";
   to: EcosystemId;
@@ -143,7 +156,7 @@ export const ecosystemConnections = [
 }[];
 
 export const ecosystemDestinations = [
-  "ppdo", "san-miguel", "analytica", "leadership", "wadhwani", "careertrack", "pricepulse", "learning",
+  "ppdo", "san-miguel", "analytica", "leadership", "wadhwani", "careertrack", "pricepulse", "learning", "gci-world",
 ] as const satisfies readonly EcosystemId[];
 
 export const ecosystemPaths = [
@@ -152,7 +165,7 @@ export const ecosystemPaths = [
   { title: "Student leadership", description: "Two separate roles within my academic community.", nodes: ["analytica", "leadership"], parallel: true },
   { title: "Program support", description: "Faculty coordination and participant engagement during my internship.", nodes: ["wadhwani"], parallel: false },
   { title: "Independent projects", description: "Two products built independently, each adding to my development experience.", nodes: ["careertrack", "pricepulse"], parallel: true },
-  { title: "Learning & communities", description: "Courses and community participation supporting continued development.", nodes: ["learning"], parallel: false },
+  { title: "Learning & communities", description: "Courses and community participation supporting continued development.", nodes: ["learning", "gci-world"], parallel: false },
 ] as const satisfies readonly {
   title: string;
   description: string;

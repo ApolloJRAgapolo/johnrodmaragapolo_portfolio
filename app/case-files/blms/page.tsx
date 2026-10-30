@@ -22,7 +22,7 @@ export default function BLMScaseFile() {
   return (
     <main id="main-content" tabIndex={-1} className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background pb-32">
       <div className="page-shell case-study-shell">
-        <CaseStudyHeader id="blms" title="Backyard Livestock Monitoring System (BLMS)" description="A capstone prototype designed to improve how the Municipality of San Miguel monitors backyard livestock, manages veterinary services, and keeps agricultural records. The prototype explores animal-health reporting and municipal monitoring workflows. My role focused on planning, requirements, and system design; it was not deployed for municipal operations." />
+        <CaseStudyHeader id="blms" title="Backyard Livestock Monitoring System (BLMS)" description="I helped design a capstone prototype for the Municipality of San Miguel to monitor backyard livestock, manage veterinary services, and organize agricultural records. It was not deployed for municipal operations." />
 
         <CaseStudyContext id="blms" sections={[{"id": "operational-architecture", "label": "Operational Architecture"}, {"id": "key-system-features", "label": "Prototype Features"}, {"id": "business-analysis-process", "label": "Business Analysis Process"}, {"id": "system-design-artifacts", "label": "System Design Artifacts"}, {"id": "project-outcomes", "label": "Project Outcomes"}]} />
 
@@ -37,7 +37,7 @@ export default function BLMScaseFile() {
               <h3 className="text-lg font-semibold tracking-tight text-foreground">The Challenge</h3>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
-              The Municipal Agriculture Office relied on manual processes (paper records, phone calls, text messages) to monitor livestock health, resulting in:
+              The Municipal Agriculture Office relied on paper records, phone calls, and text messages to monitor livestock health. This led to:
             </p>
             <ul className="space-y-3">
               {["Slow disease reporting", "Scattered records", "Delayed veterinary response", "Difficult monitoring across barangays", "Limited data for planning"].map((item, i) => (
@@ -55,7 +55,7 @@ export default function BLMScaseFile() {
               <h3 className="text-lg font-semibold tracking-tight text-foreground">The Goal</h3>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
-              Design a digital platform that would help the municipality:
+              We wanted to design a digital platform that could help the municipality:
             </p>
             <ul className="space-y-3">
               {["Register farmers and households", "Monitor livestock", "Report animal health concerns", "Request veterinary services", "Record livestock transactions", "Support planning via organized data"].map((item, i) => (
@@ -73,7 +73,7 @@ export default function BLMScaseFile() {
               <h3 className="text-lg font-semibold tracking-tight text-foreground">My Responsibilities</h3>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
-              As Project Manager & Systems Analyst, I was responsible for:
+              As Project Manager & Systems Analyst, I worked on:
             </p>
             <ul className="space-y-3">
               {["Planning the project", "Gathering system requirements", "Interviewing stakeholders", "Designing system workflows & diagrams", "Preparing system documentation", "Designing interfaces and prototypes", "Coordinating the project team"].map((item, i) => (
@@ -219,7 +219,7 @@ export default function BLMScaseFile() {
         <RevealOnScroll delay={100}>
         <section className="mb-12 sm:mb-14">
           <h2 id="system-design-artifacts" className="scroll-mt-24 text-lg font-semibold tracking-tight text-foreground mb-4 flex items-center gap-3"><FileText className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />System Design Artifacts</h2>
-          <p className="mb-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">{blmsDiagrams.length} diagrams document the capstone&apos;s proposed workflows and system design. Select a preview to explore the details, zoom in, or open the original image.</p>
+          <p className="mb-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">{blmsDiagrams.length} diagrams document the proposed workflows and system design. I created and organized these artifacts to explain how the capstone could work. Select a preview to explore the details, zoom in, or open the original image.</p>
           <DiagramGallery />
         </section>
         </RevealOnScroll>
@@ -235,13 +235,13 @@ export default function BLMScaseFile() {
             </div>
             <ul className="space-y-4">
               {[
-                "Complete system architecture",
-                "Database design",
-                "User interface prototype",
-                "Process documentation",
-                "Requirements specification",
-                "Interactive prototype",
-                "Final capstone defense completed"
+                "I documented the proposed system architecture",
+                "I prepared the database design",
+                "I helped create the user interface prototype",
+                "I documented the processes",
+                "I prepared the requirements specification",
+                "I helped deliver the interactive prototype",
+                "Our team completed the final capstone defense"
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
                   <span className="text-foreground/50 font-mono text-[10px]">✔</span>
@@ -258,10 +258,10 @@ export default function BLMScaseFile() {
             </div>
             <div className="space-y-5">
               {[
-                "Conducting stakeholder interviews directly improved my requirements gathering skills.",
-                "Designing business processes taught me how technology must adapt to support real-world operations.",
-                "Creating high-fidelity prototypes helped me validate technical ideas before committing to full implementation.",
-                "Working as Project Manager significantly strengthened my cross-functional communication and coordination skills."
+                "Stakeholder interviews improved how I gather and clarify requirements.",
+                "Designing business processes taught me how technology needs to fit real-world operations.",
+                "High-fidelity prototypes helped me test ideas before committing to a full implementation.",
+                "Working as Project Manager strengthened my communication and coordination across the team."
               ].map((item, i) => (
                 <p key={i} className="text-sm leading-relaxed text-muted-foreground pl-4 border-l-2 border-border/40">
                   {item}

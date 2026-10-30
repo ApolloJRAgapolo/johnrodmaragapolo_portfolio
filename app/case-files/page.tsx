@@ -10,7 +10,7 @@ export default function CaseFiles() {
         
         {/* RESTORED HEADER */}
         <RevealOnScroll>
-        <PageHeader title={"Case Files / Projects"} description={"Deployed applications, capstone prototypes, and startup work, with my contribution and the decisions behind each."} eyebrow={"Selected projects"} />
+        <PageHeader title={"Case Files / Projects"} description={"Applications, capstone prototypes, and startup work, explained through my contribution and the decisions behind each project."} eyebrow={"Selected projects"} />
         </RevealOnScroll>
 
         {/* DOSSIER LIST */}
@@ -26,4 +26,3 @@ export default function CaseFiles() {
     </main>
   );
 }
-

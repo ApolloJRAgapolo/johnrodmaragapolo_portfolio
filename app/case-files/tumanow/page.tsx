@@ -29,7 +29,7 @@ export default function TumaNowCaseFile() {
   return (
     <main id="main-content" tabIndex={-1} className="flex-1 min-h-screen overflow-y-auto bg-background selection:bg-foreground selection:text-background pb-32">
       <div className="page-shell case-study-shell">
-        <CaseStudyHeader id="tumanow" description="A digital project monitoring platform developed with the Provincial Planning and Development Office (PPDO) to centralize project status, budgets, timelines, locations, and reports. My contribution covered business analysis and financial planning." />
+        <CaseStudyHeader id="tumanow" description="Our team developed a digital project monitoring platform with the Provincial Planning and Development Office (PPDO). I contributed through business analysis and financial planning." />
 
         <CaseStudyContext id="tumanow" sections={[{"id": "areas-of-contribution", "label": "Areas of Contribution"}, {"id": "business-analysis-process", "label": "Business Analysis Process"}, {"id": "solution-overview", "label": "Solution Overview"}, {"id": "screens", "label": "Screens"}, {"id": "technology-stack", "label": "Technology Stack"}, {"id": "startup-journey", "label": "Startup Journey"}, {"id": "business-impact", "label": "Business Impact"}, {"id": "outcomes", "label": "Outcomes"}]} />
 
@@ -37,11 +37,11 @@ export default function TumaNowCaseFile() {
           <div className="mb-12 grid gap-8 sm:mb-14 sm:grid-cols-2">
             <section aria-labelledby="team-context">
               <h2 id="team-context" className="mb-4 flex items-center gap-3 text-lg font-semibold tracking-tight"><Users className="h-4 w-4 text-muted-foreground" aria-hidden="true" />Team context</h2>
-              <p className="text-sm leading-relaxed text-muted-foreground">Collaborated with a five-member startup team composed of business analysts, frontend and backend developers, and a data analyst to design and develop TumaNow.</p>
+              <p className="text-sm leading-relaxed text-muted-foreground">I worked with a five-member startup team that included business analysts, frontend and backend developers, and a data analyst. Together, we designed and developed TumaNow.</p>
             </section>
             <section aria-labelledby="challenge">
               <h2 id="challenge" className="mb-4 flex items-center gap-3 text-lg font-semibold tracking-tight"><Target className="h-4 w-4 text-muted-foreground" aria-hidden="true" />The challenge</h2>
-              <p className="mb-4 text-sm leading-relaxed text-muted-foreground">The PPDO manages hundreds of government projects across municipalities. Stakeholder interviews identified:</p>
+              <p className="mb-4 text-sm leading-relaxed text-muted-foreground">The PPDO manages hundreds of government projects across municipalities. Through stakeholder interviews, we identified these issues:</p>
               <ul className="list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
                 {["Late project reports", "Manual paperwork", "Scattered Word and Excel files", "Limited real-time project visibility", "Slower decisions due to fragmented records"].map((item) => <li key={item}>{item}</li>)}
               </ul>
@@ -59,19 +59,19 @@ export default function TumaNowCaseFile() {
             {[
               {
                 title: "Business Analysis", icon: Search,
-                items: ["Conducted stakeholder interviews", "Gathered business requirements", "Documented project needs", "Analyzed existing workflows", "Identified process improvements"]
+                items: ["I conducted stakeholder interviews", "I gathered business requirements", "I documented project needs", "I analyzed existing workflows", "I identified process improvements"]
               },
               {
                 title: "Product Planning", icon: LayoutTemplate,
-                items: ["Helped define the product vision", "Prioritized core features", "Planned the project roadmap", "Coordinated with the development team"]
+                items: ["I helped define the product vision", "I helped prioritize core features", "I helped plan the project roadmap", "I coordinated with the development team"]
               },
               {
                 title: "Financial Planning", icon: Coins,
-                items: ["Prepared financial projections", "Helped develop the business model", "Assisted in pricing and sustainability planning"]
+                items: ["I prepared financial projections", "I helped develop the business model", "I assisted with pricing and sustainability planning"]
               },
               {
                 title: "Startup Development", icon: Rocket,
-                items: ["Prepared pitch presentations", "Participated in startup mentoring", "Presented the solution to evaluators and stakeholders"]
+                items: ["I prepared pitch presentations", "I participated in startup mentoring", "I presented the solution to evaluators and stakeholders"]
               }
             ].map((area, i) => (
               <GlowingCard key={i} className="border border-border/40 p-6 bg-secondary/5 hover:bg-secondary/10 transition-colors">
@@ -127,13 +127,13 @@ export default function TumaNowCaseFile() {
           <h2 id="solution-overview" className="text-lg font-semibold tracking-tight text-foreground mb-6 flex items-center gap-3"><LayoutDashboard className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />Solution Overview</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {[
-              { title: "Dashboard", desc: "Provides an overview of projects, budgets, and completion status.", icon: LayoutDashboard },
-              { title: "Project Monitoring", desc: "Tracks project progress from planning to completion.", icon: Activity },
-              { title: "Interactive Map", desc: "Displays project locations for easier geographical monitoring.", icon: Map },
-              { title: "Reports", desc: "Generates structured reports for official decision-making.", icon: FileText },
-              { title: "Audit Trail", desc: "Records all system activities to ensure complete accountability.", icon: ShieldCheck },
-              { title: "User Management", desc: "Controls user access and permissions based on assigned roles.", icon: UserCog },
-              { title: "AI Database Assistant", desc: "Allows users to ask questions about project data using natural language.", icon: Bot },
+              { title: "Dashboard", desc: "The dashboard gives users an overview of projects, budgets, and completion status.", icon: LayoutDashboard },
+              { title: "Project Monitoring", desc: "The system tracks project progress from planning to completion.", icon: Activity },
+              { title: "Interactive Map", desc: "The map shows project locations for easier geographic monitoring.", icon: Map },
+              { title: "Reports", desc: "The system generates structured reports for official decisions.", icon: FileText },
+              { title: "Audit Trail", desc: "The audit trail records system activity to support accountability.", icon: ShieldCheck },
+              { title: "User Management", desc: "User management controls access and permissions by role.", icon: UserCog },
+              { title: "AI Database Assistant", desc: "The assistant lets users ask questions about project data in natural language.", icon: Bot },
             ].map((feature, i) => {
               const Icon = feature.icon;
               return (
@@ -157,7 +157,7 @@ export default function TumaNowCaseFile() {
               Application Screens
             </h2>
             <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
-              Selected captures from the web workspace and field app. Confidential fields are permanently redacted.
+              These are selected captures from the web workspace and field app. I permanently redacted confidential fields.
             </p>
             <div className="space-y-8">
               <section aria-labelledby="web-workspace-screens">
@@ -233,7 +233,7 @@ export default function TumaNowCaseFile() {
         <RevealOnScroll delay={100}>
         <section className="mb-12 sm:mb-14">
           <h2 id="business-impact" className="text-lg font-semibold tracking-tight text-foreground mb-6 flex items-center gap-3"><ChartNoAxesCombined className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />Capabilities &amp; Expected Benefits</h2>
-          <p className="mb-6 text-sm leading-relaxed text-muted-foreground">The prototype demonstrates centralized monitoring workflows. The comparisons below describe intended benefits, not measured improvements from government adoption. PPDO evaluation remains separate from deployment.</p>
+          <p className="mb-6 text-sm leading-relaxed text-muted-foreground">The prototype demonstrates centralized monitoring workflows. The comparisons below describe intended benefits, not measured improvements from government adoption. PPDO evaluation is separate from deployment.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 border border-border/40 divide-y md:divide-y-0 md:divide-x divide-border/40 bg-card">
             {/* BEFORE */}
             <div className="p-8">
@@ -285,15 +285,15 @@ export default function TumaNowCaseFile() {
               </div>
               <div>
                 <dt className="text-xs leading-relaxed text-muted-foreground mb-1">Client Validation</dt>
-                <dd className="text-sm text-foreground">Selected directly by PPDO for further evaluation.</dd>
+                <dd className="text-sm text-foreground">The PPDO selected the solution for further evaluation.</dd>
               </div>
               <div>
                 <dt className="text-xs leading-relaxed text-muted-foreground mb-1">Potential Adoption</dt>
-                <dd className="text-sm text-foreground">Being considered for adoption by the PPDO alongside an internal system developed by the Office of the Information Communication Technology Management Officer (ICTMO) of Iloilo Provincial Government.</dd>
+                <dd className="text-sm text-foreground">The PPDO is considering the solution alongside an internal system developed by the Office of the Information Communication Technology Management Officer (ICTMO) of Iloilo Provincial Government.</dd>
               </div>
               <div>
                 <dt className="text-xs leading-relaxed text-muted-foreground mb-1">Startup Incubation</dt>
-                <dd className="text-sm text-foreground">Received intensive mentoring under the KWADRA Technology Business Incubator.</dd>
+                <dd className="text-sm text-foreground">Our team received intensive mentoring through the KWADRA Technology Business Incubator.</dd>
               </div>
             </dl>
           </section>
@@ -304,7 +304,7 @@ export default function TumaNowCaseFile() {
               <h2 className="text-lg font-semibold tracking-tight text-foreground">Lessons Learned</h2>
             </div>
             <p className="text-sm leading-relaxed text-muted-foreground pl-4 border-l-2 border-border/40">
-              Through TumaNow, I learned that successful digital solutions begin with understanding real user problems. Working closely with government stakeholders strengthened my skills in business analysis, requirements gathering, communication, and transforming operational challenges into practical digital solutions.
+              TumaNow taught me that a useful digital solution starts with understanding the people who will use it. Working with government stakeholders strengthened my skills in business analysis, requirements gathering, communication, and turning operational problems into practical digital solutions.
             </p>
           </section>
 

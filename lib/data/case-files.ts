@@ -2,16 +2,35 @@ import type { CaseFile } from "@/lib/types";
 
 export const caseFiles: CaseFile[] = [
   {
+    id: "customer-churn-prediction",
+    type: "FINAL ASSESSMENT",
+    category: "Data Analytics / Machine Learning",
+    cardDescription: "I analyzed telecommunications customer data, evaluated a Random Forest classification model, and proposed customer retention strategies based on the findings.",
+    title: "Customer Churn Prediction & Retention Strategy",
+    headline: "Improving Customer Retention Through Churn Prediction",
+    summary: "For an educational final assignment, I analyzed telecommunications customer data, evaluated a Random Forest classification model, and turned the findings into proposed customer retention strategies.",
+    proofPoints: ["GCI World April 2026 final assessment", "100,000 customer records", "Certificate-linked assignment"],
+    isAvailable: true,
+    metadata: {
+      role: "Individual final assignment",
+      audience: "GCI World April 2026 final assessment",
+      focusLabel: "TECHNOLOGIES",
+      focus: ["Python", "pandas", "NumPy", "Matplotlib", "Seaborn", "scikit-learn"],
+      status: "GCI World April 2026",
+      year: "2026",
+    },
+  },
+  {
     id: "careertrack",
     liveUrl: "https://careertrack-ops.vercel.app",
     // The confirmed Git remote currently returns 404 to public visitors.
     // Add its repositoryUrl once the source is publicly accessible.
     type: "FULL-STACK CAREER OPERATIONS SYSTEM",
     category: "Personal career operations system",
-    cardDescription: "A full-stack workspace for applications, hiring workflows, private documents, and career history.",
+    cardDescription: "I built a full-stack workspace for applications, hiring workflows, private documents, and career history.",
     title: "CareerTrack",
-    headline: "A full-stack workspace for applications, hiring workflows, private documents, and career history.",
-    summary: "CareerTrack brings opportunities, hiring-stage history, interviews, contacts, offers, private documents, and employment records into one personal career workspace.",
+    headline: "A full-stack workspace I built for applications, hiring workflows, private documents, and career history.",
+    summary: "I built CareerTrack to keep opportunities, hiring-stage history, interviews, contacts, offers, private documents, and employment records in one personal career workspace.",
     proofPoints: ["Recorded hiring history", "Server-side sessions", "Private document storage"],
     isAvailable: true,
     metadata: {
@@ -28,10 +47,10 @@ export const caseFiles: CaseFile[] = [
     liveUrl: "https://price-pulse-ph-tau.vercel.app/",
     type: "FULL-STACK WEB APPLICATION",
     category: "Full-stack web application",
-    cardDescription: "Explore Philippine commodity prices through historical trends, location comparisons, and estimated household basket costs.",
+    cardDescription: "I built a dashboard for exploring Philippine commodity prices through historical trends, location comparisons, and estimated household basket costs.",
     title: "PricePulse PH",
-    headline: "Turning Philippine Commodity Price Data Into Actionable Market Insights",
-    summary: "PricePulse PH is a full-stack commodity price monitoring dashboard that transforms Philippine commodity price data into interactive price trends, location comparisons, and market insights. It now includes multi-location historical comparisons, estimated household commodity basket costs, shareable views, CSV export, and clearer data transparency.",
+    headline: "Helping people understand Philippine commodity price data",
+    summary: "I built PricePulse PH as a full-stack commodity price monitoring dashboard. It turns Philippine commodity price data into interactive trends, location comparisons, and market insights. It also includes multi-location comparisons, estimated household basket costs, shareable views, CSV export, and clearer data transparency.",
     proofPoints: ["25,000+ price observations", "163 commodities", "19 locations"],
     isAvailable: true,
     metadata: {
@@ -47,9 +66,9 @@ export const caseFiles: CaseFile[] = [
     proofPoints: ["Best Capstone Project", "Completed capstone prototype"],
     type: "IS CAPSTONE PROJECT",
     category: "Information Systems capstone",
-    cardDescription: "A livestock-monitoring capstone prototype shaped through stakeholder requirements, process analysis, and system design.",
+    cardDescription: "I helped shape this livestock-monitoring capstone prototype through stakeholder requirements, process analysis, and system design.",
     title: "Backyard Livestock Monitoring System",
-    summary: "A digital system designed to improve backyard livestock monitoring and reporting. My role focused on system planning, process analysis, user requirements, and overall system design.",
+    summary: "This digital system was designed to improve backyard livestock monitoring and reporting. I focused on project planning, process analysis, requirements, and overall system design.",
     isAvailable: true,
     metadata: {
       role: "Project Manager & Systems Analyst",
@@ -64,9 +83,9 @@ export const caseFiles: CaseFile[] = [
     proofPoints: ["Startup Hackathon Champion", "PPDO evaluation"],
     type: "GOVTECH STARTUP",
     category: "GovTech startup",
-    cardDescription: "A centralized platform for local government project monitoring, with my contribution in business analysis and financial planning.",
+    cardDescription: "Our team designed a centralized platform for local government project monitoring. I contributed through business analysis and financial planning.",
     title: "TumaNow: Digital Transformation for Local Government",
-    summary: "A digital project monitoring platform developed to help government offices monitor community development projects in one centralized system, replacing scattered files and manual reports.",
+    summary: "Our team developed a digital project monitoring platform to help government offices manage community development projects in one place instead of relying on scattered files and manual reports.",
     isAvailable: true,
     metadata: {
       role: "Co-Founder, Business Analyst, CFO",
@@ -82,9 +101,9 @@ export const caseFiles: CaseFile[] = [
     proofPoints: ["Responsive workspace", "Integrated document viewer"],
     type: "PERSONAL DIGITAL WORKSPACE",
     category: "Personal digital workspace",
-    cardDescription: "A responsive portfolio bringing projects, professional experience, credentials, and document previews into one workspace.",
+    cardDescription: "I built a responsive portfolio that brings my projects, professional experience, credentials, and document previews into one workspace.",
     title: "How I Built This Portfolio",
-    summary: "A personal professional website created as an organized digital workspace where visitors can explore my projects, experience, credentials, documents, skills, and professional journey.",
+    summary: "I created this professional website as an organized digital workspace where visitors can explore my projects, experience, credentials, documents, skills, and professional journey.",
     isAvailable: true,
     metadata: {
       role: "Portfolio Creator",

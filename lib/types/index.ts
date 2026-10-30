@@ -155,6 +155,7 @@ export type TechnologyStackGroup = {
   id: string;
   title: string;
   technologies: StackTechnology[];
+  technologyStatus?: string;
   summary: string;
   learning?: StackTechnology[];
   learningNote?: string;

@@ -16,11 +16,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL) : process.env.VERCEL_PROJECT_PRODUCTION_URL ? new URL(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`) : new URL("https://johnrodmaragapolo-portfolio.vercel.app"),
-  title: "John Rodmar Agapolo | Software & Systems Portfolio",
-  description: "Information Systems graduate building web applications, designing systems, and exploring data. View projects, experience, and credentials.",
+  title: "John Rodmar Agapolo | Technology, Data & Business Portfolio",
+  description: "Explore the projects and experience of John Rodmar Agapolo, an Information Systems graduate with interests in software development, data analytics, and business analysis.",
   alternates: { canonical: "/" },
-  openGraph: { url: "/", title: "John Rodmar Agapolo | Software & Systems Portfolio", description: "Projects, professional experience, and credentials in software, systems, and data.", type: "website" },
-  twitter: { card: "summary_large_image", title: "John Rodmar Agapolo | Software & Systems Portfolio", description: "Projects, professional experience, and credentials in software, systems, and data." },
+  openGraph: { url: "/", title: "John Rodmar Agapolo | Technology, Data & Business Portfolio", description: "Explore the projects and experience of John Rodmar Agapolo, an Information Systems graduate with interests in software development, data analytics, and business analysis.", type: "website" },
+  twitter: { card: "summary_large_image", title: "John Rodmar Agapolo | Technology, Data & Business Portfolio", description: "Explore the projects and experience of John Rodmar Agapolo, an Information Systems graduate with interests in software development, data analytics, and business analysis." },
 };
 
 export default function RootLayout({
