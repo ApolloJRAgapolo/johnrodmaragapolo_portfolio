@@ -120,10 +120,10 @@ export const ecosystemData = [
     links: [{ label: "Learning & participation records", href: "/credentials" }],
   },
   {
-    id: "gci-world", shortName: "GCI World", group: "Professional development", relationship: "Final assignment",
-    name: "GCI World April 2026",
-    context: "The Matsuo-Iwasawa Laboratory at The University of Tokyo organized GCI World April 2026. The program's final assessment connected data analytics and machine learning with a business proposal about telecommunications customer churn.",
-    involvement: "Completed the individual final assignment, analyzing the course dataset, evaluating a Random Forest classifier, and proposing customer retention strategies. The related Certificate of Completion remains a separate credential record.",
+    id: "gci-world", shortName: "GCI World Ambassador", group: "Professional development", relationship: "Ambassador Program & final assignment",
+    name: "GCI World Ambassador Program",
+    context: "The Matsuo-Iwasawa Laboratory at The University of Tokyo organized GCI World April 2026 and its Ambassador Program, connecting learners with global learning opportunities.",
+    involvement: "Recognized as a Gold Ambassador after reaching 20+ successful referrals. Helped expand the GCI World learning community and support the program's goal of connecting more learners with global learning opportunities. I also completed the individual final assignment, analyzing the course dataset, evaluating a Random Forest classifier, and proposing customer retention strategies.",
     logo: "/ecosystem/logos/matsuo-iwasawa-lab.png", darkLogo: "/ecosystem/logos/matsuo-iwasawa-lab.png", position: { column: 3, row: 6 },
     links: [
       { label: "Customer churn case file", href: "/case-files/customer-churn-prediction" },

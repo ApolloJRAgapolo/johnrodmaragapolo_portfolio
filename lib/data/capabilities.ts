@@ -1,4 +1,4 @@
-import { BarChart3, Cpu, Database, LayoutGrid, Users } from "lucide-react";
+import { BarChart3, Cpu, Database, LayoutGrid, Network, Users } from "lucide-react";
 import { FaCss3Alt } from "react-icons/fa";
 import {
   SiExpress,
@@ -52,7 +52,7 @@ export const technologyStackGroups: TechnologyStackGroup[] = [
   },
   {
     id: "data-analytics",
-    title: "Data Analytics & Data Science",
+    title: "Data Analytics",
     technologies: [
       { name: "Python", icon: SiPython },
       { name: "pandas", icon: SiPandas },
@@ -112,9 +112,9 @@ export type GroupedCapabilityGroup = Pick<CapabilityGroup, "category" | "icon"> 
 
 export const capabilityGroups: GroupedCapabilityGroup[] = [
   {
-    category: "Business & Systems Analysis",
+    category: "IT Business Analysis",
     icon: Cpu,
-    description: "Connecting business questions, stakeholder needs, workflows, and system decisions through research, analysis, requirements, design, and documentation.",
+    description: "Connecting business questions and stakeholder needs to practical requirements, process improvements, and evidence-based decisions.",
     stages: [
       {
         id: "discovery-requirements",
@@ -142,6 +142,27 @@ export const capabilityGroups: GroupedCapabilityGroup[] = [
         ],
       },
       {
+        id: "documentation-collaboration",
+        title: "Documentation & collaboration",
+        description: "Record requirements and decisions, organize project information, and communicate with stakeholders and teammates.",
+        competencies: [
+          {
+            tool: "Technical documentation",
+            subTools: "Stakeholder communication",
+            proficiency: "Experienced",
+            application: "Preparing system documents, requirements, and reports while coordinating with clients, mentors, and project teams.",
+            evidence: [blms, tumaNow],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    category: "Systems Analysis",
+    icon: Network,
+    description: "Translating requirements into workflows, system structures, data models, interface concepts, and technical documentation.",
+    stages: [
+      {
         id: "design-modeling",
         title: "Design & modeling",
         description: "Translate requirements into proposed structures, workflows, models, diagrams, and interface concepts.",
@@ -164,20 +185,6 @@ export const capabilityGroups: GroupedCapabilityGroup[] = [
             proficiency: "Experienced",
             application: "Designing interfaces, wireframes, and interactive prototypes, including Figma component properties and auto layout.",
             evidence: [blms],
-          },
-        ],
-      },
-      {
-        id: "documentation-collaboration",
-        title: "Documentation & collaboration",
-        description: "Record requirements and decisions, organize project information, and communicate with stakeholders and teammates.",
-        competencies: [
-          {
-            tool: "Technical documentation",
-            subTools: "Stakeholder communication",
-            proficiency: "Experienced",
-            application: "Preparing system documents, requirements, and reports while coordinating with clients, mentors, and project teams.",
-            evidence: [blms, tumaNow],
           },
         ],
       },

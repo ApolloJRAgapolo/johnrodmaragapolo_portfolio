@@ -41,6 +41,6 @@ export const learningExperiences = [
   "International Students Conference on Business, Accounting, Computer & Design 2026",
   {
     title: "Global Consumer Intelligence (GCI) World Program",
-    desc: "An international program led by the Matsuo-Iwasawa Laboratory at the University of Tokyo, focused on consumer intelligence, data analytics, and evidence-based decision-making.",
+    desc: "An international program led by the Matsuo-Iwasawa Laboratory at The University of Tokyo, focused on consumer intelligence, data analytics, and evidence-based decision-making.",
   },
 ] as const;

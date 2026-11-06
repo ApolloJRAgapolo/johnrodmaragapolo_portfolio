@@ -127,6 +127,15 @@ export default function ProfessionalJourney() {
               <SectionHeading number="01" title="Experience" headingId="internships-heading" description="Student internships and startup involvement." />
               <ol className={styles.timeline} aria-label="Internships and startup roles">
                 <JourneyEntry
+                  id="gci-world-ambassador" title="Gold Global Ambassador" organization="GCI World Ambassador Program · Matsuo-Iwasawa Laboratory, The University of Tokyo"
+                  date={<time dateTime="2026">2026</time>} kind="Ambassador program" meta="20+ successful referrals" logo={{ src: "/ecosystem/logos/matsuo-iwasawa-lab.png", darkSrc: "/ecosystem/logos/matsuo-iwasawa-lab.png", whiteInDark: true }}
+                  summary="Recognized as a Gold Ambassador under the GCI World Ambassador Program after reaching 20+ successful referrals."
+                  contributions={[
+                    "Helped expand the GCI World learning community through referrals.",
+                    "Supported the program's goal of connecting more learners with global learning opportunities.",
+                  ]}
+                />
+                <JourneyEntry
                   id="kwadra-internship" title="Student Intern" organization="KWADRA Technology Business Incubator"
                   date={<><time dateTime="2026-01">Jan</time>–<time dateTime="2026-05">May 2026</time></>}
                   kind="Internship" meta="ISAT U · 600 hours" logo={{ src: "/ecosystem/logos/kwadra.webp", darkSrc: "/ecosystem/logos/kwadra-dark.svg" }}

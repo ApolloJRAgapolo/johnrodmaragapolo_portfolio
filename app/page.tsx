@@ -36,21 +36,29 @@ export default function Overview() {
             </div>
             <div className="grid flex-1 items-center gap-4 sm:grid-cols-[clamp(220px,20vw,250px)_minmax(0,1fr)] sm:gap-10 lg:gap-14">
             <div className="relative mx-auto hidden h-[clamp(300px,30vw,350px)] w-full overflow-hidden rounded-md border border-border/60 bg-secondary/20 sm:block">
-              <Image src="/badges/my portfolio profile pic.png" alt="John Rodmar Agapolo" fill priority className="object-cover grayscale transition-all duration-300 [@media(hover:hover)]:hover:scale-[1.01] [@media(hover:hover)]:hover:grayscale-0" sizes="(min-width: 1024px) 250px, 220px" />
+              <Image src="/hero-profile.svg" alt="John Rodmar Agapolo" fill priority className="object-cover grayscale transition-[filter] duration-300 ease-out [@media(hover:hover)]:hover:grayscale-0 motion-reduce:transition-none" sizes="(min-width: 1024px) 250px, 220px" />
             </div>
             <div className="lg:py-2">
-            <div className="mb-3 grid grid-cols-[minmax(0,1fr)_clamp(5.5rem,24vw,6rem)] items-center gap-3 sm:mb-0 sm:block">
-              <h1 className="text-[clamp(2.25rem,10vw,3rem)] font-bold leading-[0.98] tracking-tight text-foreground sm:mb-6 sm:text-[clamp(2.4rem,4vw,3.75rem)] ">John Rodmar Agapolo</h1>
-              <div className="relative aspect-[4/5] w-[clamp(5.5rem,24vw,6rem)] overflow-hidden rounded-md border border-border/60 bg-secondary/20 sm:hidden">
-                <Image src="/badges/my portfolio profile pic.png" alt="John Rodmar Agapolo" fill priority className="object-cover grayscale transition-all duration-300 [@media(hover:hover)]:hover:scale-[1.01] [@media(hover:hover)]:hover:grayscale-0" sizes="(max-width: 639px) 24vw, 96px" />
+            <div className="mb-3 flex items-center justify-between gap-2 sm:mb-0 sm:block">
+              <div className="relative mt-1 aspect-[4/5] w-[clamp(5rem,22vw,6rem)] shrink-0 overflow-hidden rounded-md border border-border/60 bg-secondary/20 sm:hidden">
+                <Image src="/hero-profile.svg" alt="John Rodmar Agapolo" fill priority className="object-cover grayscale transition-[filter] duration-300 ease-out [@media(hover:hover)]:hover:grayscale-0 motion-reduce:transition-none" sizes="(max-width: 639px) 22vw, 96px" />
               </div>
+              <h1 className="min-w-0 flex-1 text-[clamp(1.65rem,8vw,2.75rem)] font-extrabold leading-[0.98] tracking-tight text-foreground sm:mb-3 sm:whitespace-nowrap sm:text-[clamp(2.4rem,4vw,3.75rem)]"><span className="block sm:inline">John Rodmar</span>{" "}<span className="block sm:inline">Agapolo</span></h1>
             </div>
             <p className="max-w-xl text-base font-light leading-relaxed text-muted-foreground sm:text-xl">
-              Information Systems graduate interested in software development, data analytics, and business analysis.
+              IT Business Analysis | Data Analytics | Software Development
             </p>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              I enjoy understanding business needs, building practical applications, and using data to uncover insights that support better decisions.
+              I enjoy understanding business needs, improving processes, and using technology and data to create practical solutions.
             </p>
+
+            <div className="mt-5 flex max-w-xl items-center gap-3 border-t border-border/40 pt-4 text-sm">
+              <Image src="/gci-ambassador-badge.png" alt="GCI Ambassador badge" width={68} height={68} unoptimized draggable={false} className="h-[68px] w-[68px] shrink-0 object-contain" />
+              <div className="min-w-0">
+                <p className="font-medium leading-snug text-foreground">Gold Global Ambassador — GCI World by Matsuo-Iwasawa Lab, U-Tokyo</p>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">Recognized for 20+ successful referrals</p>
+              </div>
+            </div>
 
             <div className="mt-4 grid grid-cols-1 gap-2 min-[390px]:grid-cols-2 sm:mt-8 sm:flex sm:flex-wrap sm:items-center sm:gap-3">
               <Link href="/case-files" className={actionStyles({ variant: "primary" })}>View Projects</Link>
@@ -97,14 +105,19 @@ export default function Overview() {
                 <h3 id="overview-experience" className={styles.groupHeading}>Experience</h3>
                 <ul className={styles.experienceList}>
                   <li>
-                    <h4 className={styles.recordTitle}>KWADRA Technology Business Incubator</h4>
-                    <p className={styles.recordMeta}>Student Intern <span aria-hidden="true">·</span> <span><time dateTime="2026-01">Jan</time>–<time dateTime="2026-05">May 2026</time></span></p>
-                    <p className={styles.recordDescription}>600-hour internship supporting project documentation, innovation programs, and startup activities.</p>
+                    <h4 className={styles.recordTitle}>Gold Global Ambassador — GCI World</h4>
+                    <p className={styles.recordMeta}>20+ successful referrals <span aria-hidden="true">·</span> <time dateTime="2026">2026</time></p>
+                    <p className={styles.recordDescription}>Helped expand the GCI World learning community and connect more learners with global learning opportunities.</p>
                   </li>
                   <li>
-                    <h4 className={styles.recordTitle}>Wadhwani Foundation Philippines</h4>
-                    <p className={styles.recordMeta}>Student Intern <span aria-hidden="true">·</span> <time dateTime="2026">2026</time></p>
-                    <p className={styles.recordDescription}>Internship supporting faculty participation, platform progress monitoring, and communication across partner universities.</p>
+                    <h4 className={styles.recordTitle}>Co-Founder &amp; Business Analyst — TumaNow</h4>
+                    <p className={styles.recordMeta}>Business analysis <span aria-hidden="true">·</span> <time dateTime="2025">2025</time></p>
+                    <p className={styles.recordDescription}>Stakeholder interviews, requirements analysis, workflow design, and financial planning for a GovTech startup.</p>
+                  </li>
+                  <li>
+                    <h4 className={styles.recordTitle}>Project Manager &amp; Systems Analyst — BLMS</h4>
+                    <p className={styles.recordMeta}>Academic capstone <span aria-hidden="true">·</span> <time dateTime="2026">2026</time></p>
+                    <p className={styles.recordDescription}>Requirements gathering, process analysis, system design, and technical documentation for a livestock-monitoring prototype.</p>
                   </li>
                 </ul>
               </section>

@@ -93,7 +93,7 @@ export default function ThemeToggle() {
       <h3 className="sidebar-section-heading mb-2.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
         Appearance
       </h3>
-      <div className="grid grid-cols-3 gap-1" role="group" aria-label="Appearance">
+      <div className="grid grid-cols-3 gap-1 rounded-md border border-border/40 p-1" role="group" aria-label="Appearance">
         {themeOptions.map(({ value, label, icon: Icon }) => {
           const isActive = theme === value;
 
@@ -101,9 +101,11 @@ export default function ThemeToggle() {
             <button
               key={value}
               type="button"
+              aria-label={label}
+              title={label}
               aria-pressed={isActive}
               onClick={(event) => selectTheme(value, event.currentTarget)}
-              className={`flex min-h-11 items-center justify-center gap-1 rounded-sm px-1.5 py-1 text-xs font-medium transition-colors duration-150 motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 lg:min-h-8 ${
+              className={`flex min-h-9 items-center justify-center rounded-sm px-1.5 py-1 transition-colors duration-150 motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40 lg:min-h-7 ${
                 isActive
                   ? "bg-secondary text-foreground"
                   : "text-muted-foreground hover:text-foreground"
@@ -111,9 +113,8 @@ export default function ThemeToggle() {
             >
               <Icon
                 aria-hidden="true"
-                className={`h-3.5 w-3.5 ${isActive ? "opacity-100" : "opacity-60"}`}
+                className={`h-4 w-4 ${isActive ? "opacity-100" : "opacity-60"}`}
               />
-              {label}
             </button>
           );
         })}
